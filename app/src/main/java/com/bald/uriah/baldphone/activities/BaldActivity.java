@@ -95,7 +95,6 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
     private Handler handler;
     private Runnable touchesDecreaser = () -> touches = (touches -= 1) < 0 ? 0 : touches;
 
-
     /**
      * @return true if all permissions are granted.
      */
@@ -314,5 +313,7 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
-    protected abstract int requiredPermissions();
+    protected int requiredPermissions() {
+        return PERMISSION_NONE;
+    }
 }

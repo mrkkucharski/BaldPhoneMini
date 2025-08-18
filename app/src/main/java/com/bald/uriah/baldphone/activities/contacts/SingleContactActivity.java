@@ -41,9 +41,10 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import app.baldphone.neo.calls.CallManager;
+
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.BaldActivity;
-import com.bald.uriah.baldphone.activities.DialerActivity;
 import com.bald.uriah.baldphone.activities.SOSActivity;
 import com.bald.uriah.baldphone.adapters.CallsRecyclerViewAdapter;
 import com.bald.uriah.baldphone.databases.calls.Call;
@@ -224,7 +225,7 @@ public class SingleContactActivity extends BaldActivity {
                     pair.first,
                     "Custom"));
             tv_value.setText(pair.second);
-            call.setOnClickListener(v -> DialerActivity.call(pair.second, this, false));
+            call.setOnClickListener(v -> CallManager.INSTANCE.call(this, pair.second, false));
             message.setOnClickListener(v -> S.sendMessage(pair.second, this));
 
             ll.addView(layout);

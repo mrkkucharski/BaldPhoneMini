@@ -20,6 +20,13 @@
 
     <string name="empty" translatable="false" />
 
+    <string name="contact_phone_format" translatable="false">%1$s %2$s</string>
+    <string name="icon_mobile" translatable="false">📞</string>
+    <string name="icon_home" translatable="false">🏠</string>
+    <string name="icon_work" translatable="false">💼</string>
+    <string name="icon_main" translatable="false">☎️</string>
+    <string name="icon_other" translatable="false">▪️</string>
+
     <string-array name="names">
         <item>Uriah Shaul Mandel</item>
         <item>Ido Heinemann</item>

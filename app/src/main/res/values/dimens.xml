@@ -15,13 +15,12 @@
   -->
 
 <resources>
-    <dimen name="huge">28sp</dimen>
+    <dimen name="huge">26sp</dimen>
     <dimen name="large">21sp</dimen>
     <dimen name="medium_plus">19sp</dimen>
     <dimen name="medium">17sp</dimen>
     <dimen name="small">14sp</dimen>
     <dimen name="tiny">9sp</dimen>
-
     <dimen name="btn_corners_pill_radius">500dp</dimen>
     <dimen name="transparent_length_in_scrollers">20dp</dimen>
     <dimen name="pin_radius">13dp</dimen>
@@ -34,6 +33,12 @@
 
     <dimen name="bald_key_margin">2dp</dimen>
     <dimen name="bald_key_end_margin">2dp</dimen>
+
+    <dimen name="dialpad_key_size">86dp</dimen>
+    <dimen name="dialpad_key_height">60dp</dimen>
+    <dimen name="dialpad_grid_spacing_vertical">10dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
 
     <!-- Style specific dimensions -->
     <dimen name="bald_button_padding">12dp</dimen>

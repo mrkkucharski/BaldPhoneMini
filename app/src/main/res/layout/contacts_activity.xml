@@ -54,8 +54,3 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bald_title_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-

@@ -1,255 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright 2019 Uriah Shaul Mandel
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="?bald_background"
-    android:weightSum="5"
-    tools:ignore="RtlHardcoded,HardcodedText">
+    android:padding="4dp">
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <RelativeLayout
+        android:id="@+id/number_container"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/dial_number_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="start"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingEnd="50dp"
+            android:singleLine="true"
+            android:textColor="?bald_text_on_key"
+            android:textSize="38sp"
+            tools:text="+81 90 1234 5678" />
+
+        <ImageButton
+            android:id="@+id/b_backspace"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:contentDescription="@string/backspace"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_backspace" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/dialpad_flow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:constraint_referenced_ids="b_1,b_2,b_3,b_4,b_5,b_6,b_7,b_8,b_9,b_star,b_0,b_hash"
+        app:flow_maxElementsWrap="3"
+        app:flow_verticalGap="@dimen/dialpad_grid_spacing_vertical"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number_container" />
+
+    <include
         android:id="@+id/b_1"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="1"
-        app:layout_constraintBottom_toTopOf="@+id/b_4"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/b_2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_2"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="2"
-        app:layout_constraintBottom_toTopOf="@+id/b_5"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_1"
-        app:layout_constraintRight_toLeftOf="@+id/b_3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_3"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="3"
-        app:layout_constraintBottom_toTopOf="@+id/b_6"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_4"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="4"
-        app:layout_constraintBottom_toTopOf="@+id/b_7"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/b_5"
-        app:layout_constraintTop_toBottomOf="@+id/b_1"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_5"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="5"
-        app:layout_constraintBottom_toTopOf="@+id/b_8"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_4"
-        app:layout_constraintRight_toLeftOf="@+id/b_6"
-        app:layout_constraintTop_toBottomOf="@+id/b_2"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_6"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="6"
-        app:layout_constraintBottom_toTopOf="@+id/b_9"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_5"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_3"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_7"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="7"
-        app:layout_constraintBottom_toTopOf="@+id/b_sulamit"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/b_8"
-        app:layout_constraintTop_toBottomOf="@+id/b_4"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_8"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="8"
-        app:layout_constraintBottom_toTopOf="@+id/b_0"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_7"
-        app:layout_constraintRight_toLeftOf="@+id/b_9"
-        app:layout_constraintTop_toBottomOf="@+id/b_5"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_9"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="9"
-        app:layout_constraintBottom_toTopOf="@+id/b_hash"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_8"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_6"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
-        android:id="@+id/b_sulamit"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="*"
-        app:layout_constraintBottom_toTopOf="@+id/b_clear"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/b_0"
-        app:layout_constraintTop_toBottomOf="@+id/b_7"
-        app:layout_constraintWidth_percent=".3" />
+    <include
+        android:id="@+id/b_star"
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_0"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/b_call"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_sulamit"
-        app:layout_constraintRight_toLeftOf="@+id/b_hash"
-        app:layout_constraintTop_toBottomOf="@+id/b_8"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-    <com.bald.uriah.baldphone.views.BaldButton
+    <include
         android:id="@+id/b_hash"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons"
-        android:gravity="center"
-        android:text="#"
-        app:layout_constraintBottom_toTopOf="@+id/b_backspace"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_0"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_9"
-        app:layout_constraintWidth_percent=".3" />
+        layout="@layout/dialpad_button" />
 
-
-    <com.bald.uriah.baldphone.views.BaldImageButton
-        android:id="@+id/b_clear"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons_red"
-        android:gravity="center"
-        android:padding="5dp"
-        android:src="@drawable/delete_on_button"
-        android:text="@string/clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/b_call"
-        app:layout_constraintTop_toBottomOf="@+id/b_sulamit"
-        app:layout_constraintWidth_percent=".3" />
-
-    <com.bald.uriah.baldphone.views.BaldImageButton
+    <ImageButton
         android:id="@+id/b_call"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons_green"
-        android:gravity="center"
-        android:padding="10dp"
+        android:layout_width="@dimen/dialpad_key_size"
+        android:layout_height="@dimen/dialpad_key_height"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/call_button_circle"
+        android:contentDescription="@string/call"
         android:src="@drawable/phone_on_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_clear"
-        app:layout_constraintRight_toLeftOf="@+id/b_backspace"
-        app:layout_constraintTop_toBottomOf="@+id/b_0"
-        app:layout_constraintWidth_percent=".3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialpad_flow" />
 
-    <com.bald.uriah.baldphone.views.BaldImageButton
-        android:id="@+id/b_backspace"
-        style="@style/ButtonsText.Auto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/style_for_buttons_blue"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintLeft_toRightOf="@+id/b_call"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b_hash"
-        app:layout_constraintWidth_percent=".3"
-        app:srcCompat="@drawable/backspace_on_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,12 @@ package app.baldphone.neo.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 import androidx.core.content.edit
+
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 object Prefs {
     private const val TAG = "Prefs"
@@ -32,7 +36,38 @@ object Prefs {
         }
     }
 
+    /**
+     * Controls whether audible feedback (DTMF tones) is played when interacting with the dialer.
+     */
+    var areDialerSoundsEnabled: Boolean by BooleanPreference(
+        PrefKeys.KEY_DIALER_SOUNDS, PrefKeys.DEFAULT_DIALER_SOUNDS
+    )
+
+    /**
+     * If true, the dialog for choosing a SIM will be shown when calling.
+     */
+    var isDualSimActive: Boolean by BooleanPreference(
+        PrefKeys.KEY_DUAL_SIM_MODE, PrefKeys.DEFAULT_DUAL_SIM_MODE
+    )
+
     private fun putInt(key: String, value: Int) {
         prefs.edit { putInt(key, value) }
+    }
+
+    // Delegate for a Boolean preference
+    private class BooleanPreference(
+        private val key: String, private val defaultValue: Boolean
+    ) : ReadWriteProperty<Prefs, Boolean> {
+
+        override fun getValue(thisRef: Prefs, property: KProperty<*>): Boolean {
+            val value = thisRef.prefs.getBoolean(key, defaultValue)
+            Log.d(TAG, "Read $key: $value (default $defaultValue)")
+            return value
+        }
+
+        override fun setValue(thisRef: Prefs, property: KProperty<*>, value: Boolean) {
+            Log.d(TAG, "Setting $key to $value")
+            thisRef.prefs.edit { putBoolean(key, value) }
+        }
     }
 }

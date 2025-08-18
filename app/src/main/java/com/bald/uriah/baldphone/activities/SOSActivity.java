@@ -35,6 +35,7 @@ import com.bald.uriah.baldphone.activities.contacts.ContactsActivity;
 import com.bald.uriah.baldphone.adapters.ContactRecyclerViewAdapter;
 import com.bald.uriah.baldphone.databases.contacts.MiniContact;
 import com.bald.uriah.baldphone.databases.home_screen_pins.HomeScreenPinHelper;
+import app.baldphone.neo.calls.CallManager;
 import com.bald.uriah.baldphone.views.BaldLinearLayoutButton;
 
 import java.util.ArrayList;
@@ -57,7 +58,9 @@ public class SOSActivity extends BaldActivity {
             ((ImageView) baldLinearLayoutButton.getChildAt(0)).setImageResource(R.drawable.face_on_button);
 
         ((TextView) baldLinearLayoutButton.getChildAt(1)).setText(miniContact.name);
-        baldLinearLayoutButton.setOnClickListener(v -> DialerActivity.call(miniContact, v.getContext()));
+        baldLinearLayoutButton.setOnClickListener(v ->
+                CallManager.INSTANCE.call(v.getContext(), miniContact)
+        );
     }
 
     @Override
@@ -87,7 +90,7 @@ public class SOSActivity extends BaldActivity {
     }
 
     private void callEmergencyNumber() {
-        DialerActivity.call("112", this, true);//should work 99.99% of the times
+        CallManager.INSTANCE.callDirectly(this, "112");
     }
 
     @Override

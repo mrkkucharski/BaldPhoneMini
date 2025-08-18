@@ -18,63 +18,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?bald_background"
-    android:gravity="bottom|center"
-    android:orientation="vertical">
+    android:background="?bald_background">
 
-    <com.bald.uriah.baldphone.views.BaldTitleBar
-        android:id="@+id/bald_title_bar"
+    <app.baldphone.neo.views.TitleBarView
+        android:id="@+id/title_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:backgroundTint="@color/color_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        app:title="@string/dialer" />
-
-
-    <TextView
-        android:id="@+id/tv_number"
-        style="@style/BackgroundText.Huge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/dialer_input_background"
-        android:gravity="center_vertical|center_horizontal"
-        android:maxLines="3"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toBottomOf="@+id/bald_title_bar"
-        app:layout_constraintWidth_percent="0.475" />
+        app:titleBarBackgroundColor="@color/color_1"
+        app:titleBarTitle="@string/dialer" />
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/empty_state_container"
+        layout="@layout/add_contact"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dial_pad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_bar" />
+
+    <include
+        android:id="@+id/dial_pad"
         layout="@layout/dial_pad"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-        android:layout_weight="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/scrolling_helper"
-        app:layout_constraintTop_toBottomOf="@+id/tv_number" />
+        app:layout_constraintTop_toBottomOf="@+id/title_bar" />
 
     <com.bald.uriah.baldphone.views.ScrollingHelper
         android:id="@+id/scrolling_helper"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/include"
+        app:layout_constraintEnd_toStartOf="@+id/dial_pad"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bald_title_bar"
+        app:layout_constraintTop_toBottomOf="@+id/title_bar"
         app:where_bar="-3">
 
         <com.bald.uriah.baldphone.views.ModularRecyclerView
@@ -84,9 +68,6 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <include
-            android:id="@+id/empty_view"
-            layout="@layout/add_contact" />
     </com.bald.uriah.baldphone.views.ScrollingHelper>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

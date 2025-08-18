@@ -2,12 +2,14 @@ package app.baldphone.neo.utils
 
 import android.content.ActivityNotFoundException
 import android.content.ClipData
+import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 
 import com.bald.uriah.baldphone.R
@@ -45,11 +47,32 @@ fun Context.openUrl(url: String) {
  * @param text The actual text to be copied to the clipboard.
  */
 fun Context.copyToClipboard(label: CharSequence, text: CharSequence) {
-    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clip = ClipData.newPlainText(label, text)
-    clipboard.setPrimaryClip(clip)
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-        BaldToast.from(this).setType(BaldToast.TYPE_INFORMATIVE)
-            .setText(R.string.copied_to_clipboard).show()
+    val clipboard = ContextCompat.getSystemService(this, ClipboardManager::class.java)
+    if (clipboard != null) {
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            BaldToast.from(this)
+                .setType(BaldToast.TYPE_INFORMATIVE)
+                .setText(R.string.copied_to_clipboard)
+                .show()
+        }
+    }
+}
+
+/**
+ * Retrieves text from the system clipboard.
+ *
+ * @return The text content of the primary clip, or null if the clipboard is empty or does not
+ * contain text.
+ */
+fun Context.getTextFromClipboard(): CharSequence? {
+    val clipboard = ContextCompat.getSystemService(this, ClipboardManager::class.java)
+    return if (clipboard?.hasPrimaryClip() == true &&
+        clipboard.primaryClipDescription?.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN) == true
+    ) {
+        clipboard.primaryClip?.getItemAt(0)?.text
+    } else {
+        null
     }
 }

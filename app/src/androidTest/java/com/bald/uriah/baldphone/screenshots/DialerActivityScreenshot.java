@@ -22,7 +22,7 @@ import android.os.Handler;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.bald.uriah.baldphone.activities.DialerActivity;
+import app.baldphone.neo.activities.DialerActivity;
 
 import org.junit.runner.RunWith;
 

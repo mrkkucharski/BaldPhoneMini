@@ -38,9 +38,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
+import app.baldphone.neo.calls.CallManager;
+
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.BaldActivity;
-import com.bald.uriah.baldphone.activities.DialerActivity;
 import com.bald.uriah.baldphone.activities.contacts.AddContactActivity;
 import com.bald.uriah.baldphone.activities.contacts.SingleContactActivity;
 import com.bald.uriah.baldphone.databases.calls.Call;
@@ -279,7 +280,7 @@ public class CallsRecyclerViewAdapter extends ModularRecyclerView.ModularAdapter
                                 final int option = (int) params[0];
                                 switch (option) {
                                     case 0:
-                                        DialerActivity.call(call.phoneNumber, activity, false);
+                                        CallManager.INSTANCE.call(activity, call.phoneNumber, false);
                                         return true;
                                     case 1:
                                         activity.startActivity(new Intent(activity, AddContactActivity.class).putExtra(AddContactActivity.CONTACT_NUMBER, call.phoneNumber));

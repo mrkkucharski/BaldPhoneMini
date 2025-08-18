@@ -94,7 +94,7 @@ public class ScrollingHelper extends ConstraintLayout {
                         if (!gone)
                             setArrowsVisibility(false);
                         if (emptyView instanceof TextView) {
-                            ((TextView) emptyView).setText(empty);
+                            ((TextView) emptyView).setText("");
                         } else
                             emptyView.setVisibility(VISIBLE);
                     } else {

@@ -92,6 +92,7 @@
     <string name="contacts_read_subtext">This permission is required in order to read contacts.</string>
     <string name="contacts_subtext">This permission is required in order to add new contacts.</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="pasted_from_clipboard">Pasted from clipboard</string>
     <string name="crash">Something went wrong.\nRestarting in a few seconds…</string>
     <string name="current_time">Current Time</string>
     <string name="custom">Custom</string>
@@ -420,4 +421,12 @@
     <bool name="is_right_to_left">false</bool>
     <string name="contact_not_created">Contact not created</string>
 
+    <string name="t9_key_2">abc</string>
+    <string name="t9_key_3">def</string>
+    <string name="t9_key_4">ghi</string>
+    <string name="t9_key_5">jkl</string>
+    <string name="t9_key_6">mno</string>
+    <string name="t9_key_7">pqrs</string>
+    <string name="t9_key_8">tuv</string>
+    <string name="t9_key_9">wxyz</string>
 </resources>

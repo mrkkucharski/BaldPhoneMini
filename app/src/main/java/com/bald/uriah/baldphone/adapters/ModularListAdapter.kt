@@ -1,0 +1,32 @@
+package com.bald.uriah.baldphone.adapters
+
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.bald.uriah.baldphone.views.ModularRecyclerView
+
+/**
+ * A ListAdapter implementation that extends [ModularAdapter] to be compatible with ModularRecyclerView.
+ */
+abstract class ModularListAdapter<T, VH : RecyclerView.ViewHolder>(
+    diffCallback: DiffUtil.ItemCallback<T>
+) : ModularRecyclerView.ModularAdapter<VH>() {
+
+    private val mDiffer = AsyncListDiffer(this, diffCallback)
+
+    fun submitList(list: List<T>?) {
+        mDiffer.submitList(list)
+    }
+
+    protected fun getItem(position: Int): T {
+        return mDiffer.currentList[position]
+    }
+
+    override fun getItemCount(): Int {
+        return mDiffer.currentList.size
+    }
+
+    fun getCurrentList(): List<T> {
+        return mDiffer.currentList
+    }
+}

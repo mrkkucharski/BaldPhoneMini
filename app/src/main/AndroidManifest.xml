@@ -44,6 +44,11 @@
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
+    <!-- Declare features but don't require them -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <application
         android:name=".BaldPhone"
         android:allowBackup="true"
@@ -67,7 +72,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.DialerActivity"
+            android:name="app.baldphone.neo.activities.DialerActivity"
             android:exported="false"
             android:label="@string/dialer" />
         <activity
