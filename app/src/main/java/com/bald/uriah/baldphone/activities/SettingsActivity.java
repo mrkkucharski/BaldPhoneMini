@@ -53,7 +53,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bald.uriah.baldphone.BuildConfig;
+import app.baldphone.neo.views.TitleBarView;
+
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.alarms.AlarmScreenActivity;
 import com.bald.uriah.baldphone.activities.pills.PillTimeSetterActivity;
@@ -64,8 +65,6 @@ import com.bald.uriah.baldphone.utils.BaldPrefsUtils;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.D;
 import com.bald.uriah.baldphone.utils.S;
-import com.bald.uriah.baldphone.utils.UpdatingUtil;
-import com.bald.uriah.baldphone.views.BaldTitleBar;
 import com.bald.uriah.baldphone.views.ModularRecyclerView;
 import com.bumptech.glide.Glide;
 
@@ -99,7 +98,7 @@ public class SettingsActivity extends BaldActivity {
     private SharedPreferences.Editor editor;
     private RecyclerView recyclerView;
     private BaldPrefsUtils baldPrefsUtils;
-    private BaldTitleBar baldTitleBar;
+    private TitleBarView titleBarView;
 
     {
         categorySparseArray = new SparseArray<>();
@@ -118,10 +117,10 @@ public class SettingsActivity extends BaldActivity {
         sharedPreferences = getSharedPreferences(D.BALD_PREFS, MODE_PRIVATE);
         baldPrefsUtils = BaldPrefsUtils.newInstance(this);
         editor = sharedPreferences.edit();
-
         vibrator = (sharedPreferences.getBoolean(BPrefs.VIBRATION_FEEDBACK_KEY, BPrefs.VIBRATION_FEEDBACK_DEFAULT_VALUE)) ? (Vibrator) getSystemService(VIBRATOR_SERVICE) : null;
-        baldTitleBar = findViewById(R.id.bald_title_bar);
-        baldTitleBar.getBt_back().setOnClickListener((v) -> onBackPressed());
+
+        titleBarView = findViewById(R.id.title_bar);
+        titleBarView.setOnExitClickListener((v) -> onBackPressed());
 
         recyclerView = findViewById(R.id.child);
 
@@ -468,8 +467,7 @@ public class SettingsActivity extends BaldActivity {
         this.currentCategory = category;
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
-        baldTitleBar.setTitle(category.textResId);
-
+        titleBarView.setTitle(category.textResId);
     }
 
     private void setupAlarmVolume() {
