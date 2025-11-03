@@ -16,14 +16,14 @@
 
 package com.bald.uriah.baldphone.views.home;
 
+import static com.bald.uriah.baldphone.databases.apps.AppsDatabaseHelper.baldComponentNameBeginning;
 import static com.bald.uriah.baldphone.services.NotificationListenerService.ACTION_REGISTER_ACTIVITY;
 import static com.bald.uriah.baldphone.services.NotificationListenerService.KEY_EXTRA_ACTIVITY;
 import static com.bald.uriah.baldphone.services.NotificationListenerService.NOTIFICATIONS_HOME_SCREEN;
-import static com.bald.uriah.baldphone.utils.AccessibilityUtils.isAccessibilityServiceEnabled;
-import static com.bald.uriah.baldphone.utils.AccessibilityUtils.showAccessibilityServiceDialog;
 import static com.bald.uriah.baldphone.utils.D.WHATSAPP_PACKAGE_NAME;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -36,6 +36,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.provider.Telephony;
 import android.util.ArrayMap;
 import android.util.AttributeSet;
@@ -45,7 +46,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import app.baldphone.neo.services.DeviceLock;
 
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.AppsActivity;
@@ -59,7 +64,6 @@ import com.bald.uriah.baldphone.databases.apps.App;
 import com.bald.uriah.baldphone.databases.apps.AppsDatabase;
 import com.bald.uriah.baldphone.databases.apps.AppsDatabaseHelper;
 import com.bald.uriah.baldphone.databases.calls.CallLogsHelper;
-import com.bald.uriah.baldphone.services.DeviceLockService;
 import com.bald.uriah.baldphone.services.NotificationListenerService;
 import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.BDialog;
@@ -334,109 +338,192 @@ public class HomePage1 extends HomeView {
                 BPrefs.CUSTOM_VIDEOS_KEY,
                 bt_lock_screen,
                 v -> {
-                    // Support for API levels below 28 is not currently implemented or planned
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
-                        BaldToast.from(homeScreen)
-                                .setType(BaldToast.TYPE_DEFAULT)
-                                .setText(R.string.info_lock_screen_min_sdk)
-                                .show();
-                        return;
-                    }
-
-                    if (!isAccessibilityServiceEnabled(homeScreen, DeviceLockService.class)) {
-                        showAccessibilityServiceDialog(homeScreen);
-                        return;
-                    }
-
-                    DeviceLockService service = DeviceLockService.getInstance();
-                    if (service != null) {
-                        boolean locked = service.lockScreen();
-                        if (!locked) {
-                            BaldToast.from(homeScreen)
-                                    .setType(BaldToast.TYPE_ERROR)
-                                    .setText("Action failed")
-                                    .show();
-                        }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        requestDeviceLock();
                     } else {
-                        BaldToast.from(homeScreen)
-                                .setType(BaldToast.TYPE_ERROR)
-                                .setText("Accessibility Service is not available")
-                                .show();
+                        homeScreen.startActivity(new Intent(homeScreen, AppsActivity.class));
                     }
                 });
     }
 
     private void setupButton(
-            String bPrefsKey, FirstPageAppIcon bt, View.OnClickListener onClickListener) {
-        final App app;
+            String bPrefsKey,
+            @NonNull FirstPageAppIcon button,
+            View.OnClickListener defaultListener) {
+        if (homeScreen != null) {
+            setupButtonForHomeScreen(bPrefsKey, button, defaultListener);
+        } else {
+            setupButtonForEditor(bPrefsKey, button);
+        }
+    }
+
+    private void setupButtonForHomeScreen(
+            String bPrefsKey,
+            @NonNull FirstPageAppIcon button,
+            View.OnClickListener defaultListener) {
+        App app = findAppByPreference(bPrefsKey);
+
+        if (app == null) {
+            setupDefault(button, defaultListener);
+        } else {
+            button.setText(app.getLabel());
+            AppsDatabaseHelper.loadPic(app, button.imageView);
+            button.setOnClickListener(
+                    v ->
+                            S.startComponentName(
+                                    homeScreen,
+                                    ComponentName.unflattenFromString(
+                                            app.getFlattenComponentName())));
+            viewsToApps.put(app, button);
+        }
+    }
+
+    private void setupButtonForEditor(String bPrefsKey, @NonNull FirstPageAppIcon bt) {
+        App app = findAppByPreference(bPrefsKey);
+
+        // This is for Page1EditorActivity context
+        final Page1EditorActivity page1EditorActivity = (Page1EditorActivity) activity;
+        final CharSequence initialAppName;
+
+        if (bt == bt_lock_screen && Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            if (app == null) {
+                App appsActivityApp =
+                        AppsDatabase.getInstance(activity)
+                                .appsDatabaseDao()
+                                .findByFlattenComponentName(
+                                        baldComponentNameBeginning + AppsActivity.class.getName());
+                if (appsActivityApp != null) {
+                    bt.setText(R.string.apps);
+                    AppsDatabaseHelper.loadPic(appsActivityApp, bt.imageView);
+                }
+            }
+            initialAppName = activity.getText(R.string.apps);
+        } else {
+            initialAppName = bt.getText();
+        }
+
+        final BDB bdb =
+                BDB.from(activity)
+                        .setTitle(R.string.custom_app)
+                        .setSubText(R.string.custom_app_subtext)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setOptions(initialAppName, activity.getText(R.string.custom))
+                        .setOptionsStartingIndex(
+                                () -> sharedPreferences.contains(bPrefsKey) ? 1 : 0)
+                        .setPositiveButtonListener(
+                                params -> {
+                                    if (params[0].equals(0)) {
+                                        sharedPreferences.edit().remove(bPrefsKey).apply();
+                                    } else {
+                                        activity.startActivityForResult(
+                                                new Intent(activity, AppsActivity.class)
+                                                        .putExtra(
+                                                                AppsActivity.CHOOSE_MODE,
+                                                                bPrefsKey),
+                                                AppsActivity.REQUEST_SELECT_CUSTOM_APP);
+                                    }
+                                    return true;
+                                });
+
+        bt.setOnClickListener(
+                v ->
+                        bdb.show()
+                                .setOnDismissListener(
+                                        dialog -> {
+                                            if (page1EditorActivity.baldPrefsUtils.hasChanged(
+                                                    page1EditorActivity)) {
+                                                page1EditorActivity.recreate();
+                                            }
+                                        }));
+
+        if (app != null) {
+            bt.setText(app.getLabel());
+            AppsDatabaseHelper.loadPic(app, bt.imageView);
+            viewsToApps.put(app, bt);
+        }
+    }
+
+    private void setupDefault(@NonNull FirstPageAppIcon bt, OnClickListener onClickListener) {
+        if (bt == bt_lock_screen) {
+            // The lock screen button has a different behavior on older APIs
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                // On older APIs, this button opens the Apps screen
+                App app =
+                        AppsDatabase.getInstance(homeScreen)
+                                .appsDatabaseDao()
+                                .findByFlattenComponentName(
+                                        baldComponentNameBeginning + AppsActivity.class.getName());
+                bt.setText(R.string.apps);
+                AppsDatabaseHelper.loadPic(app, bt.imageView);
+            }
+        }
+        bt.setOnClickListener(onClickListener);
+    }
+
+    // Helper
+    @Nullable
+    private App findAppByPreference(String bPrefsKey) {
         if (sharedPreferences.contains(bPrefsKey)) {
-            app =
+            App app =
                     AppsDatabase.getInstance(homeScreen)
                             .appsDatabaseDao()
                             .findByFlattenComponentName(
                                     sharedPreferences.getString(bPrefsKey, null));
-            if (app == null) sharedPreferences.edit().remove(bPrefsKey).apply();
-        } else app = null;
-
-        if (homeScreen != null) {
+            // If app is not found in DB, preference is stale. Remove it.
             if (app == null) {
-                bt.setOnClickListener(onClickListener);
-            } else {
-                bt.setText(app.getLabel());
-                AppsDatabaseHelper.loadPic(app, bt.imageView);
-                bt.setOnClickListener(
-                        v ->
-                                S.startComponentName(
-                                        homeScreen,
-                                        ComponentName.unflattenFromString(
-                                                app.getFlattenComponentName())));
-                viewsToApps.put(app, bt);
+                sharedPreferences.edit().remove(bPrefsKey).apply();
             }
-        } else { // This is for Page1EditorActivity context
-            final Page1EditorActivity page1EditorActivity = (Page1EditorActivity) activity;
-            final CharSequence initialAppName;
+            return app;
+        }
+        return null;
+    }
 
-            initialAppName = bt.getText();
-
-            final BDB bdb =
-                    BDB.from(activity)
-                            .setTitle(R.string.custom_app)
-                            .setSubText(R.string.custom_app_subtext)
-                            .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
-                            .setOptions(initialAppName, activity.getText(R.string.custom))
-                            .setOptionsStartingIndex(
-                                    () -> sharedPreferences.contains(bPrefsKey) ? 1 : 0)
-                            .setPositiveButtonListener(
-                                    params -> {
-                                        if (params[0].equals(0)) {
-                                            sharedPreferences.edit().remove(bPrefsKey).apply();
-                                        } else {
-                                            activity.startActivityForResult(
-                                                    new Intent(activity, AppsActivity.class)
-                                                            .putExtra(
-                                                                    AppsActivity.CHOOSE_MODE,
-                                                                    bPrefsKey),
-                                                    AppsActivity.REQUEST_SELECT_CUSTOM_APP);
-                                        }
-                                        return true;
-                                    });
-
-            bt.setOnClickListener(
-                    v ->
-                            bdb.show()
-                                    .setOnDismissListener(
-                                            dialog -> {
-                                                if (page1EditorActivity.baldPrefsUtils.hasChanged(
-                                                        page1EditorActivity)) {
-                                                    page1EditorActivity.recreate();
-                                                }
-                                            }));
-
-            if (app != null) {
-                bt.setText(app.getLabel());
-                AppsDatabaseHelper.loadPic(app, bt.imageView);
-                viewsToApps.put(app, bt);
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    private void requestDeviceLock() {
+        DeviceLock.requestLock(homeScreen, result -> {
+            switch (result) {
+                case FAILURE:
+                    // System reports failure despite the service being technically enabled.
+                    // Prompt user to re-enable to fix the internal state.
+                    showAccessibilityDialog(
+                            R.string.accessibility_permission_check_title,
+                            R.string.accessibility_permission_check_message
+                    );
+                    break;
+                case ACCESS_DENIED:
+                    // Permission missing.
+                    showAccessibilityDialog(
+                            R.string.accessibility_permission_dialog_title,
+                            R.string.accessibility_permission_dialog_message
+                    );
+                    break;
             }
+        });
+    }
+
+    /**
+     * Helper to show the accessibility permission dialog with dynamic text.
+     */
+    private void showAccessibilityDialog(int titleRes, int subTextRes) {
+        BDB.from(homeScreen)
+                .setTitle(titleRes)
+                .setSubText(subTextRes)
+                .setPositiveCustomText(R.string.dialog_button_enable)
+                .setNegativeCustomText(R.string.dialog_button_not_now)
+                .setPositiveButtonListener(params -> {
+                    openAccessibilitySettings();
+                    return true;
+                })
+                .show();
+    }
+
+    private void openAccessibilitySettings() {
+        try {
+            Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            homeScreen.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            BaldToast.error(homeScreen, "Failed to open accessibility settings.");
         }
     }
 }

@@ -251,10 +251,11 @@
             </intent-filter>
         </service>
         <service
-            android:name=".services.DeviceLockService"
+            android:name="app.baldphone.neo.services.DeviceLock$LockService"
             android:exported="false"
             android:label="@string/app_display_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            tools:targetApi="28">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
