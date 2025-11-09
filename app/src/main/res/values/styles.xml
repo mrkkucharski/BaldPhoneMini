@@ -156,6 +156,10 @@
         <item name="android:textSize">@dimen/medium</item>
     </style>
 
+    <style name="BackgroundText.Small">
+        <item name="android:textSize">@dimen/small</item>
+    </style>
+
     <style name="BackgroundText.Tiny">
         <item name="android:textSize">@dimen/tiny</item>
     </style>
@@ -184,6 +188,18 @@
 
     <style name="ButtonsText.Auto">
         <item name="autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="Bald.Button" parent="BackgroundText.Medium.Plus">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
+
+    <style name="Bald.Button.FullWidth" parent="Bald.Button">
+        <item name="android:layout_width">match_parent</item>
     </style>
 
     <style name="BaldActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">

@@ -84,7 +84,15 @@ public class BaldToast {
     }
 
     public static void error(Context context) {
-        BaldToast.from(context).setText(R.string.an_error_has_occurred).setType(TYPE_ERROR).show();
+        error(context, R.string.an_error_has_occurred);
+    }
+
+    public static void error(@NonNull Context context, CharSequence text) {
+        BaldToast.from(context).setText(text).setType(TYPE_ERROR).show();
+    }
+
+    public static void error(@NonNull Context context, @StringRes int resId) {
+        BaldToast.from(context).setText(resId).setType(TYPE_ERROR).show();
     }
 
     public static void simple(Context context, CharSequence text) {
