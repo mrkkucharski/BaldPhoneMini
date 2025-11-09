@@ -15,13 +15,17 @@
  * limitations under the License.
  */
 
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
+}
+
 def keystorePropertiesFile = rootProject.file('app/keystore.properties')
 def keystoreProperties = new Properties()
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
-
-apply plugin: 'com.android.application'
 
 android {
     namespace "com.bald.uriah.baldphone"
@@ -91,30 +95,31 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
     }
 
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     lintOptions {
         abortOnError false
     }
 }
 
 dependencies {
-    implementation 'androidx.room:room-runtime:2.7.2'
-    annotationProcessor 'androidx.room:room-compiler:2.7.2'
-
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
-
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.core:core:1.9.0'
-
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.core:core-ktx:1.14.0-alpha01'  // Newer versions require compileSdk 35+
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'  // [Long Term] Migrate away from it.
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.room:room-ktx:2.7.2'  // Newer versions require minSdk 23+
+    ksp 'androidx.room:room-compiler:2.7.2'
 
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'net.danlew:android.joda:2.10.6'
-    implementation 'com.github.nisrulz:lantern:1.1.2'  // Version 2.0.0 was unavailable from JitPack
+    implementation 'com.google.android.material:material:1.13.0'
 
     implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+    ksp 'com.github.bumptech.glide:ksp:5.0.5'
+    implementation 'com.github.nisrulz:lantern:1.1.2'  // Version 2.0.0 was unavailable from JitPack
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'net.danlew:android.joda:2.10.6'
 
     // Only for tests
     androidTestImplementation 'androidx.test:rules:1.2.0'
