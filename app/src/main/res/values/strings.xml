@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">About</string>
-    <string name="about_subtext">Hi!\nMy name is Uriah Shaul Mandel, and I\'m the developer of this platform.\n
-        I\'ve spent most of my \"adult\" life making this platform, and I\'ve released it for free, for all to
-        use.\nYou are more than welcome to contact me by email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Accessibility Level</string>
     <string name="accessibility_settings">Accessibility</string>
     <string name="accidental_touches">Accidental Touch Guard</string>
@@ -95,7 +91,8 @@
     <string name="contacts">Contacts</string>
     <string name="contacts_read_subtext">This permission is required in order to read contacts.</string>
     <string name="contacts_subtext">This permission is required in order to add new contacts.</string>
-    <string name="crash">Oops!\nBaldPhone ran into a problem and will now restart.</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="crash">Something went wrong.\nRestarting in a few seconds…</string>
     <string name="current_time">Current Time</string>
     <string name="custom">Custom</string>
     <string name="dark">Dark</string>
@@ -343,6 +340,23 @@
     <string name="dialog_button_not_now">Not now</string>
     <string name="dialog_button_enable">Enable in settings</string>
     <string name="permission_needed_title">Permission Needed</string>
+
+    <!-- Overview -->
+    <string name="about_overview_section">Learn More</string>
+    <string name="about_tag_line">A simple launcher that combines calling, messaging, and everyday features into one easy-to-use experience.</string>
+    <string name="about_version_title">Version %s</string>
+    <string name="about_web_page">GitHub Project</string>
+    <string name="about_faq">FAQ / Help</string>
+
+    <!-- Credits -->
+    <string name="about_credits_title">Credits</string>
+    <string name="about_credits">Contributors &amp; Translators</string>
+
+    <!-- Legal & Privacy -->
+    <string name="about_legal_title">Licenses &amp; Privacy</string>
+    <string name="about_licenses">Open Source Licenses</string>
+    <string name="about_app_license">App License</string>
+    <string name="about_privacy_policy">Privacy Policy</string>
 
     <!--For Tests:-->
     <string name="medication_1">Eltroxin 100</string>

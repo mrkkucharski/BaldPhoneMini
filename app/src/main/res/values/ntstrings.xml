@@ -15,16 +15,13 @@
   -->
 <resources>
     <string name="api_level" translatable="false">Api Level:</string>
-
     <string name="app_display_name" translatable="false">BaldPhone Neo</string>
-
     <string name="authorities" translatable="false">com.bald.uriah.baldphone.fileprovider</string>
 
     <string name="empty" translatable="false" />
 
     <string-array name="names">
-        <item>Dani Konigstein</item>
-        <item>My Family</item>
+        <item>Uriah Shaul Mandel</item>
         <item>Ido Heinemann</item>
         <item>Klemen Skerbiš</item>
         <item>Ido Sharon</item>
@@ -64,11 +61,8 @@
         <item>Earboxer</item>
     </string-array>
 
-    <string name="open_source_licenses" translatable="false">Open Source Licenses</string>
-
     <string-array name="tasks">
-        <item>Being the Inspiration of BaldPhone</item>
-        <item>Help and support throughout the entire process</item>
+        <item>For establishing the foundation of this project</item>
         <item>Programming counselor, Created BaldPhone Server</item>
         <item>The Slovenian translations, Discord server, publishing articles in Slovenia and more</item>
         <item>Being the longest and most helpful tester, Graphics Consultant</item>
@@ -107,8 +101,6 @@
         <item>Tester</item>
         <item>GitHub contributor</item>
     </string-array>
-
-    <string name="tt_url" translatable="false">"https://collector.tracepot.com/9fc2295e"</string>
 
     <string-array name="phone_numbers_for_tests">
         <item>783–412–4475</item>

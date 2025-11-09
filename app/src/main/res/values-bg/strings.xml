@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">Относно</string>
-    <string name="about_subtext">Здрвейте!\nКазвам се Uriah Shaul Mandel и съм разработчикът на тази платформа.\n
-        Посветих голяма част от зрелия си живот на създаването на тази платформа и я предоставих за безплатно ползване на
-        всички.\nЧувствайте се добре дошли да се свържете с мен на електонната ми поща:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Ниво на достъпност</string>
     <string name="accessibility_settings">Достъпност</string>
     <string name="accidental_touches">Защита срещу случаен допир</string>
