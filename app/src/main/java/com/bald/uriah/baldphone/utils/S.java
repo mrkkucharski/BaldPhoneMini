@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -51,11 +50,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.bald.uriah.baldphone.BuildConfig;
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.BaldActivity;
 import com.bald.uriah.baldphone.activities.contacts.ShareActivity;
@@ -71,7 +65,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 /**
  * S - Static. Static methods which are used everywhere in the platform.
@@ -336,50 +329,6 @@ public class S {
             return !activity.isDestroyed() && !activity.isFinishing();
         }
         return true;
-    }
-
-    public static boolean isEmulator() {
-        return Build.FINGERPRINT.startsWith("generic")
-                || Build.FINGERPRINT.startsWith("unknown")
-                || Build.MODEL.contains("google_sdk")
-                || Build.MODEL.contains("Emulator")
-                || Build.MODEL.contains("Android SDK built for x86")
-                || "goldfish".equals(Build.HARDWARE)
-                || "ranchu".equals(Build.HARDWARE)
-                || Build.MANUFACTURER.contains("Genymotion")
-                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
-                || "google_sdk".equals(Build.PRODUCT);
-    }
-
-    public static void sendVersionInfo(final Context context) {
-        if (!S.isEmulator() && !BuildConfig.DEBUG) {
-            final SharedPreferences sharedPreferences = BPrefs.get(context);
-            if (!sharedPreferences.contains(BPrefs.UUID_KEY)) {
-                sharedPreferences.edit().putString(BPrefs.UUID_KEY, UUID.randomUUID().toString()).apply();
-            }
-
-            final RequestQueue requestQueue = Volley.newRequestQueue(context);
-
-            requestQueue.add(
-                    new StringRequest(
-                            Request.Method.GET,
-                            "https://raw.githubusercontent.com/UriahShaulMandel/BaldPhone/master/logging%20mechanism/loga.txt",
-                            response -> {
-                                requestQueue.add(
-                                        new StringRequest(
-                                                Request.Method.GET,
-                                                String.format(Locale.US, "%s?uuid=%s&vcode=%d&locale=%s&flavor=%s", response, sharedPreferences.getString(BPrefs.UUID_KEY, null), BuildConfig.VERSION_CODE, String.valueOf(Locale.getDefault()), BuildConfig.FLAVOR),
-                                                response2 -> {
-                                                },
-                                                error2 -> {
-                                                }
-                                        ).setTag("baldphone_server"));
-                            },
-                            error -> {
-                            }
-                    ).setTag("baldphone_get_server_info"));
-
-        }
     }
 
     public static int blendColors(final int color1, final int color2, final float ratio) {

@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.bald.uriah.baldphone.activities.UpdatesActivity;
 import com.bald.uriah.baldphone.databases.alarms.AlarmScheduler;
 import com.bald.uriah.baldphone.databases.reminders.ReminderScheduler;
 import com.bald.uriah.baldphone.services.NotificationListenerService;
@@ -41,16 +40,12 @@ public class BaldPhone extends Application {
         JodaTimeAndroid.init(this);
         AlarmScheduler.reStartAlarms(this);
         ReminderScheduler.reStartReminders(this);
-        if (BuildConfig.FLAVOR.equals("baldUpdates")) {
-            UpdatesActivity.removeUpdatesInfo(this);
-        }
         try {
             startService(new Intent(this, NotificationListenerService.class));
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
             e.printStackTrace();
         }
-        S.sendVersionInfo(this);
     }
 
     @Override
