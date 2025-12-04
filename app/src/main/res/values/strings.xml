@@ -243,6 +243,7 @@
     <string name="technical_information">Technical Information</string>
     <string name="theme_settings">Theme</string>
     <string name="theme_settings_subtext">Choose a theme</string>
+    <string name="theme_system_default">System</string>
 
     <string name="thursday">Thursday</string>
     <string name="time_changer">Pills Time Changer</string>

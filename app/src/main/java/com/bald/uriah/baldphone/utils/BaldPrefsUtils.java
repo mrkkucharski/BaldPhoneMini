@@ -51,7 +51,6 @@ import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_DEFAULT_V
 import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_KEY;
 
 public class BaldPrefsUtils {
-    private final int theme;
     private final boolean vibrationFeedback, touchNoHard, longPresses, notes, lowBatteryAlert, sos;
     private final int swipingEffect, statusBar;
     private final String CUSTOM_APP;
@@ -67,8 +66,7 @@ public class BaldPrefsUtils {
     private final String CUSTOM_APPS;
     private final String CUSTOM_ALARMS;
 
-    private BaldPrefsUtils(int theme, boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
-        this.theme = theme;
+    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
         this.vibrationFeedback = vibrationFeedback;
         this.touchNoHard = touchNoHard;
         this.longPresses = longPresses;
@@ -94,7 +92,6 @@ public class BaldPrefsUtils {
     public static BaldPrefsUtils newInstance(Context context) {
         final SharedPreferences sharedPreferences = context.getSharedPreferences(BPrefs.KEY, Context.MODE_PRIVATE);
         return new BaldPrefsUtils(
-                S.getTheme(context),
                 sharedPreferences
                         .getBoolean(VIBRATION_FEEDBACK_KEY, VIBRATION_FEEDBACK_DEFAULT_VALUE),
                 sharedPreferences
@@ -133,8 +130,7 @@ public class BaldPrefsUtils {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BaldPrefsUtils that = (BaldPrefsUtils) o;
-        return theme == that.theme &&
-                vibrationFeedback == that.vibrationFeedback &&
+        return vibrationFeedback == that.vibrationFeedback &&
                 touchNoHard == that.touchNoHard &&
                 longPresses == that.longPresses &&
                 notes == that.notes &&
@@ -158,6 +154,6 @@ public class BaldPrefsUtils {
 
     @Override
     public int hashCode() {
-        return Objects.hash(theme, vibrationFeedback, touchNoHard, longPresses, notes, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
+        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
     }
 }

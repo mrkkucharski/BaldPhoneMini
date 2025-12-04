@@ -26,6 +26,7 @@ import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -54,6 +55,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import app.baldphone.neo.activities.AboutActivity;
 import app.baldphone.neo.activities.FeedbackActivity;
+import app.baldphone.neo.helpers.ThemeHelper;
 import app.baldphone.neo.views.TitleBarView;
 
 import com.bald.uriah.baldphone.R;
@@ -228,22 +230,11 @@ public class SettingsActivity extends BaldActivity {
                                 .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.RIGHT_HANDED_KEY, BPrefs.RIGHT_HANDED_DEFAULT_VALUE) ? 1 : 0), R.drawable.hand_on_button
                 )
         );
-        final SettingsItem themeSettingsItem = new BDBSettingsItem(R.string.theme_settings,
-                BDB.from(this)
-                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
-                        .setTitle(R.string.theme_settings)
-                        .setSubText(R.string.theme_settings_subtext)
-                        .setOptions(R.string.light, R.string.adaptive, R.string.dark)
-                        .setPositiveButtonListener(params -> {
-                            editor.putInt(BPrefs.THEME_KEY, (Integer) params[0]).apply();
-                            this.recreate();
-                            return true;
-                        })
-                        .setOptionsStartingIndex(() -> sharedPreferences.getInt(BPrefs.THEME_KEY, BPrefs.THEME_DEFAULT_VALUE)), R.drawable.brush_on_button
 
-        );
-        displayCategory.add(themeSettingsItem);
-        personalizationCategory.add(themeSettingsItem);
+        displayCategory.add(new RunnableSettingsItem(
+                R.string.theme_settings,
+                v1 -> showThemeDialog(),
+                R.drawable.brush_on_button));
 
         personalizationCategory.add(new BDBSettingsItem(R.string.status_bar_settings,
                 BDB.from(this)
@@ -414,6 +405,47 @@ public class SettingsActivity extends BaldActivity {
                         v -> startActivity(new Intent(this, AboutActivity.class)),
                         R.drawable.ic_info)
         );
+    }
+
+    private void showThemeDialog() {
+        final List<ThemeHelper.Theme> themeOptions = new ArrayList<>();
+        final List<String> themeNames = new ArrayList<>();
+
+        themeOptions.add(ThemeHelper.Theme.LIGHT);
+        themeNames.add(getString(R.string.light));
+
+        // Add System theme for Android Q+ only
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            themeOptions.add(ThemeHelper.Theme.SYSTEM);
+            themeNames.add(getString(R.string.theme_system_default));
+        }
+
+        themeOptions.add(ThemeHelper.Theme.DARK);
+        themeNames.add(getString(R.string.dark));
+
+        final int startingIndex;
+        ThemeHelper.Theme currentTheme = ThemeHelper.INSTANCE.getSavedTheme();
+        int foundIndex = themeOptions.indexOf(currentTheme);
+        if (foundIndex != -1) {
+            startingIndex = foundIndex;
+        } else {
+            startingIndex = 0;
+        }
+
+        BDB.from(this)
+                .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                .setTitle(R.string.theme_settings)
+                .setSubText(R.string.theme_settings_subtext)
+                .setOptions(themeNames.toArray(new String[0]))
+                .setPositiveButtonListener(params -> {
+                    int selectedOption = (Integer) params[0];
+                    ThemeHelper.Theme selectedTheme = themeOptions.get(selectedOption);
+                    ThemeHelper.INSTANCE.setTheme(selectedTheme);
+                    recreate();
+                    return true;
+                })
+                .setOptionsStartingIndex(() -> startingIndex)
+                .show();
     }
 
     /**

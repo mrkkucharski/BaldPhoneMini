@@ -20,9 +20,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.SparseIntArray;
 
-import androidx.annotation.StyleRes;
-
-import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.databases.reminders.Reminder;
 
 public final class BPrefs {
@@ -60,9 +57,6 @@ public final class BPrefs {
 
     public static final String VIBRATION_FEEDBACK_KEY = "VIBRATION_FEEDBACK_KEY";
     public static final boolean VIBRATION_FEEDBACK_DEFAULT_VALUE = true;
-
-    public static final String THEME_KEY = "THEME_KEY";
-    public static final int THEME_DEFAULT_VALUE = Themes.ADAPTIVE;
 
     public static final String NOTE_VISIBLE_KEY = "NOTE_VISIBLE_KEY";
     public static final boolean NOTE_VISIBLE_DEFAULT_VALUE = true;
@@ -151,13 +145,5 @@ public final class BPrefs {
 
     public static SharedPreferences get(Context context) {
         return context.getSharedPreferences(KEY, Context.MODE_PRIVATE);
-    }
-
-    public static class Themes {
-        public static final int LIGHT = 0;
-        public static final int ADAPTIVE = 1;
-        public static final int DARK = 2;
-        @StyleRes
-        public static final int[] THEMES = new int[]{R.style.bald_light, -1, R.style.bald_dark, R.style.bald_skin};
     }
 }

@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -158,14 +159,12 @@ public class S {
 
     @StyleRes
     public static int getTheme(@NonNull Context context) {
-        @StyleRes int theme = BPrefs.Themes.THEMES[context.getSharedPreferences(D.BALD_PREFS, Context.MODE_PRIVATE).getInt(BPrefs.THEME_KEY, BPrefs.THEME_DEFAULT_VALUE)];
-        if (theme == -1) {
-            int hour = DateTime.now().getHourOfDay();
-            if (hour > 6 && hour < 19)
-                return BPrefs.Themes.THEMES[BPrefs.Themes.LIGHT];
-            return BPrefs.Themes.THEMES[BPrefs.Themes.DARK];
+        var uiMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
+            return R.style.bald_dark;
+        } else {
+            return R.style.bald_light;
         }
-        return theme;
     }
 
     @NonNull

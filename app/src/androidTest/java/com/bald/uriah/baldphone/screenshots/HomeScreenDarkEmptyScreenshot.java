@@ -21,8 +21,9 @@ import android.content.Intent;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
+import app.baldphone.neo.helpers.ThemeHelper;
+
 import com.bald.uriah.baldphone.activities.HomeScreenActivity;
-import com.bald.uriah.baldphone.utils.BPrefs;
 
 import org.junit.runner.RunWith;
 
@@ -41,6 +42,6 @@ public class HomeScreenDarkEmptyScreenshot extends BaseScreenshotTakerTest<HomeS
 
     @Override
     protected int theme() {
-        return BPrefs.Themes.DARK;
+        return ThemeHelper.Theme.DARK.getValue();
     }
 }

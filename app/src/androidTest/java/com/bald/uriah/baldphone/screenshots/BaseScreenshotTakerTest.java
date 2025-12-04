@@ -23,6 +23,9 @@ import android.view.View;
 
 import androidx.test.rule.ActivityTestRule;
 
+import app.baldphone.neo.data.PrefKeys;
+import app.baldphone.neo.helpers.ThemeHelper;
+
 import com.bald.uriah.baldphone.utils.BPrefs;
 
 import org.junit.After;
@@ -100,7 +103,7 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
                 .get(getInstrumentation().getTargetContext())
                 .edit()
                 .putBoolean(BPrefs.TEST_KEY, true)
-                .putInt(BPrefs.THEME_KEY, theme())
+                .putInt(PrefKeys.THEME_KEY, theme())
                 .putBoolean(BPrefs.VIBRATION_FEEDBACK_KEY, true)
                 .putBoolean(BPrefs.LONG_PRESSES_KEY, false)
                 .putBoolean(BPrefs.LONG_PRESSES_SHORTER_KEY, false)
@@ -119,6 +122,6 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
     }
 
     protected int theme() {
-        return BPrefs.Themes.LIGHT;
+        return ThemeHelper.Theme.LIGHT.getValue();
     }
 }

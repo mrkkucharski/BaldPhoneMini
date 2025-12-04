@@ -19,7 +19,6 @@ package com.bald.uriah.baldphone.activities;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -35,7 +34,6 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -86,8 +84,6 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
     public boolean testing = false;
     public boolean colorful;
     protected Vibrator vibrator;
-    @StyleRes
-    private int themeIndex;
     private List<WeakReference<Dialog>> dialogsToClose = new ArrayList<>(1);
     private List<WeakReference<PopupWindow>> popupWindowsToClose = new ArrayList<>(1);
     private SensorManager sensorManager;
@@ -99,18 +95,6 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
     private Handler handler;
     private Runnable touchesDecreaser = () -> touches = (touches -= 1) < 0 ? 0 : touches;
 
-    @Override
-    public void
-    applyOverrideConfiguration(Configuration cfgOverride) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            // add this to fix androidx.appcompat:appcompat 1.1.0 bug
-            // which happens on Android 6.x ~ 7.x
-            getResources();
-        }
-
-        super.applyOverrideConfiguration(cfgOverride);
-    }
 
     /**
      * @return true if all permissions are granted.
@@ -220,9 +204,6 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
                 .getBoolean(BPrefs.VIBRATION_FEEDBACK_KEY, BPrefs.VIBRATION_FEEDBACK_DEFAULT_VALUE)
                 ? (Vibrator) getSystemService(VIBRATOR_SERVICE) : null;
         colorful = sharedPreferences.getBoolean(BPrefs.COLORFUL_KEY, BPrefs.COLORFUL_DEFAULT_VALUE);
-        themeIndex = S.getTheme(this);
-        setTheme(themeIndex);
-
         final int statusBar = sharedPreferences.getInt(BPrefs.STATUS_BAR_KEY, BPrefs.STATUS_BAR_DEFAULT_VALUE);
         if (statusBar != 2) {
             requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -249,8 +230,7 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
     @Override
     protected void onResume() {
         super.onResume();
-        if (themeIndex != S.getTheme(this))
-            recreate();
+
         if (useAccidentalGuard)
             sensorManager.registerListener(this, proximitySensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
