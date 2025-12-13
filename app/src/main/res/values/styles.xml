@@ -60,6 +60,10 @@
         <item name="colorControlHighlight">@color/ripple_light</item>
     </style>
 
+    <style name="AppTheme.Starting" parent="bald_light">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
     <!--Another Theme to add in the future, right now it looks bad.-->
     <style name="bald_skin" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
         <item name="bald_key_margin">@dimen/bald_key_margin</item>

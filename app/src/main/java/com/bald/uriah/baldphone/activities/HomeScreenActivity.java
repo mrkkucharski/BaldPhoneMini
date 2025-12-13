@@ -51,6 +51,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bald.uriah.baldphone.BuildConfig;
@@ -185,7 +186,9 @@ public class HomeScreenActivity extends BaldActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+
         Log.d(TAG, "onCreate");
 
         sharedPreferences = BPrefs.get(this);

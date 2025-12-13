@@ -111,6 +111,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.core:core-ktx:1.14.0-alpha01'  // Newer versions require compileSdk 35+
+    implementation 'androidx.core:core-splashscreen:1.2.0-alpha01'  // Newer versions requires compileSdk 35+
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'  // [Long Term] Migrate away from it.
     implementation 'androidx.room:room-ktx:2.7.2'  // Newer versions require minSdk 23+
     ksp 'androidx.room:room-compiler:2.7.2'
