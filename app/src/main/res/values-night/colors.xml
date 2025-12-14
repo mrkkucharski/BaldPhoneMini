@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bald_background">#1A1F23</color> <!-- Eerie black -->
+    <color name="bald_background_transparent">#E4000000</color>
+    <color name="bald_button">#0b212f</color>
+    <color name="bald_button_clicked">#BAD6EF</color>  <!-- #44586a -->
+    <dimen name="bald_button_corners_radius">8dp</dimen>
+    <color name="bald_button_disabled">#d6d6d6</color>
+    <dimen name="bald_button_pill_corners_radius">500dp</dimen>
+    <color name="bald_decoration_on_background">@color/bald_text_on_background</color>
+    <color name="bald_decoration_on_button">@color/bald_text_on_button</color>
+    <color name="bald_decoration_on_key">@color/bald_text_on_key</color>
+    <color name="bald_hint_on_button">#868686</color>
+    <color name="bald_hint_on_background">@color/bald_hint_on_button</color>
+    <color name="bald_keyboard_key_background">@color/bald_button</color>
+    <color name="bald_keyboard_key_pressed_background">#F38630</color>
+    <color name="bald_selected_on_background">#96A1AA</color>
+    <color name="bald_text_on_selected">#000</color>
+    <color name="bald_stroke_color">#84cdd4db</color>
+    <dimen name="bald_stroke_size">1dp</dimen>
+    <color name="bald_text_on_background">#cdd4db</color>
+    <color name="bald_text_on_button">#cdd4db</color>
+    <color name="bald_text_on_key">#cdd4db</color>
+    <color name="bald_edit_text_bg">#292F32</color>
+
+    <!-- Color definitions for Dark (Night) Mode -->
+    <color name="ripple">#ffffff</color>
+</resources>

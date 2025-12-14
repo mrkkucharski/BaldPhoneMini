@@ -36,6 +36,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
+import app.baldphone.neo.utils.ContextUtilsKt;
+
 import com.bald.uriah.baldphone.R;
 
 import java.lang.annotation.Retention;
@@ -76,7 +78,7 @@ public class BaldToast {
     private boolean built;
 
     private BaldToast(@NonNull Context context) {
-        this.context = new ContextThemeWrapper(context.getApplicationContext(), R.style.bald_light);
+        this.context = context;
     }
 
     public static BaldToast from(@NonNull Context context) {
@@ -143,8 +145,7 @@ public class BaldToast {
     }
 
     public BaldToast build() {
-        //not sure why but removing this line crashes app! so don't
-        final View toastView = LayoutInflater.from(context).inflate(layout, null);
+        View toastView = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
         final TextView textView = (TextView) toastView;
         if (big)
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textView.getTextSize() * 2);
@@ -172,7 +173,7 @@ public class BaldToast {
         toastView.setBackground(ContextCompat.getDrawable(context, toastViewBackground));
 
         textView.setText(text);
-        toast = new Toast(context);
+        toast = new Toast(context.getApplicationContext());
         toast.setDuration(duration == LENGTH_SEC ? Toast.LENGTH_SHORT : duration);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setView(toastView);

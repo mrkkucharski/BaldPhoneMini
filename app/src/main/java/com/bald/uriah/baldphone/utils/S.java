@@ -157,16 +157,6 @@ public class S {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
-    @StyleRes
-    public static int getTheme(@NonNull Context context) {
-        var uiMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
-            return R.style.bald_dark;
-        } else {
-            return R.style.bald_light;
-        }
-    }
-
     @NonNull
     public static Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
         final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);

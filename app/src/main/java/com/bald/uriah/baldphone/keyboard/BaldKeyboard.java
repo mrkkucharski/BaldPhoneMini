@@ -18,6 +18,7 @@ package com.bald.uriah.baldphone.keyboard;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Vibrator;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -32,8 +33,9 @@ import androidx.annotation.Keep;
 import androidx.annotation.LayoutRes;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import app.baldphone.neo.helpers.ThemeHelper;
+
 import com.bald.uriah.baldphone.R;
-import com.bald.uriah.baldphone.utils.S;
 
 import static android.view.inputmethod.EditorInfo.IME_ACTION_DONE;
 import static android.view.inputmethod.EditorInfo.IME_ACTION_GO;
@@ -69,7 +71,17 @@ public abstract class BaldKeyboard extends FrameLayout {
         super(context);
         vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         this.backspaceRunnable = backspaceRunnable;
-        final ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(context, S.getTheme(context));
+        final ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(context, R.style.AppTheme);
+        Configuration config = new Configuration(context.getResources().getConfiguration());
+        ThemeHelper.Theme savedTheme = ThemeHelper.INSTANCE.getSavedTheme();
+        if (savedTheme == ThemeHelper.Theme.DARK) {
+            config.uiMode = (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK) | Configuration.UI_MODE_NIGHT_YES;
+        } else if (savedTheme == ThemeHelper.Theme.LIGHT) {
+            config.uiMode = (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK) | Configuration.UI_MODE_NIGHT_NO;
+        }
+        // If SYSTEM, it will just use whatever the current system config is
+        contextThemeWrapper.applyOverrideConfiguration(config);
+
         keyboard = (ConstraintLayout) LayoutInflater.from(contextThemeWrapper).inflate(layout(), this, false);
         children = new View[keyboard.getChildCount()];
         final char[] codes = codes();

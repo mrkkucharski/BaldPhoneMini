@@ -31,7 +31,7 @@
     <attr name="bald_hint_on_background" format="reference|color" />
     <attr name="bald_hint_on_button" format="reference|color" />
     <attr name="bald_keyboard_key_background" format="reference|color" />
-    <attr name="bald_keyboard_key_pressed_background" format="reference|color" />
+    <attr name="bald_keyboard_key_pressed_bg" format="reference|color" />
     <attr name="bald_selected_on_background" format="reference|color" />
     <attr name="bald_text_on_selected" format="reference|color" />
     <attr name="bald_stroke_color" format="reference|color" />

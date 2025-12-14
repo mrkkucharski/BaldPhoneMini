@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2019 Uriah Shaul Mandel
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,95 +15,47 @@
   -->
 
 <resources>
-    <style name="AppTheme" parent="bald_light" />
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowContentTransitions">false</item>
+        <item name="android:windowBackground">@color/bald_background</item>
+        <item name="android:textColorPrimary">@color/bald_text_on_background</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorControlHighlight">@color/ripple</item>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowActionBar">true</item>
-        <item name="android:windowFullscreen">false</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">?bald_background</item>
+        <item name="bald_background">@color/bald_background</item>
+        <item name="bald_background_transparent">@color/bald_background_transparent</item>
+        <item name="bald_button">@color/bald_button</item>
+        <item name="bald_button_clicked">@color/bald_button_clicked</item>
+        <item name="bald_button_corners_radius">@dimen/bald_button_corners_radius</item>
+        <item name="bald_button_disabled">@color/bald_button_disabled</item>
         <item name="bald_button_gold">@color/gold</item>
+        <item name="bald_button_pill_corners_radius">@dimen/bald_button_pill_corners_radius</item>
+        <item name="bald_decoration_on_background">@color/bald_decoration_on_background</item>
+        <item name="bald_decoration_on_button">@color/bald_decoration_on_button</item>
+        <item name="bald_decoration_on_key">@color/bald_decoration_on_key</item>
+        <item name="bald_edit_text_bg">@color/bald_edit_text_bg</item>
+        <item name="bald_hint_on_background">@color/bald_hint_on_background</item>
+        <item name="bald_hint_on_button">@color/bald_hint_on_button</item>
+        <item name="bald_key_margin">@dimen/bald_key_margin</item>
+        <item name="bald_keyboard_key_background">@color/bald_keyboard_key_background</item>
+        <item name="bald_keyboard_key_pressed_bg">@color/bald_keyboard_key_pressed_background</item>
+        <item name="bald_selected_on_background">@color/bald_selected_on_background</item>
+        <item name="bald_stroke_color">@color/bald_stroke_color</item>
+        <item name="bald_stroke_size">@dimen/bald_stroke_size</item>
+        <item name="bald_text_on_background">@color/bald_text_on_background</item>
+        <item name="bald_text_on_button">@color/bald_text_on_button</item>
         <item name="bald_text_on_gold">@color/on_gold</item>
-        <item name="android:actionBarStyle">@style/BaldActionBar</item>
-        <item name="colorAccent">#fff</item>
+        <item name="bald_text_on_key">@color/bald_text_on_key</item>
+        <item name="bald_text_on_selected">@color/bald_text_on_selected</item>
     </style>
 
-    <style name="bald_light" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <item name="bald_key_margin">@dimen/bald_key_margin</item>
-        <item name="bald_background">@color/bald_background_light</item>
-        <item name="bald_background_transparent">@color/bald_background_transparent_light</item>
-        <item name="bald_button">@color/bald_button_light</item>
-        <item name="bald_button_clicked">@color/bald_button_clicked_light</item>
-        <item name="bald_button_corners_radius">@dimen/bald_button_corners_radius_light</item>
-        <item name="bald_button_disabled">@color/bald_button_disabled_light</item>
-        <item name="bald_button_pill_corners_radius">@dimen/bald_button_pill_corners_radius_light
-        </item>
-        <item name="bald_decoration_on_background">@color/bald_decoration_on_background_light</item>
-        <item name="bald_decoration_on_button">@color/bald_decoration_on_button_light</item>
-        <item name="bald_decoration_on_key">@color/bald_decoration_on_key_light</item>
-        <item name="bald_hint_on_background">@color/bald_hint_on_background_light</item>
-        <item name="bald_hint_on_button">@color/bald_hint_on_button_light</item>
-        <item name="bald_selected_on_background">@color/bald_selected_on_background_light</item>
-        <item name="bald_text_on_selected">@color/bald_text_on_selected_light</item>
-        <item name="bald_stroke_color">@color/bald_stroke_color_light</item>
-        <item name="bald_keyboard_key_background">@color/bald_keyboard_key_background_light</item>
-        <item name="bald_keyboard_key_pressed_background">
-            @color/bald_keyboard_key_pressed_background_light
-        </item>
-        <item name="bald_stroke_size">@dimen/bald_stroke_size_light</item>
-        <item name="bald_text_on_background">@color/bald_text_on_background_light</item>
-        <item name="bald_text_on_button">@color/bald_text_on_button_light</item>
-        <item name="bald_text_on_key">@color/bald_text_on_key_light</item>
-        <item name="bald_edit_text_bg">@color/bald_edit_text_bg_light</item>
-
-        <item name="colorControlHighlight">@color/ripple_light</item>
-    </style>
-
-    <style name="AppTheme.Starting" parent="bald_light">
+    <style name="AppTheme.Starting" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
-    <style name="bald_dark" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <item name="bald_key_margin">@dimen/bald_key_margin</item>
-        <item name="bald_background">@color/bald_background_dark</item>
-        <item name="bald_background_transparent">@color/bald_background_transparent_dark</item>
-        <item name="bald_button">@color/bald_button_dark</item>
-        <item name="bald_button_clicked">@color/bald_button_clicked_dark</item>
-        <item name="bald_button_corners_radius">@dimen/bald_button_corners_radius_dark</item>
-        <item name="bald_button_disabled">@color/bald_button_disabled_dark</item>
-        <item name="bald_button_pill_corners_radius">@dimen/bald_button_pill_corners_radius_dark
-        </item>
-        <item name="bald_decoration_on_background">@color/bald_decoration_on_background_dark</item>
-        <item name="bald_decoration_on_button">@color/bald_decoration_on_button_dark</item>
-        <item name="bald_decoration_on_key">@color/bald_decoration_on_key_dark</item>
-        <item name="bald_hint_on_background">@color/bald_hint_on_background_dark</item>
-        <item name="bald_hint_on_button">@color/bald_hint_on_button_dark</item>
-        <item name="bald_selected_on_background">@color/bald_selected_on_background_dark</item>
-        <item name="bald_text_on_selected">@color/bald_text_on_selected_dark</item>
-        <item name="bald_keyboard_key_pressed_background">
-            @color/bald_keyboard_key_pressed_background_dark
-        </item>
-        <item name="bald_stroke_color">@color/bald_stroke_color_dark</item>
-        <item name="bald_keyboard_key_background">@color/bald_keyboard_key_background_dark</item>
-        <item name="bald_stroke_size">@dimen/bald_stroke_size_dark</item>
-        <item name="bald_text_on_background">@color/bald_text_on_background_dark</item>
-        <item name="bald_text_on_button">@color/bald_text_on_button_dark</item>
-        <item name="bald_text_on_key">@color/bald_text_on_key_dark</item>
-        <item name="bald_edit_text_bg">@color/bald_edit_text_bg_dark</item>
-
-        <item name="colorControlHighlight">@color/ripple_dark</item>
-    </style>
-
-
-    <style name="ScrollStyle">
-        <item name="android:fadingEdgeLength">@dimen/transparent_length_in_scrollers</item>
-        <item name="android:requiresFadingEdge">vertical</item>
-    </style>
-
-    <style name="EditText" parent="BackgroundText.Large">
-        <item name="android:textColorHint">?attr/bald_hint_on_background</item>
+    <style name="BaldActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">?attr/bald_background</item>
     </style>
 
     <style name="BackgroundText">
@@ -111,38 +63,44 @@
         <item name="android:textColor">?attr/bald_text_on_background</item>
     </style>
 
-    <style name="BackgroundText.Auto">
-        <item name="autoSizeTextType">uniform</item>
+    <style name="BackgroundText.Tiny">
+        <item name="android:textSize">@dimen/tiny</item>
     </style>
 
-    <style name="BackgroundText.Huge">
-        <item name="android:textSize">@dimen/huge</item>
-    </style>
+    <style name="BackgroundText.Small" parent="BackgroundText" />
 
-    <style name="BackgroundText.Large">
-        <item name="android:textSize">@dimen/large</item>
+    <style name="BackgroundText.Medium">
+        <item name="android:textSize">@dimen/medium</item>
     </style>
 
     <style name="BackgroundText.Medium.Plus">
         <item name="android:textSize">@dimen/medium_plus</item>
     </style>
 
-    <style name="BackgroundText.Medium">
-        <item name="android:textSize">@dimen/medium</item>
+    <style name="BackgroundText.Large">
+        <item name="android:textSize">@dimen/large</item>
     </style>
 
-    <style name="BackgroundText.Small">
-        <item name="android:textSize">@dimen/small</item>
+    <style name="BackgroundText.Huge">
+        <item name="android:textSize">@dimen/huge</item>
     </style>
 
-    <style name="BackgroundText.Tiny">
-        <item name="android:textSize">@dimen/tiny</item>
+    <style name="BackgroundText.Auto">
+        <item name="autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="EditText" parent="BackgroundText.Large">
+        <item name="android:textColorHint">?attr/bald_hint_on_background</item>
     </style>
 
     <style name="ButtonsText">
         <item name="android:textSize">@dimen/small</item>
         <item name="android:textColor">?attr/bald_text_on_button</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonsText.Tiny">
+        <item name="android:textSize">@dimen/tiny</item>
     </style>
 
     <style name="ButtonsText.Medium">
@@ -157,18 +115,19 @@
         <item name="android:textSize">@dimen/huge</item>
     </style>
 
-    <style name="ButtonsText.Tiny">
-        <item name="android:textSize">@dimen/tiny</item>
-    </style>
-
     <style name="ButtonsText.Auto">
         <item name="autoSizeTextType">uniform</item>
+    </style>
+
+    <style name="ScrollStyle">
+        <item name="android:fadingEdgeLength">@dimen/transparent_length_in_scrollers</item>
+        <item name="android:requiresFadingEdge">vertical</item>
     </style>
 
     <style name="Bald.Button" parent="BackgroundText.Medium.Plus">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:padding">@dimen/bald_button_padding</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_button</item>
     </style>
@@ -177,16 +136,12 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="BaldActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">?attr/bald_background</item>
-    </style>
-
     <style name="HomeButtonTile">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">@dimen/about_section_padding</item>
         <item name="android:background">@drawable/bg_tile_default</item>
         <item name="android:foreground">@drawable/fg_home_button</item>
     </style>
@@ -206,12 +161,12 @@
     <style name="AboutSectionTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">38dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginTop">@dimen/about_section_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/about_section_margin_bottom</item>
+        <item name="android:padding">@dimen/about_section_padding</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textColor">?attr/bald_text_on_background</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/about_section_text_size</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.08</item>
         <item name="android:background">@drawable/divider</item>
@@ -220,17 +175,17 @@
     <style name="LinkRow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginStart">@dimen/link_row_margin_start</item>
+        <item name="android:padding">@dimen/link_row_padding</item>
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textColor">?attr/bald_text_on_button</item>
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">@dimen/link_row_text_size</item>
         <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="LinkRow.Icon" parent="LinkRow">
-        <item name="android:drawablePadding">12dp</item>
+        <item name="android:drawablePadding">@dimen/link_row_drawable_padding</item>
     </style>
 
 </resources>
