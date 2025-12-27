@@ -33,7 +33,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bald.uriah.baldphone.BuildConfig;
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.BDialog;
@@ -55,7 +54,6 @@ import static android.Manifest.permission.WRITE_CALL_LOG;
 import static android.Manifest.permission.WRITE_CONTACTS;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES;
 
 public class PermissionActivity extends BaldActivity {
     public static final String
@@ -162,13 +160,12 @@ public class PermissionActivity extends BaldActivity {
                             new SimplePermissionItem(CALL_PHONE, getString(R.string.calling), getString(R.string.call_subtext)));
             }
             if ((requiredPermissions & PERMISSION_WRITE_CALL_LOG) != 0 || (requiredPermissions & PERMISSION_READ_CALL_LOG) != 0) {
-                if (!BuildConfig.FLAVOR.equals("gPlay"))
-                    if (ActivityCompat.checkSelfPermission(this, WRITE_CALL_LOG) != PERMISSION_GRANTED)
-                        permissionItemList.add(
-                                new SimplePermissionItem(WRITE_CALL_LOG, getString(R.string.read_call_log), getString(R.string.read_call_log_subtext)));
-                    else if (ActivityCompat.checkSelfPermission(this, READ_CALL_LOG) != PERMISSION_GRANTED)
-                        permissionItemList.add(
-                                new SimplePermissionItem(READ_CALL_LOG, getString(R.string.read_call_log), getString(R.string.read_call_log_subtext)));
+                if (ActivityCompat.checkSelfPermission(this, WRITE_CALL_LOG) != PERMISSION_GRANTED)
+                    permissionItemList.add(
+                            new SimplePermissionItem(WRITE_CALL_LOG, getString(R.string.read_call_log), getString(R.string.read_call_log_subtext)));
+                else if (ActivityCompat.checkSelfPermission(this, READ_CALL_LOG) != PERMISSION_GRANTED)
+                    permissionItemList.add(
+                            new SimplePermissionItem(READ_CALL_LOG, getString(R.string.read_call_log), getString(R.string.read_call_log_subtext)));
             }
             if ((requiredPermissions & PERMISSION_READ_PHONE_STATE) != 0) {
                 if (BPrefs.get(this).getBoolean(BPrefs.DUAL_SIM_KEY, BPrefs.DUAL_SIM_DEFAULT_VALUE))
@@ -183,14 +180,6 @@ public class PermissionActivity extends BaldActivity {
             if (ActivityCompat.checkSelfPermission(this, CAMERA) != PERMISSION_GRANTED)
                 permissionItemList.add(
                         new SimplePermissionItem(CAMERA, getString(R.string.camera), getString(R.string.camera_subtext)));
-        }
-        if ((requiredPermissions & PERMISSION_REQUEST_INSTALL_PACKAGES) != 0) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && BuildConfig.FLAVOR.equals("baldUpdates")) {
-                if (!getPackageManager().canRequestPackageInstalls())
-                    permissionItemList.add(
-                            new PermissionItem(v -> startActivityForResult(new Intent(
-                                    ACTION_MANAGE_UNKNOWN_APP_SOURCES).setData(Uri.parse(String.format("package:%s", getPackageName()))), REQUEST_CODES[2]), getString(R.string.install_updates), getString(R.string.install_updates_subtext)));
-            }
         }
         if ((requiredPermissions & PERMISSION_WRITE_EXTERNAL_STORAGE) != 0) {
             if (ActivityCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED)
@@ -212,6 +201,7 @@ public class PermissionActivity extends BaldActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (S.intArrayContains(REQUEST_CODES, requestCode))
             refreshPermissions();
     }

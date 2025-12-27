@@ -71,26 +71,6 @@ android {
         }
     }
 
-    flavorDimensions "updating_mechanism"
-    productFlavors {
-        baldUpdates {
-            dimension "updating_mechanism"
-        }
-        fDroid {
-            dimension "updating_mechanism"
-        }
-        gPlay {
-            dimension "updating_mechanism"
-            applicationIdSuffix ".gp"
-            manifestPlaceholders = [fullApp: "true", recentCalls: "false"]
-        }
-        gPlayRecentCalls {
-            dimension "updating_mechanism"
-            applicationIdSuffix ".gprc"
-            manifestPlaceholders = [fullApp: "false", recentCalls: "true"]
-        }
-    }
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_17
         sourceCompatibility JavaVersion.VERSION_17
@@ -120,7 +100,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'com.googlecode.libphonenumber:libphonenumber:9.0.21'
 
-    implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.github.bumptech.glide:glide:5.0.5'
     ksp 'com.github.bumptech.glide:ksp:5.0.5'
     implementation 'com.github.nisrulz:lantern:1.1.2'  // Version 2.0.0 was unavailable from JitPack

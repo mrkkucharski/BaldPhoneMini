@@ -386,15 +386,6 @@ public class SettingsActivity extends BaldActivity {
 //                                .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.CRASH_REPORTS_KEY, BPrefs.CRASH_REPORTS_DEFAULT_VALUE) ? 0 : 1),
 //                        R.drawable.upload_on_button));
 
-        // TODO: [Application Updating]
-        // No longer compatibility with the original update system anyway
-//        if (BuildConfig.FLAVOR.equals("baldUpdates"))
-//            mainCategory.add(
-//                    new RunnableSettingsItem(R.string.check_for_updates,
-//                            v -> UpdatingUtil.checkForUpdates(this, true),
-//                            R.drawable.updates_on_button)
-//            );
-
         mainCategory.add(
                 new RunnableSettingsItem(R.string.feedback,
                         v -> startActivity(new Intent(this, FeedbackActivity.class)),

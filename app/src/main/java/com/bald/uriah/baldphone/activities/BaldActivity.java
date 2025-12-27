@@ -78,7 +78,6 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
             PERMISSION_CAMERA = 0b1000000,
             PERMISSION_WRITE_EXTERNAL_STORAGE = 0b10000000,
             PERMISSION_NOTIFICATION_LISTENER = 0b100000000 | PERMISSION_WRITE_SETTINGS,
-            PERMISSION_REQUEST_INSTALL_PACKAGES = 0b1000000000,
             PERMISSION_SYSTEM_ALERT_WINDOW = 0b1000000000000;
 
     public boolean testing = false;
@@ -127,14 +126,12 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
                 return false;
         }
         if ((requiredPermissions & PERMISSION_WRITE_CALL_LOG) != 0) {
-            if (!BuildConfig.FLAVOR.equals("gPlay"))
-                if (ActivityCompat.checkSelfPermission(activity, WRITE_CALL_LOG) != PERMISSION_GRANTED)
-                    return false;
+            if (ActivityCompat.checkSelfPermission(activity, WRITE_CALL_LOG) != PERMISSION_GRANTED)
+                return false;
         }
         if ((requiredPermissions & PERMISSION_READ_CALL_LOG) != 0) {
-            if (!BuildConfig.FLAVOR.equals("gPlay"))
-                if (ActivityCompat.checkSelfPermission(activity, READ_CALL_LOG) != PERMISSION_GRANTED)
-                    return false;
+            if (ActivityCompat.checkSelfPermission(activity, READ_CALL_LOG) != PERMISSION_GRANTED)
+                return false;
         }
         if ((requiredPermissions & PERMISSION_READ_PHONE_STATE) != 0) {
             if (BPrefs.get(activity).getBoolean(BPrefs.DUAL_SIM_KEY, BPrefs.DUAL_SIM_DEFAULT_VALUE))
@@ -155,12 +152,7 @@ public abstract class BaldActivity extends AppCompatActivity implements SensorEv
                 if (!Settings.canDrawOverlays(activity))
                     return false;
         }
-        if ((requiredPermissions & PERMISSION_REQUEST_INSTALL_PACKAGES) != 0) {
-            return
-                    Build.VERSION.SDK_INT < Build.VERSION_CODES.O ||
-                            (!BuildConfig.FLAVOR.equals("baldUpdates")) ||
-                            activity.getPackageManager().canRequestPackageInstalls();
-        }
+
         return true;
     }
 
