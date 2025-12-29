@@ -54,7 +54,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.bald.uriah.baldphone.BuildConfig;
+import app.baldphone.neo.utils.HomeAppUtils;
+
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.adapters.BaldPagerAdapter;
 import com.bald.uriah.baldphone.databases.apps.AppsDatabaseHelper;
@@ -447,9 +448,18 @@ public class HomeScreenActivity extends BaldActivity {
 
     @Override
     public void onBackPressed() {
+        Log.v(TAG, "onBackPressed");
         if (vibrator != null)
             vibrator.vibrate(D.vibetime);
-        updateViewPager();
+
+        if (viewPagerHolder.getViewPager().getCurrentItem() != baldPagerAdapter.startingPage) {
+            viewPagerHolder.setCurrentItem(baldPagerAdapter.startingPage);
+            // updateViewPager();
+        } else {
+            if (!HomeAppUtils.isDefaultLauncher(this)) {
+                super.onBackPressed();
+            }
+        }
     }
 
     static class UpdateApps extends AsyncTask<Context, Void, Void> {
