@@ -1,15 +1,12 @@
 package app.baldphone.neo.activities
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.media.AudioManager
 import android.media.ToneGenerator
 import android.os.Bundle
 import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -21,6 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import app.baldphone.neo.calls.CallManager
 import app.baldphone.neo.contacts.ContactAdapter
 import app.baldphone.neo.contacts.openDetails
+import app.baldphone.neo.permissions.PermissionManager
+import app.baldphone.neo.permissions.RuntimePermission
 import app.baldphone.neo.utils.getTextFromClipboard
 import app.baldphone.neo.viewmodels.DialerViewModel
 
@@ -35,6 +34,7 @@ import kotlinx.coroutines.launch
 class DialerActivity : BaldActivity() {
 
     companion object {
+        private const val TAG = "DialerActivity"
         private const val TONE_LENGTH_MS = 300
         private const val TONE_VOLUME = 50
     }
@@ -42,14 +42,6 @@ class DialerActivity : BaldActivity() {
     private val viewModel: DialerViewModel by viewModels()
     private lateinit var binding: DialerBinding
     private var dtmfManager: DtmfManager? = null
-
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        if (permissions[Manifest.permission.READ_CONTACTS] == true) {
-            observeSearchResults()
-        }
-    }
 
     private val adapter by lazy {
         ContactAdapter(
@@ -67,36 +59,38 @@ class DialerActivity : BaldActivity() {
         dtmfManager = try {
             DtmfManager(TONE_VOLUME, TONE_LENGTH_MS)
         } catch (e: Exception) {
-            Log.e("DialerActivity", "Failed to initialize DTMF tone generator", e)
+            Log.e(TAG, "Failed to initialize DTMF tone generator", e)
             null
         }
 
         setupRecyclerView()
         setupDialPad()
         setupEmptyState()
+        observeViewModel()
+        setupPermissions()
+    }
 
+    private fun observeViewModel() {
         lifecycleScope.launch {
             viewModel.formattedNumber.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect { formatted ->
                     binding.dialPad.tvNumber.text = formatted
-                    updateEmptyState(adapter.itemCount > 0, formatted)
+                    val isNumberEmpty = formatted.isEmpty()
+                    updateBackspaceState(isNumberEmpty)
+                    updateEmptyStateVisibility(adapter.itemCount > 0)
                 }
         }
+    }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
-            observeSearchResults()
-        }
-
-        val permissions = arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.READ_CONTACTS)
-        val missingPermissions = permissions.filter {
-            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
-        }.toTypedArray()
-
-        if (missingPermissions.isNotEmpty()) {
-            requestPermissionLauncher.launch(missingPermissions)
-        }
+    private fun setupPermissions() {
+        PermissionManager.with(this).add(RuntimePermission.CallPhone) {
+            onDenied { finish() }
+        }.add(RuntimePermission.ReadWriteContacts) {
+            onGranted {
+                updateEmptyStatePermissionUI()
+                observeSearchResults()
+            }
+        }.request()
     }
 
     override fun onDestroy() {
@@ -110,10 +104,7 @@ class DialerActivity : BaldActivity() {
             viewModel.searchResults.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect { contacts ->
                     adapter.submitList(contacts)
-                    updateEmptyState(
-                        hasContacts = contacts.isNotEmpty(),
-                        currentNumber = viewModel.rawNumber.value
-                    )
+                    updateEmptyStateVisibility(contacts.isNotEmpty())
                 }
         }
     }
@@ -190,14 +181,37 @@ class DialerActivity : BaldActivity() {
 
     private fun setupEmptyState() {
         binding.emptyStateContainer.btAddContact.setOnClickListener {
-            val intent = Intent(this, AddContactActivity::class.java).apply {
-                putExtra(AddContactActivity.CONTACT_NUMBER, viewModel.rawNumber.value)
+            if (RuntimePermission.ReadWriteContacts.isGranted(this)) {
+                val intent = Intent(this, AddContactActivity::class.java).apply {
+                    putExtra(AddContactActivity.CONTACT_NUMBER, viewModel.rawNumber.value)
+                }
+                startActivity(intent)
+            } else {
+                PermissionManager.requestPermission(this, RuntimePermission.ReadWriteContacts) {
+                    onGranted {
+                        updateEmptyStatePermissionUI()
+                        observeSearchResults()
+                    }
+                }
             }
-            startActivity(intent)
         }
+
+        updateEmptyStatePermissionUI()
     }
 
-    private fun updateEmptyState(hasContacts: Boolean, currentNumber: String) {
+    private fun updateEmptyStatePermissionUI() {
+        val canReadWriteContacts = RuntimePermission.ReadWriteContacts.isGranted(this)
+
+        val iconRes =
+            if (canReadWriteContacts) R.drawable.add_outlined_on_background else R.drawable.ic_info
+        val textRes =
+            if (canReadWriteContacts) R.string.add_contact else R.string.grant_contacts_permission
+
+        binding.emptyStateContainer.ivIcon.setImageResource(iconRes)
+        binding.emptyStateContainer.tvText.setText(textRes)
+    }
+
+    private fun updateEmptyStateVisibility(hasContacts: Boolean) {
         if (hasContacts) {
             binding.emptyStateContainer.root.visibility = View.GONE
             binding.scrollingHelper.visibility = View.VISIBLE
@@ -205,8 +219,10 @@ class DialerActivity : BaldActivity() {
             binding.emptyStateContainer.root.visibility = View.VISIBLE
             binding.scrollingHelper.visibility = View.INVISIBLE
         }
+    }
+
+    private fun updateBackspaceState(isEmpty: Boolean) {
         binding.dialPad.bBackspace.apply {
-            val isEmpty = currentNumber.isEmpty()
             alpha = if (isEmpty) 0.5f else 1.0f
             isEnabled = !isEmpty
         }

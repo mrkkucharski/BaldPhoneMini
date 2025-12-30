@@ -314,8 +314,27 @@
     <string name="low_battery_alert">Low battery alert</string>
     <string name="low_battery_alert_subtext">Choose if you want the status bar to be red on the home screen when battery is under 20%\nNotice It won\'t be shown if the system status bar is hidden.</string>
 
+    <!-- Permissions -->
     <string name="grant_all_permissions">Grant All Permissions</string>
+    <string name="grant_contacts_permission">Grant Contacts Permission</string>
+    <string name="permission_not_granted">Required permission was not granted."</string>
+    <string name="dialog_title_permission_required">Permission Required</string>
+    <string name="dialog_message_permission_settings">In the application settings, go to Permissions and grant all required access.</string>
 
+    <!-- Runtime Permissions -->
+    <string name="dialog_message_permission_phone">Phone permission is required to make calls.</string>
+    <string name="dialog_message_permission_contacts">Contacts permission is required to view and add contacts.</string>
+    <string name="dialog_message_permission_media">The app needs access to photos and videos to display and save media.</string>
+
+    <!-- Special Permissions -->
+    <string name="dialog_title_permission_write_settings">Modify system settings</string>
+    <string name="dialog_message_permission_write_settings">To function properly, the app needs permission to modify selected system settings.</string>
+    <string name="dialog_title_permission_overlay">Display over other apps</string>
+    <string name="dialog_message_permission_overlay">The app needs permission to appear over other apps in order to show important information.</string>
+    <string name="dialog_title_permission_notification">Notification access</string>
+    <string name="dialog_message_permission_notification">Enable notification access so the app can read and display important alerts.</string>
+
+    <!-- Accessibility -->
     <string name="label_lock_screen_short">Lock Screen</string>
     <string name="accessibility_service_description">Enables BaldPhone Neo’s quick screen lock feature, allowing you to lock your device instantly with a single tap.</string>
     <string name="accessibility_permission_dialog_title">Accessibility Permission Required"</string>

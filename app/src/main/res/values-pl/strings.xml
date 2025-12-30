@@ -280,8 +280,28 @@
     <string name="dialer_sounds_subtext">Wybierz, czy chcesz włączyć dźwięki wybierania numeru</string>
     <string name="low_battery_alert">Ostrzeżenie o niskim poziomie baterii</string>
     <string name="low_battery_alert_subtext">Czy chcesz, aby pasek stanu zmieniał kolor na czerwony, gdy poziom naładowania baterii spadnie poniżej 15%?\nPamiętaj, że to ustawienie zależy od tego, czy pasek stanu jest włączony.</string>
-    <string name="grant_all_permissions">Przyznaj wszystkie uprawnienia</string>
 
+    <!-- Permissions -->
+    <string name="grant_all_permissions">Przyznaj wszystkie uprawnienia</string>
+    <string name="grant_contacts_permission">Zezwól na dostęp do kontaktów</string>
+    <string name="permission_not_granted">Nie przyznano wymaganego uprawnienia.</string>
+    <string name="dialog_title_permission_required">Wymagane uprawnienie</string>
+    <string name="dialog_message_permission_settings">Przejdź do zakładki Uprawnienia i udziel wszystkich brakujących dostępów.</string>
+
+    <!-- Runtime Permissions -->
+    <string name="dialog_message_permission_phone">Aby umożliwić dzwonienie, aplikacja potrzebuje pozwolenia na wykonywanie połączeń telefonicznych.</string>
+    <string name="dialog_message_permission_contacts">Aby wyświetlać i zapisywać kontakty, aplikacja potrzebuje dostępu do Twoich kontaktów.</string>
+    <string name="dialog_message_permission_media">Aplikacja potrzebuje dostępu do zdjęć i filmów, aby wyświetlać i zapisywać multimedia.</string>
+
+    <!-- Special Permissions -->
+    <string name="dialog_title_permission_write_settings">Zmiana ustawień systemu</string>
+    <string name="dialog_message_permission_write_settings">Aby aplikacja działała poprawnie, potrzebuje możliwości zmiany wybranych ustawień systemu.</string>
+    <string name="dialog_title_permission_overlay">Wyświetlanie nad innymi aplikacjami</string>
+    <string name="dialog_message_permission_overlay">Aplikacja potrzebuje zgody na wyświetlanie się nad innymi aplikacjami, aby pokazywać ważne informacje.</string>
+    <string name="dialog_title_permission_notification">Dostęp do powiadomień</string>
+    <string name="dialog_message_permission_notification">Włącz dostęp do powiadomień, aby aplikacja mogła odczytywać i wyświetlać ważne komunikaty.</string>
+
+    <!-- Accessibility -->
     <string name="label_lock_screen_short">Zablokuj ekran</string>
     <string name="accessibility_service_description">Umożliwia szybkie zablokowanie ekranu w BaldPhone Neo, jednym dotknięciem. Nie zbiera ani nie śledzi żadnych danych.</string>
     <string name="accessibility_permission_dialog_title">Wymagane uprawnienie</string>
