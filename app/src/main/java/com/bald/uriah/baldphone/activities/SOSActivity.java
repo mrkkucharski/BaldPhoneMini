@@ -28,14 +28,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 
 import com.bald.uriah.baldphone.R;
-import com.bald.uriah.baldphone.activities.contacts.ContactsActivity;
-import com.bald.uriah.baldphone.adapters.ContactRecyclerViewAdapter;
 import com.bald.uriah.baldphone.databases.contacts.MiniContact;
 import com.bald.uriah.baldphone.databases.home_screen_pins.HomeScreenPinHelper;
+
+import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.calls.CallManager;
+import app.baldphone.neo.utils.PhoneNumberUtils;
+
+import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.views.BaldLinearLayoutButton;
 
 import java.util.ArrayList;
@@ -58,10 +63,29 @@ public class SOSActivity extends BaldActivity {
             ((ImageView) baldLinearLayoutButton.getChildAt(0)).setImageResource(R.drawable.face_on_button);
 
         ((TextView) baldLinearLayoutButton.getChildAt(1)).setText(miniContact.name);
-        baldLinearLayoutButton.setOnClickListener(v ->
-                CallManager.INSTANCE.call(v.getContext(), miniContact)
+        baldLinearLayoutButton.setOnClickListener(v -> {
+                String phoneNumber = PhoneNumberUtils.INSTANCE.resolvePhoneNumber(
+                    miniContact.lookupKey, v.getContext().getContentResolver()
+                );
+                if (phoneNumber != null) {
+                    CallManager.INSTANCE.callDirectly(v.getContext(), phoneNumber);
+                } else {
+                    BaldToast.error(v.getContext(), "Could not find a phone number for this contact");
+                }
+        }
         );
-    }
+    }    private final ActivityResultLauncher<Intent> pickContactLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    final String lookupKey = result.getData().getStringExtra(ContactsActivity.EXTRA_CONTACT_LOOKUP_KEY);
+                    if (lookupKey != null) {
+                        PinHelper.pinContact(this, lookupKey);
+                        refreshContacts();
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,7 +100,15 @@ public class SOSActivity extends BaldActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        final View.OnClickListener addContactListener = v -> startActivity(new Intent(v.getContext().getApplicationContext(), ContactsActivity.class).putExtra(ContactsActivity.INTENT_EXTRA_CONTACT_ADAPTER_MODE, ContactRecyclerViewAdapter.MODE_SOS));
+        refreshContacts();
+    }
+
+    private void refreshContacts() {
+        final View.OnClickListener addContactListener = v -> {
+            Intent intent = new Intent(getApplicationContext(), ContactsActivity.class);
+            intent.putExtra(ContactsActivity.EXTRA_PICK_CONTACT, true);
+            pickContactLauncher.launch(intent);
+        };
         final List<MiniContact> miniContacts = PinHelper.getAllPinnedContacts(this);
         final int size = miniContacts == null ? 0 : miniContacts.size();
         for (int i = 0; i < MAX_PINNED_CONTACTS; i++) {
@@ -90,13 +122,19 @@ public class SOSActivity extends BaldActivity {
     }
 
     private void callEmergencyNumber() {
-        CallManager.INSTANCE.callDirectly(this, "112");
+        String emergencyNumber = PhoneNumberUtils.INSTANCE.getPrimaryEmergencyNumber(this);
+        CallManager.INSTANCE.callDirectly(this, emergencyNumber);
     }
 
     @Override
     public void finish() {
         super.finish();
 //        overridePendingTransition(R.anim.nothing, R.anim.slide_out_up);
+    }
+
+    @Override
+    protected int requiredPermissions() {
+        return PERMISSION_CALL_PHONE | PERMISSION_READ_CONTACTS;
     }
 
     public static class PinHelper {
@@ -177,8 +215,5 @@ public class SOSActivity extends BaldActivity {
         }
     }
 
-    @Override
-    protected int requiredPermissions() {
-        return PERMISSION_CALL_PHONE | PERMISSION_READ_CONTACTS;
-    }
+
 }

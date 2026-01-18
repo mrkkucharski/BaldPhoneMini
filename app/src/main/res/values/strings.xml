@@ -32,6 +32,7 @@
     <string name="add_to_favorite">Add to Favorite</string>
     <string name="add_to_home">Add to Home</string>
     <string name="add_to_sos">Add to SOS</string>
+    <string name="add_as_an_emergency_contact">Add %s as your SOS emergency contact?</string>
     <string name="address">Address</string>
     <string name="advanced_options">Advanced Options</string>
     <string name="afternoon">Afternoon</string>

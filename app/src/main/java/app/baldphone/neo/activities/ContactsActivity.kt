@@ -18,11 +18,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 
 import app.baldphone.neo.contacts.ContactAdapter
+import app.baldphone.neo.contacts.SimpleContact
 import app.baldphone.neo.contacts.openDetails
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
+import app.baldphone.neo.utils.baldAlertDialog
 import app.baldphone.neo.viewmodels.ContactsViewModel
 
+import com.bald.uriah.baldphone.R
 import com.bald.uriah.baldphone.activities.BaldActivity
 import com.bald.uriah.baldphone.activities.contacts.AddContactActivity
 import com.bald.uriah.baldphone.databinding.ActivityContactsBinding
@@ -31,9 +34,27 @@ import kotlinx.coroutines.launch
 
 class ContactsActivity : BaldActivity() {
 
+    companion object {
+        /** Pass as a boolean extra to open the activity in contact-picker mode. */
+        const val EXTRA_PICK_CONTACT = "extra_pick_contact"
+
+        /** Result extra containing the selected contact's lookup key. */
+        const val EXTRA_CONTACT_LOOKUP_KEY = "extra_contact_lookup_key"
+    }
+
     private lateinit var binding: ActivityContactsBinding
     private val viewModel: ContactsViewModel by viewModels()
-    private val adapter by lazy { ContactAdapter { it.openDetails(this) } }
+
+    private val isPickerMode: Boolean by lazy {
+        intent.getBooleanExtra(EXTRA_PICK_CONTACT, false)
+    }
+
+    private val adapter by lazy {
+        ContactAdapter { contact ->
+            if (isPickerMode) showPickerConfirmation(contact)
+            else contact.openDetails(this)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +125,7 @@ class ContactsActivity : BaldActivity() {
     }
 
     private fun setupButtons() {
+        binding.buttonAddContact.isVisible = !isPickerMode
         binding.buttonAddContact.setOnClickListener {
             startActivity(Intent(this, AddContactActivity::class.java))
         }
@@ -130,5 +152,24 @@ class ContactsActivity : BaldActivity() {
             )
             insets
         }
+    }
+
+    /**
+     * Shows a confirmation dialog before returning the selected contact to the caller.
+     * Cancelling dismisses the dialog and keeps the list open.
+     */
+    private fun showPickerConfirmation(contact: SimpleContact) {
+        baldAlertDialog {
+            setTitle(contact.name)
+            setMessage(getString(R.string.add_as_an_emergency_contact, contact.name))
+            setPositiveButton(android.R.string.ok) { _ ->
+                val resultIntent = Intent().apply {
+                    putExtra(EXTRA_CONTACT_LOOKUP_KEY, contact.lookupKey)
+                }
+                setResult(RESULT_OK, resultIntent)
+                finish()
+            }
+            setNegativeButton(android.R.string.cancel, null)
+        }.show()
     }
 }

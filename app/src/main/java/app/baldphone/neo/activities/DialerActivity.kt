@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import app.baldphone.neo.calls.CallManager
 import app.baldphone.neo.contacts.ContactAdapter
 import app.baldphone.neo.contacts.openDetails
+import app.baldphone.neo.data.Prefs
+
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
 import app.baldphone.neo.utils.getTextFromClipboard
@@ -36,7 +38,7 @@ class DialerActivity : BaldActivity() {
     companion object {
         private const val TAG = "DialerActivity"
         private const val TONE_LENGTH_MS = 300
-        private const val TONE_VOLUME = 50
+        private const val TONE_VOLUME = 80  // percent
     }
 
     private val viewModel: DialerViewModel by viewModels()
@@ -55,11 +57,15 @@ class DialerActivity : BaldActivity() {
         binding = DialerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize DTMF tone generator
-        dtmfManager = try {
-            DtmfManager(TONE_VOLUME, TONE_LENGTH_MS)
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to initialize DTMF tone generator", e)
+        // Initialize DTMF tone generator if enabled
+        dtmfManager = if (Prefs.areDialerSoundsEnabled) {
+            try {
+                DtmfManager(TONE_VOLUME, TONE_LENGTH_MS)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to initialize DTMF tone generator", e)
+                null
+            }
+        } else {
             null
         }
 
@@ -165,7 +171,7 @@ class DialerActivity : BaldActivity() {
         }
 
         bCall.setOnClickListener {
-            CallManager.call(this@DialerActivity, viewModel.rawNumber.value)
+            CallManager.call(this@DialerActivity, viewModel.rawNumber.value, directly = false)
         }
 
         tvNumber.setOnLongClickListener {

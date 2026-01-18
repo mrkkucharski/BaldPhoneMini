@@ -88,11 +88,6 @@
             android:windowSoftInputMode="adjustResize|stateUnchanged"
             android:label="@string/contacts" />
         <activity
-            android:name=".activities.contacts.ContactsActivity"
-            android:exported="false"
-            android:label="@string/contacts"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".activities.contacts.SingleContactActivity"
             android:exported="false"
             android:label="Contact Details" />

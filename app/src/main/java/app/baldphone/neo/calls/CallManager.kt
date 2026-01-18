@@ -9,15 +9,15 @@ import android.os.Build
 import android.telecom.TelecomManager
 import android.telephony.SubscriptionInfo
 import android.telephony.SubscriptionManager
+import android.util.Log
 
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 import app.baldphone.neo.data.Prefs
+import app.baldphone.neo.utils.PhoneNumberUtils
 
 import com.bald.uriah.baldphone.R
-import com.bald.uriah.baldphone.databases.contacts.Contact
-import com.bald.uriah.baldphone.databases.contacts.MiniContact
 import com.bald.uriah.baldphone.utils.BDB
 import com.bald.uriah.baldphone.utils.BDialog
 import com.bald.uriah.baldphone.utils.BaldToast
@@ -25,17 +25,12 @@ import com.bald.uriah.baldphone.utils.BaldToast
 import java.util.Collections
 
 object CallManager {
+    private const val TAG = "CallManager"
 
-    fun call(context: Context, miniContact: MiniContact) {
-        runCatching {
-            Contact.fromLookupKey(
-                miniContact.lookupKey, context.contentResolver
-            )!!.phoneList.first().toString()
-        }.onSuccess {
-            call(context, it)
-        }.onFailure {
-            BaldToast.error(context, "Could not find a phone number for this contact")
-        }
+    /** Helper function for [com.bald.uriah.baldphone.activities.SOSActivity] and similar,
+     * which bypasses all dialogs. */
+    fun callDirectly(context: Context, number: CharSequence) {
+        call(context, number, directly = true)
     }
 
     fun call(context: Context, number: CharSequence, directly: Boolean = false) {
@@ -68,10 +63,12 @@ object CallManager {
         startCall(context, number, null)
     }
 
-    fun callDirectly(context: Context, number: CharSequence) {
-        startCall(context, number, null)
-    }
-
+    /**
+     * Starts a phone call for the given number.
+     *
+     * For an emergency numbers it uses [Intent.ACTION_DIAL] as third-party applications are
+     * generally prohibited from calling emergency numbers directly via [Intent.ACTION_CALL].
+     */
     private fun startCall(
         context: Context, number: CharSequence, subscriptionInfo: SubscriptionInfo? = null
     ) {
@@ -81,7 +78,10 @@ object CallManager {
             context, Manifest.permission.CALL_PHONE
         ) == PackageManager.PERMISSION_GRANTED
 
-        val intent = if (hasCallPermission) {
+        val isEmergency = PhoneNumberUtils.isEmergency(context, number.toString())
+        Log.v(TAG, "isEmergency: $isEmergency")
+
+        val intent = if (hasCallPermission && !isEmergency) {
             Intent(Intent.ACTION_CALL).setData(uri)
         } else {
             Intent(Intent.ACTION_DIAL).setData(uri)

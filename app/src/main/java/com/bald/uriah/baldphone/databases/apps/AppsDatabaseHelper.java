@@ -27,6 +27,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.ImageView;
 
+import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.activities.DialerActivity;
 
 import com.bald.uriah.baldphone.BuildConfig;
@@ -36,7 +37,6 @@ import com.bald.uriah.baldphone.activities.Page1EditorActivity;
 import com.bald.uriah.baldphone.activities.RecentActivity;
 import com.bald.uriah.baldphone.activities.SOSActivity;
 import com.bald.uriah.baldphone.activities.alarms.AlarmsActivity;
-import com.bald.uriah.baldphone.activities.contacts.ContactsActivity;
 import com.bald.uriah.baldphone.activities.media.PhotosActivity;
 import com.bald.uriah.baldphone.activities.media.VideosActivity;
 import com.bald.uriah.baldphone.activities.pills.PillsActivity;

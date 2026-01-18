@@ -33,6 +33,7 @@
     <string name="add_to_favorite">Dodaj do ulubionych</string>
     <string name="add_to_home">Dodaj do ekranu głównego</string>
     <string name="add_to_sos">Dodaj do SOS</string>
+    <string name="add_as_an_emergency_contact">Dodać %s jako kontakt alarmowy SOS?</string>
     <string name="address">Adres</string>
     <string name="advanced_options">Opcje zaawansowane</string>
     <string name="afternoon">Popołudnie</string>

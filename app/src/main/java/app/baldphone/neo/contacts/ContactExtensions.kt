@@ -39,33 +39,6 @@ fun SimpleContact.openDetails(context: Context) {
 }
 
 /**
- * Call this contact's phone number.
- *
- * This launches the phone dialer with the number pre-filled.
- * User still needs to press the call button.
- *
- * Usage:
- * ```
- * contact.call(context)
- * ```
- *
- * @param context Context to launch the dialer
- */
-fun SimpleContact.call(context: Context) {
-    try {
-        val dialUri = "tel:$phoneNumber".toUri()
-        val intent = Intent(Intent.ACTION_DIAL, dialUri)
-        context.startActivity(intent)
-    } catch (_: Exception) {
-        Toast.makeText(
-            context,
-            "Unable to open dialer",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-}
-
-/**
  * Send SMS to this contact's phone number.
  *
  * This launches the SMS app with the number pre-filled.
