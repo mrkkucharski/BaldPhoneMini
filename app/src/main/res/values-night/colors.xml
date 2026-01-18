@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Dark Mode -->
+    <color name="primary">#ababc4</color>
+    <color name="onPrimary">#eeeeee</color>
+
     <color name="bald_background">#1A1F23</color> <!-- Eerie black -->
     <color name="bald_background_transparent">#E4000000</color>
     <color name="bald_button">#0b212f</color>

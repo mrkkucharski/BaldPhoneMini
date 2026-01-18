@@ -89,6 +89,7 @@
     <string name="connection_settings">Connectivity</string>
     <string name="contact_must_has_name">Contact must have a Name</string>
     <string name="contacts">Contacts</string>
+    <string name="search_contact">Search contact by name</string>
     <string name="contacts_read_subtext">This permission is required in order to read contacts.</string>
     <string name="contacts_subtext">This permission is required in order to add new contacts.</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
@@ -113,6 +114,7 @@
     <string name="evening">Evening</string>
     <string name="example_of_different_text_sizes">"Example of different text sizes.\nShould be readable and not overflow."</string>
     <string name="external_storage_subtext">This permission is required in order to save pictures.</string>
+    <string name="favorites">Favorites</string>
 
     <string name="feedback">Feedback &amp; Support</string>
     <string name="feedback_advanced">Advanced</string>
@@ -273,7 +275,7 @@
     <string name="yes">Yes</string>
     <string name="yesterday">Yesterday</string>
     <string name="nothing">Nothing</string>
-    <string name="no_contacts_found">No Contacts Found!</string>
+    <string name="no_contacts_found">No Contacts Found</string>
     <string name="no_alarms">No Alarms\nCreate one by clicking\n\"Add Alarm\"\nOr\n\"Add Timer\"</string>
     <string name="no_pills">No Pills\nCreate one by clicking\n\"Add Pill\"</string>
     <string name="clear_all_notifications">Clear All Notifications</string>

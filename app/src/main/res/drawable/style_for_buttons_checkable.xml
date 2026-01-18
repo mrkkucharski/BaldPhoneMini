@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/bald_button_corners_radius" />
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <item>
+        <selector>
+            <item android:drawable="@drawable/btn_disabled" android:state_enabled="false" />
+            <item android:drawable="@drawable/btn_selected" android:state_enabled="true" android:state_checked="true" />
+            <item android:drawable="@drawable/btn_clicked" android:state_enabled="true" android:state_pressed="true" />
+            <item android:drawable="@drawable/btn_focused" android:state_enabled="true" android:state_focused="true" />
+            <item android:drawable="@drawable/btn_enabled" android:state_enabled="true" />
+        </selector>
+    </item>
+</ripple>

@@ -29,7 +29,7 @@
         android:textColor="@color/bald_text_on_button"
         android:singleLine="true"
         android:textAlignment="viewStart"
-        android:textSize="23sp"
+        android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/contact_number"
         app:layout_constraintStart_toEndOf="@id/profile_pic"
         app:layout_constraintTop_toTopOf="parent"

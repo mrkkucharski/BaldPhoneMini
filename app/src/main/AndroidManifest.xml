@@ -83,6 +83,11 @@
             android:label="@string/add_alarm"
             android:screenOrientation="portrait" />
         <activity
+            android:name="app.baldphone.neo.activities.ContactsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateUnchanged"
+            android:label="@string/contacts" />
+        <activity
             android:name=".activities.contacts.ContactsActivity"
             android:exported="false"
             android:label="@string/contacts"

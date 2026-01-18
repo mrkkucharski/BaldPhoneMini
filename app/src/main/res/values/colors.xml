@@ -16,6 +16,9 @@
 
 <resources>
     <!--Light Theme-->
+    <color name="primary">#323248</color>
+    <color name="onPrimary">#444444</color>
+
     <color name="bald_background">#EBEBEB</color> <!-- Anti-flash white -->
     <color name="bald_background_transparent">#E4DDE2E3</color>
     <color name="bald_button">#D7DCD6</color> <!-- original #CC9AACB8, #97AEAF -->

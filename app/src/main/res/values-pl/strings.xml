@@ -87,6 +87,7 @@
     <string name="contact_must_has_name">Kontakt musi mieć nazwę</string>
     <string name="contact_not_created">Nie udało się utworzyć kontaktu</string>
     <string name="contacts">Kontakty</string>
+    <string name="search_contact">Szukaj kontaktów po nazwie</string>
     <string name="contacts_read_subtext">To uprawnienie jest wymagane, aby odczytać kontakty.</string>
     <string name="contacts_subtext">To uprawnienie jest wymagane, aby dodać nowe kontakty.</string>
     <string name="crash">Coś poszło nie tak.\nPonowne uruchomienie za kilka sekund…</string>
@@ -109,6 +110,7 @@
     <string name="evening">Wieczór</string>
     <string name="example_of_different_text_sizes">Przykład różnych rozmiarów czcionki.\nTen tekst powinien być czytelny i nie powinien się zawijać.</string>
     <string name="external_storage_subtext">To uprawnienie jest wymagane do zapisywania zdjęć.</string>
+    <string name="favorites">Ulubione</string>
     <string name="feedback">Wyślij opinię</string>
     <string name="feedback_cannot_be_empty">Opinia nie może być pusta</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Wybierz poziom dostępności.</string>

@@ -7,23 +7,28 @@ import androidx.lifecycle.viewModelScope
 
 import app.baldphone.neo.contacts.ContactItemType
 import app.baldphone.neo.contacts.ContactProvider
+import app.baldphone.neo.contacts.ContactSearcher
+import app.baldphone.neo.contacts.SimpleContact
+import app.baldphone.neo.utils.PhoneNumberUtils
 import app.baldphone.neo.utils.PhoneUtils
 
-import com.google.i18n.phonenumbers.AsYouTypeFormatter
-import com.google.i18n.phonenumbers.PhoneNumberUtil
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 /**
  * ViewModel for the DialerActivity:
  * - Manages the dialer number state (add/remove digits)
  * - Formats phone numbers using AsYouTypeFormatter
  * - Provides formatted number as StateFlow for UI observation
- * - Handles contact searching via ContactProvider
+ * - Handles contact searching via ContactSearcher
  */
 class DialerViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -35,31 +40,38 @@ class DialerViewModel(application: Application) : AndroidViewModel(application) 
     private val _formattedNumber = MutableStateFlow("")
     val formattedNumber: StateFlow<String> = _formattedNumber.asStateFlow()
 
-    private var formatter: AsYouTypeFormatter? = null
     private val deviceRegion: String = PhoneUtils.getDeviceRegion(application)
 
     private val contactProvider = ContactProvider(application)
+    private val contactSearcher = ContactSearcher(application)
 
-    val searchResults: StateFlow<List<ContactItemType>> = contactProvider.search(
-        queryFlow = rawNumber,
-        enableT9 = true,
-        showAllWhenEmpty = false
-    ).stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyList()
-    )
+    private val _allContacts = MutableStateFlow<List<SimpleContact>>(emptyList())
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val searchResults: StateFlow<List<ContactItemType>> = _allContacts.flatMapLatest { contacts ->
+        contactSearcher.searchContactsFlow(
+            allContacts = contacts,
+            searchQueryFlow = rawNumber,
+            enableT9 = true,
+            showAllWhenEmpty = false
+        )
+    }
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
     init {
-        resetFormatter()
+        viewModelScope.launch {
+            _allContacts.value = contactProvider.getAllContacts()
+        }
     }
 
     /** Add a digit to the number. */
     fun addDigit(digit: Char) {
-        val newRawNumber = _rawNumber.value + digit
-        _rawNumber.value = newRawNumber
-
-        _formattedNumber.value = formatter?.inputDigit(digit) ?: newRawNumber
+        setNumber(_rawNumber.value + digit)
     }
 
     /** Remove the last digit from the number. */
@@ -72,25 +84,11 @@ class DialerViewModel(application: Application) : AndroidViewModel(application) 
     fun clearNumber() {
         _rawNumber.value = ""
         _formattedNumber.value = ""
-        resetFormatter()
     }
 
     /** Set the number directly */
     fun setNumber(number: String) {
         _rawNumber.value = number
-        reformatNumber(number)
-    }
-
-    private fun reformatNumber(number: String) {
-        resetFormatter()
-        var formatted = ""
-        number.forEach { digit ->
-            formatted = formatter?.inputDigit(digit) ?: number
-        }
-        _formattedNumber.value = formatted
-    }
-
-    private fun resetFormatter() {
-        formatter = PhoneNumberUtil.getInstance().getAsYouTypeFormatter(deviceRegion)
+        _formattedNumber.value = PhoneNumberUtils.formatAsYouType(number, deviceRegion)
     }
 }
