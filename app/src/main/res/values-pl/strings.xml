@@ -17,10 +17,6 @@
 
 <resources>
     <string name="about">O programie</string>
-    <string name="about_subtext">Cześć !\nMam na imie Uriah Shaul Mandel, jestem developerem tej platformy.\n
-        Spędziłem większość swojego \"dorosłego\" życia tworząc tą platformę, i wypuściłem ją za darmo, dla każdego do użytku.
-        \nMożesz spokojnie do mnie napisać na ten adres email: \nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Poziom dostępności</string>
     <string name="accessibility_settings">Dostępność</string>
     <string name="accidental_touches">Zapobiegaj przypadkowym dotknięciom</string>
@@ -115,7 +111,6 @@
     <string name="external_storage_subtext">To uprawnienie jest wymagane do zapisywania zdjęć.</string>
     <string name="feedback">Wyślij opinię</string>
     <string name="feedback_cannot_be_empty">Opinia nie może być pusta</string>
-    <string name="feedback_sent_successfully">Opinia została wysłana</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Wybierz poziom dostępności.</string>
     <string name="font_size">Rozmiar czcionki</string>
     <string name="friday">Piątek</string>
@@ -256,31 +251,7 @@
     <string name="clear_all_notifications">Wyczyść wszystkie powiadomienia</string>
     <string name="clear_cache_subtext">Czy na pewno chcesz wyczyścić pamięć podręczną? Skróty aplikacji zostaną usunięte.</string>
     <string name="permissions_calm">Witaj, BaldPhone potrzebuje następujących uprawnień do działania.\nNiektóre z nich mogą wydawać się zbędne, ale są konieczne, aby BaldPhone mógł zastąpić interfejs telefonu.\nŻadne dane nie są wysyłane. Naciśnij OK, aby przyznać uprawnienia, lub Anuluj, aby wyjść.</string>
-    <string name="pending_update">Oczekująca aktualizacja</string>
-    <string name="download">Pobierz</string>
-    <string name="install_updates">Zainstaluj aktualizacje</string>
-    <string name="install_updates_subtext">To uprawnienie jest wymagane, aby zaktualizować BaldPhone.</string>
-    <string name="a_new_update_is_available">Dostępna jest nowa wersja BaldPhone.\nAktualizacje są ważne ze względów bezpieczeństwa i płynności działania.\nNaciśnij OK, aby pobrać aktualizację.</string>
-    <string name="current_version">Aktualna wersja:\n</string>
-    <string name="new_version">Nowa wersja:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nowe aktualizacje są gotowe do pobrania.</string>
-    <string name="install">Zainstaluj</string>
-    <string name="data_warning">Ostrzeżenie o danych</string>
-    <string name="data_warning_subtext">Brak połączenia z Wi-Fi. Pobieranie za pomocą danych mobilnych może wiązać się z opłatami.\nCzy chcesz kontynuować?</string>
-    <string name="update_message_is_corrupted">Komunikat o aktualizacji jest uszkodzony.</string>
-    <string name="check_for_updates">Sprawdź aktualizacje</string>
-    <string name="could_not_connect_to_server">Nie można połączyć się z serwerem!</string>
-    <string name="could_not_connect_to_internet">Brak połączenia z internetem!</string>
-    <string name="could_not_start_the_download">Nie udało się rozpocząć pobierania!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Nie można usunąć pobranego pliku aktualizacji!</string>
-    <string name="downloading">Pobieranie…</string>
-    <string name="baldphone_is_up_to_date">BaldPhone jest aktualny!</string>
     <string name="what_s_new">Co nowego</string>
-    <string name="download_finished">Pobieranie zakończone!</string>
-    <string name="downloading_updates">Pobieranie aktualizacji…</string>
-    <string name="installing_doesn_t_work">Instalacja nie działa?</string>
-    <string name="try_now">Spróbuj teraz</string>
-    <string name="download_progress">Postęp pobierania</string>
     <string name="what_do_you_want_to_do_with___">Co chcesz zrobić z %s?</string>
     <string name="crash_reports">Raporty o awariach</string>
     <string name="crash_reports_subtext">Raporty o awariach nie zawierają danych osobowych i są bardzo pomocne w diagnozowaniu i naprawianiu problemów z BaldPhone.</string>
@@ -309,7 +280,6 @@
     <string name="dialer_sounds_subtext">Wybierz, czy chcesz włączyć dźwięki wybierania numeru</string>
     <string name="low_battery_alert">Ostrzeżenie o niskim poziomie baterii</string>
     <string name="low_battery_alert_subtext">Czy chcesz, aby pasek stanu zmieniał kolor na czerwony, gdy poziom naładowania baterii spadnie poniżej 15%?\nPamiętaj, że to ustawienie zależy od tego, czy pasek stanu jest włączony.</string>
-    <string name="also_available_at">Dostępny również pod adresem\nneo.baldphone@gmail.com</string>
     <string name="grant_all_permissions">Przyznaj wszystkie uprawnienia</string>
 
     <string name="label_lock_screen_short">Zablokuj ekran</string>

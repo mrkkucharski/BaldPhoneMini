@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">Tentang</string>
-    <string name="about_subtext">Hai!\nNama saya Uriah Shaul Mandel, pengembang piranti lunak ini.\n
-        Saya menghabiskan sebagian besar masa \"dewasa\" saya untuk membuat BaldPhone, dan merilisnya secara gratis agar Anda semua bisa menggunakannya.\nAnda bisa menghubungi saya melalui email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Tingkat Aksesibilitas</string>
     <string name="accessibility_settings">Aksesibilitas</string>
     <string name="accidental_touches">Pencegah Sentuhan Tidak Disengaja</string>
@@ -121,7 +118,6 @@
     <string name="external_storage_subtext">Izin ini diperlukan untuk menyimpan gambar.</string>
     <string name="feedback">Kirim Umpan Balik</string>
     <string name="feedback_cannot_be_empty">Umpan balik tidak boleh kosong!</string>
-    <string name="feedback_sent_successfully">Umpan balik berhasil dikirim!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Silakan  pilih tingkat aksesibilitas
     </string>
     <string name="font_size">Ukuran Huruf</string>
@@ -290,36 +286,8 @@
         mungkin terdengar menakutkan, namun ini satu-satunya cara agar BaldPhone bisa menggantikan antarmuka telepon. Tidak ada data yang diambil dan akan menyebabkan
         masalah. Tekan OK untuk mengizinkan atau TIDAK untuk keluar dari BaldPhone.
     </string>
-    <string name="pending_update">Pembaruan Tertunda</string>
-    <string name="download">Unduh</string>
-    <string name="install_updates">Pasang Pembaruan</string>
-    <string name="install_updates_subtext">Izin ini diperlukan untuk memperbarui BaldPhone</string>
-    <string name="a_new_update_is_available">Pembaruan tersedia!\nPembaruan penting untuk untuk menjaga BaldPhone berjalan
-        dengan lancar.\nTekan OK untuk mengunduh.
-    </string>
-    <string name="current_version">Versi Sekarang:\n</string>
-    <string name="new_version">Versi Baru:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Pembaruan siap diunduh.</string>
-    <string name="install">Pasang</string>
-    <string name="data_warning">Peringatan Data</string>
-    <string name="data_warning_subtext">Hai, Anda tidak terhubung dengan WIFI.\nUkuran unduhan sekitar 3MB,
-        jika Anda di luar area mungkin akan dikenai biaya.\nApakah Anda ingin tetap mengunduh?
-    </string>
-    <string name="update_message_is_corrupted">Pesan pembaruan rusak.</string>
-    <string name="check_for_updates">Memeriksa pembaruan</string>
-    <string name="could_not_connect_to_server">Tidak bisa terhubung ke peladen!</string>
-    <string name="could_not_connect_to_internet">Tidak bisa terhubung ke internet!</string>
-    <string name="could_not_start_the_download">Tidak bisa memulai pengunduhan!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Berkas pembaruan yang telah diunduh tidak bisa dihapus!</string>
-    <string name="downloading">Mengunduh…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone sudah terbaru.</string>
     <string name="what_s_new">Apa yang baru</string>
-    <string name="download_finished">Pengunduhan selesai!</string>
-    <string name="downloading_updates">Mengunduh pembaruan…</string>
-    <string name="installing_doesn_t_work">Pemasangan tidak berhasil?</string>
-    <string name="try_now">Coba Sekarang</string>
-    <string name="download_progress">Laju Pengunduhan</string>
     <string name="what_do_you_want_to_do_with___">Apa yang ingin Anda lakukan dengan %s?</string>
     <string name="crash_reports">Laporan Kerusakan</string>
     <string name="crash_reports_subtext">Laporan kerusakan membantu menjadikan pengalaman menggunakan BaldPhone tanpa cela\nLaporan hanya digunakan
@@ -359,7 +327,6 @@
     <string name="low_battery_alert">Peringatan Baterai Rendah</string>
     <string name="low_battery_alert_subtext">Pilih jika Anda ingin bilah status menjadi merah di layar beranda ketika baterai di bawah 20%\nPerhatikan ia tidak akan ditampilkan jika bilah status disembunyikan.</string>
 
-    <string name="also_available_at">Juga tersedia di\nbaldphone.contact@gmail.com\nUmpan balik harus dalam bahasa Inggris atau Ibrani!</string>
     <string name="grant_all_permissions">Berikan semua perizinan</string>
 
 

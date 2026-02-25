@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">О программе</string>
-    <string name="about_subtext">Привет!\nМеня зовут Uriah Shaul Mandel и я являюсь разработчиком этой платформы.\n
-        Я провел большую часть своей «взрослой» жизни создавая эту платформу и я выпустил ее бесплатной, для всех.\nВы можете связаться со мной по электронной почте:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Уровень доступа</string>
     <string name="accessibility_settings">Специальные возможности</string>
     <string name="accidental_touches">Защита от случайных нажатий</string>
@@ -120,7 +117,6 @@
     <string name="external_storage_subtext">Это разрешение требуется для сохранения изображений.</string>
     <string name="feedback">Отправить Отзыв</string>
     <string name="feedback_cannot_be_empty">Отзыв не может быть пустым!</string>
-    <string name="feedback_sent_successfully">Отзыв успешно отправлен!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Пожалуйста выберите уровень доступности
     </string>
     <string name="font_size">Шрифт</string>
@@ -281,34 +277,8 @@
     </string>
     <string name="permissions_calm">Привет, BaldPhone должны быть предоставленны следующие разрешения для запуска. Некоторые из них, звучат страшно, но это единственный способ для BaldPhone заменить интерфейс телефона. Это не причинит вреда и не украдет ваши данные. Нажмите OK для предоставления разрешений или Нет что бы выйти из BaldPhone.
     </string>
-    <string name="pending_update">Ожидание Обновления</string>
-    <string name="download">Загрузка</string>
-    <string name="install_updates">Установка Обновлений</string>
-    <string name="install_updates_subtext">Это Разрешение необходимо для обновления BaldPhone</string>
-    <string name="a_new_update_is_available">Доступно обновление!\nОбновления важны для обеспечения бесперебойной работы BaldPhone.\nНажмите OK для загрузки.
-    </string>
-    <string name="current_version">Текущая Версия:\n</string>
-    <string name="new_version">Новая Версия:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Обновления готовы к загрузке.</string>
-    <string name="install">Установить</string>
-    <string name="data_warning">Предупреждение о Данных</string>
-    <string name="data_warning_subtext">Привет, вы не подключенны к WIFI.\nРазмер загрузкипримерно 3MB, если вы находитесь за границей, это может стоить вам денег.\nХотите продолжить загрузку?
-    </string>
-    <string name="update_message_is_corrupted">Сообщение об обновлении повреждено.</string>
-    <string name="check_for_updates">Проверить наличие обновлений</string>
-    <string name="could_not_connect_to_server">Не удалось подключиться к серверу!</string>
-    <string name="could_not_connect_to_internet">Не удалось подключиться к Интернету!</string>
-    <string name="could_not_start_the_download">Не удалось начать загрузку!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Загруженный файл обновления не может быть удален!</string>
-    <string name="downloading">Загрузка…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone обновлен.</string>
     <string name="what_s_new">Что нового</string>
-    <string name="download_finished">Загрузка завершена!</string>
-    <string name="downloading_updates">Загрузка Обновлений…</string>
-    <string name="installing_doesn_t_work">Установка не работает?</string>
-    <string name="try_now">Попробуйте сейчас</string>
-    <string name="download_progress">Процесс загрузки</string>
     <string name="what_do_you_want_to_do_with___">Что вы хотите сделать %s?</string>
     <string name="crash_reports">Отчеты о сбоях</string>
     <string name="crash_reports_subtext">Отчеты о сбоях помогают сделать использованние BaldPhone безупречным\nОни используются только что бы исправлять ошибки и никакая информация, кроме той, что необходима для исправления ошибок, не применяется.
@@ -347,7 +317,6 @@
     <string name="low_battery_alert">Предупреждение о низком заряде батареи</string>
     <string name="low_battery_alert_subtext">Выберите, хотите ли вы, чтобы строка состояния была красной на главном экране, когда уровень заряда батареи ниже 20%\nПримечание: не будет отображаться, если строка состояния системы скрыта.</string>
 
-    <string name="also_available_at">Также доступно по адресу\nbaldphone.contact@gmail.com\nОбратная связь должна быть на английском/иврите!</string>
     <string name="grant_all_permissions">Предоставить Все Разрешения</string>
 
 

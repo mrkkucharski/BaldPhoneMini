@@ -16,8 +16,6 @@
 
 <resources>
     <string name="about">Information</string>
-    <string name="about_subtext">Hej!\nJag heter Uriah Shaul Mandel och det är jag som utvecklar den här appen.\nJag har spenderat merparten av mitt "vuxna" liv på arbetet med appen och har låtit den vara fri att använda kostnadsfritt.\nDu får gärna kontakta mig via epost:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Tillgängligetsbehov</string>
     <string name="accessibility_settings">Tillgänglighet</string>
     <string name="accidental_touches">Skydd mot oavsiktligt pekande</string>
@@ -118,7 +116,6 @@
     <string name="external_storage_subtext">Den här rättigheten krävs för att spara bilder med BaldPhone.</string>
     <string name="feedback">Skicka återkoppling</string>
     <string name="feedback_cannot_be_empty">Återkoppling kan inte vara tom!</string>
-    <string name="feedback_sent_successfully">Återkoppling skickades!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Ange behov av\nanpassning
     </string>
     <string name="font_size">Teckenstorlek</string>
@@ -283,35 +280,8 @@
     </string>
     <string name="permissions_calm">BaldPhone behöver följande rättigheter för att köras. Några av dem kan låta skrämmande, men det är det enda sättet för BaldPhone att ersätta telefonens ursprungliga användargränssnitt. Detta är ofarligt och ingen data samlas in. Tryck på OK för att tillåta eller Nej för att avsluta BaldPhone.
     </string>
-    <string name="pending_update">Väntar på uppdatering</string>
-    <string name="download">Hämta</string>
-    <string name="install_updates">Hämta uppdateringar</string>
-    <string name="install_updates_subtext">Den här rättigheten krävs för att uppdatera BaldPhone</string>
-    <string name="a_new_update_is_available">En ny uppdatering är tillgänglig!\n Uppdateringar är viktiga för att BaldPhone ska köras stabilt. Tryck på OK för att ladda ner uppdateringen.
-    </string>
-    <string name="current_version">Nuvarande Version:\n</string>
-    <string name="new_version">Ny Version:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nya uppdateringar är klara att hämtas.</string>
-    <string name="install">Installera</string>
-    <string name="data_warning">Datavarning</string>
-    <string name="data_warning_subtext">Du är inte ansluten till WiFi.\nStorleken på hämtningen är cirka 3MB, om du är utomlands kan det kosta pengar.\nVill du fortsätta med hämtningen?
-    </string>
-    <string name="update_message_is_corrupted">Updatteringsmeddelande är korrupt.</string>
-    <string name="check_for_updates">Leta efter uppdateringar</string>
-    <string name="could_not_connect_to_server">Kunde inte ansluta till servern!</string>
-    <string name="could_not_connect_to_internet">Kunde inte ansluta till Internet!</string>
-    <string name="could_not_start_the_download">Kunde inte påbörja hämtningen!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Den hämtade uppdateringen kunde inte tas bort!
-    </string>
-    <string name="downloading">Hämtar…</string>
 
-    <string name="baldphone_is_up_to_date">Använder den senaste versionen av BaldPhone.</string>
     <string name="what_s_new">Vad som är nytt</string>
-    <string name="download_finished">Hämtning färdig!</string>
-    <string name="downloading_updates">Hämtar Uppdateringar…</string>
-    <string name="installing_doesn_t_work">Gick det inte att installera?</string>
-    <string name="try_now">Försök Nu</string>
-    <string name="download_progress">Hämtningsstatus</string>
     <string name="what_do_you_want_to_do_with___">Vad vill du göra med %s?</string>
     <string name="crash_reports">Krashrapporter</string>
     <string name="crash_reports_subtext">Krashrapporter hjälper till att förbättra upplevelsen med BaldPhone.\n\nRapporterna innehåller enbart information nödvändig för att åtgärda fel.
@@ -353,8 +323,6 @@
     <string name="low_battery_alert_subtext">Välj om du vill att statuslisten ska visas röd när batterinivån är lägre än 20%\n Observera att statuslisten måste vara synlig för att det ska märkas.
     </string>
 
-    <string name="also_available_at">Återkoppling måste skrivas på engelska eller hebreiska!\n\nDu kan även skicka ett epost till\nbaldphone.contact@gmail.com
-    </string>
     <string name="grant_all_permissions">Tillåt alla rättigheter</string>
 
 

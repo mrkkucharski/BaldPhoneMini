@@ -16,7 +16,6 @@
 
 <resources>
     <string name="about">About</string>
-    <string name="about_subtext">안녕하세요! 저는 이 플랫폼의 개발자 Uriah Shaul Mandel입니다. 저는 성인 이후의 시간을 이 플랫폼을 만드는데 투자하였으며 이 플랫폼을 모든 사람들이 사용할 수 있도록 무료로 배포하였습니다. 귀하는 제 이메일로 연락하실 수 있습니다. : baldphone.contact@gmail.com</string>
     <string name="accessibility_level">접근 가능한 수준</string>
     <string name="accessibility_settings">접근 가능</string>
     <string name="accidental_touches">오작동 방지 필터</string>
@@ -114,7 +113,6 @@
     <string name="external_storage_subtext">사진을 저장하기 위해서 허가가 필요합니다.</string>
     <string name="feedback">피드백 보내기</string>
     <string name="feedback_cannot_be_empty">피드백은 비워둘 수 없습니다!</string>
-    <string name="feedback_sent_successfully">피드백이 성공적으로 전송되었습니다!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">접근 정도를 설정하십시오</string>
     <string name="font_size">글자 크기</string>
     <string name="friday">금요일</string>
@@ -265,32 +263,8 @@
     <string name="clear_all_notifications">모든 알람 지우기</string>
     <string name="clear_cache_subtext">캐시를 지우길 원하십니까? 앱 바로가기도 제거됩니다1</string>
     <string name="permissions_calm">안녕하세요, BaldPhone을 사용하려면 다음 권한이 있어야합니다. 그들 중 일부는 무섭게 들리지만 BaldPhone이 전화기의 인터페이스를 대체 할 수있는 유일한 방법입니다. 데이터가 수집되지 않으며 피해를주지 않습니다. OK를 눌러 권한을 부여하거나 No를 눌러 BaldPhone을 종료하십시오.</string>
-    <string name="pending_update">보류 중인 업데이트</string>
-    <string name="download">다운로드</string>
-    <string name="install_updates">업데이트 설치</string>
-    <string name="install_updates_subtext">BaldPhone을 업데이트 하기 위해서 허가가 필요합니다.</string>
-    <string name="a_new_update_is_available">업데이트가 가능합니다</string>
-    <string name="current_version">현재 버전:</string>
-    <string name="new_version">새 버전:</string>
-    <string name="new_updates_are_ready_to_be_downloaded">새 업데이트가 다운로드될 준비가 되었습니다.</string>
-    <string name="install">설치</string>
-    <string name="data_warning">데이터 경고</string>
-    <string name="data_warning_subtext">안녕하세요, WIFI에 연결되어 있지 않습니다. 다운로드 크기는 약 3MB이며 해외에있는 경우 비용이 발생할 수 있습니다. 다운로드를 계속 하시겠습니까?</string>
-    <string name="update_message_is_corrupted">업데이트 메시지가 손상되었습니다.</string>
-    <string name="check_for_updates">업데이트 확인</string>
-    <string name="could_not_connect_to_server">서버가 응답하지 않습니다!</string>
-    <string name="could_not_connect_to_internet">인터넷이 연결되지 않았습니다!</string>
-    <string name="could_not_start_the_download">다운로드가 시작되지 않았습니다!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">다운로드 한 업데이트 파일을 삭제할 수 없습니다!</string>
-    <string name="downloading">다운로드 중…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone가 최신입니다.</string>
     <string name="what_s_new">새로운 소식</string>
-    <string name="download_finished">다운로드가 끝났습니다!</string>
-    <string name="downloading_updates">업데이트 다운로드 중…</string>
-    <string name="installing_doesn_t_work">설치가 되지 않습니까?</string>
-    <string name="try_now">지금 시도하시오</string>
-    <string name="download_progress">다운로드 진행상황</string>
     <string name="what_do_you_want_to_do_with___">당신은 %s와 무엇을 같이하고 싶나요?</string>
     <string name="crash_reports">충돌 리포트</string>
     <string name="crash_reports_subtext">충돌 리포트는 BaldPhone를 완벽하게 만드는데 도움이 됩니다. 버그를 수정하는데만 사용되며 버그를 수정하는데 필요한 정보 이외의 정보는 수집되지 않습니다.</string>
@@ -328,7 +302,6 @@
     <string name="low_battery_alert">배터리 부족 경고</string>
     <string name="low_battery_alert_subtext">배터리가 20% 미만일 때 홈 화면에서 상태 표시 줄을 빨간색으로 표시하려면 선택하십시오. 알림 시스템 상태 표시 줄이 숨겨져 있으면 표시되지 않습니다.</string>
 
-    <string name="also_available_at">또한 baldphone.contact@gmail.com 이 주소로 English/Hebrew 언어를 사용하여 피드백이 가능합니다!</string>
     <string name="grant_all_permissions">모든 허가 승인</string>
 
 

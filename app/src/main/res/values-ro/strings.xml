@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">Despre</string>
-    <string name="about_subtext">Hi!\nMy name is Uriah Shaul Mandel, and I\'m the developer of this platform.\n
-        I\'ve spent most of my \"adult\" life making this platform, and I\'ve released it for free, for all to
-        use.\nYou are more than welcome to contact me by email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Nivel accesibilitate</string>
     <string name="accessibility_settings">Accesibilitate</string>
     <string name="accidental_touches">Protecție atingere aleatorie</string>
@@ -122,7 +118,6 @@
     <string name="external_storage_subtext">Această permisiune este necesară pentru a salva poze</string>
     <string name="feedback">Trimite feedback </string>
     <string name="feedback_cannot_be_empty">Feedback-ul nu poate fii gol!</string>
-    <string name="feedback_sent_successfully">Feedback trimis cu succes</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Vă rugam selectați nivelul de accesibilitate
     </string>
     <string name="font_size">Dimensiune text</string>
@@ -285,34 +280,8 @@
     </string>
     <string name="permissions_calm">Hei, BaldPhone are nevoie de urmatoarele permisuni pentru a funcțion\n
         Unele pot suna înspăimântător dar altfel nu îti vom putea înlocui interfața telefonului\nNu îți vom gestiona datele.  Apasă OK pentru a permite sau No pentru a inchide BaldPhone</string>
-    <string name="pending_update">Actualizare în așteptare</string>
-    <string name="download">Download</string>
-    <string name="install_updates">Actualizează</string>
-    <string name="install_updates_subtext">Această permisiune este necesară pentru a actualiza BaldPhone</string>
-    <string name="a_new_update_is_available">A aparut o nouă actualizare! Apasă OK pentru a actualiza BaldPhone!
-    </string>
-    <string name="current_version">Versiune curentă:\n</string>
-    <string name="new_version">Versiune nouă:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Actualizări sunt gata de download</string>
-    <string name="install">Instalează</string>
-    <string name="data_warning">Atenționare date</string>
-    <string name="data_warning_subtext">Hei, nu sunteti conectat la Wi-Fi\nAr putea aparea costuri suplimentare. Continuați?
-    </string>
-    <string name="update_message_is_corrupted">Mesajul este corupt.</string>
-    <string name="check_for_updates">Verifică actualizări</string>
-    <string name="could_not_connect_to_server">Nu s-a putut conecta la server!</string>
-    <string name="could_not_connect_to_internet">Nu s-a putut conecta la internet!</string>
-    <string name="could_not_start_the_download">Nu s-a putut începe descărcarea!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Fișierul descărcat nu a putut fii șters!</string>
-    <string name="downloading">Se descarcă…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone este actualizat.</string>
     <string name="what_s_new">Ce este nou</string>
-    <string name="download_finished">Descarcare terminată</string>
-    <string name="downloading_updates">Se descarcă actualizări</string>
-    <string name="installing_doesn_t_work">Nu se poate instala?</string>
-    <string name="try_now">Încearca acum</string>
-    <string name="download_progress">Progres descărcare</string>
     <string name="what_do_you_want_to_do_with___">Ce doriți să faceți cu %s?</string>
     <string name="crash_reports">Report erori</string>
     <string name="crash_reports_subtext">Aceste reporturi ajuta la dezvoltarea aplicației. Sunt împartășite doar date aferente erorii.
@@ -351,7 +320,6 @@
     <string name="low_battery_alert">Alertă nivel scăzut baterie</string>
     <string name="low_battery_alert_subtext">Alegeți dacă doriți ca bara de status sa apară roșie atunci când bateria scade sub 20%.</string>
 
-    <string name="also_available_at">Also available at\nbaldphone.contact@gmail.com\nFeedback must be in English/Hebrew!</string>
     <string name="grant_all_permissions">Acordați toate permisiunile</string>
 
 

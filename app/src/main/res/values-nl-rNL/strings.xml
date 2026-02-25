@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">Over</string>
-    <string name="about_subtext">Hallo! \n Mijn naam is Uriah Shaul Mandel en ik ben de ontwikkelaar van dit platform.\n 
-Ik heb het grootste deel van mijn \"volwassen\" leven besteed aan het maken van dit platform, en ik heb het gratis vrijgegeven zodat iedereen
-het kan gebruiken.\n U bent meer dan welkom om contact met mij op te nemen via e-mail:  \n baldphone.contact@gmail.com</string>
     <string name="accessibility_level">Toegankelijkheidsniveau</string>
     <string name="accessibility_settings">Toegankelijkheid</string>
     <string name="accidental_touches">Onbedoelde aanrakingsbeveiliging</string>
@@ -117,7 +114,6 @@ dit bericht blijft verschijnen dan kan het uitgeschakeld worden in de toegankeli
     <string name="external_storage_subtext">Deze bevoegdheid is vereist om afbeeldingen op te slaan.</string>
     <string name="feedback">Feedback verzenden</string>
     <string name="feedback_cannot_be_empty">Feedback mag niet leeg zijn!</string>
-    <string name="feedback_sent_successfully">Feedback succesvol verzonden!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Selecteer het toegankelijkheidsniveau</string>
     <string name="font_size">Lettertypegrootte</string>
     <string name="friday">Vrijdag</string>
@@ -274,33 +270,8 @@ Deel het met hen!\"</string>
     <string name="permissions_calm">Hallo, BaldPhone moet de volgende bevoegdheden hebben om goed te kunnen werken. Sommigen van hen
 klinken misschien eng, maar het is de enige manier waarop BaldPhone de interface van de telefoon kan vervangen. Er worden geen gegevens verzameld en zal ook
 geen schade veroorzaken. Druk op OK om de bevoegdheden te geven of druk op nee om BaldPhone af te sluiten.</string>
-    <string name="pending_update">Geplande Update</string>
-    <string name="download">Downloaden</string>
-    <string name="install_updates">Updates installeren</string>
-    <string name="install_updates_subtext">Deze bevoegdheid is vereist om BaldPhone te kunnen updaten</string>
-    <string name="a_new_update_is_available">Er is een nieuwe update beschikbaar!\nUpdates zijn belangrijk om BaldPhone goed te laten werken./nDruk op OK om te downloaden.</string>
-    <string name="current_version">Huidige Versie:\n</string>
-    <string name="new_version">Nieuwe Versie:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nieuwe updates zijn klaar om gedownload te worden.</string>
-    <string name="install">Installeren</string>
-    <string name="data_warning">Datawaarschuwing</string>
-    <string name="data_warning_subtext">Hi, je hebt geen wifi-verbinding.\nDe grootte van de download is ongeveer 3 MB,
-als u in het buitenland bent, kost u dit mogelijk geld.\ nWilt u doorgaan met het downloaden?</string>
-    <string name="update_message_is_corrupted">Updatebericht is beschadigd.</string>
-    <string name="check_for_updates">Controleer op updates</string>
-    <string name="could_not_connect_to_server">Kan geen verbinding maken met de server!</string>
-    <string name="could_not_connect_to_internet">Kan geen verbinding maken met het internet!</string>
-    <string name="could_not_start_the_download">Kan de download niet starten!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Het gedownloade updatebestand kon niet worden verwijderd!</string>
-    <string name="downloading">Aan het downloaden…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone is up-to-date.</string>
     <string name="what_s_new">Wat is er nieuw</string>
-    <string name="download_finished">Download voltooid!</string>
-    <string name="downloading_updates">Updates worden gedownload…</string>
-    <string name="installing_doesn_t_work">Werkt het installeren niet?</string>
-    <string name="try_now">Probeer Nu</string>
-    <string name="download_progress">Voortgang downloaden</string>
     <string name="what_do_you_want_to_do_with___">Wat wilt u doen met %s?</string>
     <string name="crash_reports">Crashrapporten</string>
     <string name="crash_reports_subtext">Crashrapporten helpen om BaldPhone te verbeteren\nZe worden alleen gebruikt om bugs op te lossen en er wordt geen andere informatie verstuurd dan dat wat nodig is om de bug op te lossen.</string>
@@ -338,7 +309,6 @@ als u in het buitenland bent, kost u dit mogelijk geld.\ nWilt u doorgaan met he
     <string name="low_battery_alert">Waarschuwing lage batterij</string>
     <string name="low_battery_alert_subtext">Kies dit als u wilt dat de statusbalk rood wordt op het startscherm wanneer de batterij onder de 20% is\nLet op: Wanneer de statusbalk verborgen is wordt dit niet weergegeven.</string>
 
-    <string name="also_available_at">Ook bereikbaar op \nbaldphone.contact@gmail.com\nFeedback moet echter wel in het Engels / Hebreeuws zijn!</string>
     <string name="grant_all_permissions">Verleen alle bevoegdheden</string>
 
 

@@ -16,8 +16,6 @@
 
 <resources>
     <string name="about">Az alkalmazásról</string>
-    <string name="about_subtext">Szia!
-A nevem Uriah Shaul Mandel, és én fejlesztettem ezt a felületet amit használsz. Sok időt töltöttem vele, ha kérdésed van nyugodtan írj nekem emailt a baldphone.contact@gmail.com címen. (Kérlek angolul írj)</string>
     <string name="accessibility_level">Akadálymentesítési szint</string>
     <string name="accessibility_settings">Akadálymentes kezelés</string>
     <string name="accidental_touches">Véletlen érintés elleni védelem</string>
@@ -115,7 +113,6 @@ A nevem Uriah Shaul Mandel, és én fejlesztettem ezt a felületet amit használ
     <string name="external_storage_subtext">A képek mentéséhez szükség van erre az engedélyre.</string>
     <string name="feedback">Visszajelzés küldése.</string>
     <string name="feedback_cannot_be_empty">A visszajelzés nem lehet üres!</string>
-    <string name="feedback_sent_successfully">Visszajelzés elküldve!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Válaszd ki a akadálymentesítési szintet</string>
     <string name="font_size">Betűméret</string>
     <string name="friday">Péntek</string>
@@ -271,32 +268,8 @@ https://baldphone.com</string>
     <string name="clear_all_notifications">Értesítések törlése</string>
     <string name="clear_cache_subtext">Biztosan törölni akarod a gyorsítótárat? Az ideiglenes fájlok törlése megoldhat néhány problémát, de a kezdőképernyő tartalma elveszik.</string>
     <string name="permissions_calm">Szia! A BaldPhone alkalmazásnak szüksége van néhány engedélyre, hogy probléma nélkül működjön. Ijesztően hangozhat, de semmilyen adat nem hagyja el a telefont. Az OK-ra nyomva elfogadod az engedélykérést.</string>
-    <string name="pending_update">Frissítés függőben.</string>
-    <string name="download">Letöltés</string>
-    <string name="install_updates">Frissítések telepítése</string>
-    <string name="install_updates_subtext">Szükséges engedély a BaldPhone frissítéséhez.</string>
-    <string name="a_new_update_is_available">Egy új frissítés érhető el! A frissítések fontosak a BaldPhone zavartalan működéséhez.</string>
-    <string name="current_version">Jelenlegi verzió:\n</string>
-    <string name="new_version">Új verzió:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Új frissítés érhető el!</string>
-    <string name="install">Telepítés</string>
-    <string name="data_warning">Adat figyelmeztetés</string>
-    <string name="data_warning_subtext">Nem vagy wifi-hez kapcsolódva. Az alkalmazás körülbelül 3MB-ot fog letölteni. Folytatod?</string>
-    <string name="update_message_is_corrupted">Frissítési üzenet hiba</string>
-    <string name="check_for_updates">Frissítések ellenőrzése</string>
-    <string name="could_not_connect_to_server">Nem lehet csatlakozni a szerverhez!</string>
-    <string name="could_not_connect_to_internet">Nem lehet csatlakozni az internethez!</string>
-    <string name="could_not_start_the_download">Nem lehet elindítani a letöltést!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Letöltött frissítési fájlt nem sikerült törölni!</string>
-    <string name="downloading">Letöltés…</string>
 
-    <string name="baldphone_is_up_to_date">A BaldPhone alkalmazás legfrissebb verzióját használod!</string>
     <string name="what_s_new">Újdonságok</string>
-    <string name="download_finished">Letöltés kész</string>
-    <string name="downloading_updates">Frissítések Letöltése…</string>
-    <string name="installing_doesn_t_work">Telepítés nem működik?</string>
-    <string name="try_now">Kipróbálás Most</string>
-    <string name="download_progress">Letöltési folyamat</string>
     <string name="what_do_you_want_to_do_with___">Mit akarsz tenni vele: %s?</string>
     <string name="crash_reports">Összeomlási jelentés</string>
     <string name="crash_reports_subtext">Az összeomlási jelentések elküldése segíti a BaldPhone alkamazás fejlesztését.</string>
@@ -334,7 +307,6 @@ https://baldphone.com</string>
     <string name="low_battery_alert">Alacsony töltöttségi szint jelzés</string>
     <string name="low_battery_alert_subtext">Válaszd ki, hogy az állapotjelző sáv 20% töltöttségi szint alatt pirosan jelezzen-e.</string>
 
-    <string name="also_available_at">Szintén elérhető a \nbaldphone.contact@gmail.com\nA visszajelzés nyelve angol vagy héber legyen.</string>
     <string name="grant_all_permissions">Minden engedély megadása</string>
 
 

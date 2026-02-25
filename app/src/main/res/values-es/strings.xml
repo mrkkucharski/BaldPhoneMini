@@ -16,11 +16,6 @@
 
 <resources>
     <string name="about">Acerca de</string>
-    <string name="about_subtext">
-        ¡Hola, buenos días!\n
-        Me llamo Uriah Shaul Mandel y soy el desarrollador de esta plataforma. He pasado la mayor parte de mi vida «adulta» desarrollando esta plataforma, y la he lanzado gratis para beneficio de todos. Si tienes alguna duda o sugerencia he aquí mi correo electrónico:\n
-        baldphone.contact@gmail.com (si me escribes, mejor en inglés)
-    </string>
     <string name="accessibility_level">Nivel de accesibilidad</string>
     <string name="accessibility_settings">Accesibilidad</string>
     <string name="accidental_touches">Protección de toque accidental</string>
@@ -123,7 +118,6 @@
     <string name="external_storage_subtext">Este permiso es necesario para guardar Fotos.</string>
     <string name="feedback">Enviar comentarios y opiniones</string>
     <string name="feedback_cannot_be_empty">Para enviar comentarios primero hay que escribir algo.</string>
-    <string name="feedback_sent_successfully">El comentario se ha enviado correctamente.</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Elige un nivel de accesibilidad</string>
     <string name="font_size">Tamaño del texto</string>
     <string name="friday">viernes</string>
@@ -285,39 +279,8 @@
 		BaldPhone no hará nada raro con tus datos personales ni dañará tu teléfono.
 		Presiona el botón de «Aceptar» para otorgar los permisos o «No» para salir de BaldPhone.
     </string>
-    <string name="pending_update">Hay una actualización pendiente</string>
-    <string name="download">Descargar</string>
-    <string name="install_updates">Instalar actualizaciones</string>
-    <string name="install_updates_subtext">Este permiso es necesario para poder actualizar BaldPhone</string>
-    <string name="a_new_update_is_available">Hay una versión nueva de la aplicación\n
-		Las actualizaciones son importantes para que BaldPhone siga funcionando bien y corregir pequeños defectos.\n
-		Pulsa el botón «Aceptar» para descargarla.
-    </string>
-    <string name="current_version">Versión actual:\n</string>
-    <string name="new_version">Versión nueva:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">La actualización está lista para ser descargada.</string>
-    <string name="install">Instalar</string>
-    <string name="data_warning">Cuidado con la tarifa de datos de Internet</string>
-    <string name="data_warning_subtext">
-		Hola, parece que no estás conectado a ninguna red Wi-Fi.\n
-		El tamaño de la descarga es de aproximadamente 3 MB, y si estás en el extranjero la operadora puede cobrarte por ello.\n
-		¿Seguro que quieres descargar la actualización?
-    </string>
-    <string name="update_message_is_corrupted">El mensaje de actualización no ha llegado entero.</string>
-    <string name="check_for_updates">Comprobar actualizaciones</string>
-    <string name="could_not_connect_to_server">No ha sido posible comunicarse con el servidor de actualizaciones por Internet.</string>
-    <string name="could_not_connect_to_internet">No ha sido posible conectarse a Internet.</string>
-    <string name="could_not_start_the_download">No ha sido posible empezar la descarga.</string>
-    <string name="downloaded_update_file_could_not_be_deleted">No se ha podido eliminar el archivo con la actualización.</string>
-    <string name="downloading">Descargando…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone está actualizado.</string>
     <string name="what_s_new">Novedades</string>
-    <string name="download_finished">La actualización se ha descargado correctamente.</string>
-    <string name="downloading_updates">Descargando actualizaciones…</string>
-    <string name="installing_doesn_t_work">¿No se ha podido instalar la actualización?</string>
-    <string name="try_now">Intentar de nuevo</string>
-    <string name="download_progress">Descargando</string>
     <string name="what_do_you_want_to_do_with___">¿Qué quieres hacer con %s?</string>
     <string name="crash_reports">Enviar informes de fallos</string>
     <string name="crash_reports_subtext">El envío por Internet de estos informes automáticos de fallos ayuda a que la experiencia de BaldPhone mejore de forma sustancial. Estos informes solo se usan para arreglar cosas, y contienen la información mínima para poder entender el problema.
@@ -357,7 +320,6 @@
     <string name="low_battery_alert_subtext">Elige si quieres que la barra de estado se ponga roja en la pantalla de inicio cuando la batería baje del 20%. Ten en cuenta que esta opción no sirve de nada si la barra de estado está oculta.
     </string>
 
-    <string name="also_available_at">También estoy disponible a través de\nbaldphone.contact@gmail.com\nLos comentarios deben de escribirse en inglés o hebreo para que yo los entienda.</string>
     <string name="grant_all_permissions">Conceder todos los permisos</string>
 
 

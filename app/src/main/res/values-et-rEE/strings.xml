@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">Teave</string>
-    <string name="about_subtext">Tere.\nMinu nimi on Uriah Shaul Mandel, ma olen selle rakenduse looja.\n
-         Olen seda rakendust arendanud terve oma täiskasvanu ea. Programm on kõigile kasutamiseks tasuta.\nKui soovite võite minuga, inglise keeles, ühendust võtta: nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Hõlbustuse tase</string>
     <string name="accessibility_settings">Hõlbustusfunktsioonid</string>
     <string name="accidental_touches">Juhusliku puudutuse kaitse</string>
@@ -123,7 +120,6 @@
     <string name="external_storage_subtext">Piltide salvestamiseks on vaja juurdepääsuluba.</string>
     <string name="feedback">Saada tagasiside</string>
     <string name="feedback_cannot_be_empty">Tagasiside kast ei tohi olla tühi.</string>
-    <string name="feedback_sent_successfully">Tagasiside saadetud.</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Palun vali hõlbustusfunktsioonide tase
     </string>
     <string name="font_size">Šrifti suurus</string>
@@ -289,35 +285,8 @@
         Mõned load võivad kõlada hirmsalt, aga see on ainus moodus, kuidas BaldPhone saab töötada. Rakendus
         ei kogu andmeid ja ei tee liiga telefonile. Loa andmiseks vajutage OK või BaldPhone\'st väljumiseks, ei.
     </string>
-    <string name="pending_update">Uuendus ootamas</string>
-    <string name="download">Lae alla</string>
-    <string name="install_updates">Paigalda uuendused</string>
-    <string name="install_updates_subtext">Juurdepääsuluba on vaja BaldPhone\'i uuendamiseks</string>
-    <string name="a_new_update_is_available">Uuendus on saadaval.\nUuendused on vajalikud BaldPhone\'i sujuvaks 
-        töötamiseks.\nAllalaadimiseks vajuta OK.
-    </string>
-    <string name="current_version">Praegune versioon:\n</string>
-    <string name="new_version">Uus versioon:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Uuendused ootavad allalaadimist.</string>
-    <string name="install">Paigalda</string>
-    <string name="data_warning">Andmemahu hoiatus</string>
-    <string name="data_warning_subtext">Telefon ei ole ühendatud WiFI\'ga.\nAllalaaditava maht on 3MB, 
-     välismaal viibides võib see maksta.\nKas soovite sellegi poolest allla laadida?</string>
-    <string name="update_message_is_corrupted">Uuenduse teave on vigane.</string>
-    <string name="check_for_updates">Kontrolli uuendusi</string>
-    <string name="could_not_connect_to_server">Serveriga ei saa ühendust.</string>
-    <string name="could_not_connect_to_internet">Internetti ei saa ühenduda.</string>
-    <string name="could_not_start_the_download">Ei saanud alustada allalaadimist.</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Alla laetud uuenduse faili ei saanud kustutada.</string>
-    <string name="downloading">Allalaadimine…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone\'i kõige viimane versioon on paigaldatud.</string>
     <string name="what_s_new">Mis on uus</string>
-    <string name="download_finished">Allalaadimine on lõpetatud.</string>
-    <string name="downloading_updates">Uuenduste allalaadimine…</string>
-    <string name="installing_doesn_t_work">Kas ei saa installida?</string>
-    <string name="try_now">Proovi kohe</string>
-    <string name="download_progress">Allalaadimise seis</string>
     <string name="what_do_you_want_to_do_with___">Mida te soovite %s\'ga teha?</string>
     <string name="crash_reports">Veateated</string>
     <string name="crash_reports_subtext">Veateated on aruanded, mis aitavad BaldPhone\'i teha paremaks\nTeateid kasutatakse
@@ -357,7 +326,6 @@
     <string name="low_battery_alert">Madala akutaseme teavitus</string>
     <string name="low_battery_alert_subtext">Valige, kui soovite, et avakuva tegumiriba oleks punane, kui aku mahutavus on alla 20%\nTähelepanek Seda ei näidata, kui süsteemi tegumiriba on peidus.</string>
 
-    <string name="also_available_at">Tagasiside saab saata ka\nbaldphone.contact@gmail.com\nTekst peab olema inglise või heebrea keeles.</string>
     <string name="grant_all_permissions">Anna kõik vajalikud juurdepääsuload</string>
 
 

@@ -80,7 +80,6 @@
     <string name="evening">مساء</string>
     <string name="feedback">إرسال تعليق</string>
     <string name="feedback_cannot_be_empty">التعليق لايمكن ان يكون فارغ!</string>
-    <string name="feedback_sent_successfully">تم إرسال التعليق بنجاح!</string>
     <string name="font_size">حجم الخط</string>
     <string name="friday">الجمعة</string>
     <string name="hello">مرحبا</string>
@@ -146,7 +145,6 @@
     <string name="whatsapp">واتساب</string>
     <string name="yesterday">الأمس</string>
     <string name="clear_all_notifications">حذف كل الإشعارات؟</string>
-    <string name="download">تنزيل</string>
     <string name="alarm">منبه</string>
     <string name="no_new_notifications">لا يوجد إشعارات جديدة</string>
     <string name="mute">كتم الصوت</string>

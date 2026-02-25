@@ -16,7 +16,6 @@
 
 <resources>
     <string name="about">Informazioni</string>
-    <string name="about_subtext">Ciao! Il mio nome è Uriah Shaul Mandel e sono lo sviluppatore di questa app.\nHo speso una gran parte della mia vita \"adulta\" per realizzare questo software e l\'ho rilasciato come Open Source affinché tutti lo possano utilizzare liberamente.\nSe vuoi contattarmi via email, sei il benvenuto:\nbaldphone.contact@gmail.com</string>
     <string name="accessibility_level">Livello di accessibilità</string>
     <string name="accessibility_settings">Accessibilità</string>
     <string name="accidental_touches">Protezione contro i tocchi accidentali</string>
@@ -96,6 +95,8 @@
     <string name="contacts">Contatti</string>
     <string name="contacts_read_subtext">Autorizzazione necessaria per mostrare i contatti memorizzati nel dispositivo.</string>
     <string name="contacts_subtext">Autorizzazione necessaria per aggiungere nuovi contatti.</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="pasted_from_clipboard">Pasted from clipboard</string>
     <string name="crash">Oops!\nBaldPhone ha riscontrato un problema ed ora si riavvierà.</string>
     <string name="current_time">Orario attuale</string>
     <string name="custom">Personalizza</string>
@@ -117,8 +118,15 @@
     <string name="example_of_different_text_sizes">Esempio di testo in varie dimensioni. Scegli una impostazione per cui sia leggibile, ma non esagerato.</string>
     <string name="external_storage_subtext">Autorizzazione necessaria per salvare le immagini.</string>
     <string name="feedback">Invia feedback</string>
+    <string name="feedback_advanced">Advanced</string>
     <string name="feedback_cannot_be_empty">Il feedback non può essere vuoto!</string>
-    <string name="feedback_sent_successfully">Feedback inviato con successo!</string>
+    <string name="feedback_choose_email_app">Select an email app</string>
+    <string name="feedback_email_subject">Feedback for %s</string>
+    <string name="feedback_hint">Write your message here…</string>
+    <string name="feedback_no_email_app_found">No app available to send email.</string>
+    <string name="feedback_send">Send Email</string>
+    <string name="feedback_subtitle">Share feedback or report a problem to help improve BaldPhone Neo.</string>
+    <string name="feedback_include_info">Include technical details (recommended)</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Scegli il livello di accessibilità:</string>
     <string name="font_size">Dimensioni carattere</string>
     <string name="friday">Venerdì</string>
@@ -143,7 +151,6 @@
     <string name="emergency_services">112 Numero di Emergenza</string>
     <string name="mail">Mail</string>
     <string name="maps">Mappe</string>
-
 
     <string name="medium">Medio</string>
     <string name="medium_level">Medio</string>
@@ -173,7 +180,6 @@
     <string name="on">Attivo</string>
 
     <string name="only_once">Solo una</string>
-
 
     <string name="open">Apri</string>
 
@@ -242,6 +248,7 @@
     <string name="theme_settings">Tema</string>
     <string name="theme_settings_subtext">Scegli un tema.</string>
 
+    <string name="theme_system_default">System</string>
     <string name="thursday">Giovedì</string>
     <string name="time_changer">Modifica orario pillole</string>
     <string name="tiny">Piccolo</string>
@@ -279,36 +286,7 @@
         possono spaventarti, ma è l\'unico modo in cui BaldPhone può sostituire l\'interfaccia del telefono. Nessuna informazione viene presa e non causa
         danni. Premi OK per fornire le autorizzazioni o premi No per uscire da BaldPhone.
     </string>
-    <string name="pending_update">In attesa di aggiornamento</string>
-    <string name="download">Download</string>
-    <string name="install_updates">Installa gli aggiornamenti</string>
-    <string name="install_updates_subtext">Autorizzazione necessaria per l\'auto-aggiornamento di BaldPhone.</string>
-    <string name="a_new_update_is_available">Un nuovo aggiornamento è disponibile!\nGli aggiornamenti sono importanti perché permettono a BaldPhone di funzionare
-        senza problemi.\nPremi OK per scaricare.
-    </string>
-    <string name="current_version">Versione attuale:\n</string>
-    <string name="new_version">Nuova versione:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nuovi aggiornamenti sono pronti per essere scaricati.</string>
-    <string name="install">Installa</string>
-    <string name="data_warning">Avviso dati</string>
-    <string name="data_warning_subtext">Ciao, non sei connesso al Wi-Fi.\nLe dimensioni del download sono circa 3Mb,
-        se sei all\'estero potrebbe costarti del credito.\nVuoi procedere con il download?
-    </string>
-    <string name="update_message_is_corrupted">Il messaggio di aggiornamento è corrotto.</string>
-    <string name="check_for_updates">Verifica aggiornamenti disponibili</string>
-    <string name="could_not_connect_to_server">Impossibile connettersi al server!</string>
-    <string name="could_not_connect_to_internet">Impossibile connettersi ad Internet!</string>
-    <string name="could_not_start_the_download">Impossibile iniziare il download!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Il file di aggiornamento non può essere eliminato!</string>
-    <string name="downloading">Scaricamento in corso…</string>
-
-    <string name="baldphone_is_up_to_date">BaldPhone è aggiornato</string>
     <string name="what_s_new">Cosa c\'è di nuovo</string>
-    <string name="download_finished">Download completato</string>
-    <string name="downloading_updates">Download aggiornamenti…</string>
-    <string name="installing_doesn_t_work">L\'installazione non funziona?</string>
-    <string name="try_now">Prova Ora</string>
-    <string name="download_progress">Progresso dello scaricamento</string>
     <string name="what_do_you_want_to_do_with___">Cosa vuoi fare con %s?</string>
     <string name="crash_reports">Segnalazione automatica errori</string>
     <string name="crash_reports_subtext">La segnalazione automatica errori serve agli sviluppatori per migliorare il funzionamento di BaldPhone. Vengono raccolte e inviate solo le informazioni necessarie a risolvere il problema.</string>
@@ -322,13 +300,11 @@
     <string name="vibrate">Vibrazione</string>
     <string name="your_phone_doesnt_have_assistant_installed">Il tuo telefono non ha alcun assistente installato.</string>
 
-
     <string name="status_bar_settings">Barra di stato</string>
     <string name="status_bar_settings_subtext">Quando vuoi che sia visibile la barra di stato Android?</string>
     <string name="only_home_screen">Schermata Home</string>
     <string name="nowhere">Mai</string>
     <string name="everywhere">Sempre</string>
-
 
     <string name="share_photo">Condividi foto</string>
 
@@ -340,15 +316,38 @@
     <string name="next">Prossimo</string>
     <string name="go">Vai</string>
 
-
     <string name="dialer_sounds">Suoni tastierino</string>
     <string name="dialer_sounds_subtext">Scegli se vuoi che il tastierino emetta dei suoni quando componi un numero di telefono.</string>
     <string name="low_battery_alert">Avviso batteria scarica</string>
     <string name="low_battery_alert_subtext">Scegli se vuoi che la barra di stato nella schermata Home diventi rossa quando la carica della batteria è inferiore al 20%.\nNon è visibile se la barra di stato è nascosta.</string>
 
-    <string name="also_available_at">Puoi anche scrivere a\nbaldphone.contact@gmail.com\nPer cortesia, invia feedback solo in inglese o in ebraico.</string>
     <string name="grant_all_permissions">Autorizzazioni richieste</string>
 
+    <string name="label_lock_screen_short">Lock Screen</string>
+    <string name="accessibility_service_description">Enables BaldPhone Neo’s quick screen lock feature, allowing you to lock your device instantly with a single tap.</string>
+    <string name="accessibility_permission_dialog_title">Accessibility Permission Required</string>
+    <string name="accessibility_permission_dialog_message">To enable one-tap screen lock, BaldPhone Neo needs Accessibility permission. It’s safe and used only for this feature.</string>
+    <string name="accessibility_permission_check_title">Accessibility Permission Check</string>
+    <string name="accessibility_permission_check_message">Please restart the permission: turn the BaldPhone Neo service OFF, and then back ON.</string>
+    <string name="dialog_button_not_now">Not now</string>
+    <string name="dialog_button_enable">Enable in settings</string>
+
+    <!-- Overview -->
+    <string name="about_overview_section">Learn More</string>
+    <string name="about_tag_line">A simple launcher that combines calling, messaging, and everyday features into one easy-to-use experience.</string>
+    <string name="about_version_title">Version %s</string>
+    <string name="about_web_page">GitHub Project</string>
+    <string name="about_faq">FAQ / Help</string>
+
+    <!-- Credits -->
+    <string name="about_credits_title">Credits</string>
+    <string name="about_credits">Contributors &amp; Translators</string>
+
+    <!-- Legal & Privacy -->
+    <string name="about_legal_title">Licenses &amp; Privacy</string>
+    <string name="about_licenses">Open Source Licenses</string>
+    <string name="about_app_license">App License</string>
+    <string name="about_privacy_policy">Privacy Policy</string>
 
     <!--For Tests:-->
     <string name="medication_1">Eltroxin 100</string>
@@ -388,6 +387,7 @@
     <string name="appear_on_top">Mostra Sopra</string>
     <string name="appear_on_top_subtext">Questa autorizzazione è necessaria nelle nuove versioni di android per poter mostrare allarmi e promemoria quando lo schermo è bloccato</string>
 
+    <string name="get_involved">Get Involved</string>
 
     <string-array name="names_for_screenshots">
         <item>Il Padrino</item>
@@ -399,5 +399,14 @@
     </string-array>
 
     <bool name="is_right_to_left">false</bool>
+
+    <string name="t9_key_2">abc</string>
+    <string name="t9_key_3">def</string>
+    <string name="t9_key_4">ghi</string>
+    <string name="t9_key_5">jkl</string>
+    <string name="t9_key_6">mno</string>
+    <string name="t9_key_7">pqrs</string>
+    <string name="t9_key_8">tuv</string>
+    <string name="t9_key_9">wxyz</string>
 
 </resources>

@@ -16,7 +16,6 @@
 
 <resources>
     <string name="about">Honi buruz</string>
-    <string name="about_subtext">Kaixo!\nNire izena Uriah Shaul Mandel da, eta plataforma honen sustatzailea naiz.\n Nire bizitza \"helduaren\" zatirik handiena plataforma hau egiten eman dut, eta dohainik argitaratu dut, edonorrek erabili dezan.\nOngi etorria zara nirekin posta elektronikoz harremanetan jartzeko:\nbaldphone.contact@gmail.com</string>
     <string name="accessibility_level">Erabilerraztasun maila</string>
     <string name="accessibility_settings">Erabilerraztasuna</string>
     <string name="accidental_touches">Ustekabeko utzitzen aurkako babesa</string>
@@ -114,7 +113,6 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
     <string name="external_storage_subtext">Baimen hau derrigorrezkoa da argazkiak gordetzeko.</string>
     <string name="feedback">Berrelikadura bidali</string>
     <string name="feedback_cannot_be_empty">Berrelikadura ezin da hutsik egon!</string>
-    <string name="feedback_sent_successfully">Berrelikadura arrakastaz bidali da!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Erabilerraztasun maila aukeratu</string>
     <string name="font_size">Letra-tipoaren neurria</string>
     <string name="friday">Ostirala</string>
@@ -229,7 +227,6 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
     <string name="video_tutorials">Bideo tutorialak</string>
     <string name="videos">Bideo tutorialak</string>
 
-    <string name="install_updates_subtext">Baimen hau derrigorrezkoa da BaldPhone eguneratzeko.</string>
     <string name="read_phone_state">Irakurri telefonoaren egoera</string>
     <string name="read_phone_state_subtext">Baimen hau derrigorrezkoa da bigarren simarekin deiak egiteko.</string>
     <string name="choose_sim">Aukeratu sima</string>

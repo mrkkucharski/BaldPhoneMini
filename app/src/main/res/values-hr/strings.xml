@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">O aplikaciji</string>
-    <string name="about_subtext">Hi!\nMy name is Uriah Shaul Mandel, and I\'m the developer of this platform.\n
-        I\'ve spent most of my \"adult\" life making this platform, and I\'ve released it for free, for all to
-        use.\nYou are more than welcome to contact me by email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Razina pristupačnosti</string>
     <string name="accessibility_settings">Pristupačnost</string>
     <string name="accidental_touches">Zaštita od slučajnog dodira</string>
@@ -123,7 +119,6 @@
     <string name="external_storage_subtext">Ova Dozvola je potrebna za spremanje slika</string>
     <string name="feedback">Pošalji Povratne Informacije</string>
     <string name="feedback_cannot_be_empty">Povratne Informacije ne mogu biti prazne!</string>
-    <string name="feedback_sent_successfully">Povratna Informacija uspješno poslana!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Molim odaberite razinu pristupačnosti</string>
     <string name="font_size">Veličina teksta</string>
     <string name="friday">Petak</string>
@@ -281,33 +276,8 @@
     <string name="clear_cache_subtext">Jeste li sigurni da želiste izbrisati podatke predmemorije? Brisanjem privremenih datoteka može popraviti greške aplikacije BaldPhone, no briše i sve prečace stvorene na Početnom Zaslonu.</string>
     <string name="permissions_calm">Bok, BaldPhone mora imati slijedeće dozvole za pokretanje. Poneke mogu zvučati strašno no to je jedini način da BaldPhone zamijeni trenutno sučelje uređaja. Nikakvi podaci se ne sakupljaju na taj način niti se šteti Vama ili uređaju. Kliknite OK za odobravanje dozvola ili Ne za izlazak iz aplikacije BaldPhone.
     </string>
-    <string name="pending_update">Čekanje Ažuriranja</string>
-    <string name="download">Preuzimanje</string>
-    <string name="install_updates">Instaliraj Ažuriranja</string>
-    <string name="install_updates_subtext">Ovo Dopuštenje je Ključno za Ažuriranje Aplikacije BaldPhone</string>
-    <string name="a_new_update_is_available">Novo Ažuriranje je dostupno!\nAžuriranja su važna da BaldPhone radi kako treba.\nKliknite OK za Preuzimanje.
-    </string>
-    <string name="current_version">Trenutna Verzija:\n</string>
-    <string name="new_version">Nova Verzija:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nova ažuriranja su spremna za preuzimanje.</string>
-    <string name="install">Instaliraj</string>
-    <string name="data_warning">Upozorenje korištenja mobilnih podataka</string>
-    <string name="data_warning_subtext">Bok, niste povezani na WIFI mrežu.\nVeličina datoteke za preuzimanje je oko 3MB, ukoliko ste u inozemstvu može Vas puno novaca koštati.\nŽelite li nastaviti sa preuzimanjem?</string>
-    <string name="update_message_is_corrupted">Poruka ažuriranja je oštećena.</string>
-    <string name="check_for_updates">Provjeri za ažuriranja</string>
-    <string name="could_not_connect_to_server">Neuspješno spajanje na server!</string>
-    <string name="could_not_connect_to_internet">Neuspješno spajanje na internet!</string>
-    <string name="could_not_start_the_download">Neuspješno pokretanje preuzimanja!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Preuzeta datoteka ažuriranja ne može biti izbrisana!</string>
-    <string name="downloading">Preuzimanje…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone je ažuriran.</string>
     <string name="what_s_new">Što je novo</string>
-    <string name="download_finished">Preuzimanje završeno!</string>
-    <string name="downloading_updates">Preuzimanje Ažuriranja…</string>
-    <string name="installing_doesn_t_work">Instaliranje ne radi?</string>
-    <string name="try_now">Probajte sada</string>
-    <string name="download_progress">Napredak Preuzimanja</string>
     <string name="what_do_you_want_to_do_with___">Što želite napraviti sa %s?</string>
     <string name="crash_reports">Izvještaji o Pogreškama</string>
     <string name="crash_reports_subtext">Izvještaji o pogreškama pomažu učiniti korištenje aplikacije BaldPhone besprijekornim.\nIzvještaji se koriste samo za ispravljanje pogrešaka i nikakve dodatne informacije osim najosnovnijih se ne prikupljaju.</string>
@@ -345,7 +315,6 @@
     <string name="low_battery_alert">Upozorenje baterije pri kraju</string>
     <string name="low_battery_alert_subtext">Odaberite ukoliko želite da Statusna Traka pocrveni kada je stanje baterije ispod 20%\nUpozorenje neće biti prikazano ukoliko je Statusna Traka sakrivena.</string>
 
-    <string name="also_available_at">Dostupan na\nbaldphone.contact@gmail.com\nPovratna Informacija mora biti na Engleskom!</string>
     <string name="grant_all_permissions">Dopusti Sve Dozvole</string>
 
 

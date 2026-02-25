@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">აპლიკაციის შესახებ</string>
-    <string name="about_subtext">სალამი!\nმე მქვია ურია შეულ მენდელი და მე ვარ ამ პლატფორმის BaldPhone(მელოტი ტელეფონის) დეველოპერი.\n
-        მე მთელი ჩემი (ზრდასრული) ცხოვრება ამ პლატფორმას ვაკეთებდი და გადავწყვიტე გამეზიარებინა ყველასთვის,სრულიად უფასოდ.\nმოხარული ვიქნები თუ დამიკავშირდებით :\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">წვდომის დონე</string>
     <string name="accessibility_settings">სპეციალური შესაძლებლობები</string>
     <string name="accidental_touches">შემთხვევითი შეხების გუშაგი</string>
@@ -120,7 +117,6 @@
     <string name="external_storage_subtext">ეს ნებართვა საჭიროა სურათების შესანახად.</string>
     <string name="feedback">უკუკავშირის გაგზავნა</string>
     <string name="feedback_cannot_be_empty">უკუკავშირი არ შეიძლება იყოს ცარიელი!</string>
-    <string name="feedback_sent_successfully">უკუკავშირი წარმატებით გაიგზავნა!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">გთხოვთ აირჩიოთ წვდომის დონე
     </string>
     <string name="font_size">შრიფტის ზომა</string>
@@ -280,34 +276,8 @@
     <string name="clear_cache_subtext">დარწმუნებული ხართ რომ გსურთ წაშალოთ ქეშის კონტენტი? დროებითი ფაილების წაშლამ შესაძლოა გამოასწოროს ზოგიერთი შეცდომა,მაგრამ მთავარ ეკრანზე შექმნილი მალსახმობები წაიშლება.</string>
     <string name="permissions_calm">სალამი,BaldPhone-ს სჭირდება შემდეგი ნებართვები გასაშვებად. ზოგიერთი საშიშად მოგეჩვენებათ,მაგრამ ეს ერთადერთი გზაა ტელეფონის ინტერფეისის შესაცვლელად.თქვენი მონაცემები არ იქნება მოპარული და არ მოგადგებათ ზიანი. დააჭირეთ OK ნებართვის მისაცემად ან უარს(no) რომ გამოხვიდეთ BaldPhone-დან.
     </string>
-    <string name="pending_update">მიმდინარეობს განახლება</string>
-    <string name="download">გადმოწერა</string>
-    <string name="install_updates">განახლებების ინსტალაცია</string>
-    <string name="install_updates_subtext">ეს ნებართვა საჭიროა BaldPhone-ს განსაახლებლად</string>
-    <string name="a_new_update_is_available">განახლება ხელმისაწვდომია!\nგანახლებები აუცილებელია ტელეფონის მუშაობისთვის.\nდააჭირეთ დიახ-ს გადმოსაწერად.
-    </string>
-    <string name="current_version">ამჟამინდელი ვერსია:\n</string>
-    <string name="new_version">ახალი ვერსია:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">განახლებები მზადაა გადმოსაწერად.</string>
-    <string name="install">ინსტალაცია</string>
-    <string name="data_warning">გაფრთხილება მობილური ინტერნეტის გამოყენების შესახებ</string>
-    <string name="data_warning_subtext">სალამი,თქვენ არ ხართ დაკავშირებული WIFI-ს.\nგადმოსაწერი პაკეტის ზომა დაახლოებით სამი მეგაბაიტია,რაც შეიძლება გარკვეული თანხა დაგიჯდეთ თუ საზღვარგარეთ იმყოფებით.\nგსურთ გადმოწერის გაგრძელება?
-    </string>
-    <string name="update_message_is_corrupted">განახლების შეტყობინება დაზიანებულია.</string>
-    <string name="check_for_updates">განახლებების შემოწმება</string>
-    <string name="could_not_connect_to_server">სერვერთან დაკავშირება შეუძლებელია!</string>
-    <string name="could_not_connect_to_internet">ინტერნეტთან დაკავშირება შეუძლებელია!</string>
-    <string name="could_not_start_the_download">გადმოწერის დაწყება შეუძლებელია!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">გადმოწერილი განახლების ფაილის წაშლა შეუძლებელია!</string>
-    <string name="downloading">მიმდინარეობს გადმოწერა…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone განახლებულია.</string>
     <string name="what_s_new">რა არის ახალი</string>
-    <string name="download_finished">გადმოწერა დამთავრებულია!</string>
-    <string name="downloading_updates">განახლებების გადმოწერა…</string>
-    <string name="installing_doesn_t_work">ინსტალაცია არ მუშაობს?</string>
-    <string name="try_now">სცადეთ ახლა</string>
-    <string name="download_progress">გადმოწერის პროგრესი</string>
     <string name="what_do_you_want_to_do_with___">რისი მოქმედება გსურთ %s?</string>
     <string name="crash_reports">ავარიული შეცდომების შეტყობინება</string>
     <string name="crash_reports_subtext">ავარიული შეცდომების შეტყობინება გეხმარებათ გახადოს აპლიკაციის გამოცდილება სრულყოფილი.\nისინი გამოიყენება მხოლოდ შეცდომების გასასწორებლად,არანაირი სხვა ინფორმაცია აუცილებლის გარდა არ მიგვაქვს.
@@ -342,7 +312,6 @@
     <string name="low_battery_alert">გაფრთხილება ტელეფონის ელემენტის დაბალი დონის შესახებ</string>
     <string name="low_battery_alert_subtext">აირჩიეთ თუ გსურთ რომ სტატუსბარი იყოს წითელი, როდესაც თქვენი ტელეფონის ელემენტის მუხტი ნაკლებია 20%\nშენიშვნა: არ იქნება ნაჩვენები თუ სტატუს ბარი დამალულია.</string>
 
-    <string name="also_available_at">აგრეთვე ხელმისაწვდომია ამ მისამართზე\nbaldphone.contact@gmail.com\nუკუკავშირი უნდა იყოს ივრითზე ან ინგლისურად!</string>
     <string name="grant_all_permissions">ყველა ნებართვის მინიჭება</string>
 
 

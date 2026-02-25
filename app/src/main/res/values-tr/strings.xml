@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">About</string>
-    <string name="about_subtext">Hi!\nMy name is Uriah Shaul Mandel, and I\'m the developer of this platform.\n
-        I\'ve spent most of my \"adult\" life making this platform, and I\'ve released it for free, for all to
-        use.\nYou are more than welcome to contact me by email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Erişilebilirlik Seviyesi</string>
     <string name="accessibility_settings">Erişilebilirlik</string>
     <string name="accidental_touches">Istenmeden Dokunma Ayarı</string>
@@ -121,7 +117,6 @@
     <string name="external_storage_subtext">Bu gerekçe resim ve dosya kaydede bilmeniz için gerekli.</string>
     <string name="feedback">Geribildirim gönder</string>
     <string name="feedback_cannot_be_empty">Geribildirim boş olamaz!</string>
-    <string name="feedback_sent_successfully">Geribildirim gönderildi!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Lütfen erişilebilirlik için ayar seçiniz.
     </string>
     <string name="font_size">Metin büyüklüğü</string>
@@ -278,32 +273,8 @@
     <string name="clear_all_notifications">Tüm bildirimleri temizle</string>
     <string name="clear_cache_subtext">Önbelleyi temizlemek istediğinize emin misiniz?\nUygulama kısayolları kaldırılacak!</string>
     <string name="permissions_calm">Merhaba, BaldPhone\'un düzgün çalışması için aşağıdakı izinleri vermelisiniz. Bazı izinler korkunç seslene bilir, ama BaldPhone\'un telefonunuzun arayüzünün yerini almasının başka bir yolu yok. Bu işlem tamamen zararsızdır ve hiç bir bilginiz ele geçirilmeyecek. Tamama basarak şu izinleri veriniz.</string>
-    <string name="pending_update">Bekleyen güncelleme</string>
-    <string name="download">İndir</string>
-    <string name="install_updates">Güncellemeleri kurun</string>
-    <string name="install_updates_subtext">BaldPhone\'u güncellemek için şu izin gerekli</string>
-    <string name="a_new_update_is_available">Yeni güncelleme hazır!\nGüncellemeler BaldPhone\'un hızlı ve pürüzsüz çalışması için önemli.\nTamama basarak indiriniz.</string>
-    <string name="current_version">Şimdiki sürüm:\n</string>
-    <string name="new_version">Yeni sürüm:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Yeni güncellemeler indirilmeye hazır.</string>
-    <string name="install">Kurun</string>
-    <string name="data_warning">Veri Uyarısı</string>
-    <string name="data_warning_subtext">Merhaba, siz WIFI\'a bağlı değilsiniz.\nİndirme ölçüsü 3MB, eğer yurt dışındaysanız paraya mal olabilir.\nİndirmeye devam etmek ister misiniz?</string>
-    <string name="update_message_is_corrupted">Güncelleme mesajı çökmüş.</string>
-    <string name="check_for_updates">Güncellemeleri denetle</string>
-    <string name="could_not_connect_to_server">Sunucuya bağlanılamadı!</string>
-    <string name="could_not_connect_to_internet">internete bağlanılamadı!</string>
-    <string name="could_not_start_the_download">İndirme başlatılamadı!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">indirilmiş güncelleme dosyası silinemedi!</string>
-    <string name="downloading">İndiriliyor…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone güncel.</string>
     <string name="what_s_new">Yeni ne var?</string>
-    <string name="download_finished">İndirme tamamlandı!</string>
-    <string name="downloading_updates">Güncellemeler indiriliyor…</string>
-    <string name="installing_doesn_t_work">Kurma işlemi çalışmıyor mu?</string>
-    <string name="try_now">Şimdi dene</string>
-    <string name="download_progress">İndirme ilerlemesi</string>
     <string name="what_do_you_want_to_do_with___">Şununla ne etmek istiyorsunuz %s?</string>
     <string name="crash_reports">Kaza şikayetleri</string>
     <string name="crash_reports_subtext">Kaza şikayetleri BaldPhone\'un kullanım tecrübesinin geliştirilmesine yardım ediyorlar.\nOnlar sadece hataların bulunması ve düzeltilmesine yardım ediyorlars, ve size ait hiçbir bilgi elde edilmiyor.</string>
@@ -341,7 +312,6 @@
     <string name="low_battery_alert">Düşük pil alarmı</string>
     <string name="low_battery_alert_subtext">Eğer pil düşük olduğu zaman durum çubuğunun kırmızıya boyanmasını istiyorsanız seçiniz.\nNot: eğer durum çubuğu gizliyse görünmeyecektir.</string>
 
-    <string name="also_available_at">\nbaldphone.contact@gmail.com\nFeedback\'de de mevcut! Yalnız İngilizce ve İbranice olmalı!</string>
     <string name="grant_all_permissions">Tüm izinleri veriniz</string>
 
 

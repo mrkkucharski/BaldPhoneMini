@@ -16,13 +16,6 @@
 
 <resources>
     <string name="about">אודות</string>
-    <string name="about_subtext">הפרוייקט נולד מפגישה עם חבר שחלה בפרקינסון. עזרתי לו עם בעיה כלשהי בטלפון, והבחנתי עד
-        כמה הוא מתקשה לבצע פעולות, שעד אז חשבתי שהן פשוטות ומובנות מאליהן.\nהייתי בן 15, תלמיד במגמת מחשבים בכפר הירוק,
-        והחלטתי שזו תהיה המשימה שלי לחופשת הקיץ. BaldPhone הוא תוצר של מעל אלף שעות פיתוח. אני מקווה שבעזרתו מאות, ואולי
-        אלפי האנשים שזקוקים לו, יצליחו להינות משימוש נוח במכשיר שמותאם להם.\nפיתוח הממשק נעשה תוך כדי קבלת משוב צמוד.
-        ניסיתי לענות על מגוון רחב של בעיות וצרכים. אם זאת, כדי להמשיך לשפר וסייע אשמח לקבל משוב, תגובות
-        והערות.\nהBaldPhone הוא חינמי ופתוח לכל. מקווה שתהנו.\nשלכם,\nאוריה שאול מנדל\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">רמת נגישות</string>
     <string name="accessibility_settings">נגישות</string>
     <string name="accidental_touches">חוסם הלחיצות המקריות</string>
@@ -131,7 +124,6 @@
     <string name="external_storage_subtext">אנא אפשר לBaldPhone לגשת לתמונות ולסרטים ולקבצי עדכון</string>
     <string name="feedback">משוב</string>
     <string name="feedback_cannot_be_empty">המשוב אינו יכול להיות ריק!</string>
-    <string name="feedback_sent_successfully">המשוב נשלח בהצלחה!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">יש לבחור רמת נגישות</string>
     <string name="font_size">גודל גופן</string>
     <string name="friday">שישי</string>
@@ -303,36 +295,8 @@
         היחידה שבה BaldPhone יכול להחליף את ממשק הטלפון. שום מידע לא נלקח ומתן ההרשאות לא גורם לשום נזק. לחץ אישור על
         מנת לאפשר את ההרשאות או לא בשביל לצאת מBaldPhone.
     </string>
-    <string name="pending_update">עדכון מחכה</string>
-    <string name="download">הורד</string>
-    <string name="install_updates">התקן עדכונים</string>
-    <string name="install_updates_subtext">אנא אפשר לBaldPhone להתקין עדכונים.</string>
-    <string name="a_new_update_is_available">עדכון חדש מחכה!\nעדכונים הם חשובים על מנת ש-BaldPhone ירוץ בצורה חלקה.\nלחץ
-        על אישור על מנת לעדכן
-    </string>
-    <string name="current_version">גרסה נוכחית:\n</string>
-    <string name="new_version">גרסה חדשה:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">עדכונים חדשים מחכים להורדה</string>
-    <string name="install">התקן</string>
-    <string name="data_warning">אזהרת גלישה</string>
-    <string name="data_warning_subtext">הי, אתה לא מחובר לWIFI.\nגודל ההורדה הוא כ3MB, אם אתה בחול הורדה זו עלולה לעלות
-        לך כסף.\nאתה רוצה להמשיך עם ההורדה?
-    </string>
-    <string name="update_message_is_corrupted">מידע על הורדה לא תקין</string>
-    <string name="check_for_updates">בדוק עדכונים</string>
-    <string name="could_not_connect_to_server">לא מצליח להתחבר לשרת!</string>
-    <string name="could_not_connect_to_internet">לא מצליח להתחבר לאינטרנט!</string>
-    <string name="could_not_start_the_download">לא מצליח להתחיל את ההורדה!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">קבצי ההורדה הקודמים לא יכולים להימחק!</string>
-    <string name="downloading">מוריד…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone כבר מעודכן!</string>
     <string name="what_s_new">מה חדש</string>
-    <string name="download_finished">הורדה הסתיימה!</string>
-    <string name="downloading_updates">מוריד עדכונים…</string>
-    <string name="installing_doesn_t_work">התקנה לא עובדת?</string>
-    <string name="try_now">נסה עכשיו</string>
-    <string name="download_progress">תהליך הורדה</string>
     <string name="what_do_you_want_to_do_with___">מה ברצונך לעשות עם %s?</string>
     <string name="crash_reports">דיווח על קריסות</string>
     <string name="crash_reports_subtext">דיווח על קריסות עוזר לי לתקן אותן במהירות\nnהמידע שנשלח הוא רק המידע ההכרחי על
@@ -372,7 +336,6 @@
     <string name="low_battery_alert">חיווי סוללה נמוכה</string>
     <string name="low_battery_alert_subtext">בחר האם במסך הבית, כאשר הבטרייה מתחת לעשרים אחוזים, שורת המצב תיראה אדומה\nחשוב לציין שלא ניתן יהיה לראות את השינוי אם שורת המצב מוסתרת.</string>
 
-    <string name="also_available_at">ניתן ליצור קשר גם ב\nbaldphone.contact@gmail.com</string>
     <string name="grant_all_permissions">אפשר את כל ההרשאות</string>
 
 
@@ -413,7 +376,6 @@
     <string name="website">אתר</string>
     <string name="appear_on_top">גישה להצגה מעל</string>
     <string name="appear_on_top_subtext">יש לאפשר גישה זו בגרסאות חדשות של אנדרואיד, על מנת להציג שעון מעורר ותזכורות</string>
-    <string name="mail_application_not_found">לא נמצאה תוכנת מייל!</string>
     <string name="get_involved">השתתף בפיתוח BaldPhone</string>
 
 

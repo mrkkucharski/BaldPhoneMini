@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">O aplikaci</string>
-    <string name="about_subtext">Ahoj!\nJmenuji se Uriah Shaul Mandel a jsem vývojář této platformy.\n
-        Většinu svého \"dospělého\" života jsem strávit tvorbou této platformy a rozhodl jsem se ji vydat zadarmo, a to pro
-        všechny.\nJste více než vítáni kontaktovat mě na email:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Úroveň přistupnosti</string>
     <string name="accessibility_settings">Přístupnost</string>
     <string name="accidental_touches">Ochrana proti nechtěnému dotyku</string>
@@ -125,7 +121,6 @@
     <string name="external_storage_subtext">Toto oprávnění je nutné k ukládání obrázků.</string>
     <string name="feedback">Poslat zpětnou vazbu</string>
     <string name="feedback_cannot_be_empty">Zpětná vazba nemůže být prázdná!</string>
-    <string name="feedback_sent_successfully">Zpětná vazba poslána úspěšně!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Vyberte úroveň přístupnosti
     </string>
     <string name="font_size">Písmo</string>
@@ -294,36 +289,8 @@
         zní strašidelně, ale je to jediný způsob, jak může BaldPhone nahradit prostředí vašeho telefonu. Žádné data nejsou sebrána a nezpůsobuje
         žádné škody. Zmáčkněte OK pro udělení oprávnění, nebo ne pro opuštění BaldPhone.
     </string>
-    <string name="pending_update">Čeká na aktualizaci</string>
-    <string name="download">Stáhnout</string>
-    <string name="install_updates">Instalovat aktualizace</string>
-    <string name="install_updates_subtext">Toto oprávnění je nutné k aktualizaci BaldPhone.</string>
-    <string name="a_new_update_is_available">Nová aktualizace je dostupná!\nAktualizace jsou důležité, aby BaldPhone běžel
-        plynule.\nZmáčkněte OK pro stažení.
-    </string>
-    <string name="current_version">Současná verze:\n</string>
-    <string name="new_version">Nová verze:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Nové aktualizace jsou připraveny ke stažení.</string>
-    <string name="install">Instalovat</string>
-    <string name="data_warning">Varování dat</string>
-    <string name="data_warning_subtext">Ahoj, nejsi připojený k WIFI.\nVelikost této aktualizace je přibližně 3MB,
-        pokud jste v zahraničí, muže vás to stát peníze.\nChcete pokračovat se stahováním?
-    </string>
-    <string name="update_message_is_corrupted">Zpráva aktualizace je poškozená.</string>
-    <string name="check_for_updates">Zkontrolovat pro aktualizace</string>
-    <string name="could_not_connect_to_server">Nemůžu se připojit k serveru!</string>
-    <string name="could_not_connect_to_internet">Nemůžu se připojit k internetu!</string>
-    <string name="could_not_start_the_download">Nemůžu začit stahovat!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Stažený aktualizační soubor nemůže být smazán!</string>
-    <string name="downloading">Stahuji…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone je aktuální.</string>
     <string name="what_s_new">Co je nového</string>
-    <string name="download_finished">Stahování dokončeno!</string>
-    <string name="downloading_updates">Stahuji aktualizace…</string>
-    <string name="installing_doesn_t_work">Instalování nefunguje?</string>
-    <string name="try_now">Zkuste nyní</string>
-    <string name="download_progress">Průběh stahování</string>
     <string name="what_do_you_want_to_do_with___">Co chcete dělat s %s?</string>
     <string name="crash_reports">Zprávy o havárii</string>
     <string name="crash_reports_subtext">Zprávy o havárii pomáhají dělat prostředí BaldPhone bezchybné\nJsou používány pouze
@@ -363,7 +330,6 @@
     <string name="low_battery_alert">Pozor, nízká baterie</string>
     <string name="low_battery_alert_subtext">Zvolte, pokud chcete, aby stavový řádek byl na domovské obrazovce červený, když je baterie méně než 20% \nPoznámka se nezobrazí, pokud je stavový řádek systému skrytý.</string>
 
-    <string name="also_available_at">Also available at\nbaldphone.contact@gmail.com\nFeedback must be in English/Hebrew!</string>
     <string name="grant_all_permissions">Grant All Permissions</string>
 
 

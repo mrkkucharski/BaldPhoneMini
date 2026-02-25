@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">À propos</string>
-    <string name="about_subtext">Bonjour\nJe m\'appelle Uriah Shaul Mandel et je suis le développeur de cette plateforme.\nJe vis à
-        Tel Aviv.\nBeaucoup de temps et d\'efforts ont été nécessaires pour créer cette plateforme et pour qu\'elle soit gratuite à utiliser pour tout le monde.\nVous pouvez me contacter avec plaisir par e-mail :\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Niveau d\'accessibilité</string>
     <string name="accessibility_settings">Accessibilité</string>
     <string name="accidental_touches">Blocage appuis accidentels</string>
@@ -120,7 +117,6 @@
     <string name="external_storage_subtext">Cette permission est requise pour enregister vos images.</string>
     <string name="feedback">Donnez votre avis</string>
     <string name="feedback_cannot_be_empty">Le message ne peut pas être vide !</string>
-    <string name="feedback_sent_successfully">Message envoyé avec succès !</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Veuillez sélectionner un niveau d\'accessibilité.
     </string>
     <string name="font_size">Texte</string>
@@ -281,34 +277,8 @@
     </string>
     <string name="permissions_calm">Bonjour, BaldPhone doit avoir les permissions suivantes pour fonctionner. Certaines font peur mais c\'est la seule manière pour BaldPhone de remplacer l\'interface de votre téléphone. Aucune donnée n\'est prise et vous n\'encourez aucun risque. Appuyez sur OK pour accorder les permissions, sinon vous pouvez fermer BaldPhone.
     </string>
-    <string name="pending_update">Mise à jour en attente</string>
-    <string name="download">Télécharger</string>
-    <string name="install_updates">Installer les mises à jour</string>
-    <string name="install_updates_subtext">Cette permission est requise pour mettre à jour BaldPhone</string>
-    <string name="a_new_update_is_available">Une nouvelle mise à jour est disponible !\nLes mises à jour sont importantes pour que Baldphone puisse continuer à fonctionner normalement.\nAppuyez sur OK pour télécharger.
-    </string>
-    <string name="current_version">Version actuelle :\n</string>
-    <string name="new_version">Nouvelle version :\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">De nouvelles mises à jour sont disponibes et prêtes à être téléchargées.</string>
-    <string name="install">Installer</string>
-    <string name="data_warning">Avertissement de données mobiles</string>
-    <string name="data_warning_subtext">Bonjour, vous n\'êtes pas connecté(e) au Wi-Fi.\nLa taille du téléchargement est d\'environ 3MB, si vous êtes à l\'étranger, cela peut vous coûter de l\'argent.\nSouhaitez-vous poursuivre ?
-    </string>
-    <string name="update_message_is_corrupted">Le message de mise à jour est corrompu.</string>
-    <string name="check_for_updates">Vérifier les mises à jour</string>
-    <string name="could_not_connect_to_server">Impossible de se connecter au serveur !</string>
-    <string name="could_not_connect_to_internet">Impossible de se connecter à Internet !</string>
-    <string name="could_not_start_the_download">Impossible de lancer le téléchargement !</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Le fichier de mise à jour téléchargé ne peut pas être supprimé !</string>
-    <string name="downloading">Téléchargement…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone est à jour</string>
     <string name="what_s_new">Nouveautés</string>
-    <string name="download_finished">Téléchargement terminé !</string>
-    <string name="downloading_updates">Téléchargement des mises à jour…</string>
-    <string name="installing_doesn_t_work">L\'installation ne fonctionne pas ?</string>
-    <string name="try_now">Essayez maintenant</string>
-    <string name="download_progress">Progression du téléchargement</string>
     <string name="what_do_you_want_to_do_with___">Que voulez-vous faire avec %s?</string>
     <string name="crash_reports">Rapports de plantage</string>
     <string name="crash_reports_subtext">Les rapports de plantage aident à améliorer BaldPhone.\nIls sont uniquement utilisés pour corriger les problèmes et seules les informations nécessaires à la correction du problème sont exploitées.
@@ -347,7 +317,6 @@
     <string name="low_battery_alert">Alerte de batterie faible</string>
     <string name="low_battery_alert_subtext">Choisissez si vous voulez que la barre d\'état de l\'écran d\'acceuil devienne rouge quand la batterie a une charge inférieure à 20%\nNottez que cela ne sera pas visible si la barre d\'état est cachée.</string>
 
-    <string name="also_available_at">Également disponible en contactant\nbaldphone.contact@gmail.com\nLes retours doivent être en anglais/hébreux !</string>
     <string name="grant_all_permissions">Accorder toutes les autorisations</string>
 
 

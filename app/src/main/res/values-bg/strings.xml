@@ -121,7 +121,6 @@
     <string name="external_storage_subtext">Разрешението е необходимо, за да се запазват снимките.</string>
     <string name="feedback">Изпращане на обратна връзка</string>
     <string name="feedback_cannot_be_empty">Полето за обратна връзка не може да бъде празно!</string>
-    <string name="feedback_sent_successfully">Обратната връзка е изпратена успешно!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Моля, изберете нивото на достъпност
     </string>
     <string name="font_size">Рзмер на текста</string>
@@ -289,36 +288,8 @@
         от тях звучат плашещо, но това е единственият начин BaldPhone да замени интерфейса на телефона ви. Той не събира данни и не
          причинява вреди. Натиснете OK, за да предоставите разрешенията или Не за изход от BaldPhone.
     </string>
-    <string name="pending_update">Предстоящо обновяване</string>
-    <string name="download">Изтегляне</string>
-    <string name="install_updates">Инсталиране на обновления</string>
-    <string name="install_updates_subtext">Разрешението е необходимо, за да се обнови BaldPhone</string>
-    <string name="a_new_update_is_available">Налично е обновление!\nОбновленията са важни за да може BaldPhone да работи
-        гладко.\nНатиснете ОК за да го изтеглите.
-    </string>
-    <string name="current_version">Текуща версия:\n</string>
-    <string name="new_version">Нова версия:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Обновленията са готови за изтегляне.</string>
-    <string name="install">Инсталиране</string>
-    <string name="data_warning">Предупреждение за данни</string>
-    <string name="data_warning_subtext">Здравейте, не сте свързни към WiFi.\nПриблизителният размер на изтеглянето е 3MB,
-        ако сте в чужбина е възможно да бъдете таксувани.\nЖелаете ли да продължите с изтеглянето?
-    </string>
-    <string name="update_message_is_corrupted">Съобщението за актуализация е повредено.</string>
-    <string name="check_for_updates">Проверка за актуализации</string>
-    <string name="could_not_connect_to_server">Неуспешно свързване със сървъра!</string>
-    <string name="could_not_connect_to_internet">Неуспешно свързване с интернет!</string>
-    <string name="could_not_start_the_download">Неуспешно стартиране на изтеглянето!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Изтегленото обновление не може да бъде изтрито!</string>
-    <string name="downloading">Изтегляне…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone е актуален.</string>
     <string name="what_s_new">Какво ново</string>
-    <string name="download_finished">Изтеглянето завърши!</string>
-    <string name="downloading_updates">Изтегляне на актуализации…</string>
-    <string name="installing_doesn_t_work">Неуспешна инсталация?</string>
-    <string name="try_now">Опитайте сега</string>
-    <string name="download_progress">Напредък на изтеглянето</string>
     <string name="what_do_you_want_to_do_with___">Какво желаете да направите с %s?</string>
     <string name="crash_reports">Отчети за сривове</string>
     <string name="crash_reports_subtext">Отчетите за сривове ни помагат да подобрим BaldPhone.\nТе се използват само за
@@ -358,7 +329,6 @@
     <string name="low_battery_alert">Предупреждение за изтощена батерия</string>
     <string name="low_battery_alert_subtext">Изберете дали лентата на състоянието да бъде червена на началния екран, когато батерията е под  20%\nЗабележете, че това няма да се вижда, ако лентата на състоянието е скрита.</string>
 
-    <string name="also_available_at">Също достъпно на\nbaldphone.contact@gmail.com\nОбратната връзка трябва да бъде на английски/иврит!</string>
     <string name="grant_all_permissions">Даване на всички разрешения</string>
 
 

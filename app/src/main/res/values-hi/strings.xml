@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">बारे में</string>
-    <string name="about_subtext">नमस्ते!\nमेरा नाम उरिय्याह शॉल मंडेल है, और मैं इस मंच का विकासकर्ता हूँ।\n
-        मैंने अपना अधिकांश \"वयस्क\" जीवन इस प्लेटफॉर्म को बनाने में बिताया है, और मैंने इसे सभी के लिए मुफ्त में जारी किया है।
-        उपयोग करें।\nआपका स्वागत है मुझसे ईमेल द्वारा संपर्क करने के लिए:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">अभिगम्यता स्तर</string>
     <string name="accessibility_settings">सरल उपयोग</string>
     <string name="accidental_touches">एक्सीडेंटल टच गार्ड</string>
@@ -124,7 +120,6 @@
     <string name="external_storage_subtext">चित्रों को सहेजने के लिए यह अनुमति आवश्यक है.</string>
     <string name="feedback">प्रतिक्रिया भेजें</string>
     <string name="feedback_cannot_be_empty">फ़ीडबैक खाली नहीं हो सकता!</string>
-    <string name="feedback_sent_successfully">फ़ीडबैक सफलतापूर्वक भेजा गया!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">कृपया पहुंच के स्तर का चयन करें
     </string>
     <string name="font_size">फ़ॉन्ट आकार</string>
@@ -292,36 +287,8 @@
         ध्वनि डरावना है, लेकिन यह एकमात्र तरीका है जिससे बाल्डफोन फोन के इंटरफेस को बदल सकता है। कोई डेटा नहीं लिया जाता है और इसका कारण बनता है
         कोई नुकसान नहीं। BaldPhone से बाहर निकलने के लिए अनुमति या नहीं देने के लिए OK दबाएं।
     </string>
-    <string name="pending_update">लंबित अद्यतन</string>
-    <string name="download">डाउनलोड</string>
-    <string name="install_updates">अद्यतनों को स्थापित करें</string>
-    <string name="install_updates_subtext">बाल्डफोन को अपडेट करने के लिए इस अनुमति की आवश्यकता है</string>
-    <string name="a_new_update_is_available">एक नया अपडेट उपलब्ध है!\n बाल्डफोन को चालू रखने के लिए अपडेट महत्वपूर्ण हैं
-        सुचारू रूप से।\nडाउनलोड करने के लिए ओके दबाएं।
-    </string>
-    <string name="current_version">वर्तमान संस्करण:\n</string>
-    <string name="new_version">नया संस्करण:\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">नए अपडेट डाउनलोड करने के लिए तैयार हैं.</string>
-    <string name="install">इंस्टॉल</string>
-    <string name="data_warning">डेटा चेतावनी</string>
-    <string name="data_warning_subtext">नमस्ते, आप वाईफ़ाई से कनेक्ट नहीं हैं।\n डाउनलोड का आकार लगभग ३एमबी है,
-        अगर आप विदेश में हैं तो इसमें आपके पैसे खर्च हो सकते हैं।\nक्या आप डाउनलोड जारी रखना चाहते हैं?
-    </string>
-    <string name="update_message_is_corrupted">अद्यतन संदेश दूषित है।</string>
-    <string name="check_for_updates">अद्यतन के लिए जाँच</string>
-    <string name="could_not_connect_to_server">सर्वर से कनेक्ट नहीं कर सकते!</string>
-    <string name="could_not_connect_to_internet">इंटरनेट से कनेक्ट नहीं हो सका!</string>
-    <string name="could_not_start_the_download">डाउनलोड प्रारंभ नहीं हो सका!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">डाउनलोड की गई अद्यतन फ़ाइल को हटाया नहीं जा सका!</string>
-    <string name="downloading">डाउनलोड हो रहा है…</string>
 
-    <string name="baldphone_is_up_to_date">बाल्डफोन अप टू डेट है।</string>
     <string name="what_s_new">नया क्या है</string>
-    <string name="download_finished">डाउनलोड समाप्त!</string>
-    <string name="downloading_updates">अपडेट डाउनलोड हो रहे हैं…</string>
-    <string name="installing_doesn_t_work">इंस्टॉल करना काम नहीं कर रहा है?</string>
-    <string name="try_now">अब कोशिश करो</string>
-    <string name="download_progress">डाउनलोड प्रगति</string>
     <string name="what_do_you_want_to_do_with___">आप %s के साथ क्या करना चाहते हैं?</string>
     <string name="crash_reports">क्रैश रिपोर्ट</string>
     <string name="crash_reports_subtext">क्रैश रिपोर्ट बाल्डफ़ोन के अनुभव को त्रुटिहीन बनाने में मदद करती है\nवे केवल उपयोग किए जाते हैं
@@ -361,7 +328,6 @@
     <string name="low_battery_alert">कम बैटरी अलर्ट</string>
     <string name="low_battery_alert_subtext">चुनें कि क्या आप चाहते हैं कि होम स्क्रीन पर स्टेटस बार लाल हो, जब बैटरी 20% से कम हो\nध्यान दें कि सिस्टम स्टेटस बार छुपा हुआ है तो यह नहीं दिखाया जाएगा।</string>
 
-    <string name="also_available_at">\nbaldphone.contact@gmail.com पर भी उपलब्ध है\nप्रतिक्रिया अंग्रेजी/हिब्रू में होनी चाहिए!</string>
     <string name="grant_all_permissions">सभी अनुमतियां प्रदान करें</string>
 
 

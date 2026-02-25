@@ -16,9 +16,6 @@
 
 <resources>
     <string name="about">關於</string>
-    <string name="about_subtext">你好！\n我的名字是 Uriah Shaul Mandel，是這個平台的開發者。\n
-        我成年後大部份時間都在製作這個平台，我把它免費發布，供每個人使用。\n歡迎你以電子郵件聯絡我：\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">輔助功能程度</string>
     <string name="accessibility_settings">輔助功能設定</string>
     <string name="accidental_touches">防誤觸功能</string>
@@ -120,7 +117,6 @@
     <string name="external_storage_subtext">需要以下權限才可儲存照片。</string>
     <string name="feedback">傳送回饋</string>
     <string name="feedback_cannot_be_empty">不能傳送空白回饋！</string>
-    <string name="feedback_sent_successfully">成功傳送回饋！</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">請選擇輔助功能程度
     </string>
     <string name="font_size">字型</string>
@@ -281,35 +277,8 @@
     </string>
     <string name="permissions_calm">你好，清風電話需要以下權限才可運作。有部分聽起來很嚴重，但清風電話需要它們才可以正常運作。清風電話不會偷取資料或者損害你的電話。按確定以給予清風電話這些權限，或按否退出清風電話。
     </string>
-    <string name="pending_update">等待更新</string>
-    <string name="download">下載</string>
-    <string name="install_updates">下載更新</string>
-    <string name="install_updates_subtext">需要以下權限才可更新清風電話。</string>
-    <string name="a_new_update_is_available">有更新可用！\n更新以確保清風電話運作暢順。\n按確定以下載。
-    </string>
-    <string name="current_version">目前版本：\n</string>
-    <string name="new_version">新版本：\n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">新版本準備好下載。</string>
-    <string name="install">安裝</string>
-    <string name="data_warning">數據提示</string>
-    <string name="data_warning_subtext">你好，你目前不是使用 WIFI。\n下載的檔案大概是 3MB，
-        中途停止的話仍然會計算進數據下載流量。\n繼續使用流動數據下載？
-    </string>
-    <string name="update_message_is_corrupted">更新資料出錯。</string>
-    <string name="check_for_updates">檢查更新</string>
-    <string name="could_not_connect_to_server">不能連接伺服器！</string>
-    <string name="could_not_connect_to_internet">不能連接互聯網！</string>
-    <string name="could_not_start_the_download">不能開始下載！</string>
-    <string name="downloaded_update_file_could_not_be_deleted">已下載的更新檔不能移除！</string>
-    <string name="downloading">下載中…</string>
 
-    <string name="baldphone_is_up_to_date">清風電話已是最新版本。</string>
     <string name="what_s_new">新功能</string>
-    <string name="download_finished">下載完成！</string>
-    <string name="downloading_updates">下載更新中…</string>
-    <string name="installing_doesn_t_work">安裝不成功？</string>
-    <string name="try_now">現在嘗試</string>
-    <string name="download_progress">下載進度</string>
     <string name="what_do_you_want_to_do_with___">你想拿 %s 做什麽？</string>
     <string name="crash_reports">當機報告</string>
     <string name="crash_reports_subtext">當機報告幫助清風電話更加穩定\n他們只用作移除程式問題，而不會包括其他無關資料。
@@ -348,7 +317,6 @@
     <string name="low_battery_alert">低電量警告</string>
     <string name="low_battery_alert_subtext">你可以選擇電量低於 20% 時，讓狀態列轉紅\n注意，如果狀態列不顯示時，紅色效果也不會顯示。</string>
 
-    <string name="also_available_at">也可聯絡\nbaldphone.contact@gmail.com\n反饋需以英文或希伯來文寫成。</string>
     <string name="grant_all_permissions">允許所有權限</string>
 
 

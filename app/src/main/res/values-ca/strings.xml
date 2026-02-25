@@ -16,11 +16,6 @@
 
 <resources>
     <string name="about">Sobre</string>
-    <string name="about_subtext">Hola!\nEl meu nom és Uriah Shaul Mandel i sóc el desenvolupador d\'aquesta plataforma.\n
-	He passat la major part de la meva vida "adulta" fent aquesta plataforma, i l\'he llançat gratis, perquè tots la usin.\n
-	Són benvinguts a contactar-me per correu electrònic:\n
-	baldphone.contact@gmail.com
-</string>
     <string name="accessibility_level">Nivell d\'Accessibilitat</string>
     <string name="accessibility_settings">Accessibilitat</string>
     <string name="accidental_touches">Protecció de toc accidental</string>
@@ -128,7 +123,6 @@ com augmentar la grandària de font o canviar la lluentor.
     <string name="external_storage_subtext">Aquest permís és necessari per a guardar Fotos.</string>
     <string name="feedback">Enviar Comentaris</string>
     <string name="feedback_cannot_be_empty">Els comentaris no poden estar buits!</string>
-    <string name="feedback_sent_successfully">Comentaris enviats satisfactòriament!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Si us plau, seleccioni el nivell d\'accessibilitat
 </string>
     <string name="font_size">Font</string>
@@ -304,41 +298,8 @@ poden espantar, però és l\'única forma en què BaldPhone pot reemplaçar la i
 BaldPhone no usarà les seves dades personals ni danyarà el seu telèfon.
 Pressioni OK per a atorgar els permisos o No per a sortir de BaldPhone.
 </string>
-    <string name="pending_update">Actualització pendent</string>
-    <string name="download">Descarregar</string>
-    <string name="install_updates">Instal·lar actualitzacions</string>
-    <string name="install_updates_subtext">Aquest permís és necessari per a poder actualitzar BaldPhone</string>
-    <string name="a_new_update_is_available">Nova actualiación disponible!\n
-Les actualitzacions són importants per a millorar l\'App.\n
-Premi OK per a descarregar-la.
-</string>
-    <string name="current_version">Versió actual:
-</string>
-    <string name="new_version">Nova Versió:
-</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Actualització llesta per a ser descarregada.</string>
-    <string name="install">Instal·lar</string>
-    <string name="data_warning">Avís d\'ús de Dades!</string>
-    <string name="data_warning_subtext">
-	Hola, no esteu connectat a una xarxa WIFI.\n
-	La mida de la descàrrega és d\'aproximadament 3MB, si és a \'estranger, pot costar-li diners.\n
-	Desitja continuar amb la descàrrega?
-</string>
-    <string name="update_message_is_corrupted">El missatge d\'actualització està corrupte.</string>
-    <string name="check_for_updates">Comprovar actualitzacions</string>
-    <string name="could_not_connect_to_server">No s\'ha pogut connectar al servidor!</string>
-    <string name="could_not_connect_to_internet">No s\'ha pogut connectar a internet!</string>
-    <string name="could_not_start_the_download">No s\'ha pogut començar la descàrrega!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">L\'arxiu d\'actualització descarregat no ha pogut ser esborrat!</string>
-    <string name="downloading">Descarregant…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone està actualitzat.</string>
     <string name="what_s_new">Novetats</string>
-    <string name="download_finished">Descàrrega finalitzada!</string>
-    <string name="downloading_updates">Descarregant actualitzacions…</string>
-    <string name="installing_doesn_t_work">La instal.lació no funciona?</string>
-    <string name="try_now">Provar ara</string>
-    <string name="download_progress">Progrés de descàrrega</string>
     <string name="what_do_you_want_to_do_with___">Quina vol fer amb %s?</string>
     <string name="crash_reports">Reportar errors</string>
     <string name="crash_reports_subtext">
@@ -381,7 +342,6 @@ Premi OK per a descarregar-la.
 No es veuran canvis si la barra d\'estat està oculta.
 </string>
 
-    <string name="also_available_at">També disponible a\nbaldphone.contact@gmail.com\nFeedback must be in English/Hebrew!</string>
     <string name="grant_all_permissions">Donar tots els Permisos</string>
 
 

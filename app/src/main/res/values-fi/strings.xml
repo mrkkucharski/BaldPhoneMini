@@ -16,10 +16,6 @@
 
 <resources>
     <string name="about">Tietoja</string>
-    <string name="about_subtext">Hei!\nNimeni on Uriah Shaul Mandel, ja olen tämän alustan kehittäjä.\n
-        Olen käyttänyt valtaosan \"aikuisikääni\" alustan tekemiseen ja julkaisen sen ilmeiseksi, kaikkien
-        käyttöön.\nVoit mielihyvin ottaa minuun yhteyttä sähköpostilla:\nbaldphone.contact@gmail.com
-    </string>
     <string name="accessibility_level">Esteettömyys-taso</string>
     <string name="accessibility_settings">Esteettömyys</string>
     <string name="accidental_touches">Tahattoman kosketuksen suoja</string>
@@ -124,7 +120,6 @@ ja muuttaa kirkkautta.</string>
     <string name="external_storage_subtext">Tämä oikeus tarvitaan kuvien tallentamiseksi</string>
     <string name="feedback">Lähetä palautetta</string>
     <string name="feedback_cannot_be_empty">Palaute ei voi olla tyhjä!</string>
-    <string name="feedback_sent_successfully">Palaute lähetetty onnistuneesti!</string>
     <string name="first_please_select_how_you_want_to_interact_with_buttons">Valitse esteettömyystaso</string>
     <string name="font_size">Kirjasinkoko</string>
     <string name="friday">Perjantai</string>
@@ -291,36 +286,8 @@ ja muuttaa kirkkautta.</string>
         pelottavalta, mutta vain niin BaldPhone voi korvata käyttöliittymän. Tietoja ei oteta eikä se aiheuta haittaa
         Paina OK antaaksesi oikeudet tai Ei poistuaksesi BaldPhonesta.
     </string>
-    <string name="pending_update">Odottava päivitys</string>
-    <string name="download">Lataa</string>
-    <string name="install_updates">Asenna päivitykset</string>
-    <string name="install_updates_subtext">Tämä lupa tarvitaan BaldPhonen päivityksen asentamiseksi</string>
-    <string name="a_new_update_is_available">Uusi päivitys on saatavana!\nPäivitykset ovat tärkeitä, jotta BaldPhone toimii
-        sujuvasti.\nPaina OK ladataksesi.
-    </string>
-    <string name="current_version">Nykyinen versio \n</string>
-    <string name="new_version">Uusi versio \n</string>
-    <string name="new_updates_are_ready_to_be_downloaded">Uusia päivityksiä on valmiina ladattavaksi</string>
-    <string name="install">Asenna</string>
-    <string name="data_warning">Tietojen varoitus</string>
-    <string name="data_warning_subtext">Hei, et ole kytkeytynyt WIFI:in.\nLataustiedoston koko on arviolta 3MB,
-        Jos olet ulkomailla, se voi aiheuttaa sinulle kuluja.\nHaluatko jatkaa lataamista?
-    </string>
-    <string name="update_message_is_corrupted">Päivitysviesti on vioittunut.</string>
-    <string name="check_for_updates">Tarkista päivitykset</string>
-    <string name="could_not_connect_to_server">Palvelimeen ei saatu yhteyttä!</string>
-    <string name="could_not_connect_to_internet">Ei voitu muodostaa yhteyttä Internetiin!</string>
-    <string name="could_not_start_the_download">Latausta ei voitu aloittaa!</string>
-    <string name="downloaded_update_file_could_not_be_deleted">Ladattua päivitystiedostoa ei voitu poistaa!</string>
-    <string name="downloading">Ladataan…</string>
 
-    <string name="baldphone_is_up_to_date">BaldPhone on ajantasalla</string>
     <string name="what_s_new">Mikä on uutta</string>
-    <string name="download_finished">Lataus on valmis</string>
-    <string name="downloading_updates">Ladataan päivityksiä…</string>
-    <string name="installing_doesn_t_work">Asentaminen ei onnistu?</string>
-    <string name="try_now">Kokeile nyt</string>
-    <string name="download_progress">Latauksen edistyminen</string>
     <string name="what_do_you_want_to_do_with___">Mitä haluat tehdä: %s?</string>
     <string name="crash_reports">Kaatumisraportit</string>
     <string name="crash_reports_subtext">Kaatumisraporteilla parannetaan BaldPhonen käyttöä sujuvaksi\nNiitä käytetään vain
@@ -360,7 +327,6 @@ ja muuttaa kirkkautta.</string>
     <string name="low_battery_alert">Akku vähissä hälytys</string>
     <string name="low_battery_alert_subtext">Valitse, haluatko tilarivin olevan punainen aloitusnäytössä, kun akun varaus on alle 20%\nHuomaa, Sitä ei näytetä, jos järjestelmän tilarivi on piilotettu.</string>
 
-    <string name="also_available_at">Myös saatavilla\nbaldphone.contact@gmail.com\nPalaute oltava englanniksi / hepreaksi!</string>
     <string name="grant_all_permissions">Myönnä kaikki käyttöoikeudet</string>
 
 
