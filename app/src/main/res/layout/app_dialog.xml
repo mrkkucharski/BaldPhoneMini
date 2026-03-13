@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/BackgroundText.Large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dialog Title" />
+
+        <View
+            android:id="@+id/title_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="12dp"
+            android:background="?bald_stroke_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_title" />
+
+        <TextView
+            android:id="@+id/dialog_message"
+            style="@style/BackgroundText.Medium.Plus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:lineSpacingMultiplier="1.2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_divider"
+            tools:text="This is a modern alert dialog message that can span multiple lines." />
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="?bald_text_on_background"
+            android:textColorHint="?bald_hint_on_background"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_message"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/custom_view_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_text" />
+
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/custom_view_container">
+
+            <com.bald.uriah.baldphone.views.BaldButton
+                android:id="@+id/button_negative"
+                style="@style/Bald.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                tools:text="Cancel"
+                tools:visibility="visible" />
+
+            <View
+                android:id="@+id/button_spacer"
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <com.bald.uriah.baldphone.views.BaldButton
+                android:id="@+id/button_positive"
+                style="@style/Bald.Button.Positive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                tools:text="OK"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <com.bald.uriah.baldphone.views.BaldButton
+            android:id="@+id/button_neutral"
+            style="@style/Bald.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_container"
+            tools:text="More Info"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

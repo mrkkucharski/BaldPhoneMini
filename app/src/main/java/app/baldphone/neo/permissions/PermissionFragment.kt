@@ -10,10 +10,11 @@ import android.util.Log
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+
+import app.baldphone.neo.utils.AppDialog
 
 import com.bald.uriah.baldphone.R
 
@@ -42,7 +43,7 @@ class PermissionFragment : Fragment() {
     private var currentCallback: PermissionManager.PermissionCallback? = null
     private var batchFinish: (() -> Unit)? = null
 
-    private var dialog: AlertDialog? = null
+    private var dialog: AppDialog? = null
 
     private val runtimeLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
@@ -333,10 +334,10 @@ class PermissionFragment : Fragment() {
             return
         }
         dialog?.dismiss()
-        dialog = AlertDialog.Builder(requireContext()).setTitle(permission.titleRes)
+        dialog = AppDialog.Builder(requireContext()).setTitle(permission.titleRes)
             .setMessage(messageRes)
-            .setPositiveButton(R.string.allow) { _, _ -> onPositive() }
-            .setNegativeButton(android.R.string.cancel) { _, _ ->
+            .setPositiveButton(R.string.allow) { onPositive() }
+            .setNegativeButton(android.R.string.cancel) {
                 finishAndContinue(PermissionResult.Denied)
             }.setCancelable(false).show()
     }

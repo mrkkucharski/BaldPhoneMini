@@ -50,4 +50,8 @@
     <dimen name="link_row_padding">10dp</dimen>
     <dimen name="link_row_text_size">19sp</dimen>
     <dimen name="link_row_drawable_padding">12dp</dimen>
+
+    <dimen name="bald_button_corners_radius">12dp</dimen>
+    <dimen name="bald_button_pill_corners_radius">500dp</dimen>
+    <dimen name="bald_stroke_size">1dp</dimen>
 </resources>

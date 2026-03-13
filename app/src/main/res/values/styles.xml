@@ -47,6 +47,9 @@
         <item name="bald_text_on_gold">@color/on_gold</item>
         <item name="bald_text_on_key">@color/bald_text_on_key</item>
         <item name="bald_text_on_selected">@color/bald_text_on_selected</item>
+        <item name="bald_button_positive">@color/bald_button_positive</item>
+        <item name="bald_text_on_button_positive">@color/bald_text_on_button_positive</item>
+        <item name="bald_button_bg_color">?attr/bald_button</item>
     </style>
 
     <style name="AppTheme.Starting" parent="AppTheme">
@@ -130,6 +133,15 @@
         <item name="android:padding">@dimen/bald_button_padding</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_button</item>
+    </style>
+
+    <style name="Bald.Button.Positive" parent="Bald.Button">
+        <item name="android:theme">@style/Theme.Bald.Button.Positive</item>
+        <item name="android:textColor">?attr/bald_text_on_button_positive</item>
+    </style>
+
+    <style name="Theme.Bald.Button.Positive" parent="AppTheme">
+        <item name="bald_button_bg_color">?attr/bald_button_positive</item>
     </style>
 
     <style name="Bald.Button.FullWidth" parent="Bald.Button">
