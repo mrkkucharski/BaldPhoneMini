@@ -20,7 +20,6 @@ import static com.bald.uriah.baldphone.databases.apps.AppsDatabaseHelper.baldCom
 import static com.bald.uriah.baldphone.services.NotificationListenerService.ACTION_REGISTER_ACTIVITY;
 import static com.bald.uriah.baldphone.services.NotificationListenerService.KEY_EXTRA_ACTIVITY;
 import static com.bald.uriah.baldphone.services.NotificationListenerService.NOTIFICATIONS_HOME_SCREEN;
-import static com.bald.uriah.baldphone.utils.D.WHATSAPP_PACKAGE_NAME;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -33,7 +32,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -53,6 +51,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.activities.DialerActivity;
 import app.baldphone.neo.services.DeviceLock;
+import app.baldphone.neo.utils.messaging.WhatsAppHandler;
 
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.AppsActivity;
@@ -69,7 +68,6 @@ import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.BDialog;
 import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.utils.BaldToast;
-import com.bald.uriah.baldphone.utils.D;
 import com.bald.uriah.baldphone.utils.S;
 import com.bald.uriah.baldphone.views.FirstPageAppIcon;
 
@@ -81,9 +79,6 @@ import java.util.Set;
 
 public class HomePage1 extends HomeView {
     public static final String TAG = HomePage1.class.getSimpleName();
-    private static final ComponentName WHATSAPP_COMPONENT_NAME =
-            new ComponentName(WHATSAPP_PACKAGE_NAME, D.WHATSAPP_LAUNCH_ACTIVITY);
-
     private Map<App, FirstPageAppIcon> viewsToApps;
     private FirstPageAppIcon bt_assistant,
             bt_camera,
@@ -129,7 +124,7 @@ public class HomePage1 extends HomeView {
                                     : Collections.emptySet();
 
                     if (bt_whatsapp != null && !viewsToApps.containsValue(bt_whatsapp)) {
-                        bt_whatsapp.setBadgeVisibility(packagesSet.contains(WHATSAPP_PACKAGE_NAME));
+                        bt_whatsapp.setBadgeVisibility(packagesSet.contains(WhatsAppHandler.WHATSAPP_PACKAGE_NAME));
                     }
 
                     if (bt_recent != null && !viewsToApps.containsValue(bt_recent)) {
@@ -263,24 +258,11 @@ public class HomePage1 extends HomeView {
                 BPrefs.CUSTOM_APP_KEY,
                 bt_whatsapp,
                 v -> {
-                    if (S.isPackageInstalled(homeScreen, WHATSAPP_PACKAGE_NAME))
-                        S.startComponentName(homeScreen, WHATSAPP_COMPONENT_NAME);
-                    else
-                        try {
-                            homeScreen.startActivity(
-                                    new Intent(
-                                            Intent.ACTION_VIEW,
-                                            Uri.parse(
-                                                    "market://details?id="
-                                                            + WHATSAPP_PACKAGE_NAME)));
-                        } catch (android.content.ActivityNotFoundException e) {
-                            homeScreen.startActivity(
-                                    new Intent(
-                                            Intent.ACTION_VIEW,
-                                            Uri.parse(
-                                                    "https://play.google.com/store/apps/details?id="
-                                                            + WHATSAPP_PACKAGE_NAME)));
-                        }
+                    try {
+                        WhatsAppHandler.INSTANCE.launch(homeScreen);
+                    } catch (Exception e) {
+                        BaldToast.error(homeScreen, e.getLocalizedMessage());
+                    }
                 });
         setupButton(
                 BPrefs.CUSTOM_ASSISTANT_KEY,

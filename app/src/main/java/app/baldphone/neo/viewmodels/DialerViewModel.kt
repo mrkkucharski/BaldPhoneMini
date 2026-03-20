@@ -10,7 +10,7 @@ import app.baldphone.neo.contacts.ContactProvider
 import app.baldphone.neo.contacts.ContactSearcher
 import app.baldphone.neo.contacts.SimpleContact
 import app.baldphone.neo.utils.PhoneNumberUtils
-import app.baldphone.neo.utils.PhoneUtils
+import app.baldphone.neo.utils.getDeviceRegion
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -40,7 +40,7 @@ class DialerViewModel(application: Application) : AndroidViewModel(application) 
     private val _formattedNumber = MutableStateFlow("")
     val formattedNumber: StateFlow<String> = _formattedNumber.asStateFlow()
 
-    private val deviceRegion: String = PhoneUtils.getDeviceRegion(application)
+    private val deviceRegion: String = application.getDeviceRegion()
 
     private val contactProvider = ContactProvider(application)
     private val contactSearcher = ContactSearcher(application)

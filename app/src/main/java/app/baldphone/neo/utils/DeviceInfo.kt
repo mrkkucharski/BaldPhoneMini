@@ -4,6 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 import android.os.Build
 import android.os.SystemClock
+import android.telephony.TelephonyManager
 
 import com.bald.uriah.baldphone.BuildConfig
 
@@ -51,4 +52,48 @@ private fun gmtOffsetString(): String {
     val zoneId = ZoneId.systemDefault()
     val formatter = DateTimeFormatter.ofPattern("OOOO", Locale.getDefault())
     return formatter.format(zoneId.rules.getOffset(java.time.Instant.now()))
+}
+
+/**
+ * Attempts to determine the user's current country region.
+ *
+ * It checks for the region in the following order:
+ * 1. Network country ISO from TelephonyManager.
+ * 2. SIM country ISO from TelephonyManager.
+ * 3. Device's primary locale.
+ *
+ * @return A two-letter uppercase country code (ISO 3166-1), e.g., "PL".
+ */
+fun Context.getDeviceRegion(): String {
+    val tm = getSystemService(Context.TELEPHONY_SERVICE) as? TelephonyManager
+    if (tm != null) {
+        val networkIso = tm.networkCountryIso
+        if (networkIso.isNotEmpty()) {
+            return networkIso.uppercase(Locale.US)
+        }
+
+        // Fallback to SIM country ISO
+        val simIso = tm.simCountryIso
+        if (simIso.isNotEmpty()) {
+            return simIso.uppercase(Locale.US)
+        }
+    }
+
+    // 2. Fallback to device locale
+    val primaryLocale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        resources.configuration.locales[0]
+    } else {
+        @Suppress("DEPRECATION")
+        resources.configuration.locale
+    }
+
+    if (primaryLocale != null) {
+        val country = primaryLocale.country
+        if (country.isNotEmpty()) {
+            return country.uppercase(Locale.US)
+        }
+    }
+
+    // 3. Final fallback to a default region
+    return "US"
 }

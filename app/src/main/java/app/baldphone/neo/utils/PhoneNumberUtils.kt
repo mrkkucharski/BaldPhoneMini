@@ -13,18 +13,20 @@ import androidx.annotation.RequiresPermission
 import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat
 
+import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 
 object PhoneNumberUtils {
     private val phoneNumberUtil = PhoneNumberUtil.getInstance()
 
-    /** Checks if the given phone number is an emergency number. */
+    /**
+     * Checks if the given phone number is an emergency number.
+     */
     fun isEmergency(context: Context, number: String): Boolean {
         val isEmergency = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             tm.isEmergencyNumber(number)
         } else {
-            // While marked deprecated, it remains the only way to check on older devices
             @Suppress("DEPRECATION")
             android.telephony.PhoneNumberUtils.isEmergencyNumber(number)
         }
@@ -34,7 +36,6 @@ object PhoneNumberUtils {
 
     /**
      * Retrieves the primary emergency number for the current country/network.
-     * Requires READ_PHONE_STATE permission for the modern API.
      */
     fun getPrimaryEmergencyNumber(context: Context): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -55,7 +56,9 @@ object PhoneNumberUtils {
         return "112"
     }
 
-    /** Resolves the best available phone number for the contact identified by [lookupKey]. */
+    /**
+     * Resolves the best available phone number for the contact identified by [lookupKey].
+     */
     @RequiresPermission(Manifest.permission.READ_CONTACTS)
     @WorkerThread
     fun resolvePhoneNumber(lookupKey: String, resolver: ContentResolver): String? {
@@ -78,6 +81,23 @@ object PhoneNumberUtils {
             Log.e("PhoneNumberUtils", "Error resolving phone number for lookupKey: $lookupKey", e)
         }
         return null
+    }
+
+    /**
+     * Formats a phone number to the E.164 standard.
+     *
+     * E.164 format includes a country code prefixed with '+' and no separators (e.g., +12125552368).
+     */
+    fun formatToE164(number: String, region: String): String? {
+        return try {
+            val parsed = phoneNumberUtil.parse(number, region)
+            if (phoneNumberUtil.isValidNumber(parsed)) {
+                phoneNumberUtil.format(parsed, PhoneNumberUtil.PhoneNumberFormat.E164)
+            } else null
+        } catch (e: NumberParseException) {
+            Log.w("PhoneNumberUtils", "Could not parse number for region '$region'", e)
+            null
+        }
     }
 
     /**
