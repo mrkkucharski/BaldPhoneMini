@@ -47,6 +47,30 @@ class ContactRepositoryImpl private constructor(private val context: Context) : 
         }
     }
 
+    // temporary for Java
+    @Deprecated("Java interop only")
+    override fun getRawContactId(contactId: Long): Long {
+        resolver.query(
+            ContactsContract.RawContacts.CONTENT_URI,
+            arrayOf(ContactsContract.RawContacts._ID),
+            "${ContactsContract.RawContacts.CONTACT_ID} = ?",
+            arrayOf(contactId.toString()),
+            null,
+        )?.use { c ->
+            if (c.moveToNext()) return c.getLong(c.getColumnIndexOrThrow(ContactsContract.RawContacts._ID))
+        }
+        return -1L
+    }
+
+    // temporary for Java
+    @Deprecated("Java interop only")
+    override fun getContactByLookupKeyJava(key: String): Contact? =
+        queryContact("${ContactsContract.Contacts.LOOKUP_KEY}=?", arrayOf(key))
+
+    @Deprecated("Java interop only")
+    override fun getContactByIdJava(id: String): Contact? =
+        queryContact("${ContactsContract.Contacts._ID}=?", arrayOf(id))
+
     /**
      * Provides a one-shot query for a single contact.
      */

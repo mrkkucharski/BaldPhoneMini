@@ -39,12 +39,13 @@ import androidx.annotation.Nullable;
 import androidx.exifinterface.media.ExifInterface;
 
 import app.baldphone.neo.activities.ContactsActivity;
+import app.baldphone.neo.contacts.Contact;
+import app.baldphone.neo.contacts.data.ContactRepositoryImpl;
+import app.baldphone.neo.contacts.ui.details.ContactDetailsActivity;
 
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.BaldActivity;
-import com.bald.uriah.baldphone.activities.HomeScreenActivity;
 import com.bald.uriah.baldphone.activities.media.PhotosActivity;
-import com.bald.uriah.baldphone.databases.contacts.Contact;
 import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.BDialog;
 import com.bald.uriah.baldphone.utils.BaldToast;
@@ -79,7 +80,7 @@ public class AddContactActivity extends BaldActivity {
     private BaldImageButton iv_image, iv_delete;
     private View save;
 
-    private static void addFullSizePhoto(int rawContactId, byte[] fullSizedPhotoData, final ContentResolver cr) throws IOException {
+    private static void addFullSizePhoto(long rawContactId, byte[] fullSizedPhotoData, final ContentResolver cr) throws IOException {
         final Uri baseUri = ContentUris.withAppendedId(ContactsContract.RawContacts.CONTENT_URI, rawContactId);
         final Uri displayPhotoUri = Uri.withAppendedPath(baseUri, ContactsContract.RawContacts.DisplayPhoto.CONTENT_DIRECTORY);
         final AssetFileDescriptor fileDescriptor = cr.openAssetFileDescriptor(displayPhotoUri, "rw");
@@ -101,11 +102,11 @@ public class AddContactActivity extends BaldActivity {
         if (callingIntent == null)
             throw new IllegalStateException(TAG + " calling intent cannot be null!");
 
-        final String contactLookupKey = callingIntent.getStringExtra(SingleContactActivity.CONTACT_LOOKUP_KEY);
+        final String contactLookupKey = callingIntent.getStringExtra(ContactDetailsActivity.CONTACT_LOOKUP_KEY);
         if (contactLookupKey != null)
             try {
                 fillWithContact(contactLookupKey);
-            } catch (IllegalStateException | Contact.ContactNotFoundException e) {
+            } catch (IllegalStateException e) {
                 // sometimes it may happen, that the lookup key changes during the transition;
                 //  while very unlikely (happened to me once in 200 tests), it should be checked
                 startActivity(new Intent(this, ContactsActivity.class));
@@ -128,12 +129,7 @@ public class AddContactActivity extends BaldActivity {
             v.setVisibility(View.INVISIBLE);
         });
         save.setOnClickListener(v -> save());
-        ((BaldTitleBar) findViewById(R.id.bald_title_bar)).getBt_back().setOnClickListener(v -> {
-            if (safeToExit())
-                finish();
-            else
-                showExitMessage();
-        });
+        ((BaldTitleBar) findViewById(R.id.bald_title_bar)).getBt_back().setOnClickListener(v -> onBackPressed());
     }
 
     private void save() {
@@ -143,16 +139,7 @@ public class AddContactActivity extends BaldActivity {
         } else if (!(currentContact != null ? update() : insert())) {
             BaldToast.from(this).setType(BaldToast.TYPE_ERROR).setText(R.string.contact_not_created).show();
         } else {
-            finishAffinity();
-            SingleContactActivity.newPictureAdded = true;//static vars are simpler and more rational in this case
-
-            startActivity(new Intent(this, HomeScreenActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-            startActivity(new Intent(this, ContactsActivity.class));
-            startActivity(
-                    new Intent(this, SingleContactActivity.class)
-                            .putExtra(SingleContactActivity.CONTACT_ID, String.valueOf(currentContact.getId()))
-                            .putExtra(SingleContactActivity.PIC_URI_EXTRA, newPhoto)
-            );
+            finish();
         }
     }
 
@@ -167,18 +154,22 @@ public class AddContactActivity extends BaldActivity {
         iv_delete = findViewById(R.id.iv_delete);
     }
 
-    private void fillWithContact(String contactLookupKey) throws Contact.ContactNotFoundException {
-        currentContact = Contact.fromLookupKey(contactLookupKey, getContentResolver());
-        newPhoto = currentContact.getPhoto();
+    private void fillWithContact(String contactLookupKey) {
+        currentContact = ContactRepositoryImpl.Companion.getInstance(getApplicationContext()).getContactByLookupKeyJava(contactLookupKey);
+        if (currentContact == null) {
+            throw new IllegalStateException(TAG + " contact cannot be null!");
+        }
+
+        newPhoto = currentContact.getPhotoUri();
         et_mobile_number.setText(currentContact.getMobilePhone());
         et_home_number.setText(currentContact.getHomePhone());
-        et_address.setText(currentContact.getAddress());
+        et_address.setText(currentContact.getFirstAddress());
         et_name.setText(currentContact.getName());
-        et_mail.setText(currentContact.getMail());
+        et_mail.setText(currentContact.getPrimaryEmail());
 
-        if (currentContact.getPhoto() != null) {
+        if (currentContact.getPhotoUri() != null) {
             if (S.isValidContextForGlide(iv_image.getContext()))
-                Glide.with(iv_image).load(Uri.parse(currentContact.getPhoto())).into(iv_image);
+                Glide.with(iv_image).load(Uri.parse(currentContact.getPhotoUri())).into(iv_image);
             iv_delete.setVisibility(View.VISIBLE);
         }
     }
@@ -214,17 +205,18 @@ public class AddContactActivity extends BaldActivity {
                     ContactsContract.RawContacts._ID + "=?",
                     new String[]{String.valueOf(ContentUris.parseId(results[0].uri))},
                     null)) {
-                if (!contactsCursor.moveToFirst()) throw new AssertionError("cursor is empty");
+                if (contactsCursor == null || !contactsCursor.moveToFirst())
+                    throw new AssertionError("cursor is empty");
                 final String contactId = contactsCursor.getString(
                         contactsCursor.getColumnIndex(ContactsContract.RawContacts.CONTACT_ID)
                 );
-                currentContact = Contact.fromId(contactId, getContentResolver());
+                currentContact = ContactRepositoryImpl.Companion.getInstance(getApplicationContext()).getContactByIdJava(contactId); // TODO: handle exceptions
             }
             return update();
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            Log.e(TAG, "Error inserting contact:", e);
+            BaldToast.error(this, "Error inserting contact!");
+            return false;
         }
     }
 
@@ -237,7 +229,7 @@ public class AddContactActivity extends BaldActivity {
     public boolean update() {
         final ArrayList<ContentProviderOperation> operations = new ArrayList<>();
 
-        final int rawId = currentContact.getRawContactId(getContentResolver());
+        final long rawId = ContactRepositoryImpl.Companion.getInstance(this).getRawContactId(currentContact.getId());
 
         final String[] args = {String.valueOf(currentContact.getId()), ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE};
         final String name = String.valueOf(et_name.getText());
@@ -307,7 +299,7 @@ public class AddContactActivity extends BaldActivity {
             );
 
         //mail number adder + remover
-        final String beforeMail = currentContact.getMail();
+        final String beforeMail = currentContact.getPrimaryEmail();
         if (beforeMail != null)
             operations.add(
                     ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
@@ -332,7 +324,7 @@ public class AddContactActivity extends BaldActivity {
                             .build());
 
         //Addresses:
-        final CharSequence beforeAddress = currentContact.getAddress();
+        final CharSequence beforeAddress = currentContact.getFirstAddress();
         if (beforeAddress != null)
             operations.add(
                     ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
@@ -358,7 +350,7 @@ public class AddContactActivity extends BaldActivity {
                             .build());
 
         //Photo
-        final String beforeImage = currentContact.getPhoto();
+        final String beforeImage = currentContact.getPhotoUri();
         if (beforeImage != null && (!beforeImage.equals(newPhoto))) {
             operations.add(
                     ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
@@ -374,14 +366,9 @@ public class AddContactActivity extends BaldActivity {
 
         //apply operations
         try {
-            ContentProviderResult[] results =
-                    getContentResolver().applyBatch(ContactsContract.AUTHORITY, operations);
-            for (ContentProviderResult result : results) {
-                Log.e("Update Result", result.toString());
-            }
+            getContentResolver().applyBatch(ContactsContract.AUTHORITY, operations);
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-            e.printStackTrace();
+            Log.e(TAG, "Error updating contact:", e);
             throw new RuntimeException(e);
         }
 
@@ -410,7 +397,7 @@ public class AddContactActivity extends BaldActivity {
                             .into(new PhotoAdder(rawId, this, false));
 
             } catch (IOException e) {
-                Log.e(TAG, e.getMessage());
+                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
                 e.printStackTrace();
                 BaldToast.error(this);
             }
@@ -451,16 +438,16 @@ public class AddContactActivity extends BaldActivity {
         final String mail = S.str(et_mail.getText().toString());
 
         if (currentContact == null)
-            return mobile_number == home_number && address == name && mail == mobile_number; // check all of them are empty
+            return mobile_number.isEmpty() && home_number.isEmpty() && address.isEmpty() && name.isEmpty() && mail.isEmpty();
 
         final String _mobile_number = S.str(currentContact.getMobilePhone());
         final String _home_number = S.str(currentContact.getHomePhone());
-        final String _address = S.str(currentContact.getAddress());
+        final String _address = S.str(currentContact.getFirstAddress());
         final String _name = S.str(currentContact.getName());
-        final String _mail = S.str(currentContact.getMail());
+        final String _mail = S.str(currentContact.getPrimaryEmail());
 
         return (et_mobile_number.length() == 0 && et_home_number.length() == 0 && et_address.length() == 0 && et_name.length() == 0 && et_mail.length() == 0)
-                || (Objects.equals(newPhoto, currentContact.getPhoto())
+                || (Objects.equals(newPhoto, currentContact.getPhotoUri())
                 && mobile_number.equals(_mobile_number)
                 && home_number.equals(_home_number)
                 && address.equals(_address)
@@ -483,11 +470,11 @@ public class AddContactActivity extends BaldActivity {
     }
 
     static class PhotoAdder extends SimpleTarget<Bitmap> {
-        private final int rawId;
+        private final long rawId;
         private final ContentResolver contentResolver;
         private final boolean cropped;
 
-        PhotoAdder(int rawId, Context context, boolean cropped) {
+        PhotoAdder(long rawId, Context context, boolean cropped) {
             this.cropped = cropped;
             this.rawId = rawId;
             this.contentResolver = context.getApplicationContext().getContentResolver();

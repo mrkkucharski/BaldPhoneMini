@@ -27,6 +27,21 @@ interface ContactRepository {
     suspend fun refresh()
 
     /**
+     * Resolves the raw contact ID for a given contact ID.
+     */
+    fun getRawContactId(contactId: Long): Long
+
+    /**
+     * Java interop: Provides a blocking query for a contact by lookup key.
+     */
+    fun getContactByLookupKeyJava(key: String): Contact?
+
+    /**
+     * Java interop: Provides a blocking query for a contact by ID.
+     */
+    fun getContactByIdJava(id: String): Contact?
+
+    /**
      * Provides a one-shot query for a single contact.
      */
     suspend fun getContact(lookupKey: String): Contact?

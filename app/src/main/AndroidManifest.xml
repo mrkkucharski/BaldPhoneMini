@@ -99,10 +99,6 @@
             android:exported="false"
             android:label="Contact details" />
         <activity
-            android:name=".activities.contacts.SingleContactActivity"
-            android:exported="false"
-            android:label="Contact Details" />
-        <activity
             android:name=".activities.media.SingleVideoActivity"
             android:exported="false"
             android:label="@string/video" />

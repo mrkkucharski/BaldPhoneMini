@@ -49,7 +49,7 @@ import com.bald.uriah.baldphone.views.BaldTitleBar;
 import static android.view.View.GONE;
 
 /**
- * Base activity for {@link ShareActivity} and {@link ContactsActivity}.
+ * Base activity for {@link ShareActivity}.
  * both has {@link R.layout#contacts_search} in their layout.
  */
 abstract class BaseContactsActivity extends BaldActivity {
@@ -245,7 +245,7 @@ abstract class BaseContactsActivity extends BaldActivity {
                             .get(0);
             et_filter_input.setText(spokenText);
             et_filter_input.setSelection(et_filter_input.getText().length());
-        } else if (requestCode == SingleContactActivity.REQUEST_CHECK_CHANGE && resultCode == RESULT_OK) {
+        } else if (requestCode == 97 && resultCode == RESULT_OK) {
             applyFilter();
         } else
             super.onActivityResult(requestCode, resultCode, data);

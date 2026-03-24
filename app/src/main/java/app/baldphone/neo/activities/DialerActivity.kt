@@ -16,8 +16,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 
 import app.baldphone.neo.calls.CallManager
-import app.baldphone.neo.contacts.openDetails
 import app.baldphone.neo.contacts.ui.ContactAdapter
+import app.baldphone.neo.contacts.ui.details.ContactDetailsActivity
 import app.baldphone.neo.data.Prefs
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
@@ -47,7 +47,7 @@ class DialerActivity : BaldActivity() {
     private val adapter by lazy {
         ContactAdapter(
             showPhoneNumbers = true
-        ) { contact -> contact.openDetails(this) }
+        ) { contact -> ContactDetailsActivity.openContact(this, contact.lookupKey) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

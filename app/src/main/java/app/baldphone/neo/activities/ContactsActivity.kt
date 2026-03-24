@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 
 import app.baldphone.neo.contacts.SimpleContact
-import app.baldphone.neo.contacts.openDetails
 import app.baldphone.neo.contacts.ui.ContactAdapter
+import app.baldphone.neo.contacts.ui.details.ContactDetailsActivity
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
 import app.baldphone.neo.utils.baldAlertDialog
@@ -52,7 +52,7 @@ class ContactsActivity : BaldActivity() {
     private val adapter by lazy {
         ContactAdapter { contact ->
             if (isPickerMode) showPickerConfirmation(contact)
-            else contact.openDetails(this)
+            else ContactDetailsActivity.openContact(this, contact.lookupKey)
         }
     }
 
