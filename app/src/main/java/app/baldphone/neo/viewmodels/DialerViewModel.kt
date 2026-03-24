@@ -6,9 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 
 import app.baldphone.neo.contacts.ContactItemType
-import app.baldphone.neo.contacts.ContactProvider
 import app.baldphone.neo.contacts.ContactSearcher
-import app.baldphone.neo.contacts.SimpleContact
+import app.baldphone.neo.contacts.data.ContactRepositoryImpl
 import app.baldphone.neo.utils.PhoneNumberUtils
 import app.baldphone.neo.utils.getDeviceRegion
 
@@ -42,15 +41,13 @@ class DialerViewModel(application: Application) : AndroidViewModel(application) 
 
     private val deviceRegion: String = application.getDeviceRegion()
 
-    private val contactProvider = ContactProvider(application)
+    private val contactProvider = ContactRepositoryImpl.getInstance(application)
     private val contactSearcher = ContactSearcher(application)
 
-    private val _allContacts = MutableStateFlow<List<SimpleContact>>(emptyList())
-
     @OptIn(ExperimentalCoroutinesApi::class)
-    val searchResults: StateFlow<List<ContactItemType>> = _allContacts.flatMapLatest { contacts ->
+    val searchResults: StateFlow<List<ContactItemType>> = contactProvider.contacts.flatMapLatest { contacts ->
         contactSearcher.searchContactsFlow(
-            allContacts = contacts,
+            allContacts = contacts ?: emptyList(),
             searchQueryFlow = rawNumber,
             enableT9 = true,
             showAllWhenEmpty = false
@@ -65,7 +62,7 @@ class DialerViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         viewModelScope.launch {
-            _allContacts.value = contactProvider.getAllContacts()
+            contactProvider.refresh()
         }
     }
 

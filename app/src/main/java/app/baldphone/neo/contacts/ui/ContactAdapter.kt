@@ -1,12 +1,15 @@
-package app.baldphone.neo.contacts
+package app.baldphone.neo.contacts.ui
 
-import android.provider.ContactsContract.CommonDataKinds.Phone
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+
+import app.baldphone.neo.contacts.ContactItemType
+import app.baldphone.neo.contacts.SimpleContact
 
 import coil3.load
 import coil3.request.crossfade
@@ -19,9 +22,6 @@ import com.bald.uriah.baldphone.adapters.ModularListAdapter
 import com.bald.uriah.baldphone.databinding.ContactItemBinding
 import com.bald.uriah.baldphone.databinding.ContactItemHeaderBinding
 
-/**
- * RecyclerView adapter for displaying contact search results with optional alphabetical grouping.
- */
 class ContactAdapter(
     private val showPhoneNumbers: Boolean = false,
     private val onContactClick: ((SimpleContact) -> Unit)? = null
@@ -57,7 +57,6 @@ class ContactAdapter(
         }
     }
 
-    /** ViewHolder for section headers */
     class HeaderViewHolder(
         private val binding: ContactItemHeaderBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -66,7 +65,6 @@ class ContactAdapter(
         }
     }
 
-    /** ViewHolder for contact items */
     class ContactViewHolder(
         private val binding: ContactItemBinding,
         private val showPhoneNumbers: Boolean,
@@ -80,8 +78,11 @@ class ContactAdapter(
             binding.contactName.text = contact.name
 
             if (contact.isStarred) {
-                binding.contactName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_star_small, 0)
-                binding.contactName.compoundDrawablePadding = binding.root.context.resources.getDimensionPixelSize(R.dimen.padding_small)
+                binding.contactName.setCompoundDrawablesWithIntrinsicBounds(
+                    0, 0, R.drawable.ic_star_small, 0
+                )
+                binding.contactName.compoundDrawablePadding =
+                    binding.root.context.resources.getDimensionPixelSize(R.dimen.padding_small)
             } else {
                 binding.contactName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
             }
@@ -90,12 +91,15 @@ class ContactAdapter(
                 binding.contactNumber.visibility = View.VISIBLE
                 val context = binding.root.context
                 val phoneNumber = contact.phoneNumber
-                binding.contactNumber.text = if (contact.phoneType == Phone.TYPE_MOBILE) {
-                    phoneNumber
-                } else {
-                    val typeLabel = Phone.getTypeLabel(context.resources, contact.phoneType, contact.phoneLabel)
-                    "$phoneNumber ($typeLabel)"
-                }
+                binding.contactNumber.text =
+                    if (contact.phoneType == ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE) {
+                        phoneNumber
+                    } else {
+                        val typeLabel = ContactsContract.CommonDataKinds.Phone.getTypeLabel(
+                            context.resources, contact.phoneType, contact.phoneLabel
+                        )
+                        "$phoneNumber ($typeLabel)"
+                    }
             } else {
                 binding.contactNumber.visibility = View.GONE
             }
@@ -115,7 +119,8 @@ class ContactAdapter(
                     oldItem.letter == newItem.letter
 
                 oldItem is ContactItemType.ContactItem && newItem is ContactItemType.ContactItem ->
-                    oldItem.contact.id == newItem.contact.id && oldItem.contact.phoneNumber == newItem.contact.phoneNumber
+                    oldItem.contact.id == newItem.contact.id
+                            && oldItem.contact.phoneNumber == newItem.contact.phoneNumber
 
                 else -> false
             }

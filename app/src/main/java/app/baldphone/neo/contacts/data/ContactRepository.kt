@@ -1,0 +1,55 @@
+package app.baldphone.neo.contacts.data
+
+import app.baldphone.neo.contacts.Contact
+import app.baldphone.neo.contacts.SimpleContact
+
+import kotlinx.coroutines.flow.StateFlow
+
+/**
+ * Interface defining the operations for managing and retrieving contacts.
+ */
+interface ContactRepository {
+    /**
+     * Observable flow of contacts.
+     * null = not yet loaded or currently loading for the first time
+     * emptyList = loaded but no contacts found
+     */
+    val contacts: StateFlow<List<SimpleContact>?>
+
+    /**
+     * One-shot fetch of all contacts.
+     */
+    suspend fun getAllContacts(): List<SimpleContact>
+
+    /**
+     * Triggers a refresh of the contacts from the system database.
+     */
+    suspend fun refresh()
+
+    /**
+     * Provides a one-shot query for a single contact.
+     */
+    suspend fun getContact(lookupKey: String): Contact?
+
+    /**
+     * Deletes a contact from the system contacts.
+     */
+    suspend fun deleteContact(lookupKey: String): Boolean
+
+    /**
+     * Updates the favorite status of a contact.
+     */
+    suspend fun updateFavorite(lookupKey: String, starred: Boolean): Boolean
+
+    /**
+     * Resolves a fresh lookup key for a contact given its previous (possibly stale) lookup key.
+     */
+    suspend fun resolveLatestLookupKey(oldLookupKey: String): String?
+
+    /**
+     * Resolves a contact lookup key from a cached URI, phone number, or display name.
+     */
+    suspend fun resolveLookupKey(
+        cachedLookupUri: String?, number: String?, name: String?,
+    ): String?
+}

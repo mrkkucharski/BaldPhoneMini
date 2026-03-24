@@ -16,8 +16,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 
 import app.baldphone.neo.calls.CallManager
-import app.baldphone.neo.contacts.ContactAdapter
 import app.baldphone.neo.contacts.openDetails
+import app.baldphone.neo.contacts.ui.ContactAdapter
 import app.baldphone.neo.data.Prefs
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission

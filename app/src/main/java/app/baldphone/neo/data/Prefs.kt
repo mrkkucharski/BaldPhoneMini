@@ -50,6 +50,14 @@ object Prefs {
         PrefKeys.KEY_DUAL_SIM_MODE, PrefKeys.DEFAULT_DUAL_SIM_MODE
     )
 
+    /**
+     * Controls whether call logs are expanded by default
+     * in the [app.baldphone.neo.contacts.ui.details.ContactDetailsActivity].
+     */
+    var isCallLogVisible: Boolean by BooleanPreference(
+        PrefKeys.KEY_CALL_LOG_VISIBLE, false
+    )
+
     private fun putInt(key: String, value: Int) {
         prefs.edit { putInt(key, value) }
     }

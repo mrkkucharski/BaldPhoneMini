@@ -17,9 +17,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 
-import app.baldphone.neo.contacts.ContactAdapter
 import app.baldphone.neo.contacts.SimpleContact
 import app.baldphone.neo.contacts.openDetails
+import app.baldphone.neo.contacts.ui.ContactAdapter
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
 import app.baldphone.neo.utils.baldAlertDialog

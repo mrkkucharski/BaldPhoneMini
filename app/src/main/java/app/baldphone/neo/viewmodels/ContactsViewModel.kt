@@ -6,9 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 
 import app.baldphone.neo.contacts.ContactItemType
-import app.baldphone.neo.contacts.ContactProvider
 import app.baldphone.neo.contacts.ContactSearcher
 import app.baldphone.neo.contacts.SimpleContact
+import app.baldphone.neo.contacts.data.ContactRepositoryImpl
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
  */
 class ContactsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val contactProvider = ContactProvider(application)
+    private val contactProvider = ContactRepositoryImpl.getInstance(application)
     private val contactSearcher = ContactSearcher(application)
     private val _allContacts = MutableStateFlow<List<SimpleContact>>(emptyList())
 
@@ -53,7 +53,7 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
 
     fun refresh() {
         viewModelScope.launch {
-            _allContacts.value = contactProvider.getAllContacts()
+            _allContacts.value = this@ContactsViewModel.contactProvider.getAllContacts()
         }
     }
 

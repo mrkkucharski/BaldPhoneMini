@@ -87,6 +87,7 @@
     <string name="connection_settings">Sieci bezprzewodowe</string>
     <string name="contact_must_has_name">Kontakt musi mieć nazwę</string>
     <string name="contact_not_created">Nie udało się utworzyć kontaktu</string>
+    <string name="contact_details">Kontakt</string>
     <string name="contacts">Kontakty</string>
     <string name="search_contact">Szukaj kontaktów po nazwie</string>
     <string name="contacts_read_subtext">To uprawnienie jest wymagane, aby odczytać kontakty.</string>
@@ -153,6 +154,7 @@
     <string name="new_alarm___was_created">Nowy alarm %s został utworzony</string>
     <string name="nfc">NFC</string>
     <string name="no">Nie</string>
+    <string name="note">Notatka</string>
     <string name="notes">Notatki</string>
     <string name="notes_settings">Ustawienia notatek</string>
     <string name="notes_settings_subtext">Czy chcesz, aby na ekranie głównym znajdowała się strona z notatkami?</string>

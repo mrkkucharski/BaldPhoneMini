@@ -101,6 +101,25 @@ object PhoneNumberUtils {
     }
 
     /**
+     * Formats a phone number for display (INTERNATIONAL format).
+     * Returns the raw number if parsing fails or if the number is invalid.
+     */
+    fun formatForDisplay(number: String, region: String): String {
+        return try {
+            val parsed = phoneNumberUtil.parse(number, region)
+            if (phoneNumberUtil.isValidNumber(parsed)) {
+                phoneNumberUtil.format(parsed, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
+                    .replace('-', ' ')
+            } else {
+                number
+            }
+        } catch (e: Exception) {
+            Log.w("PhoneNumberUtils", "Could not parse number for display: $number", e)
+            number
+        }
+    }
+
+    /**
      * Formats a phone number using AsYouTypeFormatter for the given region.
      * Useful for dialer input display.
      */
