@@ -13,7 +13,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.graphics.drawable.toDrawable
 
-import com.bald.uriah.baldphone.activities.BaldActivity
 import com.bald.uriah.baldphone.databinding.AppDialogBinding
 import com.bald.uriah.baldphone.views.BaldButton
 
@@ -177,9 +176,7 @@ class AppDialog private constructor(
         fun setBackgroundColor(@ColorInt color: Int) = apply { this.backgroundColor = color }
 
         fun create(): AppDialog {
-            val dialog = AppDialog(context, this)
-            (context as? BaldActivity)?.autoDismiss(dialog)
-            return dialog
+            return AppDialog(context, this)
         }
 
         fun show(): AppDialog = create().apply { show() }

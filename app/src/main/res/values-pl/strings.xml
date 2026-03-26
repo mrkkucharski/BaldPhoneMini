@@ -295,6 +295,7 @@
     <string name="dialog_message_permission_phone">Aby umożliwić dzwonienie, aplikacja potrzebuje pozwolenia na wykonywanie połączeń telefonicznych.</string>
     <string name="dialog_message_permission_contacts">Aby wyświetlać i zapisywać kontakty, aplikacja potrzebuje dostępu do Twoich kontaktów.</string>
     <string name="dialog_message_permission_media">Aplikacja potrzebuje dostępu do zdjęć i filmów, aby wyświetlać i zapisywać multimedia.</string>
+    <string name="dialog_message_permission_call_log">Potrzebujemy dostępu do historii połączeń, aby wyświetlić Twoje ostatnie rozmowy.</string>
 
     <!-- Special Permissions -->
     <string name="dialog_title_permission_write_settings">Zmiana ustawień systemu</string>

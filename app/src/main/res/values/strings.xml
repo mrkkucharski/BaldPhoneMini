@@ -328,6 +328,7 @@
     <string name="dialog_message_permission_phone">Phone permission is required to make calls.</string>
     <string name="dialog_message_permission_contacts">Contacts permission is required to view and add contacts.</string>
     <string name="dialog_message_permission_media">The app needs access to photos and videos to display and save media.</string>
+    <string name="dialog_message_permission_call_log">Call log permission is required to view recent calls.</string>
 
     <!-- Special Permissions -->
     <string name="dialog_title_permission_write_settings">Modify system settings</string>

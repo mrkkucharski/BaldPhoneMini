@@ -4,7 +4,9 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+
 import androidx.core.content.ContextCompat
+
 import com.bald.uriah.baldphone.R
 
 
@@ -14,6 +16,7 @@ sealed class RuntimePermission(
 ) : AppPermission(titleRes, messageRes) {
 
     override fun isGranted(context: Context): Boolean = permissions.all {
+        android.util.Log.d("RuntimePermission", "isGranted: $it")
         ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -28,6 +31,11 @@ sealed class RuntimePermission(
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS,
         )
+    )
+
+    data object ReadCallLog : RuntimePermission(
+        messageRes = R.string.dialog_message_permission_call_log,
+        permissions = arrayOf(Manifest.permission.READ_CALL_LOG),
     )
 
     data object MediaStorage : RuntimePermission(

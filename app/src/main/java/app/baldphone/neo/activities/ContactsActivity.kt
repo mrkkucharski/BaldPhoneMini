@@ -66,19 +66,18 @@ class ContactsActivity : BaldActivity() {
         setupButtons()
         setupKeyboardInsets()
 
-        checkPermissions()
+        PermissionManager.checkOrRequest(this, RuntimePermission.ReadWriteContacts) {
+            onGranted {
+                observeViewModel()
+                viewModel.refresh()
+            }
+            onDenied { finish() }
+        }
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
-    }
-
-    private fun checkPermissions() {
-        PermissionManager.requestPermission(this, RuntimePermission.ReadWriteContacts) {
-            onGranted { observeViewModel() }
-            onDenied { finish() }
-        }
     }
 
     private fun observeViewModel() {

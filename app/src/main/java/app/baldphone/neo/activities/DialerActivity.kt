@@ -19,7 +19,6 @@ import app.baldphone.neo.calls.CallManager
 import app.baldphone.neo.contacts.ContactAdapter
 import app.baldphone.neo.contacts.openDetails
 import app.baldphone.neo.data.Prefs
-
 import app.baldphone.neo.permissions.PermissionManager
 import app.baldphone.neo.permissions.RuntimePermission
 import app.baldphone.neo.utils.getTextFromClipboard
@@ -193,7 +192,7 @@ class DialerActivity : BaldActivity() {
                 }
                 startActivity(intent)
             } else {
-                PermissionManager.requestPermission(this, RuntimePermission.ReadWriteContacts) {
+                PermissionManager.checkOrRequest(this, RuntimePermission.ReadWriteContacts) {
                     onGranted {
                         updateEmptyStatePermissionUI()
                         observeSearchResults()
