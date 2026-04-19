@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
+import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.os.Build;
@@ -185,7 +186,7 @@ public class SettingsActivity extends BaldActivity {
         accessibilityCategory.add(keyboard);
         personalizationCategory.add(keyboard);
 
-        personalizationCategory.add(new RunnableSettingsItem(R.string.language_settings, v -> startActivity(new Intent(Settings.ACTION_LOCALE_SETTINGS)), R.drawable.translate_on_button));
+        personalizationCategory.add(new RunnableSettingsItem(R.string.language_settings, v -> openLanguageSettings(), R.drawable.translate_on_button));
 
 //        personalizationCategory.add(
 //                new BDBSettingsItem(R.string.emergency_button, BDB.from(this)
@@ -396,6 +397,21 @@ public class SettingsActivity extends BaldActivity {
                         v -> startActivity(new Intent(this, AboutActivity.class)),
                         R.drawable.ic_info)
         );
+    }
+
+    private void openLanguageSettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            try {
+                final Intent intent = new Intent(Settings.ACTION_APP_LOCALE_SETTINGS);
+                intent.setData(Uri.fromParts("package", getPackageName(), null));
+                startActivity(intent);
+                return;
+            } catch (ActivityNotFoundException e) {
+                Log.e(TAG, "Failed to open app locale settings", e);
+            }
+        }
+
+        startActivity(new Intent(Settings.ACTION_LOCALE_SETTINGS));
     }
 
     private void showThemeDialog() {
