@@ -39,6 +39,8 @@ import static com.bald.uriah.baldphone.utils.BPrefs.LONG_PRESSES_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.LONG_PRESSES_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.LOW_BATTERY_ALERT_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.LOW_BATTERY_ALERT_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.HOME_TOP_BAR_CONTROLS_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.HOME_TOP_BAR_CONTROLS_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.NOTE_VISIBLE_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.NOTE_VISIBLE_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.PAGE_TRANSFORMERS_DEFAULT_VALUE;
@@ -62,7 +64,7 @@ import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_KEY;
 
 public class BaldPrefsUtils {
     private final boolean vibrationFeedback, touchNoHard, longPresses, notes, pills, internet, maps, alarms, photos, lowBatteryAlert, sos;
-    private final int swipingEffect, statusBar;
+    private final int swipingEffect, statusBar, homeTopBarControls;
     private final String CUSTOM_APP;
     private final String CUSTOM_RECENTS;
     private final String CUSTOM_DIALER;
@@ -76,7 +78,7 @@ public class BaldPrefsUtils {
     private final String CUSTOM_APPS;
     private final String CUSTOM_ALARMS;
 
-    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, boolean pills, boolean internet, boolean maps, boolean alarms, boolean photos, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
+    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, boolean pills, boolean internet, boolean maps, boolean alarms, boolean photos, int statusBar, int homeTopBarControls, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
         this.vibrationFeedback = vibrationFeedback;
         this.touchNoHard = touchNoHard;
         this.longPresses = longPresses;
@@ -88,6 +90,7 @@ public class BaldPrefsUtils {
         this.alarms = alarms;
         this.photos = photos;
         this.statusBar = statusBar;
+        this.homeTopBarControls = homeTopBarControls;
         this.lowBatteryAlert = lowBatteryAlert;
         this.sos = sos;
         CUSTOM_APP = custom_app;
@@ -129,6 +132,8 @@ public class BaldPrefsUtils {
                         .getBoolean(PHOTOS_VISIBLE_KEY, PHOTOS_VISIBLE_DEFAULT_VALUE),
                 sharedPreferences
                         .getInt(STATUS_BAR_KEY, STATUS_BAR_DEFAULT_VALUE),
+                sharedPreferences
+                        .getInt(HOME_TOP_BAR_CONTROLS_KEY, HOME_TOP_BAR_CONTROLS_DEFAULT_VALUE),
                 sharedPreferences.getBoolean(LOW_BATTERY_ALERT_KEY, LOW_BATTERY_ALERT_DEFAULT_VALUE),
                 sharedPreferences.getBoolean(EMERGENCY_BUTTON_VISIBLE_KEY, EMERGENCY_BUTTON_VISIBLE_DEFAULT_VALUE),
                 sharedPreferences.getString(CUSTOM_APP_KEY, null),
@@ -168,6 +173,7 @@ public class BaldPrefsUtils {
                 sos == that.sos &&
                 swipingEffect == that.swipingEffect &&
                 statusBar == that.statusBar &&
+                homeTopBarControls == that.homeTopBarControls &&
                 Objects.equals(CUSTOM_APP, that.CUSTOM_APP) &&
                 Objects.equals(CUSTOM_RECENTS, that.CUSTOM_RECENTS) &&
                 Objects.equals(CUSTOM_DIALER, that.CUSTOM_DIALER) &&
@@ -184,6 +190,6 @@ public class BaldPrefsUtils {
 
     @Override
     public int hashCode() {
-        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, pills, internet, maps, alarms, photos, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
+        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, pills, internet, maps, alarms, photos, lowBatteryAlert, sos, swipingEffect, statusBar, homeTopBarControls, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
     }
 }

@@ -317,6 +317,10 @@
     <string name="only_home_screen">Μόνο στην Αρχική Οθόνη</string>
     <string name="nowhere">Πουθενά</string>
     <string name="everywhere">Παντού</string>
+    <string name="top_bar_controls_settings">Στοιχεία ελέγχου επάνω γραμμής</string>
+    <string name="top_bar_controls_settings_subtext">Επιλέξτε ποια κουμπιά θα εμφανίζονται στην επάνω γραμμή της αρχικής οθόνης.</string>
+    <string name="top_bar_controls_full">Πλήρης</string>
+    <string name="top_bar_controls_simple">Απλή</string>
 
 
     <string name="share_photo">Κοινοποίηση Εικόνας</string>

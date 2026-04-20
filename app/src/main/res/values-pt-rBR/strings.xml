@@ -297,6 +297,10 @@
     <string name="only_home_screen">Apenas na Página Inicial</string>
     <string name="nowhere">Ocultar</string>
     <string name="everywhere">Em todos lugares</string>
+    <string name="top_bar_controls_settings">Controles da barra superior</string>
+    <string name="top_bar_controls_settings_subtext">Escolha quais botões aparecem na barra superior da tela inicial.</string>
+    <string name="top_bar_controls_full">Completo</string>
+    <string name="top_bar_controls_simple">Simples</string>
 
 
     <string name="share_photo">Compartilhar foto</string>

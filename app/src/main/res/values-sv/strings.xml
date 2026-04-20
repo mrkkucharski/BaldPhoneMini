@@ -308,6 +308,10 @@
     <string name="only_home_screen">Endast på hemskärmen</string>
     <string name="nowhere">Ingenstans</string>
     <string name="everywhere">Överallt</string>
+    <string name="top_bar_controls_settings">Kontroller i övre fältet</string>
+    <string name="top_bar_controls_settings_subtext">Välj vilka knappar som visas i övre fältet på hemskärmen.</string>
+    <string name="top_bar_controls_full">Fullständig</string>
+    <string name="top_bar_controls_simple">Enkel</string>
 
 
     <string name="share_photo">Dela Foto</string>

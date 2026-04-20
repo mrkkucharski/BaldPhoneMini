@@ -83,6 +83,10 @@
     <string name="write_contacts">Rubuta Lambobin Sadarwa</string>
     <string name="yes">Haka ne</string>
     <string name="discard">A watse</string>
+    <string name="top_bar_controls_settings">Sarrafa sandar sama</string>
+    <string name="top_bar_controls_settings_subtext">Zaɓi waɗanne maɓallan za a nuna a sandar saman allon gida.</string>
+    <string name="top_bar_controls_full">Cikakke</string>
+    <string name="top_bar_controls_simple">Sauƙi</string>
     <bool name="is_right_to_left">false</bool>
 
 </resources>

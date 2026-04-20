@@ -236,6 +236,10 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
     <string name="read_phone_state_subtext">Baimen hau derrigorrezkoa da bigarren simarekin deiak egiteko.</string>
     <string name="choose_sim">Aukeratu sima</string>
     <string name="choose_sim_subtext">Aukeratu zein sim erabili nahi duzun deia egiteko</string>
+    <string name="top_bar_controls_settings">Goiko barraren kontrolak</string>
+    <string name="top_bar_controls_settings_subtext">Aukeratu hasierako pantailako goiko barran zein botoi erakutsiko diren.</string>
+    <string name="top_bar_controls_full">Osoa</string>
+    <string name="top_bar_controls_simple">Sinplea</string>
     <string-array name="names_for_screenshots">
         <item>The Godfather</item>
         <item>Abraham Lincoln</item>

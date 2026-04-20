@@ -289,6 +289,10 @@
     <string name="only_home_screen">홈 화면만</string>
     <string name="nowhere">아무데도 없음</string>
     <string name="everywhere">어디에서나</string>
+    <string name="top_bar_controls_settings">상단 표시줄 컨트롤</string>
+    <string name="top_bar_controls_settings_subtext">홈 화면 상단 표시줄에 표시할 버튼을 선택하세요.</string>
+    <string name="top_bar_controls_full">전체</string>
+    <string name="top_bar_controls_simple">간단</string>
 
 
     <string name="share_photo">사진 공유</string>

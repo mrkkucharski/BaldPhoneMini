@@ -306,6 +306,10 @@
     <string name="only_home_screen">Pantalla de inicio</string>
     <string name="nowhere">En ningún sitio</string>
     <string name="everywhere">En todas partes</string>
+    <string name="top_bar_controls_settings">Controles de la barra superior</string>
+    <string name="top_bar_controls_settings_subtext">Elige qué botones se muestran en la barra superior de la pantalla de inicio.</string>
+    <string name="top_bar_controls_full">Completo</string>
+    <string name="top_bar_controls_simple">Simple</string>
 
 
     <string name="share_photo">Compartir foto</string>

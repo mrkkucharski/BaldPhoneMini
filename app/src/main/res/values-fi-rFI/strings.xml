@@ -314,6 +314,10 @@ ja muuttaa kirkkautta.</string>
     <string name="only_home_screen">Vain kotinäyttö</string>
     <string name="nowhere">Ei missään</string>
     <string name="everywhere">Kaikkialla</string>
+    <string name="top_bar_controls_settings">Yläpalkin säätimet</string>
+    <string name="top_bar_controls_settings_subtext">Valitse, mitkä painikkeet näkyvät kotinäytön yläpalkissa.</string>
+    <string name="top_bar_controls_full">Täysi</string>
+    <string name="top_bar_controls_simple">Yksinkertainen</string>
 
 
     <string name="share_photo">Jaa kuva</string>

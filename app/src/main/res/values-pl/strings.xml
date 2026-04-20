@@ -279,6 +279,10 @@
     <string name="only_home_screen">Tylko na ekranie głównym</string>
     <string name="nowhere">Nigdzie</string>
     <string name="everywhere">Wszędzie</string>
+    <string name="top_bar_controls_settings">Elementy górnego paska</string>
+    <string name="top_bar_controls_settings_subtext">Wybierz, które przyciski mają być widoczne na górnym pasku ekranu głównego.</string>
+    <string name="top_bar_controls_full">Pełny</string>
+    <string name="top_bar_controls_simple">Prosty</string>
     <string name="share_photo">Udostępnij zdjęcie</string>
     <string name="choose_language_for_keyboard">Wybierz język</string>
     <string name="hebrew">Hebrajski</string>

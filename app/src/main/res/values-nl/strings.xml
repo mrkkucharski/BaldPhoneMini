@@ -296,6 +296,10 @@ geen schade veroorzaken. Druk op OK om de bevoegdheden te geven of druk op nee o
     <string name="only_home_screen">Alleen op het startscherm</string>
     <string name="nowhere">Nergens</string>
     <string name="everywhere">Overal</string>
+    <string name="top_bar_controls_settings">Bediening bovenbalk</string>
+    <string name="top_bar_controls_settings_subtext">Kies welke knoppen op de bovenbalk van het startscherm worden weergegeven.</string>
+    <string name="top_bar_controls_full">Volledig</string>
+    <string name="top_bar_controls_simple">Eenvoudig</string>
 
 
     <string name="share_photo">Deel Foto</string>

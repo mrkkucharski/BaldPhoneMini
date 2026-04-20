@@ -252,6 +252,21 @@ public class SettingsActivity extends BaldActivity {
                 R.drawable.status_bar_on_button
         ));
 
+        personalizationCategory.add(new BDBSettingsItem(R.string.top_bar_controls_settings,
+                BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.top_bar_controls_settings)
+                        .setSubText(R.string.top_bar_controls_settings_subtext)
+                        .setOptions(R.string.top_bar_controls_full, R.string.top_bar_controls_simple)
+                        .setPositiveButtonListener(params -> {
+                            editor.putInt(BPrefs.HOME_TOP_BAR_CONTROLS_KEY, (Integer) params[0]).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getInt(BPrefs.HOME_TOP_BAR_CONTROLS_KEY, BPrefs.HOME_TOP_BAR_CONTROLS_DEFAULT_VALUE)),
+                R.drawable.top_bar_controls_on_button
+        ));
+
         personalizationCategory.add(new BDBSettingsItem(R.string.notes_settings,
                 BDB.from(this)
                         .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)

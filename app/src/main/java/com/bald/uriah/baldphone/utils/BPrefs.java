@@ -55,6 +55,11 @@ public final class BPrefs {
     public static final String STATUS_BAR_KEY = "STATUS_BAR_KEY";
     public static final int STATUS_BAR_DEFAULT_VALUE = 0;
 
+    public static final String HOME_TOP_BAR_CONTROLS_KEY = "HOME_TOP_BAR_CONTROLS_KEY";
+    public static final int HOME_TOP_BAR_CONTROLS_FULL = 0;
+    public static final int HOME_TOP_BAR_CONTROLS_SIMPLE = 1;
+    public static final int HOME_TOP_BAR_CONTROLS_DEFAULT_VALUE = HOME_TOP_BAR_CONTROLS_FULL;
+
     public static final String VIBRATION_FEEDBACK_KEY = "VIBRATION_FEEDBACK_KEY";
     public static final boolean VIBRATION_FEEDBACK_DEFAULT_VALUE = true;
 

@@ -307,6 +307,10 @@
     <string name="only_home_screen">Doar pe pagina principală</string>
     <string name="nowhere">Nicăieri</string>
     <string name="everywhere">Peste tot</string>
+    <string name="top_bar_controls_settings">Comenzi bară superioară</string>
+    <string name="top_bar_controls_settings_subtext">Alegeți ce butoane sunt afișate în bara superioară a ecranului principal.</string>
+    <string name="top_bar_controls_full">Complet</string>
+    <string name="top_bar_controls_simple">Simplu</string>
 
 
     <string name="share_photo">Împartășiți poza</string>

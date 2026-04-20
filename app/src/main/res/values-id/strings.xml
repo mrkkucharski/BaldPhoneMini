@@ -314,6 +314,10 @@
     <string name="only_home_screen">Hanya di Layar Beranda</string>
     <string name="nowhere">Tidak di mana-mana</string>
     <string name="everywhere">Di mana-mana</string>
+    <string name="top_bar_controls_settings">Kontrol bilah atas</string>
+    <string name="top_bar_controls_settings_subtext">Pilih tombol yang ditampilkan di bilah atas layar beranda.</string>
+    <string name="top_bar_controls_full">Lengkap</string>
+    <string name="top_bar_controls_simple">Sederhana</string>
 
 
     <string name="share_photo">Bagikan Foto</string>

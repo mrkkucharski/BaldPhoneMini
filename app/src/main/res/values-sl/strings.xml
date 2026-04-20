@@ -309,6 +309,10 @@
     <string name="only_home_screen">Samo domač zaslon.</string>
     <string name="nowhere">Nikjer</string>
     <string name="everywhere">Povsod</string>
+    <string name="top_bar_controls_settings">Kontrolniki zgornje vrstice</string>
+    <string name="top_bar_controls_settings_subtext">Izberite, kateri gumbi so prikazani v zgornji vrstici domačega zaslona.</string>
+    <string name="top_bar_controls_full">Polno</string>
+    <string name="top_bar_controls_simple">Preprosto</string>
 
 
     <string name="share_photo">Deli sliko</string>

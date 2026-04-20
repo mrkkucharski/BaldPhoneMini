@@ -302,6 +302,10 @@
     <string name="only_home_screen">Samo Početni Zaslon</string>
     <string name="nowhere">Nigdje</string>
     <string name="everywhere">Svugdje</string>
+    <string name="top_bar_controls_settings">Kontrole gornje trake</string>
+    <string name="top_bar_controls_settings_subtext">Odaberite koji se gumbi prikazuju na gornjoj traci početnog zaslona.</string>
+    <string name="top_bar_controls_full">Puno</string>
+    <string name="top_bar_controls_simple">Jednostavno</string>
 
 
     <string name="share_photo">Podijeli Fotografiju</string>

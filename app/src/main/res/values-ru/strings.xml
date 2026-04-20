@@ -304,6 +304,10 @@
     <string name="only_home_screen">Домашний экран</string>
     <string name="nowhere">Нигде</string>
     <string name="everywhere">Везде</string>
+    <string name="top_bar_controls_settings">Элементы верхней панели</string>
+    <string name="top_bar_controls_settings_subtext">Выберите, какие кнопки показывать на верхней панели главного экрана.</string>
+    <string name="top_bar_controls_full">Полный</string>
+    <string name="top_bar_controls_simple">Простой</string>
 
 
     <string name="share_photo">Поделиться фотографией</string>

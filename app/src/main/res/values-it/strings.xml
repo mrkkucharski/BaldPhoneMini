@@ -310,6 +310,10 @@
     <string name="only_home_screen">Schermata Home</string>
     <string name="nowhere">Mai</string>
     <string name="everywhere">Sempre</string>
+    <string name="top_bar_controls_settings">Controlli barra superiore</string>
+    <string name="top_bar_controls_settings_subtext">Scegli quali pulsanti mostrare nella barra superiore della schermata Home.</string>
+    <string name="top_bar_controls_full">Completa</string>
+    <string name="top_bar_controls_simple">Semplice</string>
 
     <string name="share_photo">Condividi foto</string>
 

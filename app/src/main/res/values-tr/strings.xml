@@ -299,6 +299,10 @@
     <string name="only_home_screen">Yalnız ana sayfada</string>
     <string name="nowhere">Hiçbir yerde</string>
     <string name="everywhere">Her yerde</string>
+    <string name="top_bar_controls_settings">Üst çubuk kontrolleri</string>
+    <string name="top_bar_controls_settings_subtext">Ana ekran üst çubuğunda hangi düğmelerin gösterileceğini seçin.</string>
+    <string name="top_bar_controls_full">Tam</string>
+    <string name="top_bar_controls_simple">Basit</string>
 
 
     <string name="share_photo">Resim paylaşın</string>

@@ -154,6 +154,10 @@
     <string name="no_new_notifications">لا يوجد إشعارات جديدة</string>
     <string name="mute">كتم الصوت</string>
     <string name="vibrate">الأهتزاز</string>
+    <string name="top_bar_controls_settings">عناصر التحكم في الشريط العلوي</string>
+    <string name="top_bar_controls_settings_subtext">اختر الأزرار التي تظهر في الشريط العلوي للشاشة الرئيسية.</string>
+    <string name="top_bar_controls_full">كامل</string>
+    <string name="top_bar_controls_simple">بسيط</string>
     <string name="share_photo">مشاركة الصورة</string>
 
     <string name="choose_language_for_keyboard">اختر لغة</string>

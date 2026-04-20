@@ -313,6 +313,10 @@
     <string name="only_home_screen">Ainult avakuval</string>
     <string name="nowhere">Ei näidata</string>
     <string name="everywhere">Kõikjal</string>
+    <string name="top_bar_controls_settings">Ülariba juhtelemendid</string>
+    <string name="top_bar_controls_settings_subtext">Valige, milliseid nuppe avakuva ülaribal näidata.</string>
+    <string name="top_bar_controls_full">Täielik</string>
+    <string name="top_bar_controls_simple">Lihtne</string>
 
 
     <string name="share_photo">Jaga fotot</string>

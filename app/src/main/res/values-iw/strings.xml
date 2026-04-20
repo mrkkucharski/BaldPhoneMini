@@ -323,6 +323,10 @@
     <string name="only_home_screen">רק במסך הבית</string>
     <string name="nowhere">בשום מסך</string>
     <string name="everywhere">בכל מסך</string>
+    <string name="top_bar_controls_settings">בקרי הסרגל העליון</string>
+    <string name="top_bar_controls_settings_subtext">בחר אילו כפתורים יוצגו בסרגל העליון של מסך הבית.</string>
+    <string name="top_bar_controls_full">מלא</string>
+    <string name="top_bar_controls_simple">פשוט</string>
 
 
     <string name="share_photo">שיתוף תמונה</string>

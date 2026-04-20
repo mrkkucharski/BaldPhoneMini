@@ -140,6 +140,7 @@ public class HomeScreenActivity extends BaldActivity {
     private BaldImageButton notificationsButton, soundButton, flashButton;
     private AudioManager audioManager;
     private BaldHomeWatcher baldHomeWatcher;
+    private boolean showTopBarControls;
     private boolean flashInited;
     private final Handler handler = new Handler();
     /**
@@ -229,9 +230,24 @@ public class HomeScreenActivity extends BaldActivity {
         notificationsButton = top_bar.findViewById(R.id.notifications);
         flashButton = top_bar.findViewById(R.id.flash);
 
-        lantern = Lantern.getInstance();
+        showTopBarControls = sharedPreferences.getInt(
+                BPrefs.HOME_TOP_BAR_CONTROLS_KEY,
+                BPrefs.HOME_TOP_BAR_CONTROLS_DEFAULT_VALUE
+        ) == BPrefs.HOME_TOP_BAR_CONTROLS_FULL;
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if (showTopBarControls) {
+            lantern = Lantern.getInstance();
+        } else {
+            soundButton.setVisibility(View.GONE);
+            flashButton.setVisibility(View.GONE);
+            if (flashState) {
+                lantern = Lantern.getInstance();
+                lantern.turnOffFlashlight(this);
+                flashState = false;
+            }
+        }
+
+        if (showTopBarControls && ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             lantern.init(this.getApplicationContext());
             flashInited = true;  // TODO: swtich back to lantern:2.0.0
         }
@@ -240,28 +256,30 @@ public class HomeScreenActivity extends BaldActivity {
             startActivity(new Intent(this, NotificationsActivity.class));
 //            overridePendingTransition(R.anim.slide_in_down, R.anim.nothing);
         });
-        soundButton.setOnClickListener(v -> S.showDropDownPopup(this, getWindow().getDecorView().getWidth(), new DropDownRecyclerViewAdapter.DropDownListener() {
-            @SuppressLint("InlinedApi")
-            @Override
-            public void onUpdate(DropDownRecyclerViewAdapter.ViewHolder viewHolder, final int position, PopupWindow popupWindow) {
-                viewHolder.pic.setImageResource(SOUND_DRAWABLES[position]);
-                viewHolder.text.setText(SOUND_TEXTS[position]);
-                viewHolder.itemView.setOnClickListener(v1 -> {
-                    try {
-                        audioManager.setRingerMode(position);
-                        soundButton.setImageResource(SOUND_DRAWABLES[position]);
-                    } catch (SecurityException e) {
-                        startActivity(new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
-                    }
-                    popupWindow.dismiss();
-                });
-            }
+        if (showTopBarControls) {
+            soundButton.setOnClickListener(v -> S.showDropDownPopup(this, getWindow().getDecorView().getWidth(), new DropDownRecyclerViewAdapter.DropDownListener() {
+                @SuppressLint("InlinedApi")
+                @Override
+                public void onUpdate(DropDownRecyclerViewAdapter.ViewHolder viewHolder, final int position, PopupWindow popupWindow) {
+                    viewHolder.pic.setImageResource(SOUND_DRAWABLES[position]);
+                    viewHolder.text.setText(SOUND_TEXTS[position]);
+                    viewHolder.itemView.setOnClickListener(v1 -> {
+                        try {
+                            audioManager.setRingerMode(position);
+                            soundButton.setImageResource(SOUND_DRAWABLES[position]);
+                        } catch (SecurityException e) {
+                            startActivity(new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
+                        }
+                        popupWindow.dismiss();
+                    });
+                }
 
-            @Override
-            public int size() {
-                return 3;
-            }
-        }, soundButton));
+                @Override
+                public int size() {
+                    return 3;
+                }
+            }, soundButton));
+        }
         batteryView.setOnClickListener((v) -> BaldToast.from(this)
                 .setText(batteryView.percentage + "%")
                 .setBig(true)
@@ -312,28 +330,30 @@ public class HomeScreenActivity extends BaldActivity {
             this.recreate();
         }
 
-        soundButton.setImageResource(SOUND_DRAWABLES[audioManager.getRingerMode()]);
-        flashButton.setImageResource(flashState ?
-                R.drawable.flashlight_on_background :
-                R.drawable.flashlight_off_on_background);
-        if (flashInited) {
-            flashButton.setOnClickListener((v) -> {
-                flashState = !flashState;
-                lantern.turnOnFlashlight(this);
-                if (!flashState) // looks weird (it is) but necessary. otherwise it wont turn off after device rotation...
-                    lantern.turnOffFlashlight(this);
-                flashButton.setImageResource(flashState ?
-                        R.drawable.flashlight_on_background :
-                        R.drawable.flashlight_off_on_background);
-            });
-        } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            flashButton.setOnClickListener(v -> startActivity(new Intent(this, PermissionActivity.class)
-                    .putExtra(PermissionActivity.EXTRA_REQUIRED_PERMISSIONS, PERMISSION_CAMERA)
-            ));
+        if (showTopBarControls) {
+            soundButton.setImageResource(SOUND_DRAWABLES[audioManager.getRingerMode()]);
+            flashButton.setImageResource(flashState ?
+                    R.drawable.flashlight_on_background :
+                    R.drawable.flashlight_off_on_background);
+            if (flashInited) {
+                flashButton.setOnClickListener((v) -> {
+                    flashState = !flashState;
+                    lantern.turnOnFlashlight(this);
+                    if (!flashState) // looks weird (it is) but necessary. otherwise it wont turn off after device rotation...
+                        lantern.turnOffFlashlight(this);
+                    flashButton.setImageResource(flashState ?
+                            R.drawable.flashlight_on_background :
+                            R.drawable.flashlight_off_on_background);
+                });
+            } else if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                flashButton.setOnClickListener(v -> startActivity(new Intent(this, PermissionActivity.class)
+                        .putExtra(PermissionActivity.EXTRA_REQUIRED_PERMISSIONS, PERMISSION_CAMERA)
+                ));
 
-        } else if (!testing) { // For travis screenshots to show the flashlight
-            flashButton.setOnClickListener(D.EMPTY_CLICK_LISTENER);
-            flashButton.setVisibility(View.GONE);
+            } else if (!testing) { // For travis screenshots to show the flashlight
+                flashButton.setOnClickListener(D.EMPTY_CLICK_LISTENER);
+                flashButton.setVisibility(View.GONE);
+            }
         }
 
         LocalBroadcastManager.getInstance(this).

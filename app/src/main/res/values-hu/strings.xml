@@ -294,6 +294,10 @@ https://baldphone.com</string>
     <string name="only_home_screen">Csak a kezdőképernyőn</string>
     <string name="nowhere">Sehol</string>
     <string name="everywhere">Mindenhol</string>
+    <string name="top_bar_controls_settings">Felső sáv vezérlői</string>
+    <string name="top_bar_controls_settings_subtext">Válaszd ki, mely gombok jelenjenek meg a kezdőképernyő felső sávján.</string>
+    <string name="top_bar_controls_full">Teljes</string>
+    <string name="top_bar_controls_simple">Egyszerű</string>
 
 
     <string name="share_photo">Fotó megosztása</string>

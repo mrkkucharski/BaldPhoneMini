@@ -315,6 +315,10 @@
     <string name="only_home_screen">केवल होम स्क्रीन</string>
     <string name="nowhere">कहीं भी नहीं</string>
     <string name="everywhere">हर जगह</string>
+    <string name="top_bar_controls_settings">शीर्ष बार नियंत्रण</string>
+    <string name="top_bar_controls_settings_subtext">चुनें कि होम स्क्रीन के शीर्ष बार में कौन से बटन दिखाए जाएँ।</string>
+    <string name="top_bar_controls_full">पूर्ण</string>
+    <string name="top_bar_controls_simple">सरल</string>
 
 
     <string name="share_photo">फोटो साझा करें</string>

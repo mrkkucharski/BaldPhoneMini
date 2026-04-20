@@ -291,6 +291,10 @@
     <string name="only_home_screen">Samo početni ekran</string>
     <string name="nowhere">Nigde</string>
     <string name="everywhere">Svuda</string>
+    <string name="top_bar_controls_settings">Kontrole gornje trake</string>
+    <string name="top_bar_controls_settings_subtext">Izaberite koja dugmad se prikazuju na gornjoj traci početnog ekrana.</string>
+    <string name="top_bar_controls_full">Puno</string>
+    <string name="top_bar_controls_simple">Jednostavno</string>
 
 
     <string name="share_photo">Podeli sliku</string>

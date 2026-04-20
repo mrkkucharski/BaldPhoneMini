@@ -304,6 +304,10 @@
     <string name="only_home_screen">Écran d\'accueil uniquement</string>
     <string name="nowhere">Jamais</string>
     <string name="everywhere">Tout le temps</string>
+    <string name="top_bar_controls_settings">Commandes de la barre supérieure</string>
+    <string name="top_bar_controls_settings_subtext">Choisissez les boutons affichés dans la barre supérieure de l\'écran d\'accueil.</string>
+    <string name="top_bar_controls_full">Complet</string>
+    <string name="top_bar_controls_simple">Simple</string>
 
 
     <string name="share_photo">Partager Photo</string>

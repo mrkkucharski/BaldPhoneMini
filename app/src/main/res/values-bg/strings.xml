@@ -316,6 +316,10 @@
     <string name="only_home_screen">Единствено на Начален екран</string>
     <string name="nowhere">Никъде</string>
     <string name="everywhere">Навсякъде</string>
+    <string name="top_bar_controls_settings">Контроли в горната лента</string>
+    <string name="top_bar_controls_settings_subtext">Изберете кои бутони да се показват в горната лента на началния екран.</string>
+    <string name="top_bar_controls_full">Пълен</string>
+    <string name="top_bar_controls_simple">Опростен</string>
 
 
     <string name="share_photo">Споделяне на снимка</string>

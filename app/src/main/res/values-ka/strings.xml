@@ -303,6 +303,10 @@
     <string name="only_home_screen">მთავარი ეკრანი</string>
     <string name="nowhere">არსად</string>
     <string name="everywhere">ყველგან</string>
+    <string name="top_bar_controls_settings">ზედა ზოლის მართვა</string>
+    <string name="top_bar_controls_settings_subtext">აირჩიეთ, რომელი ღილაკები გამოჩნდეს საწყისი ეკრანის ზედა ზოლზე.</string>
+    <string name="top_bar_controls_full">სრული</string>
+    <string name="top_bar_controls_simple">მარტივი</string>
 
 
     <string name="share_photo">ფოტოს გაზიარება</string>

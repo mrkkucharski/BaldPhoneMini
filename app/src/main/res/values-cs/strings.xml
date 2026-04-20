@@ -317,6 +317,10 @@
     <string name="only_home_screen">Pouze domovská obrazovka</string>
     <string name="nowhere">Nikde</string>
     <string name="everywhere">Všude</string>
+    <string name="top_bar_controls_settings">Ovládací prvky horní lišty</string>
+    <string name="top_bar_controls_settings_subtext">Vyberte, která tlačítka se zobrazí v horní liště domovské obrazovky.</string>
+    <string name="top_bar_controls_full">Plné</string>
+    <string name="top_bar_controls_simple">Jednoduché</string>
 
 
     <string name="share_photo">Sdílet fotku</string>

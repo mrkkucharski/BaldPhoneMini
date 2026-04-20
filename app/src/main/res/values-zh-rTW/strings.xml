@@ -304,6 +304,10 @@
     <string name="only_home_screen">只在主頁</string>
     <string name="nowhere">不顯示</string>
     <string name="everywhere">所有頁面</string>
+    <string name="top_bar_controls_settings">頂部欄控制</string>
+    <string name="top_bar_controls_settings_subtext">選擇主頁頂部欄顯示哪些按鈕。</string>
+    <string name="top_bar_controls_full">完整</string>
+    <string name="top_bar_controls_simple">簡單</string>
 
 
     <string name="share_photo">分享圖片</string>

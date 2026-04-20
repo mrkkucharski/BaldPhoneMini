@@ -307,6 +307,10 @@
     <string name="only_home_screen">Only Home Screen</string>
     <string name="nowhere">Nowhere</string>
     <string name="everywhere">Everywhere</string>
+    <string name="top_bar_controls_settings">Top bar controls</string>
+    <string name="top_bar_controls_settings_subtext">Choose which buttons are shown on the home screen top bar.</string>
+    <string name="top_bar_controls_full">Full</string>
+    <string name="top_bar_controls_simple">Simple</string>
 
     <string name="share_photo">Share Photo</string>
 

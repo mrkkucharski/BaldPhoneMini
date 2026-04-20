@@ -291,6 +291,10 @@
     <string name="only_home_screen">Kun på \"skrivebordet\"</string>
     <string name="nowhere">Ingen steder</string>
     <string name="everywhere">Alle steder</string>
+    <string name="top_bar_controls_settings">Kontroller på toplinjen</string>
+    <string name="top_bar_controls_settings_subtext">Vælg hvilke knapper der vises på startskærmens toplinje.</string>
+    <string name="top_bar_controls_full">Fuld</string>
+    <string name="top_bar_controls_simple">Enkel</string>
     <string name="share_photo">Del foto</string>
     <string name="choose_language_for_keyboard">Vælg sprog</string>
     <string name="hebrew">Hebræisk</string>

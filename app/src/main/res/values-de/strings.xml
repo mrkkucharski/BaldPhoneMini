@@ -303,6 +303,10 @@
     <string name="only_home_screen">Nur auf dem Startbildschirm</string>
     <string name="nowhere">Nirgendwo</string>
     <string name="everywhere">Überall</string>
+    <string name="top_bar_controls_settings">Steuerung der oberen Leiste</string>
+    <string name="top_bar_controls_settings_subtext">Wählen Sie, welche Schaltflächen in der oberen Leiste des Startbildschirms angezeigt werden.</string>
+    <string name="top_bar_controls_full">Vollständig</string>
+    <string name="top_bar_controls_simple">Einfach</string>
 
 
     <string name="share_photo">Foto weiterleiten</string>

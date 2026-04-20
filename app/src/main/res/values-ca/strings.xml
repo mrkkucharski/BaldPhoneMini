@@ -327,6 +327,10 @@ Pressioni OK per a atorgar els permisos o No per a sortir de BaldPhone.
     <string name="only_home_screen">Només en la Pantalla d\'Inici</string>
     <string name="nowhere">Oculta</string>
     <string name="everywhere">Totes parts</string>
+    <string name="top_bar_controls_settings">Controls de la barra superior</string>
+    <string name="top_bar_controls_settings_subtext">Trieu quins botons es mostren a la barra superior de la pantalla d\'inici.</string>
+    <string name="top_bar_controls_full">Complet</string>
+    <string name="top_bar_controls_simple">Simple</string>
 
 
     <string name="share_photo">Compartir Foto</string>
