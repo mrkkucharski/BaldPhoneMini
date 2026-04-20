@@ -57,6 +57,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.baldphone.neo.activities.AboutActivity;
 import app.baldphone.neo.activities.FeedbackActivity;
 import app.baldphone.neo.helpers.ThemeHelper;
+import app.baldphone.neo.utils.HomeAppUtils;
 import app.baldphone.neo.views.TitleBarView;
 
 import com.bald.uriah.baldphone.R;
@@ -176,7 +177,7 @@ public class SettingsActivity extends BaldActivity {
 
         mainCategory.add(
                 new RunnableSettingsItem(R.string.set_home_screen,
-                        v -> FakeLauncherActivity.resetPreferredLauncherAndOpenChooser(this)
+                        v -> HomeAppUtils.requestDefaultLauncher(this)
                         , R.drawable.home_on_button)
         );
 

@@ -202,10 +202,6 @@ public class HomePage2 extends HomeView {
                     bt));
         } else if (resolveInfos.size() == 1) {
             final ResolveInfo resolveInfo = resolveInfos.get(0);
-            if (S.isValidContextForGlide(iv.getContext())) {
-                Glide.with(iv).load(resolveInfo.loadIcon(packageManager)).into(iv);
-            }
-            tv.setText(resolveInfo.loadLabel(packageManager));
             bt.setOnClickListener(v1 ->
                     homeScreen.startActivity(
                             packageManager.getLaunchIntentForPackage(
