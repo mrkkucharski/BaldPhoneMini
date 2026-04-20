@@ -186,6 +186,7 @@
     <string name="pill_added">La pastilla se ha añadido correctamente.</string>
     <string name="pill_name">Nombre de la pastilla</string>
     <string name="pills">Pastillas</string>
+    <string name="pills_settings_subtext">Activa o desactiva el botón de Pastillas en la pantalla de inicio.</string>
     <string name="press_longer">Mantén pulsado el botón un poco más…</string>
     <string name="timer">Temporizador</string>
     <string name="read_call_log">Leer el historial de llamadas</string>

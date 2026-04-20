@@ -191,6 +191,7 @@
     <string name="pill_added">Tablett lisatud.</string>
     <string name="pill_name">Tableti nimi</string>
     <string name="pills">Tabletid</string>
+    <string name="pills_settings_subtext">Lubage või keelake nupp Tabletid avakuval.</string>
     <string name="press_longer">Hoia all kauem.</string>
     <string name="timer">Taimer</string>
     <string name="read_call_log">Kõneajalugu</string>

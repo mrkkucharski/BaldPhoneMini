@@ -187,6 +187,7 @@
     <string name="pill_added">აბი დამატებულია!</string>
     <string name="pill_name">აბის სახელი</string>
     <string name="pills">აბები</string>
+    <string name="pills_settings_subtext">ჩართეთ ან გამორთეთ აბების ღილაკი მთავარ ეკრანზე.</string>
     <string name="press_longer">დიდხანს დააჭირეთ!</string>
     <string name="timer">ტაიმერი</string>
     <string name="read_call_log">ზარების ისტორიის წაკითხვა</string>

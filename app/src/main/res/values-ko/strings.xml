@@ -179,6 +179,7 @@
     <string name="pill_added">알약 추가</string>
     <string name="pill_name">알약 이름</string>
     <string name="pills">알약 목록</string>
+    <string name="pills_settings_subtext">홈 화면에서 알약 목록 버튼을 켜거나 끕니다.</string>
     <string name="press_longer">길게 누르시오!</string>
     <string name="timer">타이머</string>
     <string name="read_call_log">통화 내역 읽기</string>

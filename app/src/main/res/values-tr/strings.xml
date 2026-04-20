@@ -187,6 +187,7 @@
     <string name="pill_added">İlaç eklendi!</string>
     <string name="pill_name">İlaç ismi</string>
     <string name="pills">İlaçlar</string>
+    <string name="pills_settings_subtext">Ana ekrandaki İlaçlar düğmesini etkinleştirin veya devre dışı bırakın.</string>
     <string name="press_longer">Daha uzun basınız!</string>
     <string name="timer">Zaman ölçer</string>
     <string name="read_call_log">Arama geçmişi</string>

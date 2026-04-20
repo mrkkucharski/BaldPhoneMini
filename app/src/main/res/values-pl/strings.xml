@@ -175,6 +175,7 @@
     <string name="pill_added">Dodano lek</string>
     <string name="pill_name">Nazwa leku</string>
     <string name="pills">Leki</string>
+    <string name="pills_settings_subtext">Włącz lub wyłącz przycisk Leki na ekranie głównym.</string>
     <string name="press_longer">Przytrzymaj dłużej</string>
     <string name="timer">Minutnik</string>
     <string name="read_call_log">Odczyt rejestru połączeń</string>

@@ -120,6 +120,7 @@
     <string name="pill_added">تم إضافة دواء!</string>
     <string name="pill_name">إسم الدواء</string>
     <string name="pills">الأدوية</string>
+    <string name="pills_settings_subtext">قم بتفعيل أو تعطيل زر الأدوية على الشاشة الرئيسية.</string>
     <string name="press_longer">إضغط مدة أطول</string>
     <string name="timer">مؤقت</string>
     <string name="received">مستلمة</string>

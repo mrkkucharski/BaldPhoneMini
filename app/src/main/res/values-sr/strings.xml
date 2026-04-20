@@ -180,6 +180,7 @@
     <string name="pill_added">Dodat lek!</string>
     <string name="pill_name">Ime leka</string>
     <string name="pills">Lekovi</string>
+    <string name="pills_settings_subtext">Omogućite ili onemogućite dugme Lekovi na početnom ekranu.</string>
     <string name="press_longer">Pritisnite duže!</string>
     <string name="timer">Tajmer</string>
     <string name="read_call_log">Otvori istoriju poziva</string>

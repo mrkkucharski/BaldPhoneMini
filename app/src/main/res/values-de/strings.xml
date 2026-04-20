@@ -187,6 +187,7 @@
     <string name="pill_added">Medikament wurde hinzugefügt!</string>
     <string name="pill_name">Name des Medikaments</string>
     <string name="pills">Medikamente</string>
+    <string name="pills_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Medikamente auf dem Startbildschirm.</string>
     <string name="press_longer">Länger drücken!</string>
     <string name="timer">Eieruhr</string>
     <string name="read_call_log">Anrufliste einlesen</string>

@@ -193,6 +193,7 @@
     <string name="pill_added">Pillola aggiunta</string>
     <string name="pill_name">Nome della pillola</string>
     <string name="pills">Pillole</string>
+    <string name="pills_settings_subtext">Attiva o disattiva il pulsante Pillole nella schermata principale.</string>
     <string name="press_longer">Tocca più a lungo</string>
     <string name="timer">Timer</string>
     <string name="read_call_log">Lettura chiamate recenti</string>

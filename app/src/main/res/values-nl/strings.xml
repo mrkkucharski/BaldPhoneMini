@@ -181,6 +181,7 @@ dit bericht blijft verschijnen dan kan het uitgeschakeld worden in de toegankeli
     <string name="pill_added">Medicatie toegevoegd!</string>
     <string name="pill_name">Naam medicatie</string>
     <string name="pills">Medicatie</string>
+    <string name="pills_settings_subtext">Schakel de knop Medicatie op het startscherm in of uit.</string>
     <string name="press_longer">Druk langer!</string>
     <string name="timer">Timer</string>
     <string name="read_call_log">Inzien van de oproepgeschiedenis</string>

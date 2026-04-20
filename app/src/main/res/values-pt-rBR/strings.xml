@@ -184,6 +184,7 @@
     <string name="pill_added">Medicamento adicionado!</string>
     <string name="pill_name">Nome do medicamento</string>
     <string name="pills">Medicamento</string>
+    <string name="pills_settings_subtext">Ative ou desative o botão Medicamento na tela inicial.</string>
     <string name="press_longer">Pressione por mais tempo!</string>
     <string name="timer">Cronômetro</string>
     <string name="read_call_log">Ver histórico de chamadas</string>

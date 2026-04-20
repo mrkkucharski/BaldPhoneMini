@@ -193,6 +193,7 @@
     <string name="pill_added">Pilulka přidána!</string>
     <string name="pill_name">Jméno pilulky</string>
     <string name="pills">Pilulky</string>
+    <string name="pills_settings_subtext">Povolte nebo zakažte tlačítko Pilulky na domovské obrazovce.</string>
     <string name="press_longer">Držte déle!</string>
     <string name="timer">Časovač</string>
     <string name="read_call_log">Přečíst historii telefonátů</string>

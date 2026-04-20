@@ -187,6 +187,7 @@
     <string name="pill_added">Таблетка добавлена!</string>
     <string name="pill_name">Название Таблетки</string>
     <string name="pills">Таблетки</string>
+    <string name="pills_settings_subtext">Включите или отключите кнопку Таблетки на главном экране.</string>
     <string name="press_longer">Нажмите и удерживайте!</string>
     <string name="timer">Таймер</string>
     <string name="read_call_log">Чтение Истории Вызовов</string>

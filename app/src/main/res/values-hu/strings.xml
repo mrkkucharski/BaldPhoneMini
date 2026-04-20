@@ -181,6 +181,7 @@ Megérkezett a BaldPhone NAGY billentyűzete!</string>
     <string name="pill_added">Gyógyszer hozzáadva!</string>
     <string name="pill_name">Gyógyszer neve</string>
     <string name="pills">Gyógyszerek</string>
+    <string name="pills_settings_subtext">Engedélyezd vagy tiltsd le a Gyógyszerek gombot a kezdőképernyőn.</string>
     <string name="press_longer">Hosszan nyomd!</string>
     <string name="timer">Időzítő</string>
     <string name="read_call_log">Hívási előrmények olvasása</string>

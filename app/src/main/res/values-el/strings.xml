@@ -193,6 +193,7 @@
     <string name="pill_added">Το χάπι προστέθηκε!</string>
     <string name="pill_name">Όνομα Χαπιού</string>
     <string name="pills">Χάπια</string>
+    <string name="pills_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Χάπια στην αρχική οθόνη.</string>
     <string name="press_longer">Πατήστε παρατεταμένα!</string>
     <string name="timer">Χρονόμετρο</string>
     <string name="read_call_log">Εμφάνιση Ιστορικού Κλήσεων</string>

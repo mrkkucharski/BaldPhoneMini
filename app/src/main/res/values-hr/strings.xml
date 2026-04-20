@@ -188,6 +188,7 @@
     <string name="pill_added">Pilula dodana!</string>
     <string name="pill_name">Ime Pilule</string>
     <string name="pills">Pilule</string>
+    <string name="pills_settings_subtext">Omogućite ili onemogućite gumb Pilule na početnom zaslonu.</string>
     <string name="press_longer">Klikni Duže!</string>
     <string name="timer">Kronometar</string>
     <string name="read_call_log">Čitaj Popis Poziva</string>

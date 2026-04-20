@@ -187,6 +187,7 @@
     <string name="pill_added">Médicament ajouté !</string>
     <string name="pill_name">Nom du médicament</string>
     <string name="pills">Médicaments</string>
+    <string name="pills_settings_subtext">Activez ou désactivez le bouton Médicaments sur l\'écran d\'accueil.</string>
     <string name="press_longer">Appuyez plus longtemps !</string>
     <string name="timer">Minuteur</string>
     <string name="read_call_log">Lire l\'historique des appels</string>

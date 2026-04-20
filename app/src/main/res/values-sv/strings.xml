@@ -186,6 +186,7 @@
     <string name="pill_added">Läkemedel tillagt!</string>
     <string name="pill_name">Namn på läkemedel</string>
     <string name="pills">Läkemedel</string>
+    <string name="pills_settings_subtext">Aktivera eller inaktivera knappen Läkemedel på startskärmen.</string>
     <string name="press_longer">Längre tryck krävs!</string>
     <string name="timer">Timer</string>
     <string name="read_call_log">Se samtalshistorik</string>

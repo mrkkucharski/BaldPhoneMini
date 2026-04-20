@@ -40,6 +40,7 @@ import com.bald.uriah.baldphone.activities.alarms.AlarmsActivity;
 import com.bald.uriah.baldphone.activities.media.PhotosActivity;
 import com.bald.uriah.baldphone.activities.media.VideosActivity;
 import com.bald.uriah.baldphone.activities.pills.PillsActivity;
+import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.DropDownRecyclerViewAdapter;
 import com.bald.uriah.baldphone.utils.S;
@@ -108,8 +109,13 @@ public class HomePage2 extends HomeView {
         }
 
         if (bt_pills != null) {
-            bt_pills.setOnClickListener(
-                    v -> homeScreen.startActivity(new Intent(getContext(), PillsActivity.class)));
+            final boolean pillsVisible = BPrefs.get(homeScreen)
+                    .getBoolean(BPrefs.PILLS_VISIBLE_KEY, BPrefs.PILLS_VISIBLE_DEFAULT_VALUE);
+            bt_pills.setVisibility(pillsVisible ? View.VISIBLE : View.GONE);
+            if (pillsVisible) {
+                bt_pills.setOnClickListener(
+                        v -> homeScreen.startActivity(new Intent(getContext(), PillsActivity.class)));
+            }
         }
 
         if (bt_apps != null) {

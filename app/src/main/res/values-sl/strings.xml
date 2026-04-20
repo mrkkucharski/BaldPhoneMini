@@ -188,6 +188,7 @@
     <string name="pill_added">Zdravilo dodano!</string>
     <string name="pill_name">Ime zdravila</string>
     <string name="pills">Zdravila</string>
+    <string name="pills_settings_subtext">Omogoči ali onemogoči gumb Zdravila na domačem zaslonu.</string>
     <string name="press_longer">Drži pritisk dlje časa!</string>
     <string name="timer">Štoparica</string>
     <string name="read_call_log">Preberi dnevnik klicev</string>

@@ -187,6 +187,7 @@
     <string name="pill_added">藥物已添加!</string>
     <string name="pill_name">藥名</string>
     <string name="pills">藥物</string>
+    <string name="pills_settings_subtext">啟用或停用主頁上的「藥物」按鈕。</string>
     <string name="press_longer">按久一點!</string>
     <string name="timer">倒數計時器</string>
     <string name="read_call_log">查看通話記錄</string>

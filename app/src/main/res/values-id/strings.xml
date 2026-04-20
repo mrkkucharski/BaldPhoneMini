@@ -190,6 +190,7 @@
     <string name="pill_added">Pil ditambahkan!</string>
     <string name="pill_name">Nama Pil</string>
     <string name="pills">Pil-pil</string>
+    <string name="pills_settings_subtext">Aktifkan atau nonaktifkan tombol Pil-pil di layar Beranda.</string>
     <string name="press_longer">Tekan Lebih Lama!</string>
     <string name="timer">Pewaktu</string>
     <string name="read_call_log">Baca Riwayat Panggilan</string>

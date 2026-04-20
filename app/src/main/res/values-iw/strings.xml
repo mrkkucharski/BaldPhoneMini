@@ -195,6 +195,7 @@
     <string name="pill_added">תרופה הוספה!</string>
     <string name="pill_name">שם תרופה</string>
     <string name="pills">תרופות</string>
+    <string name="pills_settings_subtext">הפעל או השבת את כפתור התרופות במסך הבית.</string>
     <string name="press_longer">לחיצה ארוכה</string>
     <string name="timer">טיימר</string>
     <string name="read_call_log">גישה לשיחות האחרונות</string>

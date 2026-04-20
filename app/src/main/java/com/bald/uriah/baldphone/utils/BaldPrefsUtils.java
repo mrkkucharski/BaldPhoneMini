@@ -43,6 +43,8 @@ import static com.bald.uriah.baldphone.utils.BPrefs.NOTE_VISIBLE_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.NOTE_VISIBLE_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.PAGE_TRANSFORMERS_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.PAGE_TRANSFORMERS_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.PILLS_VISIBLE_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.PILLS_VISIBLE_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.STATUS_BAR_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.STATUS_BAR_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.TOUCH_NOT_HARD_DEFAULT_VALUE;
@@ -51,7 +53,7 @@ import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_DEFAULT_V
 import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_KEY;
 
 public class BaldPrefsUtils {
-    private final boolean vibrationFeedback, touchNoHard, longPresses, notes, lowBatteryAlert, sos;
+    private final boolean vibrationFeedback, touchNoHard, longPresses, notes, pills, lowBatteryAlert, sos;
     private final int swipingEffect, statusBar;
     private final String CUSTOM_APP;
     private final String CUSTOM_RECENTS;
@@ -66,12 +68,13 @@ public class BaldPrefsUtils {
     private final String CUSTOM_APPS;
     private final String CUSTOM_ALARMS;
 
-    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
+    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, boolean pills, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
         this.vibrationFeedback = vibrationFeedback;
         this.touchNoHard = touchNoHard;
         this.longPresses = longPresses;
         this.swipingEffect = swipingEffect;
         this.notes = notes;
+        this.pills = pills;
         this.statusBar = statusBar;
         this.lowBatteryAlert = lowBatteryAlert;
         this.sos = sos;
@@ -102,6 +105,8 @@ public class BaldPrefsUtils {
                         .getInt(PAGE_TRANSFORMERS_KEY, PAGE_TRANSFORMERS_DEFAULT_VALUE),
                 sharedPreferences
                         .getBoolean(NOTE_VISIBLE_KEY, NOTE_VISIBLE_DEFAULT_VALUE),
+                sharedPreferences
+                        .getBoolean(PILLS_VISIBLE_KEY, PILLS_VISIBLE_DEFAULT_VALUE),
                 sharedPreferences
                         .getInt(STATUS_BAR_KEY, STATUS_BAR_DEFAULT_VALUE),
                 sharedPreferences.getBoolean(LOW_BATTERY_ALERT_KEY, LOW_BATTERY_ALERT_DEFAULT_VALUE),
@@ -134,6 +139,7 @@ public class BaldPrefsUtils {
                 touchNoHard == that.touchNoHard &&
                 longPresses == that.longPresses &&
                 notes == that.notes &&
+                pills == that.pills &&
                 lowBatteryAlert == that.lowBatteryAlert &&
                 sos == that.sos &&
                 swipingEffect == that.swipingEffect &&
@@ -154,6 +160,6 @@ public class BaldPrefsUtils {
 
     @Override
     public int hashCode() {
-        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
+        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, pills, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
     }
 }
