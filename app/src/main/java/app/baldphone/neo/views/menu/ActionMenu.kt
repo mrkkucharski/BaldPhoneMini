@@ -75,11 +75,8 @@ class ActionMenu(
 
             actionMenuItem is ActionMenuItem.Toggle -> {
                 actionMenuItem.checked = !actionMenuItem.checked
-                val index = items.indexOf(actionMenuItem)
-                if (index != -1) {
-                    adapter.notifyItemChanged(index)
-                }
                 listener.onActionClicked(actionMenuItem)
+                dismiss()
             }
         }
     }

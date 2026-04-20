@@ -35,6 +35,7 @@
     <string name="add_shortcut">Lisää pikakuvake</string>
     <string name="add_to_favorite">Lisää suosikkeihin</string>
     <string name="add_to_home">Lisää kotisivulle</string>
+    <string name="add_to_speed_dial">Lisää pikavalintaan</string>
     <string name="add_to_sos">Lisää SOS:iin</string>
     <string name="address">Osoite</string>
     <string name="advanced_options">Edistyneet asetukset</string>
@@ -207,6 +208,7 @@ ja muuttaa kirkkautta.</string>
 
     <string name="remove_from_favorite">Poista suosikeista</string>
     <string name="remove_from_home">Poista kotinäkymästä</string>
+    <string name="remove_from_speed_dial">Poista pikavalinnasta</string>
     <string name="remove_from_sos">Poista SOS:sta</string>
     <string name="remove_shortcut">Poista pikakuvake</string>
     <string name="removed_all_alarms">Poista hälytykset</string>

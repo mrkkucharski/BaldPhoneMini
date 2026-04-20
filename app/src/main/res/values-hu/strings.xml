@@ -31,6 +31,7 @@
     <string name="add_shortcut">Parancsikon hozzáadása</string>
     <string name="add_to_favorite">Hozzáadás kedvencekhez</string>
     <string name="add_to_home">Hozzáadás kezdőképernyőhöz</string>
+    <string name="add_to_speed_dial">Hozzáadás gyorstárcsázáshoz</string>
     <string name="add_to_sos">Hozzáadás SOS-hez</string>
     <string name="address">Cím</string>
     <string name="advanced_options">További beállítások</string>
@@ -197,6 +198,7 @@ Megérkezett a BaldPhone NAGY billentyűzete!</string>
 
     <string name="remove_from_favorite">Eltávolítás kedvencek közül</string>
     <string name="remove_from_home">Eltávolítás a kezdőképernyőről</string>
+    <string name="remove_from_speed_dial">Eltávolítás a gyorstárcsázásból</string>
     <string name="remove_from_sos">Eltávolítás az SOS-ből</string>
     <string name="remove_shortcut">Parancsikon eltávolítása</string>
     <string name="removed_all_alarms">Minden ébresztő eltávolítva!</string>

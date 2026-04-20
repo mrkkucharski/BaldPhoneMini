@@ -33,6 +33,7 @@
     <string name="add_shortcut">新增捷徑</string>
     <string name="add_to_favorite">加至我的最愛</string>
     <string name="add_to_home">加至主頁</string>
+    <string name="add_to_speed_dial">加至快速撥號</string>
     <string name="add_to_sos">加至緊急聯絡</string>
     <string name="address">地址</string>
     <string name="advanced_options">進階功能</string>
@@ -203,6 +204,7 @@
 
     <string name="remove_from_favorite">從我的最愛移除</string>
     <string name="remove_from_home">從桌面移除</string>
+    <string name="remove_from_speed_dial">從快速撥號移除</string>
     <string name="remove_from_sos">從緊急聯絡移除</string>
     <string name="remove_shortcut">移除捷徑</string>
     <string name="removed_all_alarms">已移除所有鬧鐘！</string>

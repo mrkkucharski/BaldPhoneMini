@@ -32,6 +32,7 @@
     <string name="add_shortcut">Dodaj skrót</string>
     <string name="add_to_favorite">Dodaj do ulubionych</string>
     <string name="add_to_home">Dodaj do ekranu głównego</string>
+    <string name="add_to_speed_dial">Dodaj do szybkiego wybierania</string>
     <string name="add_to_sos">Dodaj do SOS</string>
     <string name="add_as_an_emergency_contact">Dodać %s jako kontakt alarmowy SOS?</string>
     <string name="address">Adres</string>
@@ -190,6 +191,7 @@
     <string name="regular_level">Normalny</string>
     <string name="remove_from_favorite">Usuń z ulubionych</string>
     <string name="remove_from_home">Usuń z ekranu głównego</string>
+    <string name="remove_from_speed_dial">Usuń z szybkiego wybierania</string>
     <string name="remove_from_sos">Usuń z SOS</string>
     <string name="remove_shortcut">Usuń skrót</string>
     <string name="removed_all_alarms">Wszystkie alarmy zostały usunięte!</string>

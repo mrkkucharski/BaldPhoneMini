@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 
 import app.baldphone.neo.calls.CallManager
 import app.baldphone.neo.contacts.Contact
+import app.baldphone.neo.contacts.speeddial.SpeedDialEntry
 import app.baldphone.neo.utils.messaging.SignalHandler
 import app.baldphone.neo.utils.messaging.WhatsAppHandler
 import app.baldphone.neo.views.menu.ActionMenu
@@ -111,6 +112,27 @@ class ContactDetailsActivity : BaldActivity() {
                         ContactDetailsResult.ContactNotFound -> {
                             showErrorToast("No contact found!")
                             finish()
+                        }
+                        ContactDetailsResult.SpeedDialAdded -> {
+                            BaldToast.simple(
+                                applicationContext,
+                                getString(R.string.speed_dial_added)
+                            )
+                        }
+                        ContactDetailsResult.SpeedDialRemoved -> {
+                            BaldToast.simple(
+                                applicationContext,
+                                getString(R.string.speed_dial_removed)
+                            )
+                        }
+                        ContactDetailsResult.SpeedDialFull -> {
+                            BaldToast.from(this@ContactDetailsActivity)
+                                .setType(BaldToast.TYPE_ERROR)
+                                .setText(getString(R.string.speed_dial_full))
+                                .show()
+                        }
+                        ContactDetailsResult.SpeedDialError -> {
+                            showErrorToast("Failed to update speed dial")
                         }
                     }
                 }
@@ -246,6 +268,7 @@ class ContactDetailsActivity : BaldActivity() {
     private fun showPopup(anchor: View) {
         val isFavorite = viewModel.uiState.value.isFavorite
         val isPinned = viewModel.uiState.value.isPinned
+        val isInSpeedDial = viewModel.uiState.value.isInSpeedDial
 
         val items = listOf(
             ActionMenuItem.Toggle(
@@ -259,6 +282,12 @@ class ContactDetailsActivity : BaldActivity() {
                 R.drawable.remove_on_button, R.drawable.add_on_button,
                 R.string.remove_from_home, R.string.add_to_home,
                 isPinned, true,
+            ),
+            ActionMenuItem.Toggle(
+                ACTION_SPEED_DIAL,
+                R.drawable.phone_on_button, R.drawable.phone_on_button,
+                R.string.remove_from_speed_dial, R.string.add_to_speed_dial,
+                isInSpeedDial, true,
             ),
             ActionMenuItem.Separator,
             ActionMenuItem.Option(
@@ -298,7 +327,62 @@ class ContactDetailsActivity : BaldActivity() {
                 val toggle = item as? ActionMenuItem.Toggle
                 BaldToast.simple(applicationContext, "Home updated: ${toggle?.checked}")
             }
+            ACTION_SPEED_DIAL -> {
+                val toggle = item as? ActionMenuItem.Toggle
+                if (toggle?.checked == true) {
+                    viewModel.removeFromSpeedDial()
+                } else {
+                    handleAddToSpeedDial()
+                }
+            }
         }
+    }
+
+    private fun handleAddToSpeedDial() {
+        val contact = viewModel.uiState.value.contact ?: return
+        val phones = contact.phones
+        if (phones.isEmpty()) return
+        if (phones.size == 1) {
+            val phone = phones[0]
+            viewModel.addToSpeedDial(
+                SpeedDialEntry(
+                    lookupKey = contact.lookupKey,
+                    phoneNumber = phone.value,
+                    phoneType = phone.type,
+                    phoneLabel = phone.label,
+                    displayNameSnapshot = contact.name,
+                    photoUriSnapshot = contact.photoUri
+                )
+            )
+        } else {
+            showPhoneNumberChooser(contact)
+        }
+    }
+
+    private fun showPhoneNumberChooser(contact: Contact) {
+        val phones = contact.phones
+        val labels = phones.map { phone ->
+            val typeLabel = android.provider.ContactsContract.CommonDataKinds.Phone
+                .getTypeLabel(resources, phone.type, phone.label)
+            "$typeLabel: ${phone.value}"
+        }.toTypedArray()
+
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.select_phone_number))
+            .setItems(labels) { _, which ->
+                val phone = phones[which]
+                viewModel.addToSpeedDial(
+                    SpeedDialEntry(
+                        lookupKey = contact.lookupKey,
+                        phoneNumber = phone.value,
+                        phoneType = phone.type,
+                        phoneLabel = phone.label,
+                        displayNameSnapshot = contact.name,
+                        photoUriSnapshot = contact.photoUri
+                    )
+                )
+            }
+            .show()
     }
 
     private fun shareContact() {
@@ -357,6 +441,7 @@ class ContactDetailsActivity : BaldActivity() {
         private const val ACTION_SHARE = 3
         private const val ACTION_EDIT = 4
         private const val ACTION_DELETE = 5
+        private const val ACTION_SPEED_DIAL = 6
 
         /**
          * Open the BaldPhone contact details activity for the given contact.

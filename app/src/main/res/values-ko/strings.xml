@@ -31,6 +31,7 @@
     <string name="add_shortcut">바로가기 추가</string>
     <string name="add_to_favorite">좋아하는 것 추가</string>
     <string name="add_to_home">집 추가</string>
+    <string name="add_to_speed_dial">단축 다이얼에 추가</string>
     <string name="add_to_sos">비상 연락망 추가</string>
     <string name="address">주소</string>
     <string name="advanced_options">상향된 옵션</string>
@@ -195,6 +196,7 @@
 
     <string name="remove_from_favorite">좋아하는 것 삭제</string>
     <string name="remove_from_home">홈 삭제</string>
+    <string name="remove_from_speed_dial">단축 다이얼에서 삭제</string>
     <string name="remove_from_sos">SOS 삭제</string>
     <string name="remove_shortcut">바로가기 삭제</string>
     <string name="removed_all_alarms">모든 알람 삭제!</string>

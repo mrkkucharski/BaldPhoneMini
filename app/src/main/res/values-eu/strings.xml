@@ -31,6 +31,7 @@
     <string name="add_shortcut">Lasterbidea gehitu</string>
     <string name="add_to_favorite">Gogokoenetan gehitu</string>
     <string name="add_to_home">Hasieran gehitu</string>
+    <string name="add_to_speed_dial">Gehitu markatze bizkorrera</string>
     <string name="add_to_sos">Larrialdira gehitu</string>
     <string name="address">Helbidea</string>
     <string name="advanced_options">Ezarpen aurreratuak</string>
@@ -190,6 +191,7 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
 
     <string name="remove_from_favorite">Gogokoetatik kendu</string>
     <string name="remove_from_home">Hasieratik kendu</string>
+    <string name="remove_from_speed_dial">Kendu markatze bizkorretik</string>
     <string name="remove_from_sos">SOStik kendu</string>
     <string name="remove_shortcut">Kendu lasterbidea</string>
     <string name="removed_all_alarms">Alarma guztiak kendu dira!</string>

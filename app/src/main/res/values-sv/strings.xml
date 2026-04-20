@@ -33,6 +33,7 @@
     <string name="add_shortcut">Skapa genväg</string>
     <string name="add_to_favorite">Lägg till som favorit</string>
     <string name="add_to_home">Fäst på hemskärmen</string>
+    <string name="add_to_speed_dial">Lägg till i snabbuppringning</string>
     <string name="add_to_sos">Ange som nödkontakt</string>
     <string name="address">Adress</string>
     <string name="advanced_options">Avancerade alternativ</string>
@@ -202,6 +203,7 @@
 
     <string name="remove_from_favorite">Ta bort från favoriter</string>
     <string name="remove_from_home">Ta bort från hemskärmen</string>
+    <string name="remove_from_speed_dial">Ta bort från snabbuppringning</string>
     <string name="remove_from_sos">Ta bort från nödkontakt</string>
     <string name="remove_shortcut">Ta bort genväg</string>
     <string name="removed_all_alarms">Alla alarm togs bort!</string>

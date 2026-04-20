@@ -31,6 +31,7 @@
     <string name="add_shortcut">Tilføj genvej</string>
     <string name="add_to_favorite">Tilføj til favoritter</string>
     <string name="add_to_home">Tilføj til Forside</string>
+    <string name="add_to_speed_dial">Tilføj til hurtigopkald</string>
     <string name="add_to_sos">Tilføj til SOS</string>
     <string name="address">Adresse</string>
     <string name="advanced_options">Avancerede indstillinger</string>
@@ -196,6 +197,7 @@
 
     <string name="remove_from_favorite">Fjern fra Favoritter</string>
     <string name="remove_from_home">Fjern fra \"skrivebord\"</string>
+    <string name="remove_from_speed_dial">Fjern fra hurtigopkald</string>
     <string name="remove_from_sos">Fjern fra SOS</string>
     <string name="remove_shortcut">Fjern genvej</string>
     <string name="removed_all_alarms">Alle alarmer blev slettet.</string>

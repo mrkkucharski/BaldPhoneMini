@@ -35,6 +35,7 @@
     <string name="add_shortcut">Tambah Pintasan</string>
     <string name="add_to_favorite">Tambah ke Favorit</string>
     <string name="add_to_home">Tambah ke Beranda</string>
+    <string name="add_to_speed_dial">Tambah ke panggilan cepat</string>
     <string name="add_to_sos">Tambah ke SOS</string>
     <string name="address">Alamat</string>
     <string name="advanced_options">Pilihan Tingkat Lanjut</string>
@@ -206,6 +207,7 @@
 
     <string name="remove_from_favorite">Hapus dari Favorit</string>
     <string name="remove_from_home">Hapus dari Beranda</string>
+    <string name="remove_from_speed_dial">Hapus dari panggilan cepat</string>
     <string name="remove_from_sos">Hapus dari SOS</string>
     <string name="remove_shortcut">Hapus pintasan</string>
     <string name="removed_all_alarms">Hapus semua alarm!</string>

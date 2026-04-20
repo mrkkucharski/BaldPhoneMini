@@ -31,6 +31,13 @@
     <string name="add_shortcut">Add Shortcut</string>
     <string name="add_to_favorite">Add to Favorite</string>
     <string name="add_to_home">Add to Home</string>
+    <string name="add_to_speed_dial">Add to speed dial</string>
+    <string name="remove_from_speed_dial">Remove from speed dial</string>
+    <string name="call_label">Call</string>
+    <string name="speed_dial_full">Speed dial is full (max 8 entries)</string>
+    <string name="select_phone_number">Select phone number</string>
+    <string name="speed_dial_added">Added to speed dial</string>
+    <string name="speed_dial_removed">Removed from speed dial</string>
     <string name="add_to_sos">Add to SOS</string>
     <string name="add_as_an_emergency_contact">Add %s as your SOS emergency contact?</string>
     <string name="address">Address</string>

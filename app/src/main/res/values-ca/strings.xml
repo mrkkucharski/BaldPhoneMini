@@ -36,6 +36,7 @@
     <string name="add_shortcut">Afegir accés directe</string>
     <string name="add_to_favorite">Afegir a Preferits</string>
     <string name="add_to_home">Afegir a Inici</string>
+    <string name="add_to_speed_dial">Afegir a marcatge ràpid</string>
     <string name="add_to_sos">Afegir a SOS</string>
     <string name="address">Adreça</string>
     <string name="advanced_options">Opcions Avançades</string>
@@ -212,6 +213,7 @@ Es recomana encaridament usar \"Baldphone\'s home screen\" com el Llançador pri
 
     <string name="remove_from_favorite">Treure de Favorits</string>
     <string name="remove_from_home">Treure d\'Inici</string>
+    <string name="remove_from_speed_dial">Treure de marcatge ràpid</string>
     <string name="remove_from_sos">Treure de SOS</string>
     <string name="remove_shortcut">Treure accés directe</string>
     <string name="removed_all_alarms">Eliminades totes les alarmes!</string>

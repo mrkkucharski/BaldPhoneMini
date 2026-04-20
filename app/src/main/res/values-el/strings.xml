@@ -35,6 +35,7 @@
     <string name="add_shortcut">Νέα Συντόμευση</string>
     <string name="add_to_favorite">Προσθήκη στα Αγαπημένα</string>
     <string name="add_to_home">Προσθήκη στην Αρχική Σελίδα</string>
+    <string name="add_to_speed_dial">Προσθήκη στην ταχεία κλήση</string>
     <string name="add_to_sos">Προσθήκη στο SOS</string>
     <string name="address">Διεύθυνση</string>
     <string name="advanced_options">Ρυθμίσεις για προχωρημένους</string>
@@ -209,6 +210,7 @@
 
     <string name="remove_from_favorite">Αφαίρεση από τα Αγαπημένα</string>
     <string name="remove_from_home">Αφαίρεση από την Αρχική Σελίδα</string>
+    <string name="remove_from_speed_dial">Αφαίρεση από την ταχεία κλήση</string>
     <string name="remove_from_sos">Αφαίρεση από το SOS</string>
     <string name="remove_shortcut">Αφαίρεση Συντόμευσης</string>
     <string name="removed_all_alarms">Αφαιρεθήκαν όλες οι αφυπνίσεις!</string>

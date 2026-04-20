@@ -30,6 +30,7 @@ import com.bald.uriah.baldphone.views.home.HomePage2;
 import com.bald.uriah.baldphone.views.home.HomeViewFactory;
 import com.bald.uriah.baldphone.views.home.NotesView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,7 +63,13 @@ public class BaldPagerAdapter extends BaldViewAdapter {
     }
 
     public void obtainAppList() {
-        pinnedList = HomeScreenPinHelper.getAll(homeScreen);
+        final List<HomeScreenPinHelper.HomeScreenPinnable> combined = new ArrayList<>(HomeScreenPinHelper.getAll(homeScreen));
+        final app.baldphone.neo.contacts.speeddial.SpeedDialActionsUseCase speedDialUseCase =
+                new app.baldphone.neo.contacts.speeddial.SpeedDialActionsUseCase(homeScreen);
+        for (app.baldphone.neo.contacts.speeddial.SpeedDialEntry entry : speedDialUseCase.getAll()) {
+            combined.add(new app.baldphone.neo.contacts.speeddial.SpeedDialHomeItem(entry));
+        }
+        pinnedList = combined;
         numItems =
                 numItemsBefore + (pinnedList.size() / HomeViewFactory.AMOUNT_PER_PAGE + (pinnedList.size() % HomeViewFactory.AMOUNT_PER_PAGE == 0 ? 0 : 1));
         notifyDataSetChanged();

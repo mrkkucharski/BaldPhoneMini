@@ -34,6 +34,7 @@
     <string name="add_shortcut">Lisa otsetee</string>
     <string name="add_to_favorite">Lisa lemmikutesse</string>
     <string name="add_to_home">Lisa avaekraanile</string>
+    <string name="add_to_speed_dial">Lisa kiirvalimisse</string>
     <string name="add_to_sos">Lisa SOS-kontaktiks</string>
     <string name="address">Aadress</string>
     <string name="advanced_options">Lisavalikud</string>
@@ -207,6 +208,7 @@
 
     <string name="remove_from_favorite">Eemalda lemmikutest</string>
     <string name="remove_from_home">Eemalda avakuvalt</string>
+    <string name="remove_from_speed_dial">Eemalda kiirvalimisest</string>
     <string name="remove_from_sos">Eemalda SOS-kontaktide alt</string>
     <string name="remove_shortcut">Eemalda otsetee</string>
     <string name="removed_all_alarms">Kõik äratused eemaldatud.</string>

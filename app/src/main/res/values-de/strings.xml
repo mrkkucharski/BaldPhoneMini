@@ -33,6 +33,7 @@
     <string name="add_shortcut">Kurzwahl hinzufügen</string>
     <string name="add_to_favorite">Zu den Favoriten hinzufügen</string>
     <string name="add_to_home">Zum Startbildschirm hinzufügen</string>
+    <string name="add_to_speed_dial">Zur Kurzwahl hinzufügen</string>
     <string name="add_to_sos">Zu SOS hinzufügen</string>
     <string name="address">Adresse</string>
     <string name="advanced_options">Weitere Einstellungen</string>
@@ -203,6 +204,7 @@
 
     <string name="remove_from_favorite">Aus den Favoriten entfernen</string>
     <string name="remove_from_home">Vom Startbildschirm entfernen</string>
+    <string name="remove_from_speed_dial">Aus der Kurzwahl entfernen</string>
     <string name="remove_from_sos">Von SOS entfernen</string>
     <string name="remove_shortcut">Kurzwahltaste entfernen</string>
     <string name="removed_all_alarms">Alle Wecker wurden gelöscht!</string>

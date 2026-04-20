@@ -35,6 +35,7 @@
     <string name="add_shortcut">छोटा रास्ता जोडें</string>
     <string name="add_to_favorite">पसंदीदा लिस्ट मे डालें</string>
     <string name="add_to_home">घर में जोड़ें</string>
+    <string name="add_to_speed_dial">स्पीड डायल में जोड़ें</string>
     <string name="add_to_sos">एसओएस में जोड़ें</string>
     <string name="address">पता</string>
     <string name="advanced_options">उन्नत विकल्प</string>
@@ -208,6 +209,7 @@
 
     <string name="remove_from_favorite">पसंदीदा से निकालें</string>
     <string name="remove_from_home">घर से हटाएं</string>
+    <string name="remove_from_speed_dial">स्पीड डायल से हटाएं</string>
     <string name="remove_from_sos">एसओएस से हटाएं</string>
     <string name="remove_shortcut">शॉर्टकट हटाएं</string>
     <string name="removed_all_alarms">सभी अलार्म हटा दिए!</string>

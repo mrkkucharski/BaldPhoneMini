@@ -33,6 +33,7 @@
     <string name="add_shortcut">Добавить Ярлык</string>
     <string name="add_to_favorite">Добавить в Избранное</string>
     <string name="add_to_home">Добавить на Главный Экран</string>
+    <string name="add_to_speed_dial">Добавить в быстрый набор</string>
     <string name="add_to_sos">Добавить в SOS</string>
     <string name="address">Адрес</string>
     <string name="advanced_options">Дополнительные Параметры</string>
@@ -203,6 +204,7 @@
 
     <string name="remove_from_favorite">Удалить из Избранного</string>
     <string name="remove_from_home">Удалить с Домашнего экрана</string>
+    <string name="remove_from_speed_dial">Удалить из быстрого набора</string>
     <string name="remove_from_sos">Удалить из SOS</string>
     <string name="remove_shortcut">Удалить ярлык</string>
     <string name="removed_all_alarms">Удалены все будильники!</string>

@@ -33,6 +33,7 @@
     <string name="add_shortcut">Uygulama kısayolu ekle</string>
     <string name="add_to_favorite">Favorilerine ekle</string>
     <string name="add_to_home">Ana sayfaya ekle</string>
+    <string name="add_to_speed_dial">Hızlı aramaya ekle</string>
     <string name="add_to_sos">Acile/SOS\'e ekle</string>
     <string name="address">Adres</string>
     <string name="advanced_options">Geliştirilmiş Ayarlar</string>
@@ -203,6 +204,7 @@
 
     <string name="remove_from_favorite">Favorilerden çıkarın</string>
     <string name="remove_from_home">Ana sayfadan çıkarın</string>
+    <string name="remove_from_speed_dial">Hızlı aramadan çıkarın</string>
     <string name="remove_from_sos">Acil/SOS\'den çıkarın</string>
     <string name="remove_shortcut">Kısayolu silin</string>
     <string name="removed_all_alarms">Tüm alarmlarınız silindi!</string>

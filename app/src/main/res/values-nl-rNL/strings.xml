@@ -32,6 +32,7 @@ dit bericht blijft verschijnen dan kan het uitgeschakeld worden in de toegankeli
     <string name="add_shortcut">Snelkoppeling toevoegen</string>
     <string name="add_to_favorite">Toevoegen aan favorieten</string>
     <string name="add_to_home">Toevoegen aan startpagina</string>
+    <string name="add_to_speed_dial">Toevoegen aan snelkeuze</string>
     <string name="add_to_sos">Toevoegen aan SOS</string>
     <string name="address">Adres</string>
     <string name="advanced_options">Geavanceerde opties</string>
@@ -197,6 +198,7 @@ dit bericht blijft verschijnen dan kan het uitgeschakeld worden in de toegankeli
 
     <string name="remove_from_favorite">Verwijderen uit Favorieten</string>
     <string name="remove_from_home">Verwijderen uit de Startpagina</string>
+    <string name="remove_from_speed_dial">Verwijderen uit snelkeuze</string>
     <string name="remove_from_sos">Verwijderen uit SOS</string>
     <string name="remove_shortcut">Snelkoppeling verwijderen</string>
     <string name="removed_all_alarms">Alle alarmen zijn verwijderd!</string>

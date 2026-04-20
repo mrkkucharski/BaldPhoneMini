@@ -33,6 +33,7 @@
     <string name="add_shortcut">მალსახმობის დამატება</string>
     <string name="add_to_favorite">დავამატოთ რჩეულებს</string>
     <string name="add_to_home">დავამატოთ მთავარ ეკრანს-ს</string>
+    <string name="add_to_speed_dial">სწრაფ აკრეფაში დამატება</string>
     <string name="add_to_sos">დავამატოთ SOS</string>
     <string name="address">მისამართი</string>
     <string name="advanced_options">დამატებითი პარამეტრები</string>
@@ -203,6 +204,7 @@
 
     <string name="remove_from_favorite">რჩეულებიდან წაშლა</string>
     <string name="remove_from_home">მთავარი ეკრანიდან წაშლა</string>
+    <string name="remove_from_speed_dial">სწრაფი აკრეფიდან წაშლა</string>
     <string name="remove_from_sos">SOS-დან წაშლა</string>
     <string name="remove_shortcut">მალსახმობის წაშლა</string>
     <string name="removed_all_alarms">ყველა მაღვიძარა წაშლილია!</string>

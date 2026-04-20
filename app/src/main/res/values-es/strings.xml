@@ -33,6 +33,7 @@
     <string name="add_shortcut">Añadir acceso directo</string>
     <string name="add_to_favorite">Añadir a favoritos</string>
     <string name="add_to_home">Añadir a inicio</string>
+    <string name="add_to_speed_dial">Añadir a marcación rápida</string>
     <string name="add_to_sos">Añadir a SOS</string>
     <string name="address">Dirección</string>
     <string name="advanced_options">Opciones avanzadas</string>
@@ -202,6 +203,7 @@
 
     <string name="remove_from_favorite">Quitar de favoritos</string>
     <string name="remove_from_home">Quitar de inicio</string>
+    <string name="remove_from_speed_dial">Quitar de marcación rápida</string>
     <string name="remove_from_sos">Quitar de SOS</string>
     <string name="remove_shortcut">Quitar acceso directo</string>
     <string name="removed_all_alarms">Se han borrado todas las alarmas.</string>

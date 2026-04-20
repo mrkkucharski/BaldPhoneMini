@@ -35,6 +35,7 @@
     <string name="add_shortcut">Dodaj bližnjico</string>
     <string name="add_to_favorite">Dodaj k priljubljenim</string>
     <string name="add_to_home">Dodaj na domač zaslon</string>
+    <string name="add_to_speed_dial">Dodaj na hitro izbiranje</string>
     <string name="add_to_sos">Dodaj k SOS</string>
     <string name="address">Naslov</string>
     <string name="advanced_options">Napredne nastavitve</string>
@@ -204,6 +205,7 @@
 
     <string name="remove_from_favorite">Odstrani od priljubljenih</string>
     <string name="remove_from_home">Odstrani z domačega zaslona</string>
+    <string name="remove_from_speed_dial">Odstrani iz hitrega izbiranja</string>
     <string name="remove_from_sos">Odstrani iz SOS</string>
     <string name="remove_shortcut">Odstrani bližnjico</string>
     <string name="removed_all_alarms">Vse budilke so bile odstranjene!</string>

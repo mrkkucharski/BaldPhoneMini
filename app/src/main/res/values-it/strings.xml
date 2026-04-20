@@ -35,6 +35,7 @@
     <string name="add_shortcut">Aggiungi scorciatoia</string>
     <string name="add_to_favorite">Aggiungi ai preferiti</string>
     <string name="add_to_home">Aggiungi alla Home</string>
+    <string name="add_to_speed_dial">Aggiungi alla chiamata rapida</string>
     <string name="add_to_sos">Aggiungi a SOS</string>
     <string name="address">Indirizzo</string>
     <string name="advanced_options">Impostazioni avanzate</string>
@@ -209,6 +210,7 @@
 
     <string name="remove_from_favorite">Rimuovi dai preferiti</string>
     <string name="remove_from_home">Rimuovi dalla schermata Home</string>
+    <string name="remove_from_speed_dial">Rimuovi dalla chiamata rapida</string>
     <string name="remove_from_sos">Rimuovi da SOS</string>
     <string name="remove_shortcut">Rimuovi scorciatoia</string>
     <string name="removed_all_alarms">Tutte le sveglie sono stete eliminate</string>

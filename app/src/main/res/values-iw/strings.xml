@@ -35,6 +35,7 @@
     <string name="add_shortcut">הוסף קיצור-דרך</string>
     <string name="add_to_favorite">הוסף למועדפים</string>
     <string name="add_to_home">הוסף למסך הבית</string>
+    <string name="add_to_speed_dial">הוסף לחיוג מהיר</string>
     <string name="add_to_sos">הוסף ל SOS</string>
     <string name="address">כתובת</string>
     <string name="advanced_options">הגדרות מתקדמות</string>
@@ -212,6 +213,7 @@
 
     <string name="remove_from_favorite">הסר ממועדפים</string>
     <string name="remove_from_home">הסר ממסך הבית</string>
+    <string name="remove_from_speed_dial">הסר מחיוג מהיר</string>
     <string name="remove_from_sos">הסר מ SOS</string>
     <string name="remove_shortcut">הסר קיצור דרך</string>
     <string name="removed_all_alarms">כל השעונים הוסרו!</string>

@@ -26,6 +26,7 @@
     <string name="add_shortcut">إضافة إختصار</string>
     <string name="add_to_favorite">إضافة إلي المفضلة</string>
     <string name="add_to_home">إضافة إلي الرئيسية</string>
+    <string name="add_to_speed_dial">إضافة إلى الاتصال السريع</string>
     <string name="add_to_sos">إضافة إلي الطوارئ</string>
     <string name="address">عنوان</string>
     <string name="advanced_options">الاعدادات المتقدمة</string>
@@ -131,6 +132,7 @@
     <string name="recent">جديد</string>
     <string name="remove_from_favorite">حذف من المفضلة</string>
     <string name="remove_from_home">حذف من الرئيسية</string>
+    <string name="remove_from_speed_dial">حذف من الاتصال السريع</string>
     <string name="remove_from_sos">حذف من الطوارئ</string>
     <string name="removed_all_alarms">تم حذف كل المنبهات!</string>
     <string name="repeats_every_day">كل يوم</string>

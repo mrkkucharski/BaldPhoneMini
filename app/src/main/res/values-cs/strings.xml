@@ -35,6 +35,7 @@
     <string name="add_shortcut">Přidat zkratku</string>
     <string name="add_to_favorite">Přidat do oblíbených</string>
     <string name="add_to_home">Přidat na domovskou obrazovku</string>
+    <string name="add_to_speed_dial">Přidat do rychlé volby</string>
     <string name="add_to_sos">Přidat do SOS</string>
     <string name="address">Adresa</string>
     <string name="advanced_options">Pokročilé nastavení</string>
@@ -209,6 +210,7 @@
 
     <string name="remove_from_favorite">Odebrat z oblíbených</string>
     <string name="remove_from_home">Odebrat z domu</string>
+    <string name="remove_from_speed_dial">Odebrat z rychlé volby</string>
     <string name="remove_from_sos">Odebrat z SOS</string>
     <string name="remove_shortcut">Odstaranit zkratku</string>
     <string name="removed_all_alarms">Všechny alarmy byly odstraněny!</string>

@@ -34,6 +34,7 @@
     <string name="add_shortcut">Adicionar Atalho</string>
     <string name="add_to_favorite">Adicionar aos Favoritos</string>
     <string name="add_to_home">Adicionar ao Ecrã Inicial</string>
+    <string name="add_to_speed_dial">Adicionar à marcação rápida</string>
     <string name="add_to_sos">Adicionar a SOS</string>
     <string name="address">Morada</string>
     <string name="advanced_options">Opções Avançadas</string>
@@ -200,6 +201,7 @@
 
     <string name="remove_from_favorite">Remover dos Favoritos</string>
     <string name="remove_from_home">Remover do Ecrã Inicial</string>
+    <string name="remove_from_speed_dial">Remover da marcação rápida</string>
     <string name="remove_from_sos">Remover de SOS</string>
     <string name="remove_shortcut">Remover atalho</string>
     <string name="removed_all_alarms">Remover todos os alarmes!</string>

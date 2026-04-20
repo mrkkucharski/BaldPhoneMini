@@ -11,6 +11,9 @@ import app.baldphone.neo.calls.CallsRepository
 import app.baldphone.neo.contacts.Contact
 import app.baldphone.neo.contacts.ContactActionsUseCase
 import app.baldphone.neo.contacts.data.ContactRepositoryImpl
+import app.baldphone.neo.contacts.speeddial.AddToSpeedDialResult
+import app.baldphone.neo.contacts.speeddial.SpeedDialActionsUseCase
+import app.baldphone.neo.contacts.speeddial.SpeedDialEntry
 import app.baldphone.neo.data.Prefs
 import app.baldphone.neo.utils.PhoneNumberUtils
 import app.baldphone.neo.utils.getDeviceRegion
@@ -35,6 +38,7 @@ class ContactDetailsViewModel(application: Application) : AndroidViewModel(appli
     private val contactProvider = ContactRepositoryImpl.getInstance(application)
     private val callsRepository = CallsRepository(application)
     private val contactActionsUseCase = ContactActionsUseCase(application, contactProvider)
+    private val speedDialUseCase = SpeedDialActionsUseCase(application)
 
     private val _uiState =
         MutableStateFlow(ContactUiState(isCallLogVisible = Prefs.isCallLogVisible))
@@ -70,6 +74,7 @@ class ContactDetailsViewModel(application: Application) : AndroidViewModel(appli
                         contact = contact,
                         isFavorite = contact.isStarred,
                         isPinned = contactActionsUseCase.isPinned(contact.lookupKey),
+                        isInSpeedDial = speedDialUseCase.isInSpeedDial(contact.lookupKey),
                         callHistory = callsRepository.getCallHistory(contact),
                         fields = mapContactToUiModels(contact),
                         isLoading = false
@@ -105,6 +110,36 @@ class ContactDetailsViewModel(application: Application) : AndroidViewModel(appli
         val newValue = !_uiState.value.isCallLogVisible
         Prefs.isCallLogVisible = newValue
         _uiState.update { it.copy(isCallLogVisible = newValue) }
+    }
+
+    fun addToSpeedDial(entry: SpeedDialEntry) {
+        viewModelScope.launch {
+            when (speedDialUseCase.addToSpeedDial(entry)) {
+                AddToSpeedDialResult.Success -> {
+                    _uiState.update { it.copy(isInSpeedDial = true, contactChanged = true) }
+                    _events.trySend(ContactDetailsResult.SpeedDialAdded)
+                }
+                AddToSpeedDialResult.AlreadyExists -> {
+                    _uiState.update { it.copy(isInSpeedDial = true) }
+                }
+                AddToSpeedDialResult.MaxReached -> {
+                    _events.trySend(ContactDetailsResult.SpeedDialFull)
+                }
+                AddToSpeedDialResult.Failed -> {
+                    _events.trySend(ContactDetailsResult.SpeedDialError)
+                }
+            }
+        }
+    }
+
+    fun removeFromSpeedDial() {
+        val key = lookupKey ?: return
+        viewModelScope.launch {
+            if (speedDialUseCase.removeFromSpeedDial(key)) {
+                _uiState.update { it.copy(isInSpeedDial = false, contactChanged = true) }
+                _events.trySend(ContactDetailsResult.SpeedDialRemoved)
+            }
+        }
     }
 
     fun deleteContact() {
@@ -222,12 +257,17 @@ class ContactDetailsViewModel(application: Application) : AndroidViewModel(appli
 sealed class ContactDetailsResult {
     object ContactDeleted : ContactDetailsResult()
     object ContactNotFound : ContactDetailsResult()
+    object SpeedDialAdded : ContactDetailsResult()
+    object SpeedDialRemoved : ContactDetailsResult()
+    object SpeedDialFull : ContactDetailsResult()
+    object SpeedDialError : ContactDetailsResult()
 }
 
 data class ContactUiState(
     val contact: Contact? = null,
     val isFavorite: Boolean = false,
     val isPinned: Boolean = false,
+    val isInSpeedDial: Boolean = false,
     val callHistory: List<Call> = emptyList(),
     val fields: List<ContactFieldUiModel> = emptyList(),
     val isCallLogVisible: Boolean = false,

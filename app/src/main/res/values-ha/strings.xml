@@ -21,6 +21,7 @@
     <string name="add_alarm">Kara Kararrawa</string>
     <string name="add_emergency_contact">Kara</string>
     <string name="add_pill">Kara Kwaya</string>
+    <string name="add_to_speed_dial">Ƙara zuwa kiran sauri</string>
     <string name="afternoon">Yamma</string>
     <string name="and_welcome_to_baldphone">kuma barka da zuwa Baldphone</string>
 
@@ -67,6 +68,7 @@
     <string name="evening">Maraice</string>
     <string name="hide">Boye</string>
     <string name="remove_from_sos">Cire daga SOS</string>
+    <string name="remove_from_speed_dial">Cire daga kiran sauri</string>
     <string name="repeats_every_day">Kowace rana</string>
     <string name="right_handed">Hannun dama</string>
 
