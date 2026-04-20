@@ -45,11 +45,26 @@ public class PillScreenActivity extends TimedBaldActivity {
     private static final String TAG = PillScreenActivity.class.getSimpleName();
 
     private static final int TIME_DELAYED_SCHEDULE = 100;
+    private static final int RINGTONE_REPEAT_INTERVAL_MS = 5 * 1000;
 
     private TextView tv_textual_content, snooze, took;
     private ImageView iv_pill;
     private Ringtone ringtone;
     private Reminder reminder;
+    private final Handler ringtoneHandler = new Handler();
+    private final Runnable stopRingtoneRunnable = () -> {
+        if (ringtone != null) ringtone.stop();
+    };
+    // For API < 28: re-trigger play() since setLooping() isn't available
+    private final Runnable repeatRingtoneRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (ringtone != null && !ringtone.isPlaying()) {
+                ringtone.play();
+            }
+            ringtoneHandler.postDelayed(this, RINGTONE_REPEAT_INTERVAL_MS);
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -114,20 +129,24 @@ public class PillScreenActivity extends TimedBaldActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (ringtone != null)
+        if (ringtone != null) {
             ringtone.play();
+            ringtoneHandler.postDelayed(repeatRingtoneRunnable, RINGTONE_REPEAT_INTERVAL_MS);
+            ringtoneHandler.postDelayed(stopRingtoneRunnable, D.MINUTE);
+        }
     }
 
     @Override
     protected void onStop() {
+        ringtoneHandler.removeCallbacksAndMessages(null);
         if (ringtone != null)
             ringtone.stop();
-
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
+        ringtoneHandler.removeCallbacksAndMessages(null);
         if (ringtone != null)
             ringtone.stop();
         super.onDestroy();

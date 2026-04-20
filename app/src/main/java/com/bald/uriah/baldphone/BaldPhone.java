@@ -24,8 +24,6 @@ import android.util.Log;
 import app.baldphone.neo.data.Prefs;
 import app.baldphone.neo.helpers.ThemeHelper;
 
-import com.bald.uriah.baldphone.databases.alarms.AlarmScheduler;
-import com.bald.uriah.baldphone.databases.reminders.ReminderScheduler;
 import com.bald.uriah.baldphone.services.NotificationListenerService;
 import com.bald.uriah.baldphone.utils.BaldUncaughtExceptionHandler;
 import com.bald.uriah.baldphone.utils.S;
@@ -43,8 +41,6 @@ public class BaldPhone extends Application {
 
         Prefs.init(this);
         JodaTimeAndroid.init(this);
-        AlarmScheduler.reStartAlarms(this);
-        ReminderScheduler.reStartReminders(this);
         ThemeHelper.INSTANCE.applySavedTheme();
 
         try {
