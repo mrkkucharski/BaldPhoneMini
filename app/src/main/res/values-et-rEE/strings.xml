@@ -192,6 +192,10 @@
     <string name="pill_name">Tableti nimi</string>
     <string name="pills">Tabletid</string>
     <string name="pills_settings_subtext">Lubage või keelake nupp Tabletid avakuval.</string>
+    <string name="internet_settings_subtext">Lubage või keelake nupp Internet avakuval.</string>
+    <string name="maps_settings_subtext">Lubage või keelake nupp Kaardid avakuval.</string>
+    <string name="alarms_settings_subtext">Lubage või keelake nupp Äratused avakuval.</string>
+    <string name="photos_settings_subtext">Lubage või keelake nupp Fotod avakuval.</string>
     <string name="press_longer">Hoia all kauem.</string>
     <string name="timer">Taimer</string>
     <string name="read_call_log">Kõneajalugu</string>

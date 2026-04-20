@@ -176,6 +176,10 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
     <string name="pill_name">Pilularen izena</string>
     <string name="pills">Pilulak</string>
     <string name="pills_settings_subtext">Gaitu edo desgaitu Pilulak botoia hasierako pantailan.</string>
+    <string name="internet_settings_subtext">Gaitu edo desgaitu Internet botoia hasierako pantailan.</string>
+    <string name="maps_settings_subtext">Gaitu edo desgaitu Mapak botoia hasierako pantailan.</string>
+    <string name="alarms_settings_subtext">Gaitu edo desgaitu Alarmak botoia hasierako pantailan.</string>
+    <string name="photos_settings_subtext">Gaitu edo desgaitu Argazkiak botoia hasierako pantailan.</string>
     <string name="press_longer">Luzeago sakatu!</string>
     <string name="read_call_log">Deien historia irakurri</string>
     <string name="read_call_log_subtext">Baimen hau derrigorrezkoa da deien historia ikusteko.</string>

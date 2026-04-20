@@ -188,6 +188,10 @@
     <string name="pill_name">Name des Medikaments</string>
     <string name="pills">Medikamente</string>
     <string name="pills_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Medikamente auf dem Startbildschirm.</string>
+    <string name="internet_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Internet auf dem Startbildschirm.</string>
+    <string name="maps_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Navigation auf dem Startbildschirm.</string>
+    <string name="alarms_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Wecker auf dem Startbildschirm.</string>
+    <string name="photos_settings_subtext">Aktiviere oder deaktiviere die Schaltfläche Fotos auf dem Startbildschirm.</string>
     <string name="press_longer">Länger drücken!</string>
     <string name="timer">Eieruhr</string>
     <string name="read_call_log">Anrufliste einlesen</string>

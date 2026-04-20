@@ -64,6 +64,18 @@ public final class BPrefs {
     public static final String PILLS_VISIBLE_KEY = "PILLS_VISIBLE_KEY";
     public static final boolean PILLS_VISIBLE_DEFAULT_VALUE = true;
 
+    public static final String INTERNET_VISIBLE_KEY = "INTERNET_VISIBLE_KEY";
+    public static final boolean INTERNET_VISIBLE_DEFAULT_VALUE = true;
+
+    public static final String MAPS_VISIBLE_KEY = "MAPS_VISIBLE_KEY";
+    public static final boolean MAPS_VISIBLE_DEFAULT_VALUE = true;
+
+    public static final String ALARMS_VISIBLE_KEY = "ALARMS_VISIBLE_KEY";
+    public static final boolean ALARMS_VISIBLE_DEFAULT_VALUE = true;
+
+    public static final String PHOTOS_VISIBLE_KEY = "PHOTOS_VISIBLE_KEY";
+    public static final boolean PHOTOS_VISIBLE_DEFAULT_VALUE = true;
+
     public static final String EMERGENCY_BUTTON_VISIBLE_KEY = "EMERGENCY_BUTTON_VISIBLE_KEY";
     public static final boolean EMERGENCY_BUTTON_VISIBLE_DEFAULT_VALUE = true;
 

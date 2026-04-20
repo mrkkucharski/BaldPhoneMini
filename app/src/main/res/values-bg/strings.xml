@@ -194,6 +194,10 @@
     <string name="pill_name">Име на лекарството</string>
     <string name="pills">Лекарства</string>
     <string name="pills_settings_subtext">Включете или изключете бутона за лекарства на началния екран.</string>
+    <string name="internet_settings_subtext">Включете или изключете бутона Интернет на началния екран.</string>
+    <string name="maps_settings_subtext">Включете или изключете бутона Карти на началния екран.</string>
+    <string name="alarms_settings_subtext">Включете или изключете бутона Аларми на началния екран.</string>
+    <string name="photos_settings_subtext">Включете или изключете бутона Снимки на началния екран.</string>
     <string name="press_longer">Натиснете по-продължително!</string>
     <string name="timer">Таймер</string>
     <string name="read_call_log">Прочетете История на обажданията</string>

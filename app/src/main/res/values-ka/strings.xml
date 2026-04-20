@@ -188,6 +188,10 @@
     <string name="pill_name">აბის სახელი</string>
     <string name="pills">აბები</string>
     <string name="pills_settings_subtext">ჩართეთ ან გამორთეთ აბების ღილაკი მთავარ ეკრანზე.</string>
+    <string name="internet_settings_subtext">ჩართეთ ან გამორთეთ ინტერნეტის ღილაკი მთავარ ეკრანზე.</string>
+    <string name="maps_settings_subtext">ჩართეთ ან გამორთეთ რუკების ღილაკი მთავარ ეკრანზე.</string>
+    <string name="alarms_settings_subtext">ჩართეთ ან გამორთეთ მაღვიძარების ღილაკი მთავარ ეკრანზე.</string>
+    <string name="photos_settings_subtext">ჩართეთ ან გამორთეთ ფოტოების ღილაკი მთავარ ეკრანზე.</string>
     <string name="press_longer">დიდხანს დააჭირეთ!</string>
     <string name="timer">ტაიმერი</string>
     <string name="read_call_log">ზარების ისტორიის წაკითხვა</string>

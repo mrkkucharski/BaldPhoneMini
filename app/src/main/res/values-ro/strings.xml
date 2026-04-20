@@ -188,6 +188,10 @@
     <string name="pill_name">Nume medicament</string>
     <string name="pills">Medicamente</string>
     <string name="pills_settings_subtext">Activați sau dezactivați butonul Medicamente de pe ecranul principal.</string>
+    <string name="internet_settings_subtext">Activați sau dezactivați butonul Internet de pe ecranul principal.</string>
+    <string name="maps_settings_subtext">Activați sau dezactivați butonul Hărți de pe ecranul principal.</string>
+    <string name="alarms_settings_subtext">Activați sau dezactivați butonul Alarme de pe ecranul principal.</string>
+    <string name="photos_settings_subtext">Activați sau dezactivați butonul Poze de pe ecranul principal.</string>
     <string name="press_longer">Ține apăsat!</string>
     <string name="timer">Temporizator</string>
     <string name="read_call_log">Citește istoric apeluriy</string>

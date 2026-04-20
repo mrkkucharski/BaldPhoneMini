@@ -182,6 +182,10 @@ Megérkezett a BaldPhone NAGY billentyűzete!</string>
     <string name="pill_name">Gyógyszer neve</string>
     <string name="pills">Gyógyszerek</string>
     <string name="pills_settings_subtext">Engedélyezd vagy tiltsd le a Gyógyszerek gombot a kezdőképernyőn.</string>
+    <string name="internet_settings_subtext">Engedélyezd vagy tiltsd le az Internet gombot a kezdőképernyőn.</string>
+    <string name="maps_settings_subtext">Engedélyezd vagy tiltsd le a Térkép gombot a kezdőképernyőn.</string>
+    <string name="alarms_settings_subtext">Engedélyezd vagy tiltsd le az Ébresztők gombot a kezdőképernyőn.</string>
+    <string name="photos_settings_subtext">Engedélyezd vagy tiltsd le a Képek gombot a kezdőképernyőn.</string>
     <string name="press_longer">Hosszan nyomd!</string>
     <string name="timer">Időzítő</string>
     <string name="read_call_log">Hívási előrmények olvasása</string>

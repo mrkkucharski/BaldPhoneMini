@@ -192,6 +192,10 @@ ja muuttaa kirkkautta.</string>
     <string name="pill_name">Lääkenimi</string>
     <string name="pills">Lääkkeet</string>
     <string name="pills_settings_subtext">Ota Lääkkeet-painike käyttöön tai pois käytöstä kotinäytöllä.</string>
+    <string name="internet_settings_subtext">Ota Internet-painike käyttöön tai pois käytöstä kotinäytöllä.</string>
+    <string name="maps_settings_subtext">Ota Kartat-painike käyttöön tai pois käytöstä kotinäytöllä.</string>
+    <string name="alarms_settings_subtext">Ota Hälytykset-painike käyttöön tai pois käytöstä kotinäytöllä.</string>
+    <string name="photos_settings_subtext">Ota Kuvat-painike käyttöön tai pois käytöstä kotinäytöllä.</string>
     <string name="press_longer">Paina pidempään!</string>
     <string name="timer">Ajastin</string>
     <string name="read_call_log">Lue puheluhistoria</string>

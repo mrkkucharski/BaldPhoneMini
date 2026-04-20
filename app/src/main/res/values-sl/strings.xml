@@ -189,6 +189,10 @@
     <string name="pill_name">Ime zdravila</string>
     <string name="pills">Zdravila</string>
     <string name="pills_settings_subtext">Omogoči ali onemogoči gumb Zdravila na domačem zaslonu.</string>
+    <string name="internet_settings_subtext">Omogoči ali onemogoči gumb Splet na domačem zaslonu.</string>
+    <string name="maps_settings_subtext">Omogoči ali onemogoči gumb Zemljevidi na domačem zaslonu.</string>
+    <string name="alarms_settings_subtext">Omogoči ali onemogoči gumb Budilke na domačem zaslonu.</string>
+    <string name="photos_settings_subtext">Omogoči ali onemogoči gumb Slike na domačem zaslonu.</string>
     <string name="press_longer">Drži pritisk dlje časa!</string>
     <string name="timer">Štoparica</string>
     <string name="read_call_log">Preberi dnevnik klicev</string>

@@ -42,6 +42,10 @@
     <string name="cancel">Sake</string>
     <string name="change_pills_time">Canja Lokaci Kwayoyin</string>
     <string name="pills_settings_subtext">Kunna ko kashe maɓallin Kwaya a kan allon gida.</string>
+    <string name="internet_settings_subtext">Kunna ko kashe maɓallin Intanet a kan allon gida.</string>
+    <string name="maps_settings_subtext">Kunna ko kashe maɓallin Taswirar Ƙasa a kan allon gida.</string>
+    <string name="alarms_settings_subtext">Kunna ko kashe maɓallin Faɗakarwa a kan allon gida.</string>
+    <string name="photos_settings_subtext">Kunna ko kashe maɓallin Hotuna a kan allon gida.</string>
     <string name="choose_friday">Jum</string>
     <string name="choose_monday">Lit</string>
     <string name="choose_saturday">Asa</string>

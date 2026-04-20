@@ -193,6 +193,10 @@
     <string name="pill_name">गोली का नाम</string>
     <string name="pills">गोली</string>
     <string name="pills_settings_subtext">होम स्क्रीन पर गोली बटन सक्षम या अक्षम करें।</string>
+    <string name="internet_settings_subtext">होम स्क्रीन पर इंटरनेट बटन सक्षम या अक्षम करें।</string>
+    <string name="maps_settings_subtext">होम स्क्रीन पर नक्शा बटन सक्षम या अक्षम करें।</string>
+    <string name="alarms_settings_subtext">होम स्क्रीन पर एलार्म बटन सक्षम या अक्षम करें।</string>
+    <string name="photos_settings_subtext">होम स्क्रीन पर तस्वीरें बटन सक्षम या अक्षम करें।</string>
     <string name="press_longer">लंबे समय तक दबाएं!</string>
     <string name="timer">घड़ी</string>
     <string name="read_call_log">कॉल इतिहास पढ़ें</string>

@@ -196,6 +196,10 @@
     <string name="pill_name">שם תרופה</string>
     <string name="pills">תרופות</string>
     <string name="pills_settings_subtext">הפעל או השבת את כפתור התרופות במסך הבית.</string>
+    <string name="internet_settings_subtext">הפעל או השבת את כפתור האינטרנט במסך הבית.</string>
+    <string name="maps_settings_subtext">הפעל או השבת את כפתור המפות במסך הבית.</string>
+    <string name="alarms_settings_subtext">הפעל או השבת את כפתור השעון במסך הבית.</string>
+    <string name="photos_settings_subtext">הפעל או השבת את כפתור התמונות במסך הבית.</string>
     <string name="press_longer">לחיצה ארוכה</string>
     <string name="timer">טיימר</string>
     <string name="read_call_log">גישה לשיחות האחרונות</string>

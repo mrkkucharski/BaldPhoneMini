@@ -45,6 +45,14 @@ import static com.bald.uriah.baldphone.utils.BPrefs.PAGE_TRANSFORMERS_DEFAULT_VA
 import static com.bald.uriah.baldphone.utils.BPrefs.PAGE_TRANSFORMERS_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.PILLS_VISIBLE_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.PILLS_VISIBLE_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.INTERNET_VISIBLE_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.INTERNET_VISIBLE_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.MAPS_VISIBLE_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.MAPS_VISIBLE_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.ALARMS_VISIBLE_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.ALARMS_VISIBLE_KEY;
+import static com.bald.uriah.baldphone.utils.BPrefs.PHOTOS_VISIBLE_DEFAULT_VALUE;
+import static com.bald.uriah.baldphone.utils.BPrefs.PHOTOS_VISIBLE_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.STATUS_BAR_DEFAULT_VALUE;
 import static com.bald.uriah.baldphone.utils.BPrefs.STATUS_BAR_KEY;
 import static com.bald.uriah.baldphone.utils.BPrefs.TOUCH_NOT_HARD_DEFAULT_VALUE;
@@ -53,7 +61,7 @@ import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_DEFAULT_V
 import static com.bald.uriah.baldphone.utils.BPrefs.VIBRATION_FEEDBACK_KEY;
 
 public class BaldPrefsUtils {
-    private final boolean vibrationFeedback, touchNoHard, longPresses, notes, pills, lowBatteryAlert, sos;
+    private final boolean vibrationFeedback, touchNoHard, longPresses, notes, pills, internet, maps, alarms, photos, lowBatteryAlert, sos;
     private final int swipingEffect, statusBar;
     private final String CUSTOM_APP;
     private final String CUSTOM_RECENTS;
@@ -68,13 +76,17 @@ public class BaldPrefsUtils {
     private final String CUSTOM_APPS;
     private final String CUSTOM_ALARMS;
 
-    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, boolean pills, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
+    private BaldPrefsUtils(boolean vibrationFeedback, boolean touchNoHard, boolean longPresses, int swipingEffect, boolean notes, boolean pills, boolean internet, boolean maps, boolean alarms, boolean photos, int statusBar, boolean lowBatteryAlert, boolean sos, String custom_app, String custom_recents, String custom_dialer, String custom_contacts, String custom_assistant, String custom_messages, String custom_photos, String custom_camera, String custom_videos, String custom_pills, String custom_apps, String custom_alarms) {
         this.vibrationFeedback = vibrationFeedback;
         this.touchNoHard = touchNoHard;
         this.longPresses = longPresses;
         this.swipingEffect = swipingEffect;
         this.notes = notes;
         this.pills = pills;
+        this.internet = internet;
+        this.maps = maps;
+        this.alarms = alarms;
+        this.photos = photos;
         this.statusBar = statusBar;
         this.lowBatteryAlert = lowBatteryAlert;
         this.sos = sos;
@@ -108,6 +120,14 @@ public class BaldPrefsUtils {
                 sharedPreferences
                         .getBoolean(PILLS_VISIBLE_KEY, PILLS_VISIBLE_DEFAULT_VALUE),
                 sharedPreferences
+                        .getBoolean(INTERNET_VISIBLE_KEY, INTERNET_VISIBLE_DEFAULT_VALUE),
+                sharedPreferences
+                        .getBoolean(MAPS_VISIBLE_KEY, MAPS_VISIBLE_DEFAULT_VALUE),
+                sharedPreferences
+                        .getBoolean(ALARMS_VISIBLE_KEY, ALARMS_VISIBLE_DEFAULT_VALUE),
+                sharedPreferences
+                        .getBoolean(PHOTOS_VISIBLE_KEY, PHOTOS_VISIBLE_DEFAULT_VALUE),
+                sharedPreferences
                         .getInt(STATUS_BAR_KEY, STATUS_BAR_DEFAULT_VALUE),
                 sharedPreferences.getBoolean(LOW_BATTERY_ALERT_KEY, LOW_BATTERY_ALERT_DEFAULT_VALUE),
                 sharedPreferences.getBoolean(EMERGENCY_BUTTON_VISIBLE_KEY, EMERGENCY_BUTTON_VISIBLE_DEFAULT_VALUE),
@@ -140,6 +160,10 @@ public class BaldPrefsUtils {
                 longPresses == that.longPresses &&
                 notes == that.notes &&
                 pills == that.pills &&
+                internet == that.internet &&
+                maps == that.maps &&
+                alarms == that.alarms &&
+                photos == that.photos &&
                 lowBatteryAlert == that.lowBatteryAlert &&
                 sos == that.sos &&
                 swipingEffect == that.swipingEffect &&
@@ -160,6 +184,6 @@ public class BaldPrefsUtils {
 
     @Override
     public int hashCode() {
-        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, pills, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
+        return Objects.hash(vibrationFeedback, touchNoHard, longPresses, notes, pills, internet, maps, alarms, photos, lowBatteryAlert, sos, swipingEffect, statusBar, CUSTOM_APP, CUSTOM_RECENTS, CUSTOM_DIALER, CUSTOM_CONTACTS, CUSTOM_ASSISTANT, CUSTOM_MESSAGES, CUSTOM_PHOTOS, CUSTOM_CAMERA, CUSTOM_VIDEOS, CUSTOM_PILLS, CUSTOM_APPS, CUSTOM_ALARMS);
     }
 }

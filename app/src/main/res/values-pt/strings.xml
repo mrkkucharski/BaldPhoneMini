@@ -185,6 +185,10 @@
     <string name="pill_name">Nome da Medicação</string>
     <string name="pills">Medicação</string>
     <string name="pills_settings_subtext">Active ou desactive o botão Medicação no ecrã inicial.</string>
+    <string name="internet_settings_subtext">Active ou desactive o botão Internet no ecrã inicial.</string>
+    <string name="maps_settings_subtext">Active ou desactive o botão Mapas no ecrã inicial.</string>
+    <string name="alarms_settings_subtext">Active ou desactive o botão Alarmes no ecrã inicial.</string>
+    <string name="photos_settings_subtext">Active ou desactive o botão Fotografias no ecrã inicial.</string>
     <string name="press_longer">Pressione durante mais tempo!</string>
     <string name="timer">Temporizador</string>
     <string name="read_call_log">Ver histórico de chamadas</string>

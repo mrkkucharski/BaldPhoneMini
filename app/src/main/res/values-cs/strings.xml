@@ -194,6 +194,10 @@
     <string name="pill_name">Jméno pilulky</string>
     <string name="pills">Pilulky</string>
     <string name="pills_settings_subtext">Povolte nebo zakažte tlačítko Pilulky na domovské obrazovce.</string>
+    <string name="internet_settings_subtext">Povolte nebo zakažte tlačítko Internet na domovské obrazovce.</string>
+    <string name="maps_settings_subtext">Povolte nebo zakažte tlačítko Mapy na domovské obrazovce.</string>
+    <string name="alarms_settings_subtext">Povolte nebo zakažte tlačítko Budíky na domovské obrazovce.</string>
+    <string name="photos_settings_subtext">Povolte nebo zakažte tlačítko Obrázky na domovské obrazovce.</string>
     <string name="press_longer">Držte déle!</string>
     <string name="timer">Časovač</string>
     <string name="read_call_log">Přečíst historii telefonátů</string>

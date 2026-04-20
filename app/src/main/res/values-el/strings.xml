@@ -194,6 +194,10 @@
     <string name="pill_name">Όνομα Χαπιού</string>
     <string name="pills">Χάπια</string>
     <string name="pills_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Χάπια στην αρχική οθόνη.</string>
+    <string name="internet_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Διαδίκτυο στην αρχική οθόνη.</string>
+    <string name="maps_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Χάρτες στην αρχική οθόνη.</string>
+    <string name="alarms_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Αφυπνίσεις στην αρχική οθόνη.</string>
+    <string name="photos_settings_subtext">Ενεργοποιήστε ή απενεργοποιήστε το κουμπί Εικόνες στην αρχική οθόνη.</string>
     <string name="press_longer">Πατήστε παρατεταμένα!</string>
     <string name="timer">Χρονόμετρο</string>
     <string name="read_call_log">Εμφάνιση Ιστορικού Κλήσεων</string>

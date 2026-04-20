@@ -94,13 +94,29 @@ public class HomePage2 extends HomeView {
         bt_settings.setOnClickListener(
                 v -> homeScreen.startActivity(new Intent(getContext(), SettingsActivity.class)));
 
-        clickListenerForAbstractOpener(
-                Uri.parse("http://www.google.com"), bt_internet, iv_internet, tv_internet);
-        clickListenerForAbstractOpener(Uri.parse("geo:0,0"), bt_maps, iv_maps, tv_maps);
+        final boolean internetVisible = BPrefs.get(homeScreen)
+                .getBoolean(BPrefs.INTERNET_VISIBLE_KEY, BPrefs.INTERNET_VISIBLE_DEFAULT_VALUE);
+        bt_internet.setVisibility(internetVisible ? View.VISIBLE : View.GONE);
+        if (internetVisible) {
+            clickListenerForAbstractOpener(
+                    Uri.parse("http://www.google.com"), bt_internet, iv_internet, tv_internet);
+        }
+
+        final boolean mapsVisible = BPrefs.get(homeScreen)
+                .getBoolean(BPrefs.MAPS_VISIBLE_KEY, BPrefs.MAPS_VISIBLE_DEFAULT_VALUE);
+        bt_maps.setVisibility(mapsVisible ? View.VISIBLE : View.GONE);
+        if (mapsVisible) {
+            clickListenerForAbstractOpener(Uri.parse("geo:0,0"), bt_maps, iv_maps, tv_maps);
+        }
 
         if (bt_photo != null) {
-            bt_photo.setOnClickListener(
-                    v -> homeScreen.startActivity(new Intent(getContext(), PhotosActivity.class)));
+            final boolean photosVisible = BPrefs.get(homeScreen)
+                    .getBoolean(BPrefs.PHOTOS_VISIBLE_KEY, BPrefs.PHOTOS_VISIBLE_DEFAULT_VALUE);
+            bt_photo.setVisibility(photosVisible ? View.VISIBLE : View.GONE);
+            if (photosVisible) {
+                bt_photo.setOnClickListener(
+                        v -> homeScreen.startActivity(new Intent(getContext(), PhotosActivity.class)));
+            }
         }
 
         if (bt_videos != null) {
@@ -130,8 +146,13 @@ public class HomePage2 extends HomeView {
         }
 
         if (bt_alarms != null) {
-            bt_alarms.setOnClickListener(
-                    v -> homeScreen.startActivity(new Intent(homeScreen, AlarmsActivity.class)));
+            final boolean alarmsVisible = BPrefs.get(homeScreen)
+                    .getBoolean(BPrefs.ALARMS_VISIBLE_KEY, BPrefs.ALARMS_VISIBLE_DEFAULT_VALUE);
+            bt_alarms.setVisibility(alarmsVisible ? View.VISIBLE : View.GONE);
+            if (alarmsVisible) {
+                bt_alarms.setOnClickListener(
+                        v -> homeScreen.startActivity(new Intent(homeScreen, AlarmsActivity.class)));
+            }
         }
     }
 

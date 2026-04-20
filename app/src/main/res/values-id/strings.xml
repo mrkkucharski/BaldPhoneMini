@@ -191,6 +191,10 @@
     <string name="pill_name">Nama Pil</string>
     <string name="pills">Pil-pil</string>
     <string name="pills_settings_subtext">Aktifkan atau nonaktifkan tombol Pil-pil di layar Beranda.</string>
+    <string name="internet_settings_subtext">Aktifkan atau nonaktifkan tombol Internet di layar Beranda.</string>
+    <string name="maps_settings_subtext">Aktifkan atau nonaktifkan tombol Peta di layar Beranda.</string>
+    <string name="alarms_settings_subtext">Aktifkan atau nonaktifkan tombol Alarm di layar Beranda.</string>
+    <string name="photos_settings_subtext">Aktifkan atau nonaktifkan tombol Foto-foto di layar Beranda.</string>
     <string name="press_longer">Tekan Lebih Lama!</string>
     <string name="timer">Pewaktu</string>
     <string name="read_call_log">Baca Riwayat Panggilan</string>

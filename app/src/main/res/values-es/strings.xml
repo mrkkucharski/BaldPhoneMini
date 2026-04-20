@@ -187,6 +187,10 @@
     <string name="pill_name">Nombre de la pastilla</string>
     <string name="pills">Pastillas</string>
     <string name="pills_settings_subtext">Activa o desactiva el botón de Pastillas en la pantalla de inicio.</string>
+    <string name="internet_settings_subtext">Activa o desactiva el botón de Internet en la pantalla de inicio.</string>
+    <string name="maps_settings_subtext">Activa o desactiva el botón de Mapas en la pantalla de inicio.</string>
+    <string name="alarms_settings_subtext">Activa o desactiva el botón de Alarmas en la pantalla de inicio.</string>
+    <string name="photos_settings_subtext">Activa o desactiva el botón de Fotos en la pantalla de inicio.</string>
     <string name="press_longer">Mantén pulsado el botón un poco más…</string>
     <string name="timer">Temporizador</string>
     <string name="read_call_log">Leer el historial de llamadas</string>

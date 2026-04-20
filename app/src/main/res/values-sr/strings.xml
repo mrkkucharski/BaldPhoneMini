@@ -181,6 +181,10 @@
     <string name="pill_name">Ime leka</string>
     <string name="pills">Lekovi</string>
     <string name="pills_settings_subtext">Omogućite ili onemogućite dugme Lekovi na početnom ekranu.</string>
+    <string name="internet_settings_subtext">Omogućite ili onemogućite dugme Internet na početnom ekranu.</string>
+    <string name="maps_settings_subtext">Omogućite ili onemogućite dugme Mape na početnom ekranu.</string>
+    <string name="alarms_settings_subtext">Omogućite ili onemogućite dugme Alarmi na početnom ekranu.</string>
+    <string name="photos_settings_subtext">Omogućite ili onemogućite dugme Slike na početnom ekranu.</string>
     <string name="press_longer">Pritisnite duže!</string>
     <string name="timer">Tajmer</string>
     <string name="read_call_log">Otvori istoriju poziva</string>

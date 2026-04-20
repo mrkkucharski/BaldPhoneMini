@@ -181,6 +181,10 @@
     <string name="pill_name">Pillenavn</string>
     <string name="pills">Piller</string>
     <string name="pills_settings_subtext">Aktivér eller deaktiver knappen Piller på startskærmen.</string>
+    <string name="internet_settings_subtext">Aktivér eller deaktiver knappen Internet på startskærmen.</string>
+    <string name="maps_settings_subtext">Aktivér eller deaktiver knappen Kort på startskærmen.</string>
+    <string name="alarms_settings_subtext">Aktivér eller deaktiver knappen Alarmer på startskærmen.</string>
+    <string name="photos_settings_subtext">Aktivér eller deaktiver knappen Fotos på startskærmen.</string>
     <string name="press_longer">Tryk og hold lidt længere tid med fingeren.</string>
     <string name="timer">Stopur</string>
     <string name="read_call_log">Læs opkaldshistorik</string>

@@ -189,6 +189,10 @@
     <string name="pill_name">Ime Pilule</string>
     <string name="pills">Pilule</string>
     <string name="pills_settings_subtext">Omogućite ili onemogućite gumb Pilule na početnom zaslonu.</string>
+    <string name="internet_settings_subtext">Omogućite ili onemogućite gumb Internet na početnom zaslonu.</string>
+    <string name="maps_settings_subtext">Omogućite ili onemogućite gumb Karte na početnom zaslonu.</string>
+    <string name="alarms_settings_subtext">Omogućite ili onemogućite gumb Alarmi na početnom zaslonu.</string>
+    <string name="photos_settings_subtext">Omogućite ili onemogućite gumb Fotografije na početnom zaslonu.</string>
     <string name="press_longer">Klikni Duže!</string>
     <string name="timer">Kronometar</string>
     <string name="read_call_log">Čitaj Popis Poziva</string>

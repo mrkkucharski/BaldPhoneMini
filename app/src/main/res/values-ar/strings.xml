@@ -121,6 +121,10 @@
     <string name="pill_name">إسم الدواء</string>
     <string name="pills">الأدوية</string>
     <string name="pills_settings_subtext">قم بتفعيل أو تعطيل زر الأدوية على الشاشة الرئيسية.</string>
+    <string name="internet_settings_subtext">قم بتفعيل أو تعطيل زر الإنترنت على الشاشة الرئيسية.</string>
+    <string name="maps_settings_subtext">قم بتفعيل أو تعطيل زر الخرائط على الشاشة الرئيسية.</string>
+    <string name="alarms_settings_subtext">قم بتفعيل أو تعطيل زر المنبهات على الشاشة الرئيسية.</string>
+    <string name="photos_settings_subtext">قم بتفعيل أو تعطيل زر صور على الشاشة الرئيسية.</string>
     <string name="press_longer">إضغط مدة أطول</string>
     <string name="timer">مؤقت</string>
     <string name="received">مستلمة</string>

@@ -198,6 +198,10 @@
     <string name="pill_name">Pill Name</string>
     <string name="pills">Pills</string>
     <string name="pills_settings_subtext">Enable or disable the Pills button on the home screen.</string>
+    <string name="internet_settings_subtext">Enable or disable the Internet button on the home screen.</string>
+    <string name="maps_settings_subtext">Enable or disable the Maps button on the home screen.</string>
+    <string name="alarms_settings_subtext">Enable or disable the Alarms button on the home screen.</string>
+    <string name="photos_settings_subtext">Enable or disable the Photos button on the home screen.</string>
     <string name="press_longer">Press Longer!</string>
     <string name="timer">Timer</string>
     <string name="read_call_log">Read Call History</string>

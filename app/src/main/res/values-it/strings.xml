@@ -194,6 +194,10 @@
     <string name="pill_name">Nome della pillola</string>
     <string name="pills">Pillole</string>
     <string name="pills_settings_subtext">Attiva o disattiva il pulsante Pillole nella schermata principale.</string>
+    <string name="internet_settings_subtext">Attiva o disattiva il pulsante Internet nella schermata principale.</string>
+    <string name="maps_settings_subtext">Attiva o disattiva il pulsante Mappe nella schermata principale.</string>
+    <string name="alarms_settings_subtext">Attiva o disattiva il pulsante Sveglie nella schermata principale.</string>
+    <string name="photos_settings_subtext">Attiva o disattiva il pulsante Galleria nella schermata principale.</string>
     <string name="press_longer">Tocca più a lungo</string>
     <string name="timer">Timer</string>
     <string name="read_call_log">Lettura chiamate recenti</string>

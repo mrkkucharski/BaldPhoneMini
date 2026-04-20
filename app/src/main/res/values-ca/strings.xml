@@ -197,6 +197,10 @@ Es recomana encaridament usar \"Baldphone\'s home screen\" com el Llançador pri
     <string name="pill_name">Nom Pastilla</string>
     <string name="pills">Pastilles</string>
     <string name="pills_settings_subtext">Activa o desactiva el botó de Pastilles a la pantalla principal.</string>
+    <string name="internet_settings_subtext">Activa o desactiva el botó d\'Internet a la pantalla principal.</string>
+    <string name="maps_settings_subtext">Activa o desactiva el botó de Mapa a la pantalla principal.</string>
+    <string name="alarms_settings_subtext">Activa o desactiva el botó d\'Alarmes a la pantalla principal.</string>
+    <string name="photos_settings_subtext">Activa o desactiva el botó de Fotos a la pantalla principal.</string>
     <string name="press_longer">Pressioni més temps!</string>
     <string name="timer">Temporitzador</string>
     <string name="read_call_log">Llegir historial de Trucades</string>

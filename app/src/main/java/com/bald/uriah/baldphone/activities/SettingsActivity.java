@@ -280,6 +280,62 @@ public class SettingsActivity extends BaldActivity {
                         .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.PILLS_VISIBLE_KEY, BPrefs.PILLS_VISIBLE_DEFAULT_VALUE) ? 0 : 1),
                 R.drawable.pill
         ));
+        personalizationCategory.add(new BDBSettingsItem(R.string.internet,
+                BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.internet)
+                        .setSubText(R.string.internet_settings_subtext)
+                        .setOptions(R.string.yes, R.string.no)
+                        .setPositiveButtonListener(params -> {
+                            editor.putBoolean(BPrefs.INTERNET_VISIBLE_KEY, (Integer) params[0] == 0).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.INTERNET_VISIBLE_KEY, BPrefs.INTERNET_VISIBLE_DEFAULT_VALUE) ? 0 : 1),
+                R.drawable.web_on_button
+        ));
+        personalizationCategory.add(new BDBSettingsItem(R.string.maps,
+                BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.maps)
+                        .setSubText(R.string.maps_settings_subtext)
+                        .setOptions(R.string.yes, R.string.no)
+                        .setPositiveButtonListener(params -> {
+                            editor.putBoolean(BPrefs.MAPS_VISIBLE_KEY, (Integer) params[0] == 0).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.MAPS_VISIBLE_KEY, BPrefs.MAPS_VISIBLE_DEFAULT_VALUE) ? 0 : 1),
+                R.drawable.map_on_button
+        ));
+        personalizationCategory.add(new BDBSettingsItem(R.string.alarms,
+                BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.alarms)
+                        .setSubText(R.string.alarms_settings_subtext)
+                        .setOptions(R.string.yes, R.string.no)
+                        .setPositiveButtonListener(params -> {
+                            editor.putBoolean(BPrefs.ALARMS_VISIBLE_KEY, (Integer) params[0] == 0).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.ALARMS_VISIBLE_KEY, BPrefs.ALARMS_VISIBLE_DEFAULT_VALUE) ? 0 : 1),
+                R.drawable.alarm_off_on_button
+        ));
+        personalizationCategory.add(new BDBSettingsItem(R.string.photos,
+                BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.photos)
+                        .setSubText(R.string.photos_settings_subtext)
+                        .setOptions(R.string.yes, R.string.no)
+                        .setPositiveButtonListener(params -> {
+                            editor.putBoolean(BPrefs.PHOTOS_VISIBLE_KEY, (Integer) params[0] == 0).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.PHOTOS_VISIBLE_KEY, BPrefs.PHOTOS_VISIBLE_DEFAULT_VALUE) ? 0 : 1),
+                R.drawable.photo_on_button
+        ));
         personalizationCategory.add(new BDBSettingsItem(R.string.dialer_sounds,
                 BDB.from(this)
                         .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)

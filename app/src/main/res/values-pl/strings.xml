@@ -176,6 +176,10 @@
     <string name="pill_name">Nazwa leku</string>
     <string name="pills">Leki</string>
     <string name="pills_settings_subtext">Włącz lub wyłącz przycisk Leki na ekranie głównym.</string>
+    <string name="internet_settings_subtext">Włącz lub wyłącz przycisk Internet na ekranie głównym.</string>
+    <string name="maps_settings_subtext">Włącz lub wyłącz przycisk Mapy na ekranie głównym.</string>
+    <string name="alarms_settings_subtext">Włącz lub wyłącz przycisk Alarmy na ekranie głównym.</string>
+    <string name="photos_settings_subtext">Włącz lub wyłącz przycisk Zdjęcia na ekranie głównym.</string>
     <string name="press_longer">Przytrzymaj dłużej</string>
     <string name="timer">Minutnik</string>
     <string name="read_call_log">Odczyt rejestru połączeń</string>
