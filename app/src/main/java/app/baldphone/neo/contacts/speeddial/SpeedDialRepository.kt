@@ -1,11 +1,20 @@
 package app.baldphone.neo.contacts.speeddial
 
 import android.content.Context
+import android.content.SharedPreferences
 import org.json.JSONArray
 import org.json.JSONObject
 
-class SpeedDialRepository(context: Context) {
-    private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+class SpeedDialRepository {
+    private val prefs: SharedPreferences
+
+    constructor(context: Context) {
+        prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
+
+    constructor(prefs: SharedPreferences) {
+        this.prefs = prefs
+    }
 
     fun getAll(): List<SpeedDialEntry> {
         val json = prefs.getString(KEY_ENTRIES, null) ?: return emptyList()

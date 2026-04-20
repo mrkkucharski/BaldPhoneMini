@@ -109,6 +109,10 @@ public class BaldPrefsUtils {
 
     public static BaldPrefsUtils newInstance(Context context) {
         final SharedPreferences sharedPreferences = context.getSharedPreferences(BPrefs.KEY, Context.MODE_PRIVATE);
+        return newInstance(sharedPreferences);
+    }
+
+    public static BaldPrefsUtils newInstance(SharedPreferences sharedPreferences) {
         return new BaldPrefsUtils(
                 sharedPreferences
                         .getBoolean(VIBRATION_FEEDBACK_KEY, VIBRATION_FEEDBACK_DEFAULT_VALUE),

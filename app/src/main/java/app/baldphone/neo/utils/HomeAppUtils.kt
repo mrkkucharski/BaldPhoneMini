@@ -15,6 +15,12 @@ object HomeAppUtils {
 
     const val REQUEST_ROLE_HOME = 1001
 
+    enum class DefaultLauncherRequestAction {
+        NONE,
+        REQUEST_HOME_ROLE,
+        OPEN_LEGACY_CHOOSER
+    }
+
     /**
      * Requests that this app be set as the default home/launcher app.
      * On Android 10+ uses RoleManager; on older versions uses the FakeLauncherActivity chooser trick.
@@ -23,18 +29,36 @@ object HomeAppUtils {
     fun requestDefaultLauncher(activity: Activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val roleManager = activity.getSystemService(RoleManager::class.java)
-            if (roleManager != null) {
-                if (roleManager.isRoleHeld(RoleManager.ROLE_HOME)) return
-
-                activity.startActivityForResult(
-                    roleManager.createRequestRoleIntent(RoleManager.ROLE_HOME),
-                    REQUEST_ROLE_HOME
+            when (
+                getDefaultLauncherRequestAction(
+                    isAtLeastAndroidQ = true,
+                    isRoleManagerAvailable = roleManager != null,
+                    isHomeRoleHeld = roleManager?.isRoleHeld(RoleManager.ROLE_HOME) == true
                 )
-                return
+            ) {
+                DefaultLauncherRequestAction.NONE -> return
+                DefaultLauncherRequestAction.REQUEST_HOME_ROLE -> {
+                    activity.startActivityForResult(
+                        roleManager!!.createRequestRoleIntent(RoleManager.ROLE_HOME),
+                        REQUEST_ROLE_HOME
+                    )
+                    return
+                }
+                DefaultLauncherRequestAction.OPEN_LEGACY_CHOOSER -> Unit
             }
         }
-        // Fallback for Android < 10
         FakeLauncherActivity.resetPreferredLauncherAndOpenChooser(activity)
+    }
+
+    fun getDefaultLauncherRequestAction(
+        isAtLeastAndroidQ: Boolean,
+        isRoleManagerAvailable: Boolean,
+        isHomeRoleHeld: Boolean
+    ): DefaultLauncherRequestAction {
+        if (!isAtLeastAndroidQ) return DefaultLauncherRequestAction.OPEN_LEGACY_CHOOSER
+        if (!isRoleManagerAvailable) return DefaultLauncherRequestAction.OPEN_LEGACY_CHOOSER
+        if (isHomeRoleHeld) return DefaultLauncherRequestAction.NONE
+        return DefaultLauncherRequestAction.REQUEST_HOME_ROLE
     }
 
     /**

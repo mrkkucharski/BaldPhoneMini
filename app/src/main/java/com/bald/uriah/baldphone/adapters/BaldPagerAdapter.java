@@ -70,9 +70,17 @@ public class BaldPagerAdapter extends BaldViewAdapter {
             combined.add(new app.baldphone.neo.contacts.speeddial.SpeedDialHomeItem(entry));
         }
         pinnedList = combined;
-        numItems =
-                numItemsBefore + (pinnedList.size() / HomeViewFactory.AMOUNT_PER_PAGE + (pinnedList.size() % HomeViewFactory.AMOUNT_PER_PAGE == 0 ? 0 : 1));
+        numItems = calculateItemCount(numItemsBefore, pinnedList.size());
         notifyDataSetChanged();
+    }
+
+    public static int calculateItemCount(int numItemsBefore, int pinnedItemCount) {
+        return numItemsBefore + calculatePinnedPageCount(pinnedItemCount);
+    }
+
+    public static int calculatePinnedPageCount(int pinnedItemCount) {
+        return pinnedItemCount / HomeViewFactory.AMOUNT_PER_PAGE
+                + (pinnedItemCount % HomeViewFactory.AMOUNT_PER_PAGE == 0 ? 0 : 1);
     }
 
     public View getItem(int position) {

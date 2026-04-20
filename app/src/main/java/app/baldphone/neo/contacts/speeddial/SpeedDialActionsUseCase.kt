@@ -15,10 +15,16 @@ sealed class AddToSpeedDialResult {
     object Failed : AddToSpeedDialResult()
 }
 
-class SpeedDialActionsUseCase(context: Context) {
-    private val appContext = context.applicationContext
-    private val repository = SpeedDialRepository(context)
-    private val contactRepository = ContactRepositoryImpl.getInstance(appContext)
+class SpeedDialActionsUseCase(
+    private val repository: SpeedDialRepository,
+    private val contactExists: (String) -> Boolean,
+    private val hasContactsPermissionProvider: () -> Boolean
+) {
+    constructor(context: Context) : this(
+        SpeedDialRepository(context),
+        createContactExists(context.applicationContext),
+        { hasContactsPermission(context.applicationContext) }
+    )
 
     fun isInSpeedDial(lookupKey: String): Boolean = repository.contains(lookupKey)
 
@@ -26,13 +32,10 @@ class SpeedDialActionsUseCase(context: Context) {
 
     fun getAll(): List<SpeedDialEntry> {
         val entries = repository.getAll()
-        if (!hasContactsPermission()) return entries
+        if (!hasContactsPermissionProvider()) return entries
 
         val validKeys = entries.mapNotNull { entry ->
-            val contact = runCatching {
-                contactRepository.getContactByLookupKeyJava(entry.lookupKey)
-            }.getOrNull()
-            if (contact == null) null else entry.lookupKey
+            if (contactExists(entry.lookupKey)) entry.lookupKey else null
         }.toSet()
 
         repository.keepOnly(validKeys)
@@ -52,9 +55,20 @@ class SpeedDialActionsUseCase(context: Context) {
         repository.remove(lookupKey)
     }
 
-    private fun hasContactsPermission(): Boolean =
-        ContextCompat.checkSelfPermission(
-            appContext,
-            Manifest.permission.READ_CONTACTS
-        ) == PackageManager.PERMISSION_GRANTED
+    companion object {
+        private fun createContactExists(context: Context): (String) -> Boolean {
+            val contactRepository = ContactRepositoryImpl.getInstance(context)
+            return { lookupKey ->
+                runCatching {
+                    contactRepository.getContactByLookupKeyJava(lookupKey)
+                }.getOrNull() != null
+            }
+        }
+
+        private fun hasContactsPermission(context: Context): Boolean =
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+    }
 }
