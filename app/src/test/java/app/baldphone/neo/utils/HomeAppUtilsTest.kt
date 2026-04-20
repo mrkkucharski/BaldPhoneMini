@@ -1,6 +1,6 @@
 package app.baldphone.neo.utils
 
-import app.baldphone.neo.utils.HomeAppUtils.DefaultLauncherRequestAction.NONE
+import app.baldphone.neo.utils.HomeAppUtils.DefaultLauncherRequestAction.OPEN_HOME_SETTINGS
 import app.baldphone.neo.utils.HomeAppUtils.DefaultLauncherRequestAction.OPEN_LEGACY_CHOOSER
 import app.baldphone.neo.utils.HomeAppUtils.DefaultLauncherRequestAction.REQUEST_HOME_ROLE
 import org.junit.Assert.assertEquals
@@ -32,9 +32,9 @@ class HomeAppUtilsTest {
     }
 
     @Test
-    fun defaultLauncherRequestActionDoesNothingWhenHomeRoleIsAlreadyHeld() {
+    fun defaultLauncherRequestActionOpensHomeSettingsWhenHomeRoleIsAlreadyHeld() {
         assertEquals(
-            NONE,
+            OPEN_HOME_SETTINGS,
             HomeAppUtils.getDefaultLauncherRequestAction(
                 isAtLeastAndroidQ = true,
                 isRoleManagerAvailable = true,
