@@ -38,14 +38,16 @@ import com.bald.uriah.baldphone.databases.reminders.RemindersDatabase;
 import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.D;
+import com.bald.uriah.baldphone.utils.PillTimeSlots;
 import com.bald.uriah.baldphone.views.BaldButton;
-import com.bald.uriah.baldphone.views.BaldMultipleSelection;
+import com.bald.uriah.baldphone.views.BaldTimeSlotSelection;
 import com.bald.uriah.baldphone.views.BaldTitleBar;
 
 import static com.bald.uriah.baldphone.utils.BaldToast.TYPE_ERROR;
 
 public class AddPillActivity extends BaldActivity {
     private static final String TAG = AddPillActivity.class.getSimpleName();
+    // Color picker index; unrelated to Reminder.TIME_EXTRA_3 even though both values are 5.
     public static final int INDEX_CUSTOM = 5;
     static final String REMINDER_KEY_AS_EXTRA_KEY = "reminder";
     public static int[] COLORS = new int[]{
@@ -60,7 +62,7 @@ public class AddPillActivity extends BaldActivity {
     private BaldButton bt_submit;
     private BaldTitleBar baldTitleBar;
     private EditText reminder_edit_name;
-    private BaldMultipleSelection baldMultipleSelection;
+    private BaldTimeSlotSelection timeSlotSelection;
     private ImageView[] colors;
     private int selectedColor = 0;
     private byte[] customColor;
@@ -82,7 +84,7 @@ public class AddPillActivity extends BaldActivity {
             final Reminder reminder = RemindersDatabase.getInstance(this).remindersDatabaseDao().getById(remindersIndex);
             reminderIdToEdit = reminder.getId();
 
-            baldMultipleSelection.setSelection(reminder.getStartingTime());
+            timeSlotSelection.setSelection(reminder.getStartingTime());
 
             if (reminder.getBinaryContentType() == Reminder.BINARY_RGB) {
                 customColor = reminder.getBinaryContent();
@@ -114,8 +116,8 @@ public class AddPillActivity extends BaldActivity {
         bt_submit = findViewById(R.id.bt_submit);
         baldTitleBar = findViewById(R.id.bald_title_bar);
         reminder_edit_name = findViewById(R.id.reminder_edit_name);
-        baldMultipleSelection = findViewById(R.id.multiple_selection);
-        baldMultipleSelection.addSelection(R.string.morning, R.string.afternoon, R.string.evening);
+        timeSlotSelection = findViewById(R.id.multiple_selection);
+        timeSlotSelection.setSlotLabels(PillTimeSlots.getSelectionLabels(this));
         daysCheckBoxes = new CheckBox[]{
                 findViewById(R.id.sunday),
                 findViewById(R.id.monday),
@@ -156,7 +158,7 @@ public class AddPillActivity extends BaldActivity {
         }
 
         final Reminder reminder = new Reminder();
-        reminder.setStartingTime(baldMultipleSelection.getSelection());
+        reminder.setStartingTime(timeSlotSelection.getSelection());
         reminder.setDays(sum);
         reminder.setTextualContent(name);
         reminder.setBinaryContentType(Reminder.BINARY_RGB);
@@ -175,7 +177,6 @@ public class AddPillActivity extends BaldActivity {
         } else {
             reminder.setId(reminderIdToEdit);
             RemindersDatabase.getInstance(this).remindersDatabaseDao().replace(reminder);
-            ReminderScheduler.scheduleReminder(reminder, this);
         }
         ReminderScheduler.scheduleReminder(reminder, this);
 

@@ -27,6 +27,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.bald.uriah.baldphone.R;
+import com.bald.uriah.baldphone.utils.PillTimeSlotDefaults;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -45,16 +46,26 @@ public class Reminder {
     @Ignore
     public static final int TYPE_PILL = 0, TYPE_REGULAR = 1, TYPE_PICTURE = 2, TYPE_BIRTHDAY = 3;
     @Ignore
-    public static final int TIME_MORNING = 0, TIME_AFTERNOON = 1, TIME_EVENING = 2;
+    public static final int TIME_MORNING = PillTimeSlotDefaults.TIME_MORNING,
+            TIME_AFTERNOON = PillTimeSlotDefaults.TIME_AFTERNOON,
+            TIME_EVENING = PillTimeSlotDefaults.TIME_EVENING,
+            TIME_EXTRA_1 = PillTimeSlotDefaults.TIME_EXTRA_1,
+            TIME_EXTRA_2 = PillTimeSlotDefaults.TIME_EXTRA_2,
+            TIME_EXTRA_3 = PillTimeSlotDefaults.TIME_EXTRA_3;
+    @Ignore
+    public static final int PILL_TIME_SLOT_COUNT = PillTimeSlotDefaults.PILL_TIME_SLOT_COUNT;
     @Ignore
     public static final int BINARY_RGB = 3, BINARY_PNG = 2, BINARY_M4A = 1, NULL = 0;
     @Ignore
-    public static final SparseIntArray PILLS_TIME_NAMES = new SparseIntArray(3);
+    public static final SparseIntArray PILLS_TIME_NAMES = new SparseIntArray(PILL_TIME_SLOT_COUNT);
 
     static {
         PILLS_TIME_NAMES.append(Reminder.TIME_MORNING, R.string.morning);
         PILLS_TIME_NAMES.append(Reminder.TIME_AFTERNOON, R.string.afternoon);
         PILLS_TIME_NAMES.append(Reminder.TIME_EVENING, R.string.evening);
+        PILLS_TIME_NAMES.append(Reminder.TIME_EXTRA_1, R.string.extra_1);
+        PILLS_TIME_NAMES.append(Reminder.TIME_EXTRA_2, R.string.extra_2);
+        PILLS_TIME_NAMES.append(Reminder.TIME_EXTRA_3, R.string.extra_3);
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -163,7 +174,16 @@ public class Reminder {
     @Ignore
     @StringRes
     public int getTimeAsStringRes() {
-        return PILLS_TIME_NAMES.get(startingTime);
+        return getTimeNameRes(startingTime);
+    }
+
+    @Ignore
+    @StringRes
+    public static int getTimeNameRes(@Time int time) {
+        final int index = PILLS_TIME_NAMES.indexOfKey(time);
+        if (index < 0)
+            return R.string.pill_time_slot;
+        return PILLS_TIME_NAMES.valueAt(index);
     }
 
     @IntDef({TYPE_PILL, TYPE_REGULAR, TYPE_BIRTHDAY, TYPE_PICTURE})
@@ -171,7 +191,7 @@ public class Reminder {
     @interface Type {
     }
 
-    @IntDef({TIME_MORNING, TIME_AFTERNOON, TIME_EVENING})
+    @IntDef({TIME_MORNING, TIME_AFTERNOON, TIME_EVENING, TIME_EXTRA_1, TIME_EXTRA_2, TIME_EXTRA_3})
     @Retention(value = RetentionPolicy.SOURCE)
     public @interface Time {
     }

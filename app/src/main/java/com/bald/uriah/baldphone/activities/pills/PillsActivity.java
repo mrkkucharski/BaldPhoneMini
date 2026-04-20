@@ -42,10 +42,12 @@ import com.bald.uriah.baldphone.databases.reminders.RemindersDatabase;
 import com.bald.uriah.baldphone.utils.BaldGridItemDecoration;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.D;
+import com.bald.uriah.baldphone.utils.PillTimeSlots;
 import com.bald.uriah.baldphone.utils.S;
 import com.bald.uriah.baldphone.views.ModularRecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PillsActivity extends BaldActivity {
@@ -83,7 +85,7 @@ public class PillsActivity extends BaldActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        list = RemindersDatabase.getInstance(this).remindersDatabaseDao().getAllRemindersOrderedByTime();
+        loadRemindersForDisplay();
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 
@@ -112,8 +114,13 @@ public class PillsActivity extends BaldActivity {
     }
 
     public void refreshViews() {
-        list = RemindersDatabase.getInstance(this).remindersDatabaseDao().getAllRemindersOrderedByTime();
+        loadRemindersForDisplay();
         recyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    private void loadRemindersForDisplay() {
+        list = RemindersDatabase.getInstance(this).remindersDatabaseDao().getAllReminders();
+        Collections.sort(list, (first, second) -> PillTimeSlots.compareByResolvedTime(this, first, second));
     }
 
     @Override
@@ -188,7 +195,7 @@ public class PillsActivity extends BaldActivity {
 
                 repeating_days.setText(message);
 
-                reminder_time.setText(reminder.getTimeAsStringRes());
+                reminder_time.setText(PillTimeSlots.getListLabel(PillsActivity.this, reminder.getStartingTime()));
                 reminder_textual_content.setText(reminder.getTextualContent());
 
                 bt_edit.setOnClickListener((v) ->

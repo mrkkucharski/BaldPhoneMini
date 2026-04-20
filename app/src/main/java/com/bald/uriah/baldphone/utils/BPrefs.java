@@ -121,17 +121,14 @@ public final class BPrefs {
 
     public static final String ALARM_VOLUME_KEY = "ALARM_VOLUME_KEY";
     public static final int ALARM_VOLUME_DEFAULT_VALUE = 4;
-    public static final SparseIntArray PILLS_HOUR_DEFAULTS = new SparseIntArray(3);
-    public static final SparseIntArray PILLS_MINUTE_DEFAULTS = new SparseIntArray(3);
+    public static final SparseIntArray PILLS_HOUR_DEFAULTS = new SparseIntArray(Reminder.PILL_TIME_SLOT_COUNT);
+    public static final SparseIntArray PILLS_MINUTE_DEFAULTS = new SparseIntArray(Reminder.PILL_TIME_SLOT_COUNT);
 
     static {
-        PILLS_HOUR_DEFAULTS.append(Reminder.TIME_MORNING, 7);
-        PILLS_HOUR_DEFAULTS.append(Reminder.TIME_AFTERNOON, 12);
-        PILLS_HOUR_DEFAULTS.append(Reminder.TIME_EVENING, 19);
-
-        PILLS_MINUTE_DEFAULTS.append(Reminder.TIME_MORNING, 30);
-        PILLS_MINUTE_DEFAULTS.append(Reminder.TIME_AFTERNOON, 30);
-        PILLS_MINUTE_DEFAULTS.append(Reminder.TIME_EVENING, 30);
+        for (int slot = 0; slot < Reminder.PILL_TIME_SLOT_COUNT; slot++) {
+            PILLS_HOUR_DEFAULTS.append(slot, PillTimeSlotDefaults.getDefaultHour(slot));
+            PILLS_MINUTE_DEFAULTS.append(slot, PillTimeSlotDefaults.getDefaultMinute(slot));
+        }
     }
 
     public static void setHourAndMinute(Context context, @Reminder.Time int time, int hour, int minute) {

@@ -49,12 +49,11 @@
             android:inputType="text"
             android:textSize="@dimen/huge" />
 
-        <com.bald.uriah.baldphone.views.BaldMultipleSelection
+        <com.bald.uriah.baldphone.views.BaldTimeSlotSelection
             android:id="@+id/multiple_selection"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
-            app:text_size="@dimen/medium" />
+            android:layout_weight="0.6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -260,6 +259,5 @@
             android:textSize="@dimen/large" />
     </LinearLayout>
 </LinearLayout>
-
 
 

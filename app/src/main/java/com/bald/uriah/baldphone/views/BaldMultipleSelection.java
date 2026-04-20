@@ -51,7 +51,7 @@ public class BaldMultipleSelection extends LinearLayout {
     private LayoutInflater layoutInflater;
     private int selection = -1;
     private int size = 0;
-    private float pxDimen;
+    private float pxDimen = -1;
     private ArrayList<BaldButton> buttons = new ArrayList<>(5);
 
     public BaldMultipleSelection(Context context) {
@@ -196,10 +196,18 @@ public class BaldMultipleSelection extends LinearLayout {
     }
 
     public void setSelection(int selectionIndex) {
-        setClicked(buttons.get(selection), false);
+        if (selection != -1)
+            setClicked(buttons.get(selection), false);
         this.selection = selectionIndex;
         setClicked(buttons.get(selection), true);
 
+    }
+
+    public void clearSelection() {
+        if (selection == -1)
+            return;
+        setClicked(buttons.get(selection), false);
+        selection = -1;
     }
 
     private void setClicked(BaldButton button, boolean state) {

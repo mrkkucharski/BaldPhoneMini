@@ -25,12 +25,13 @@ import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.activities.BaldActivity;
 import com.bald.uriah.baldphone.databases.reminders.ReminderScheduler;
 import com.bald.uriah.baldphone.utils.BPrefs;
-import com.bald.uriah.baldphone.views.BaldMultipleSelection;
+import com.bald.uriah.baldphone.utils.PillTimeSlots;
 import com.bald.uriah.baldphone.views.BaldNumberChooser;
+import com.bald.uriah.baldphone.views.BaldTimeSlotSelection;
 
 public class PillTimeSetterActivity extends BaldActivity {
     private BaldNumberChooser hour, minute;
-    private BaldMultipleSelection multipleSelection;
+    private BaldTimeSlotSelection timeSlotSelection;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,18 +39,21 @@ public class PillTimeSetterActivity extends BaldActivity {
         setContentView(R.layout.activity_reminder_time_setter);
         hour = findViewById(R.id.chooser_hours);
         minute = findViewById(R.id.chooser_minutes);
-        multipleSelection = findViewById(R.id.multiple_selection);
-        multipleSelection.addSelection(R.string.morning, R.string.afternoon, R.string.evening);
+        timeSlotSelection = findViewById(R.id.multiple_selection);
+        timeSlotSelection.setSlotLabels(PillTimeSlots.getSelectionLabels(this));
         applyChoosers();
 
-        multipleSelection.setOnItemClickListener(i -> applyChoosers());
+        timeSlotSelection.setOnItemClickListener(i -> applyChoosers());
 
         final View.OnClickListener onClickListener =
-                v -> BPrefs.setHourAndMinute(
-                        this,
-                        multipleSelection.getSelection(),
-                        hour.getNumber(),
-                        minute.getNumber());
+                v -> {
+                    BPrefs.setHourAndMinute(
+                            this,
+                            timeSlotSelection.getSelection(),
+                            hour.getNumber(),
+                            minute.getNumber());
+                    timeSlotSelection.setSlotLabels(PillTimeSlots.getSelectionLabels(this));
+                };
         hour.setOnClickListener(onClickListener);
         minute.setOnClickListener(onClickListener);
 
@@ -62,8 +66,8 @@ public class PillTimeSetterActivity extends BaldActivity {
     }
 
     private void applyChoosers() {
-        hour.setNumber(BPrefs.getHour(multipleSelection.getSelection(), this));
-        minute.setNumber(BPrefs.getMinute(multipleSelection.getSelection(), this));
+        hour.setNumber(BPrefs.getHour(timeSlotSelection.getSelection(), this));
+        minute.setNumber(BPrefs.getMinute(timeSlotSelection.getSelection(), this));
     }
 
     @Override

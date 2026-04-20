@@ -52,10 +52,6 @@ public class PillScreenActivity extends TimedBaldActivity {
     private Ringtone ringtone;
     private Reminder reminder;
     private final Handler ringtoneHandler = new Handler();
-    private final Runnable stopRingtoneRunnable = () -> {
-        ringtoneHandler.removeCallbacks(repeatRingtoneRunnable);
-        if (ringtone != null) ringtone.stop();
-    };
     // For API < 28: re-trigger play() since setLooping() isn't available
     private final Runnable repeatRingtoneRunnable = new Runnable() {
         @Override
@@ -65,6 +61,10 @@ public class PillScreenActivity extends TimedBaldActivity {
             }
             ringtoneHandler.postDelayed(this, RINGTONE_REPEAT_INTERVAL_MS);
         }
+    };
+    private final Runnable stopRingtoneRunnable = () -> {
+        ringtoneHandler.removeCallbacks(repeatRingtoneRunnable);
+        if (ringtone != null) ringtone.stop();
     };
 
     @Override

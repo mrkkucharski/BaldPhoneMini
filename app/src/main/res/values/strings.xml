@@ -121,7 +121,11 @@
     <string name="enter">Enter</string>
     <string name="enter_contact_or_phone_number">Enter contact name:</string>
     <string name="evening">Evening</string>
+    <string name="every_3_hours">Every 3 hours</string>
     <string name="example_of_different_text_sizes">"Example of different text sizes.\nShould be readable and not overflow."</string>
+    <string name="extra_1">Extra 1</string>
+    <string name="extra_2">Extra 2</string>
+    <string name="extra_3">Extra 3</string>
     <string name="external_storage_subtext">This permission is required in order to save pictures.</string>
     <string name="favorites">Favorites</string>
 
@@ -203,6 +207,7 @@
     <string name="photos">Photos</string>
     <string name="pill_added">Pill added</string>
     <string name="pill_name">Pill Name</string>
+    <string name="pill_time_slot">Pill time</string>
     <string name="pills">Pills</string>
     <string name="pills_settings_subtext">Enable or disable the Pills button on the home screen.</string>
     <string name="internet_settings_subtext">Enable or disable the Internet button on the home screen.</string>
