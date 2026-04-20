@@ -330,9 +330,9 @@ class ContactDetailsActivity : BaldActivity() {
             ACTION_SPEED_DIAL -> {
                 val toggle = item as? ActionMenuItem.Toggle
                 if (toggle?.checked == true) {
-                    viewModel.removeFromSpeedDial()
-                } else {
                     handleAddToSpeedDial()
+                } else {
+                    viewModel.removeFromSpeedDial()
                 }
             }
         }
