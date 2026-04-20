@@ -387,4 +387,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nytt meddelande</string>
+    <string name="no_messages">Inga meddelanden än</string>
+    <string name="type_message">Skriv ett meddelande…</string>
+    <string name="dialog_message_permission_sms">SMS-behörighet krävs för att läsa och skicka meddelanden.</string>
+    <string name="send_message">Skicka meddelande</string>
+    <string name="conversation_with">Konversation med %s</string>
 </resources>

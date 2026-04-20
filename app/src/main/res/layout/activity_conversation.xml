@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground">
+
+    <app.baldphone.neo.views.TitleBarView
+        android:id="@+id/title_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleBarBackgroundColor="@color/color_2"
+        app:titleBarTitle="@string/messages" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messages_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/input_area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
+
+    <!-- Input area -->
+    <LinearLayout
+        android:id="@+id/input_area"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/bald_button"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/message_input"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/type_message"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="4"
+            android:minHeight="56dp"
+            android:padding="12dp"
+            android:textSize="18sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_button"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/send_message"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:backgroundTint="@color/bald_button_positive"
+            app:icon="@drawable/send_on_button"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="32dp"
+            app:iconTint="@color/bald_text_on_button_positive" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

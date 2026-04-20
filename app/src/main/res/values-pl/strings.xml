@@ -368,4 +368,12 @@
     <string name="choose_sim_subtext">Wybierz kartę SIM do rozmowy</string>
     <string name="show_options">Wyświetl opcje</string>
     <string name="website">Strona internetowa</string>
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nowa wiadomość</string>
+    <string name="no_messages">Brak wiadomości</string>
+    <string name="type_message">Wpisz wiadomość…</string>
+    <string name="dialog_message_permission_sms">Uprawnienie SMS jest wymagane do odczytu i wysyłania wiadomości.</string>
+    <string name="send_message">Wyślij wiadomość</string>
+    <string name="conversation_with">Rozmowa z %s</string>
 </resources>

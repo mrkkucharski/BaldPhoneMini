@@ -371,4 +371,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">新訊息</string>
+    <string name="no_messages">尚無訊息</string>
+    <string name="type_message">輸入訊息…</string>
+    <string name="dialog_message_permission_sms">需要簡訊權限才能讀取和傳送訊息。</string>
+    <string name="send_message">傳送訊息</string>
+    <string name="conversation_with">與 %s 的對話</string>
 </resources>

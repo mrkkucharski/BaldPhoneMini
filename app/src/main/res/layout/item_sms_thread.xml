@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/bg_contact_row"
+    android:paddingHorizontal="16dp">
+
+    <!-- Unread indicator dot -->
+    <View
+        android:id="@+id/unread_dot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/circle_accent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/contact_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/bald_text_on_button"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/timestamp"
+        app:layout_constraintStart_toEndOf="@id/unread_dot"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Grandma" />
+
+    <TextView
+        android:id="@+id/snippet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/timestamp"
+        app:layout_constraintStart_toEndOf="@id/unread_dot"
+        app:layout_constraintTop_toBottomOf="@id/contact_name"
+        tools:text="See you at 3 o'clock!" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/contact_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="14:30" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

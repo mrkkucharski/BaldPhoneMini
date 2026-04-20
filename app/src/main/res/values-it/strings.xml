@@ -420,4 +420,12 @@
     <string name="t9_key_8">tuv</string>
     <string name="t9_key_9">wxyz</string>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nuovo messaggio</string>
+    <string name="no_messages">Nessun messaggio ancora</string>
+    <string name="type_message">Scrivi un messaggio…</string>
+    <string name="dialog_message_permission_sms">L\'autorizzazione SMS è necessaria per leggere e inviare messaggi.</string>
+    <string name="send_message">Invia messaggio</string>
+    <string name="conversation_with">Conversazione con %s</string>
 </resources>

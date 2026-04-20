@@ -51,6 +51,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.activities.DialerActivity;
 import app.baldphone.neo.services.DeviceLock;
+import app.baldphone.neo.sms.MessagesActivity;
 import app.baldphone.neo.utils.messaging.WhatsAppHandler;
 
 import com.bald.uriah.baldphone.R;
@@ -282,32 +283,7 @@ public class HomePage1 extends HomeView {
         setupButton(
                 BPrefs.CUSTOM_MESSAGES_KEY,
                 bt_messages,
-                v -> {
-                    try {
-                        final ResolveInfo resolveInfo =
-                                homeScreen
-                                        .getPackageManager()
-                                        .queryIntentActivities(
-                                                new Intent("android.intent.action.MAIN", null)
-                                                        .setPackage(
-                                                                Telephony.Sms.getDefaultSmsPackage(
-                                                                        homeScreen)),
-                                                0)
-                                        .iterator()
-                                        .next();
-                        S.startComponentName(
-                                homeScreen,
-                                new ComponentName(
-                                        resolveInfo.activityInfo.packageName,
-                                        resolveInfo.activityInfo.name));
-
-                    } catch (Exception e) {
-                        BaldToast.from(homeScreen)
-                                .setType(BaldToast.TYPE_ERROR)
-                                .setText(R.string.an_error_has_occurred)
-                                .show();
-                    }
-                });
+                v -> homeScreen.startActivity(new Intent(homeScreen, MessagesActivity.class)));
         setupButton(
                 BPrefs.CUSTOM_EMERGENCY_KEY,
                 bt_emergency,

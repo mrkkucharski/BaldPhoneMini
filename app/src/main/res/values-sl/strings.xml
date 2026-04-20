@@ -387,4 +387,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Novo sporočilo</string>
+    <string name="no_messages">Še ni sporočil</string>
+    <string name="type_message">Vnesite sporočilo…</string>
+    <string name="dialog_message_permission_sms">Za branje in pošiljanje sporočil je potrebno dovoljenje za SMS.</string>
+    <string name="send_message">Pošlji sporočilo</string>
+    <string name="conversation_with">Pogovor z %s</string>
 </resources>

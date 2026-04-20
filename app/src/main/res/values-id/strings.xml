@@ -378,4 +378,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Pesan baru</string>
+    <string name="no_messages">Belum ada pesan</string>
+    <string name="type_message">Ketik pesan…</string>
+    <string name="dialog_message_permission_sms">Izin SMS diperlukan untuk membaca dan mengirim pesan.</string>
+    <string name="send_message">Kirim pesan</string>
+    <string name="conversation_with">Percakapan dengan %s</string>
 </resources>

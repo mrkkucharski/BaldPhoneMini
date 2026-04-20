@@ -373,4 +373,12 @@ geen schade veroorzaken. Druk op OK om de bevoegdheden te geven of druk op nee o
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nieuw bericht</string>
+    <string name="no_messages">Nog geen berichten</string>
+    <string name="type_message">Typ een bericht…</string>
+    <string name="dialog_message_permission_sms">SMS-toestemming is vereist om berichten te lezen en te verzenden.</string>
+    <string name="send_message">Bericht verzenden</string>
+    <string name="conversation_with">Gesprek met %s</string>
 </resources>

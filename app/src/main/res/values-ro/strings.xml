@@ -371,4 +371,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Mesaj nou</string>
+    <string name="no_messages">Nu există mesaje încă</string>
+    <string name="type_message">Scrieți un mesaj…</string>
+    <string name="dialog_message_permission_sms">Permisiunea SMS este necesară pentru citirea și trimiterea mesajelor.</string>
+    <string name="send_message">Trimite mesaj</string>
+    <string name="conversation_with">Conversație cu %s</string>
 </resources>

@@ -368,4 +368,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Новое сообщение</string>
+    <string name="no_messages">Сообщений пока нет</string>
+    <string name="type_message">Введите сообщение…</string>
+    <string name="dialog_message_permission_sms">Для чтения и отправки сообщений требуется разрешение SMS.</string>
+    <string name="send_message">Отправить сообщение</string>
+    <string name="conversation_with">Разговор с %s</string>
 </resources>

@@ -175,4 +175,12 @@
     <string name="choose_sim_subtext">أختر الخط الذي تريد الأتصال منه</string>
     <bool name="is_right_to_left">true</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">رسالة جديدة</string>
+    <string name="no_messages">لا توجد رسائل بعد</string>
+    <string name="type_message">اكتب رسالة…</string>
+    <string name="dialog_message_permission_sms">مطلوب إذن الرسائل القصيرة لقراءة الرسائل وإرسالها.</string>
+    <string name="send_message">إرسال رسالة</string>
+    <string name="conversation_with">محادثة مع %s</string>
 </resources>

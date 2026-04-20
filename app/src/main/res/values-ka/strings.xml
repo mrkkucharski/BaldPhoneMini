@@ -372,4 +372,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">ახალი შეტყობინება</string>
+    <string name="no_messages">შეტყობინებები ჯერ არ არის</string>
+    <string name="type_message">დაწერეთ შეტყობინება…</string>
+    <string name="dialog_message_permission_sms">SMS-ის ნებართვა საჭიროა შეტყობინებების წასაკითხად და გასაგზავნად.</string>
+    <string name="send_message">შეტყობინების გაგზავნა</string>
+    <string name="conversation_with">საუბარი %s-თან</string>
 </resources>

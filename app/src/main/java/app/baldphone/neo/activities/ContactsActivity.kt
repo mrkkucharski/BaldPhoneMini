@@ -38,6 +38,13 @@ class ContactsActivity : BaldActivity() {
         /** Pass as a boolean extra to open the activity in contact-picker mode. */
         const val EXTRA_PICK_CONTACT = "extra_pick_contact"
 
+        /**
+         * Pass as a boolean extra alongside [EXTRA_PICK_CONTACT] to skip the confirmation
+         * dialog and return the contact immediately on tap. Use when the confirmation wording
+         * would not make sense for the calling context (e.g. starting a new SMS conversation).
+         */
+        const val EXTRA_DIRECT_PICK = "extra_direct_pick"
+
         /** Result extra containing the selected contact's lookup key. */
         const val EXTRA_CONTACT_LOOKUP_KEY = "extra_contact_lookup_key"
     }
@@ -49,10 +56,17 @@ class ContactsActivity : BaldActivity() {
         intent.getBooleanExtra(EXTRA_PICK_CONTACT, false)
     }
 
+    private val isDirectPick: Boolean by lazy {
+        intent.getBooleanExtra(EXTRA_DIRECT_PICK, false)
+    }
+
     private val adapter by lazy {
         ContactAdapter { contact ->
-            if (isPickerMode) showPickerConfirmation(contact)
-            else ContactDetailsActivity.openContact(this, contact.lookupKey)
+            when {
+                isPickerMode && isDirectPick -> returnContact(contact.lookupKey)
+                isPickerMode -> showPickerConfirmation(contact)
+                else -> ContactDetailsActivity.openContact(this, contact.lookupKey)
+            }
         }
     }
 
@@ -161,14 +175,16 @@ class ContactsActivity : BaldActivity() {
         baldAlertDialog {
             setTitle(contact.name)
             setMessage(getString(R.string.add_as_an_emergency_contact, contact.name))
-            setPositiveButton(android.R.string.ok) { _ ->
-                val resultIntent = Intent().apply {
-                    putExtra(EXTRA_CONTACT_LOOKUP_KEY, contact.lookupKey)
-                }
-                setResult(RESULT_OK, resultIntent)
-                finish()
-            }
+            setPositiveButton(android.R.string.ok) { _ -> returnContact(contact.lookupKey) }
             setNegativeButton(android.R.string.cancel, null)
         }.show()
+    }
+
+    private fun returnContact(lookupKey: String) {
+        val resultIntent = Intent().apply {
+            putExtra(EXTRA_CONTACT_LOOKUP_KEY, lookupKey)
+        }
+        setResult(RESULT_OK, resultIntent)
+        finish()
     }
 }
