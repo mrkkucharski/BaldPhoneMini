@@ -14,7 +14,7 @@ This README is a WiP.
 - [Contact](#contact)
 - [Licence](#license)
 
-# BaldPhone Neo
+# BaldPhone Mini
 *A modern, optimized, and user-friendly evolution of BaldPhone.*
 
 <img src="logo/rectangle.png" alt="BaldPhone Neo logo" width="240">
