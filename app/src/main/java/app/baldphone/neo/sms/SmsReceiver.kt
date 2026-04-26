@@ -11,8 +11,10 @@ import android.os.Build
 import android.provider.Telephony
 
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 import com.bald.uriah.baldphone.R
+import com.bald.uriah.baldphone.services.NotificationListenerService
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +41,7 @@ class SmsReceiver : BroadcastReceiver() {
                     put(Telephony.Sms.DATE, timestamp)
                     put(Telephony.Sms.DATE_SENT, timestamp)
                     put(Telephony.Sms.READ, 0)
+                    put(Telephony.Sms.SEEN, 0)
                     put(Telephony.Sms.TYPE, Telephony.Sms.MESSAGE_TYPE_INBOX)
                 }
                 context.contentResolver.insert(Telephony.Sms.Inbox.CONTENT_URI, values)
@@ -48,6 +51,17 @@ class SmsReceiver : BroadcastReceiver() {
         }
 
         showNotification(context, address, body)
+        broadcastBadgeUpdate(context)
+    }
+
+    // Samsung devices do not call NotificationListenerService.onNotificationPosted for the
+    // hosting app's own notifications, so we broadcast the badge update directly.
+    private fun broadcastBadgeUpdate(context: Context) {
+        LocalBroadcastManager.getInstance(context).sendBroadcast(
+            Intent(NotificationListenerService.HOME_SCREEN_ACTIVITY_BROADCAST)
+                .putExtra("amount", 1)
+                .putStringArrayListExtra("packages", arrayListOf(context.packageName))
+        )
     }
 
     private fun showNotification(context: Context, address: String, body: String) {

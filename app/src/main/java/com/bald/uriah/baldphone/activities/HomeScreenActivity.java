@@ -53,6 +53,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.viewpager.widget.ViewPager;
 
 import app.baldphone.neo.utils.HomeAppUtils;
 
@@ -325,6 +326,7 @@ public class HomeScreenActivity extends BaldActivity {
     @SuppressLint("InlinedApi")
     protected void onResume() { // remember to change in Page1EditorActivity.java too!
         super.onResume();
+        app.baldphone.neo.sms.SmsDefaultAppSyncer.INSTANCE.sync(this);
         if (baldPrefsUtils.hasChanged(this)) {
             viewPagerHolder.getViewPager().removeAllViews();//android auto saves fragments, not good for us in this case
             this.recreate();
@@ -363,8 +365,25 @@ public class HomeScreenActivity extends BaldActivity {
                 sendBroadcast(
                         new Intent(ACTION_REGISTER_ACTIVITY)
                                 .putExtra(KEY_EXTRA_ACTIVITY, NOTIFICATIONS_HOME_SCREEN)), 200 * D.MILLISECOND);
+        refreshHomePageMessageBadges();
+        handler.postDelayed(this::refreshHomePageMessageBadges, 300 * D.MILLISECOND);
+        handler.postDelayed(this::refreshHomePageMessageBadges, D.SECOND);
 
         registerReceiver(batteryReceiver, BATTERY_FILTER);
+    }
+
+    private void refreshHomePageMessageBadges() {
+        if (viewPagerHolder == null) return;
+
+        ViewPager viewPager = viewPagerHolder.getViewPager();
+        if (viewPager == null) return;
+
+        for (int i = 0; i < viewPager.getChildCount(); i++) {
+            View child = viewPager.getChildAt(i);
+            if (child instanceof HomePage1) {
+                ((HomePage1) child).refreshMessagesBadge();
+            }
+        }
     }
 
     @Override

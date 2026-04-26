@@ -32,7 +32,10 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.ContentObserver;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.provider.Telephony;
@@ -110,6 +113,13 @@ public class HomePage1 extends HomeView {
      * HomePage1#bt_whatsapp} according to it The notification icon is being updated via {@link
      * HomeScreenActivity#notificationReceiver}
      */
+    private final ContentObserver smsObserver = new ContentObserver(new Handler(Looper.getMainLooper())) {
+        @Override
+        public void onChange(boolean selfChange) {
+            refreshMessagesBadge();
+        }
+    };
+
     public final BroadcastReceiver notificationReceiver =
             new BroadcastReceiver() {
                 @Override
@@ -145,12 +155,7 @@ public class HomePage1 extends HomeView {
                     }
 
                     if (bt_messages != null && !viewsToApps.containsValue(bt_messages)) {
-                        String defaultSmsPackage = Telephony.Sms.getDefaultSmsPackage(context);
-                        if (defaultSmsPackage != null) {
-                            bt_messages.setBadgeVisibility(packagesSet.contains(defaultSmsPackage));
-                        } else {
-                            bt_messages.setBadgeVisibility(false); // No default SMS app, hide badge
-                        }
+                        bt_messages.setBadgeVisibility(hasUnreadSms(context));
                     }
 
                     for (Map.Entry<App, FirstPageAppIcon> app : viewsToApps.entrySet()) {
@@ -212,12 +217,22 @@ public class HomePage1 extends HomeView {
                 .sendBroadcast(
                         new Intent(ACTION_REGISTER_ACTIVITY)
                                 .putExtra(KEY_EXTRA_ACTIVITY, NOTIFICATIONS_HOME_SCREEN));
+        activity.getContentResolver().registerContentObserver(
+                Telephony.Sms.CONTENT_URI, true, smsObserver);
+        refreshMessagesBadge();
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(notificationReceiver);
+        activity.getContentResolver().unregisterContentObserver(smsObserver);
+    }
+
+    public void refreshMessagesBadge() {
+        if (bt_messages != null && !viewsToApps.containsValue(bt_messages)) {
+            bt_messages.setBadgeVisibility(hasUnreadSms(getContext() != null ? getContext() : activity));
+        }
     }
 
     private Intent getCameraIntent() {
@@ -482,6 +497,18 @@ public class HomePage1 extends HomeView {
             homeScreen.startActivity(intent);
         } catch (ActivityNotFoundException e) {
             BaldToast.error(homeScreen, "Failed to open accessibility settings.");
+        }
+    }
+
+    private boolean hasUnreadSms(Context context) {
+        try (android.database.Cursor cursor = context.getContentResolver().query(
+                android.provider.Telephony.Sms.CONTENT_URI,
+                new String[]{android.provider.Telephony.Sms._ID},
+                android.provider.Telephony.Sms.READ + " = 0 AND " + android.provider.Telephony.Sms.SEEN + " = 0",
+                null, null)) {
+            return cursor != null && cursor.getCount() > 0;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

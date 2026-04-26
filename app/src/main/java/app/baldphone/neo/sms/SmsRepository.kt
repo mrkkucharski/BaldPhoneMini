@@ -35,6 +35,7 @@ class SmsRepository(private val context: Context) {
                 Telephony.Sms.BODY,
                 Telephony.Sms.DATE,
                 Telephony.Sms.READ,
+                Telephony.Sms.SEEN,
             ),
             null, null,
             "${Telephony.Sms.DATE} DESC"
@@ -46,6 +47,7 @@ class SmsRepository(private val context: Context) {
             val colBody = it.getColumnIndexOrThrow(Telephony.Sms.BODY)
             val colDate = it.getColumnIndexOrThrow(Telephony.Sms.DATE)
             val colRead = it.getColumnIndexOrThrow(Telephony.Sms.READ)
+            val colSeen = it.getColumnIndexOrThrow(Telephony.Sms.SEEN)
 
             while (it.moveToNext()) {
                 val threadId = it.getLong(colThread)
@@ -59,7 +61,7 @@ class SmsRepository(private val context: Context) {
                         contactName = resolveContactName(address),
                         snippet = it.getString(colBody) ?: "",
                         date = it.getLong(colDate),
-                        isRead = it.getInt(colRead) == 1,
+                        isRead = it.getInt(colRead) == 1 || it.getInt(colSeen) == 1,
                     )
                 )
             }
@@ -178,11 +180,14 @@ class SmsRepository(private val context: Context) {
     }
 
     suspend fun markThreadRead(threadId: Long) = withContext(Dispatchers.IO) {
-        val values = ContentValues().apply { put(Telephony.Sms.READ, 1) }
+        val values = ContentValues().apply {
+            put(Telephony.Sms.READ, 1)
+            put(Telephony.Sms.SEEN, 1)
+        }
         context.contentResolver.update(
             Telephony.Sms.CONTENT_URI,
             values,
-            "${Telephony.Sms.THREAD_ID} = ? AND ${Telephony.Sms.READ} = 0",
+            "${Telephony.Sms.THREAD_ID} = ? AND (${Telephony.Sms.READ} = 0 OR ${Telephony.Sms.SEEN} = 0)",
             arrayOf(threadId.toString())
         )
     }
