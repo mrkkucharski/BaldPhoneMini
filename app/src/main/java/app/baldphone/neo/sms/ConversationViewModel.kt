@@ -46,7 +46,7 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
     val messages: StateFlow<List<SmsMessage>> = combine(
         _providerMessages, _optimisticMessages
     ) { provider, optimistic ->
-        val stillPending = pendingNotYetConfirmed(provider, optimistic)
+        val stillPending = SmsMessageMatcher.pendingNotYetConfirmed(provider, optimistic)
         (provider + stillPending).sortedBy { it.date }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
@@ -88,7 +88,9 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
         viewModelScope.launch {
             val fresh = repository.getMessages(threadId)
             _providerMessages.value = fresh
-            _optimisticMessages.update { pending -> pendingNotYetConfirmed(fresh, pending) }
+            _optimisticMessages.update { pending ->
+                SmsMessageMatcher.pendingNotYetConfirmed(fresh, pending)
+            }
         }
     }
 
@@ -117,21 +119,5 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
                 _sendFailures.emit(Unit)
             }
         }
-    }
-
-    private fun pendingNotYetConfirmed(
-        provider: List<SmsMessage>,
-        optimistic: List<SmsMessage>,
-    ): List<SmsMessage> {
-        val unmatchedPending = optimistic.toMutableList()
-        provider
-            .filter { it.isSent }
-            .forEach { sent ->
-                val matchIndex = unmatchedPending.indexOfFirst { pending ->
-                    pending.body == sent.body && kotlin.math.abs(pending.date - sent.date) < 120_000
-                }
-                if (matchIndex != -1) unmatchedPending.removeAt(matchIndex)
-            }
-        return unmatchedPending
     }
 }

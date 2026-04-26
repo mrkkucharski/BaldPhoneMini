@@ -128,6 +128,7 @@ class SmsRepository(private val context: Context) {
             SmsManager.getDefault()
         }
         awaitSendResult(smsManager, address, body)
+        insertSentMessage(address, body)
     }
 
     private suspend fun awaitSendResult(
@@ -192,6 +193,15 @@ class SmsRepository(private val context: Context) {
         )
     }
 
+    private fun insertSentMessage(address: String, body: String) {
+        if (Telephony.Sms.getDefaultSmsPackage(context) != context.packageName) return
+
+        val values = buildSentMessageValues(
+            buildSentMessageRecord(address, body, System.currentTimeMillis())
+        )
+        context.contentResolver.insert(Telephony.Sms.Sent.CONTENT_URI, values)
+    }
+
     private fun resolveContactName(phoneNumber: String): String? = runCatching {
         val lookupUri = Uri.withAppendedPath(
             ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
@@ -205,6 +215,40 @@ class SmsRepository(private val context: Context) {
             if (cursor.moveToFirst()) cursor.getString(0) else null
         }
     }.getOrNull()
+
+    companion object {
+        fun buildSentMessageRecord(address: String, body: String, timestamp: Long): SentMessageRecord =
+            SentMessageRecord(
+                address = address,
+                body = body,
+                date = timestamp,
+                dateSent = timestamp,
+                read = true,
+                seen = true,
+                type = Telephony.Sms.MESSAGE_TYPE_SENT
+            )
+
+        private fun buildSentMessageValues(record: SentMessageRecord): ContentValues =
+            ContentValues().apply {
+                put(Telephony.Sms.ADDRESS, record.address)
+                put(Telephony.Sms.BODY, record.body)
+                put(Telephony.Sms.DATE, record.date)
+                put(Telephony.Sms.DATE_SENT, record.dateSent)
+                put(Telephony.Sms.READ, if (record.read) 1 else 0)
+                put(Telephony.Sms.SEEN, if (record.seen) 1 else 0)
+                put(Telephony.Sms.TYPE, record.type)
+            }
+    }
 }
+
+data class SentMessageRecord(
+    val address: String,
+    val body: String,
+    val date: Long,
+    val dateSent: Long,
+    val read: Boolean,
+    val seen: Boolean,
+    val type: Int
+)
 
 class SmsSendException(val result: Int) : Exception("SMS send failed with result code $result")

@@ -456,4 +456,6 @@
     <string name="new_message">New Message</string>
     <string name="send_message">Send message</string>
     <string name="conversation_with">Conversation with %s</string>
+    <string name="mms_not_supported_title">MMS message received</string>
+    <string name="mms_not_supported_message">BaldPhone cannot open MMS messages yet. Ask the sender to send a text message instead.</string>
 </resources>

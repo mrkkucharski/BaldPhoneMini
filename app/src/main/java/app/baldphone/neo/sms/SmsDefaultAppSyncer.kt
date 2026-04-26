@@ -3,6 +3,7 @@ package app.baldphone.neo.sms
 import android.app.Activity
 import android.app.role.RoleManager
 import android.content.ComponentName
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Telephony
@@ -18,6 +19,12 @@ object SmsDefaultAppSyncer {
     )
 
     private const val ROLE_REQUEST_CODE = 0x534d5300 // "SMS\0"
+
+    enum class DefaultSmsRequestAction {
+        REQUEST_ROLE,
+        REQUEST_LEGACY_CHANGE_DEFAULT,
+        NONE
+    }
 
     fun sync(activity: Activity) {
         val isNativePanel = BPrefs.get(activity)
@@ -37,17 +44,48 @@ object SmsDefaultAppSyncer {
     }
 
     private fun requestSmsRole(activity: Activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val roleManager = activity.getSystemService(RoleManager::class.java)
-            if (roleManager.isRoleAvailable(RoleManager.ROLE_SMS) &&
-                !roleManager.isRoleHeld(RoleManager.ROLE_SMS)
-            ) {
+        val isAtLeastAndroidQ = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+        val roleManager = if (isAtLeastAndroidQ) {
+            activity.getSystemService(RoleManager::class.java)
+        } else {
+            null
+        }
+
+        when (getDefaultSmsRequestAction(
+            isAtLeastAndroidQ = isAtLeastAndroidQ,
+            isRoleManagerAvailable = roleManager != null,
+            isSmsRoleAvailable = roleManager?.isRoleAvailable(RoleManager.ROLE_SMS) == true,
+            isSmsRoleHeld = roleManager?.isRoleHeld(RoleManager.ROLE_SMS) == true
+        )) {
+            DefaultSmsRequestAction.REQUEST_ROLE -> {
                 activity.startActivityForResult(
-                    roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS),
+                    roleManager!!.createRequestRoleIntent(RoleManager.ROLE_SMS),
                     ROLE_REQUEST_CODE
                 )
             }
+            DefaultSmsRequestAction.REQUEST_LEGACY_CHANGE_DEFAULT -> {
+                activity.startActivityForResult(
+                    Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT).apply {
+                        putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, activity.packageName)
+                    },
+                    ROLE_REQUEST_CODE
+                )
+            }
+            DefaultSmsRequestAction.NONE -> Unit
         }
+    }
+
+    fun getDefaultSmsRequestAction(
+        isAtLeastAndroidQ: Boolean,
+        isRoleManagerAvailable: Boolean,
+        isSmsRoleAvailable: Boolean,
+        isSmsRoleHeld: Boolean
+    ): DefaultSmsRequestAction {
+        if (!isAtLeastAndroidQ) return DefaultSmsRequestAction.REQUEST_LEGACY_CHANGE_DEFAULT
+        if (!isRoleManagerAvailable || !isSmsRoleAvailable || isSmsRoleHeld) {
+            return DefaultSmsRequestAction.NONE
+        }
+        return DefaultSmsRequestAction.REQUEST_ROLE
     }
 
     private fun enableSmsComponents(activity: Activity) {
