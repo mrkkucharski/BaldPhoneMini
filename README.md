@@ -85,8 +85,6 @@ Although BaldPhone Neo is an independent fork, you can connect with the existing
 - [Subreddit r/BaldPhone](https://www.reddit.com/r/BaldPhone/)
 - [Telegram](https://t.me/BaldPhone)
 
-## Contact
-For questions, suggestions, or feedback: [neo.baldphone@gmail.com](mailto:neo.baldphone@gmail.com?subject=[GitHub]%20BaldPhone%20Neo)
 
 ## License
 BaldPhone Neo is an open-source project, released under the **Apache License, Version 2.0** -  
