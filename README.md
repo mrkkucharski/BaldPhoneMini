@@ -1,7 +1,11 @@
+This README is a WiP.
+
 ## Table of Contents
 - [Branding](#baldphone-neo)
 - [Project Overview](#project-overview)
 - [Key Goals](#key-goals)
+- [Fork Goals](#fork-goals)
+- [Improvements in This Fork](#improvements-in-this-fork)
 - [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Google Play Policy](#google-play-policy--future-plans)
@@ -20,20 +24,22 @@
 [![Maintenance](https://img.shields.io/maintenance/yes/2025)](https://github.com/DamianKuzmiak/BaldPhone)
 
 ## Project Overview
-**BaldPhone Neo** is a standalone continuation of the original [BaldPhone](https://github.com/UriahShaulMandel/BaldPhone) by Uriah Shaul Mandel.  
+**BaldPhoneMini** is a fork of [BaldPhone Neo](https://github.com/DamianKuzmiak/BaldPhoneNeo) by Damian Kuzmiak, which in turn is a 
+ continuation of the original [BaldPhone](https://github.com/UriahShaulMandel/BaldPhone) by Uriah Shaul Mandel.  Damain's work
+preserves the inclusive vision of making smartphones more accessible while introducing modern design, better performance, and smoother user experience.
 
-It preserves the inclusive vision of making smartphones more accessible while introducing modern design, better performance, and smoother user experience.
+## Fork Goals
+The goal of this fork is to push usability simplification even further. The app should stay useful as a daily phone launcher while reducing unnecessary choices, making important actions easier to reach, and keeping flows predictable for elderly and accessibility-challenged users.
 
-Building on the great work of the original author, this fork aims to carry the project forward with frequent updates and fresh UX improvements.
+## Improvements in This Fork
+- **Simplified messages:** Native SMS thread and conversation screens, incoming message handling, unread badge fixes, and default SMS app role syncing.
+- **Speed dial:** Add contacts to one-tap calling tiles from contact details.
+- **Better pill reminders:** Six configurable daily pill time slots and improved pill alarm behavior.
+- **More flexible home screen:** Configurable Pills button, second home screen, and top bar controls.
+- **Launcher setup fixes:** Easier default launcher setup and option to return to the default home launcher.
+- **Android 13+ language support:** Per-app language settings.
 
-## Key Goals
-- **Modern UI/UX:** A refreshed interface designed for clarity and comfort.
-- **Performance Optimization:** Faster loading, smoother animations.
-- **Preserve Core Features:** All essential BaldPhone functionality remains available.
-- **Frequent Updates:** Regular improvements based on community feedback.
-- **Enhanced Accessibility:** Continued focus on simplicity and ease of use.
-
-## Screenshots
+## Screenshots (from Neo version)
 [<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/homescreen%20white.jpg" width=160>](https://raw.githubusercontent.com/UriahShaulMandel/BaldPhone/master/fastlane/metadata/android/en-US/images/phoneScreenshots/homescreen%20white.jpg)
 [<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/recents.jpg" width=160>](https://raw.githubusercontent.com/UriahShaulMandel/BaldPhone/master/fastlane/metadata/android/en-US/images/phoneScreenshots/recents.jpg)
 [<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/dialer.jpg" width=160>](https://raw.githubusercontent.com/UriahShaulMandel/BaldPhone/master/fastlane/metadata/android/en-US/images/phoneScreenshots/dialer.jpg)
