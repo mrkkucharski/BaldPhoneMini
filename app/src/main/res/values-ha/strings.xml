@@ -91,4 +91,12 @@
     <string name="top_bar_controls_simple">Sauƙi</string>
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Sabon sako</string>
+    <string name="no_messages">Babu sakonnin tukuna</string>
+    <string name="type_message">Rubuta sako…</string>
+    <string name="dialog_message_permission_sms">Ana buƙatar izinin SMS don karanta da aika sakonni.</string>
+    <string name="send_message">Aika sako</string>
+    <string name="conversation_with">Tattaunawa da %s</string>
 </resources>

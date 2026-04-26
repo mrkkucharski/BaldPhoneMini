@@ -392,4 +392,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">नया संदेश</string>
+    <string name="no_messages">अभी तक कोई संदेश नहीं</string>
+    <string name="type_message">संदेश लिखें…</string>
+    <string name="dialog_message_permission_sms">संदेश पढ़ने और भेजने के लिए SMS अनुमति आवश्यक है।</string>
+    <string name="send_message">संदेश भेजें</string>
+    <string name="conversation_with">%s के साथ बातचीत</string>
 </resources>

@@ -386,4 +386,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Uus sõnum</string>
+    <string name="no_messages">Sõnumeid pole veel</string>
+    <string name="type_message">Kirjuta sõnum…</string>
+    <string name="dialog_message_permission_sms">Sõnumite lugemiseks ja saatmiseks on vajalik SMS-luba.</string>
+    <string name="send_message">Saada sõnum</string>
+    <string name="conversation_with">Vestlus kasutajaga %s</string>
 </resources>

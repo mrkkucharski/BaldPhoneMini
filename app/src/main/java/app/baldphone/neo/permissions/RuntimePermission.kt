@@ -38,6 +38,14 @@ sealed class RuntimePermission(
         permissions = arrayOf(Manifest.permission.READ_CALL_LOG),
     )
 
+    data object ReadSendSms : RuntimePermission(
+        messageRes = R.string.dialog_message_permission_sms,
+        permissions = arrayOf(
+            Manifest.permission.READ_SMS,
+            Manifest.permission.SEND_SMS,
+        )
+    )
+
     data object MediaStorage : RuntimePermission(
         messageRes = R.string.dialog_message_permission_media,
         permissions = when {

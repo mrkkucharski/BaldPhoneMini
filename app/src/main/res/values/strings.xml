@@ -448,4 +448,14 @@
     <string name="t9_key_7">pqrs</string>
     <string name="t9_key_8">tuv</string>
     <string name="t9_key_9">wxyz</string>
+
+    <!-- SMS / Messages -->
+    <string name="no_messages">No messages yet</string>
+    <string name="type_message">Type a message…</string>
+    <string name="dialog_message_permission_sms">SMS permission is required to read and send messages.</string>
+    <string name="new_message">New Message</string>
+    <string name="send_message">Send message</string>
+    <string name="conversation_with">Conversation with %s</string>
+    <string name="mms_not_supported_title">MMS message received</string>
+    <string name="mms_not_supported_message">BaldPhone cannot open MMS messages yet. Ask the sender to send a text message instead.</string>
 </resources>

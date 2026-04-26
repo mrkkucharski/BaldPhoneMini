@@ -253,4 +253,12 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Mezu berria</string>
+    <string name="no_messages">Oraindik ez dago mezurik</string>
+    <string name="type_message">Idatzi mezu bat…</string>
+    <string name="dialog_message_permission_sms">SMS baimena beharrezkoa da mezuak irakurtzeko eta bidaltzeko.</string>
+    <string name="send_message">Bidali mezua</string>
+    <string name="conversation_with">Elkarrizketa %s-rekin</string>
 </resources>

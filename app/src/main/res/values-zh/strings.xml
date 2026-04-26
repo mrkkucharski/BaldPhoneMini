@@ -381,4 +381,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">新消息</string>
+    <string name="no_messages">暂无消息</string>
+    <string name="type_message">输入消息…</string>
+    <string name="dialog_message_permission_sms">需要短信权限才能读取和发送消息。</string>
+    <string name="send_message">发送消息</string>
+    <string name="conversation_with">与 %s 的对话</string>
 </resources>

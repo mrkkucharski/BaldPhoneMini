@@ -401,4 +401,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">הודעה חדשה</string>
+    <string name="no_messages">אין הודעות עדיין</string>
+    <string name="type_message">כתוב הודעה…</string>
+    <string name="dialog_message_permission_sms">נדרשת הרשאת SMS לקריאה ושליחה של הודעות.</string>
+    <string name="send_message">שלח הודעה</string>
+    <string name="conversation_with">שיחה עם %s</string>
 </resources>

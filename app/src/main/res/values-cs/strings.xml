@@ -381,4 +381,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nová zpráva</string>
+    <string name="no_messages">Žádné zprávy</string>
+    <string name="type_message">Napište zprávu…</string>
+    <string name="dialog_message_permission_sms">Pro čtení a odesílání zpráv je vyžadováno oprávnění SMS.</string>
+    <string name="send_message">Odeslat zprávu</string>
+    <string name="conversation_with">Konverzace s %s</string>
 </resources>

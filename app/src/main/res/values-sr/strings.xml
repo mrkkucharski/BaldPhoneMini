@@ -368,4 +368,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Нова порука</string>
+    <string name="no_messages">Још нема порука</string>
+    <string name="type_message">Унесите поруку…</string>
+    <string name="dialog_message_permission_sms">Потребна је SMS дозвола за читање и слање порука.</string>
+    <string name="send_message">Пошаљи поруку</string>
+    <string name="conversation_with">Разговор са %s</string>
 </resources>

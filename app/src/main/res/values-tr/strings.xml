@@ -365,4 +365,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Yeni mesaj</string>
+    <string name="no_messages">Henüz mesaj yok</string>
+    <string name="type_message">Mesaj yazın…</string>
+    <string name="dialog_message_permission_sms">Mesajları okumak ve göndermek için SMS izni gereklidir.</string>
+    <string name="send_message">Mesaj gönder</string>
+    <string name="conversation_with">%s ile konuşma</string>
 </resources>

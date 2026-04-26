@@ -366,4 +366,12 @@ https://baldphone.com</string>
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Új üzenet</string>
+    <string name="no_messages">Még nincsenek üzenetek</string>
+    <string name="type_message">Írjon üzenetet…</string>
+    <string name="dialog_message_permission_sms">SMS-engedély szükséges az üzenetek olvasásához és küldéséhez.</string>
+    <string name="send_message">Üzenet küldése</string>
+    <string name="conversation_with">Beszélgetés: %s</string>
 </resources>

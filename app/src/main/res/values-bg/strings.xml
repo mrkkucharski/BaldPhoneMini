@@ -393,4 +393,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Ново съобщение</string>
+    <string name="no_messages">Няма съобщения</string>
+    <string name="type_message">Напишете съобщение…</string>
+    <string name="dialog_message_permission_sms">Необходимо е разрешение за SMS, за да четете и изпращате съобщения.</string>
+    <string name="send_message">Изпрати съобщение</string>
+    <string name="conversation_with">Разговор с %s</string>
 </resources>

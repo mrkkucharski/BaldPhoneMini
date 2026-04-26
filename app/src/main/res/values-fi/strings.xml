@@ -391,4 +391,12 @@ ja muuttaa kirkkautta.</string>
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Uusi viesti</string>
+    <string name="no_messages">Ei viestejä vielä</string>
+    <string name="type_message">Kirjoita viesti…</string>
+    <string name="dialog_message_permission_sms">SMS-lupa vaaditaan viestien lukemiseen ja lähettämiseen.</string>
+    <string name="send_message">Lähetä viesti</string>
+    <string name="conversation_with">Keskustelu: %s</string>
 </resources>

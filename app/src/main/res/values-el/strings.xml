@@ -395,4 +395,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Νέο μήνυμα</string>
+    <string name="no_messages">Δεν υπάρχουν μηνύματα ακόμα</string>
+    <string name="type_message">Πληκτρολογήστε ένα μήνυμα…</string>
+    <string name="dialog_message_permission_sms">Απαιτείται άδεια SMS για ανάγνωση και αποστολή μηνυμάτων.</string>
+    <string name="send_message">Αποστολή μηνύματος</string>
+    <string name="conversation_with">Συνομιλία με %s</string>
 </resources>

@@ -362,4 +362,12 @@
 
     <bool name="is_right_to_left">false</bool>
 
+
+    <!-- SMS / Messages -->
+    <string name="new_message">Nova mensagem</string>
+    <string name="no_messages">Ainda não há mensagens</string>
+    <string name="type_message">Escreva uma mensagem…</string>
+    <string name="dialog_message_permission_sms">A permissão de SMS é necessária para ler e enviar mensagens.</string>
+    <string name="send_message">Enviar mensagem</string>
+    <string name="conversation_with">Conversa com %s</string>
 </resources>
