@@ -1,5 +1,6 @@
 package app.baldphone.neo.sms
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -82,6 +83,7 @@ class ConversationActivity : BaldActivity() {
         setupKeyboardInsets()
 
         viewModel.load(threadId, address)
+        dismissNotification(address)
         observeViewModel()
     }
 
@@ -114,6 +116,11 @@ class ConversationActivity : BaldActivity() {
                 }
             }
         }
+    }
+
+    private fun dismissNotification(address: String) {
+        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        nm.cancel(address.hashCode())
     }
 
     private fun setupKeyboardInsets() {

@@ -1,6 +1,10 @@
 package app.baldphone.neo.sms
 
 import android.app.Application
+import android.database.ContentObserver
+import android.os.Handler
+import android.os.Looper
+import android.provider.Telephony
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -51,10 +55,32 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
     var address: String = ""
         private set
 
+    private val smsObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+        override fun onChange(selfChange: Boolean) {
+            refresh()
+        }
+    }
+
+    init {
+        getApplication<Application>().contentResolver.registerContentObserver(
+            Telephony.Sms.CONTENT_URI,
+            true,
+            smsObserver
+        )
+    }
+
     fun load(threadId: Long, address: String) {
         this.threadId = threadId
         this.address = address
-        if (threadId != -1L) refresh()
+        if (threadId != -1L) {
+            viewModelScope.launch { repository.markThreadRead(threadId) }
+            refresh()
+        }
+    }
+
+    override fun onCleared() {
+        getApplication<Application>().contentResolver.unregisterContentObserver(smsObserver)
+        super.onCleared()
     }
 
     fun refresh() {
