@@ -382,6 +382,7 @@ public class HomeScreenActivity extends BaldActivity {
             View child = viewPager.getChildAt(i);
             if (child instanceof HomePage1) {
                 ((HomePage1) child).refreshMessagesBadge();
+                ((HomePage1) child).refreshSpeedDial();
             }
         }
     }

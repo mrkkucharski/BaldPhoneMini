@@ -28,6 +28,7 @@ import app.baldphone.neo.calls.CallManager;
 import app.baldphone.neo.contacts.ui.details.ContactDetailsActivity;
 
 import com.bald.uriah.baldphone.R;
+import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.S;
 
 public class HomeScreenAppView {
@@ -68,7 +69,19 @@ public class HomeScreenAppView {
         iv_speed_dial_badge.setVisibility(View.VISIBLE);
         tv_call_label.setVisibility(View.GONE);
         child.setContentDescription(child.getContext().getString(R.string.call_label) + " " + tv_name.getText());
-        child.setOnClickListener(v -> CallManager.INSTANCE.call(v.getContext(), phoneNumber, false));
+        child.setOnClickListener(v -> {
+            CharSequence contactName = tv_name.getText();
+            BDB.from(v.getContext())
+                    .setTitle(v.getContext().getString(R.string.call) + " " + contactName + "?")
+                    .setSubText(phoneNumber)
+                    .setPositiveCustomText(R.string.call)
+                    .setNegativeCustomText(R.string.cancel)
+                    .setPositiveButtonListener(params -> {
+                        CallManager.INSTANCE.call(v.getContext(), phoneNumber, false);
+                        return true;
+                    })
+                    .show();
+        });
     }
 
     private void resetSpeedDialState() {

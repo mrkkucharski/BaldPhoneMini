@@ -22,8 +22,9 @@ import android.os.Handler;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
+import app.baldphone.neo.activities.ContactsActivity;
+
 import com.bald.uriah.baldphone.R;
-import com.bald.uriah.baldphone.activities.contacts.ContactsActivity;
 import com.tomash.androidcontacts.contactgetter.main.ContactDataFactory;
 import com.tomash.androidcontacts.contactgetter.main.contactsSaver.ContactsSaverBuilder;
 
@@ -45,7 +46,6 @@ public class ContactsActivityScreenshot extends BaseScreenshotTakerTest<Contacts
                     for (final String name : names) {
                         new ContactsSaverBuilder(dis).saveContact(ContactDataFactory.createEmpty().setCompositeName(name));
                     }
-                    dis.applyFilter();
 
                 });
         getInstrumentation().waitForIdleSync();

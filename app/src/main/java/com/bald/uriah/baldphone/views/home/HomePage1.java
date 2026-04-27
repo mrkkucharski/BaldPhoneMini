@@ -45,6 +45,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +54,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.activities.DialerActivity;
+import app.baldphone.neo.contacts.speeddial.SpeedDialEntry;
+import app.baldphone.neo.contacts.speeddial.SpeedDialHomeItem;
+import app.baldphone.neo.contacts.speeddial.SpeedDialRepository;
 import app.baldphone.neo.services.DeviceLock;
 import app.baldphone.neo.sms.MessagesActivity;
 import app.baldphone.neo.utils.messaging.WhatsAppHandler;
@@ -73,16 +77,24 @@ import com.bald.uriah.baldphone.utils.BDialog;
 import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.S;
+import com.bald.uriah.baldphone.views.BaldLinearLayoutButton;
 import com.bald.uriah.baldphone.views.FirstPageAppIcon;
+import com.bald.uriah.baldphone.views.HomeScreenAppView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class HomePage1 extends HomeView {
     public static final String TAG = HomePage1.class.getSimpleName();
+    private static final float DEFAULT_NOTIFICATION_AREA_WEIGHT = 2.2f;
+    private static final float DEFAULT_BUTTONS_AREA_WEIGHT = 3.0f;
+    private static final float SPEED_DIAL_NOTIFICATION_AREA_WEIGHT = 1.4f;
+    private static final float SPEED_DIAL_BUTTONS_AREA_WEIGHT = 3.8f;
+    private static final int HOME_SPEED_DIAL_SLOT_COUNT = 3;
     private Map<App, FirstPageAppIcon> viewsToApps;
     private FirstPageAppIcon bt_assistant,
             bt_camera,
@@ -93,6 +105,11 @@ public class HomePage1 extends HomeView {
             bt_messages,
             bt_recent,
             bt_whatsapp;
+    private View notificationAreaContainer;
+    private LinearLayout buttonsArea;
+    private LinearLayout rowSpeedDial;
+    private BaldLinearLayoutButton[] speedDialSlots;
+    private HomeScreenAppView[] speedDialViews;
     private SharedPreferences sharedPreferences;
 
     public HomePage1(@NonNull Context context) {
@@ -203,6 +220,19 @@ public class HomePage1 extends HomeView {
         bt_messages = rootView.findViewById(R.id.bt_messages);
         bt_recent = rootView.findViewById(R.id.bt_recent);
         bt_whatsapp = rootView.findViewById(R.id.bt_whatsapp);
+
+        notificationAreaContainer = rootView.findViewById(R.id.notification_area_container);
+        buttonsArea = rootView.findViewById(R.id.buttons_area);
+        rowSpeedDial = rootView.findViewById(R.id.row_speed_dial);
+        speedDialSlots = new BaldLinearLayoutButton[]{
+                rootView.findViewById(R.id.sd_slot_0),
+                rootView.findViewById(R.id.sd_slot_1),
+                rootView.findViewById(R.id.sd_slot_2)
+        };
+        speedDialViews = new HomeScreenAppView[HOME_SPEED_DIAL_SLOT_COUNT];
+        for (int i = 0; i < HOME_SPEED_DIAL_SLOT_COUNT; i++) {
+            speedDialViews[i] = new HomeScreenAppView(speedDialSlots[i]);
+        }
     }
 
     @Override
@@ -233,6 +263,52 @@ public class HomePage1 extends HomeView {
         if (bt_messages != null && !viewsToApps.containsValue(bt_messages)) {
             bt_messages.setBadgeVisibility(hasUnreadSms(getContext() != null ? getContext() : activity));
         }
+    }
+
+    public void refreshSpeedDial() {
+        Context ctx = getContext() != null ? getContext() : activity;
+        if (ctx == null || rowSpeedDial == null || speedDialSlots == null || speedDialViews == null) return;
+
+        List<SpeedDialEntry> entries = new SpeedDialRepository(ctx).getAll();
+        int visibleCount = Math.min(HOME_SPEED_DIAL_SLOT_COUNT, entries.size());
+
+        if (visibleCount == 0) {
+            rowSpeedDial.setVisibility(View.GONE);
+            setWeight(notificationAreaContainer, DEFAULT_NOTIFICATION_AREA_WEIGHT);
+            setWeight(buttonsArea, DEFAULT_BUTTONS_AREA_WEIGHT);
+            hideSpeedDialSlots();
+            return;
+        }
+
+        rowSpeedDial.setVisibility(View.VISIBLE);
+        setWeight(notificationAreaContainer, SPEED_DIAL_NOTIFICATION_AREA_WEIGHT);
+        setWeight(buttonsArea, SPEED_DIAL_BUTTONS_AREA_WEIGHT);
+
+        for (int i = 0; i < HOME_SPEED_DIAL_SLOT_COUNT; i++) {
+            if (i < visibleCount) {
+                speedDialSlots[i].setVisibility(View.VISIBLE);
+                new SpeedDialHomeItem(entries.get(i)).applyToHomeScreenAppView(speedDialViews[i]);
+            } else {
+                speedDialSlots[i].setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void hideSpeedDialSlots() {
+        for (BaldLinearLayoutButton slot : speedDialSlots) {
+            slot.setVisibility(View.GONE);
+        }
+    }
+
+    private void setWeight(@Nullable View view, float weight) {
+        if (view == null) return;
+        ViewGroup.LayoutParams currentParams = view.getLayoutParams();
+        if (!(currentParams instanceof LinearLayout.LayoutParams)) return;
+
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) currentParams;
+        if (params.weight == weight) return;
+        params.weight = weight;
+        view.setLayoutParams(params);
     }
 
     private Intent getCameraIntent() {

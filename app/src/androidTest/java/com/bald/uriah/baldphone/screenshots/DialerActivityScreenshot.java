@@ -17,15 +17,19 @@
 package com.bald.uriah.baldphone.screenshots;
 
 import android.content.Intent;
-import android.os.Handler;
 
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import app.baldphone.neo.activities.DialerActivity;
 
+import com.bald.uriah.baldphone.R;
+
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 @LargeTest
@@ -35,8 +39,16 @@ public class DialerActivityScreenshot extends BaseScreenshotTakerTest<DialerActi
     public void test() {
         mActivityTestRule.launchActivity(new Intent());
         getInstrumentation().waitForIdleSync();
-        new Handler(mActivityTestRule.getActivity().getMainLooper())
-                .post(() -> mActivityTestRule.getActivity().setNumber("0594508160"));
+        onView(withId(R.id.b_0)).perform(click());
+        onView(withId(R.id.b_5)).perform(click());
+        onView(withId(R.id.b_9)).perform(click());
+        onView(withId(R.id.b_4)).perform(click());
+        onView(withId(R.id.b_5)).perform(click());
+        onView(withId(R.id.b_0)).perform(click());
+        onView(withId(R.id.b_8)).perform(click());
+        onView(withId(R.id.b_1)).perform(click());
+        onView(withId(R.id.b_6)).perform(click());
+        onView(withId(R.id.b_0)).perform(click());
         getInstrumentation().waitForIdleSync();
 
     }
