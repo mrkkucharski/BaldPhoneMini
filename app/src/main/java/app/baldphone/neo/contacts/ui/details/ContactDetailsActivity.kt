@@ -132,7 +132,7 @@ class ContactDetailsActivity : BaldActivity() {
                                 .show()
                         }
                         ContactDetailsResult.SpeedDialError -> {
-                            showErrorToast("Failed to update speed dial")
+                            showErrorToast(getString(R.string.speed_dial_error))
                         }
                     }
                 }
@@ -325,7 +325,10 @@ class ContactDetailsActivity : BaldActivity() {
             ACTION_HOME -> {
                 viewModel.toggleHomeScreenPin()
                 val toggle = item as? ActionMenuItem.Toggle
-                BaldToast.simple(applicationContext, "Home updated: ${toggle?.checked}")
+                BaldToast.simple(
+                    applicationContext,
+                    getString(if (toggle?.checked == true) R.string.home_added else R.string.home_removed)
+                )
             }
             ACTION_SPEED_DIAL -> {
                 val toggle = item as? ActionMenuItem.Toggle

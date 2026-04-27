@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 class SpeedDialHomeItem(val entry: SpeedDialEntry) : HomeScreenPinHelper.HomeScreenPinnable {
     override fun applyToHomeScreenAppView(view: HomeScreenAppView) {
         view.setText(entry.displayNameSnapshot)
-        view.setSpeedDialCall(entry.phoneNumber)
+        view.setSpeedDialCall(entry.phoneNumber, entry.photoUriSnapshot)
         if (S.isValidContextForGlide(view.iv_icon.context)) {
             Glide.with(view.iv_icon)
                 .load(entry.photoUriSnapshot)

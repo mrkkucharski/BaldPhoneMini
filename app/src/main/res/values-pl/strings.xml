@@ -192,6 +192,13 @@
     <string name="remove_from_favorite">Usuń z ulubionych</string>
     <string name="remove_from_home">Usuń z ekranu głównego</string>
     <string name="remove_from_speed_dial">Usuń z szybkiego wybierania</string>
+    <string name="speed_dial_full">Szybkie wybieranie jest pełne (maks. 8 kontaktów)</string>
+    <string name="select_phone_number">Wybierz numer telefonu</string>
+    <string name="speed_dial_added">Dodano do szybkiego wybierania</string>
+    <string name="speed_dial_removed">Usunięto z szybkiego wybierania</string>
+    <string name="speed_dial_error">Nie udało się zaktualizować szybkiego wybierania</string>
+    <string name="home_added">Dodano do ekranu głównego</string>
+    <string name="home_removed">Usunięto z ekranu głównego</string>
     <string name="remove_from_sos">Usuń z SOS</string>
     <string name="remove_shortcut">Usuń skrót</string>
     <string name="removed_all_alarms">Wszystkie alarmy zostały usunięte!</string>

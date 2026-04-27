@@ -17,8 +17,13 @@
 package com.bald.uriah.baldphone.views;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +35,10 @@ import app.baldphone.neo.contacts.ui.details.ContactDetailsActivity;
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.utils.BDB;
 import com.bald.uriah.baldphone.utils.S;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeScreenAppView {
     public final ImageView iv_icon;
@@ -65,6 +74,10 @@ public class HomeScreenAppView {
     }
 
     public void setSpeedDialCall(final String phoneNumber) {
+        setSpeedDialCall(phoneNumber, null);
+    }
+
+    public void setSpeedDialCall(final String phoneNumber, final String photoUri) {
         child.setBackgroundResource(R.drawable.style_for_buttons_speed_dial);
         iv_speed_dial_badge.setVisibility(View.VISIBLE);
         tv_call_label.setVisibility(View.GONE);
@@ -74,6 +87,7 @@ public class HomeScreenAppView {
             BDB.from(v.getContext())
                     .setTitle(v.getContext().getString(R.string.call) + " " + contactName + "?")
                     .setSubText(phoneNumber)
+                    .setExtraView(createSpeedDialContactPhotoView(v.getContext(), photoUri))
                     .setPositiveCustomText(R.string.call)
                     .setNegativeCustomText(R.string.cancel)
                     .setPositiveButtonListener(params -> {
@@ -82,6 +96,39 @@ public class HomeScreenAppView {
                     })
                     .show();
         });
+    }
+
+    private View createSpeedDialContactPhotoView(final Context context, final String photoUri) {
+        final FrameLayout container = new FrameLayout(context);
+        final int size = dp(context, 120);
+        final int verticalMargin = dp(context, 12);
+        final CircleImageView photo = new CircleImageView(context);
+        final FrameLayout.LayoutParams photoParams = new FrameLayout.LayoutParams(size, size, Gravity.CENTER);
+        photoParams.topMargin = verticalMargin;
+        photoParams.bottomMargin = verticalMargin;
+        photo.setLayoutParams(photoParams);
+        photo.setContentDescription(tv_name.getText());
+        photo.setImageResource(R.drawable.face_on_button);
+        container.addView(photo);
+
+        if (S.isValidContextForGlide(context)) {
+            Glide.with(photo)
+                    .load(photoUri == null ? null : Uri.parse(photoUri))
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.face_on_button)
+                            .error(R.drawable.face_on_button))
+                    .into(photo);
+        }
+
+        return container;
+    }
+
+    private int dp(final Context context, final int value) {
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                value,
+                context.getResources().getDisplayMetrics()
+        );
     }
 
     private void resetSpeedDialState() {
