@@ -43,6 +43,8 @@ public final class BPrefs {
     public static final String CUSTOM_APPS_KEY = "CUSTOM_APPS_KEY";
     public static final String CUSTOM_ALARMS_KEY = "CUSTOM_ALARMS_KEY";
 
+    public static final String HIDDEN_SENTINEL = "HIDDEN";
+
     public static final String LONG_PRESSES_KEY = "LONG_PRESSES_KEY";
     public static final boolean LONG_PRESSES_DEFAULT_VALUE = true;
 
