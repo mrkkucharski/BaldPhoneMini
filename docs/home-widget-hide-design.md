@@ -2,7 +2,7 @@
 
 ## Goal
 
-Let users remove unwanted buttons from the Page 1 home screen. A button the user does not need should not occupy space or invite accidental taps.
+Let users remove unwanted buttons from the Page 1 home screen. A button the user does not need should not remain visible or invite accidental taps.
 
 The change must remain accessibility-first: the hide action must be an explicit, deliberate choice — never a side effect of a swipe or a long press.
 
@@ -17,7 +17,7 @@ There is no way to remove a button entirely.
 
 ## New Behavior
 
-A third state — **Hidden** — is added to the customization dialog for each button. Selecting it collapses the button with `GONE` visibility, reclaiming its layout space so the remaining buttons reflow naturally.
+A third state — **Hidden** — is added to the customization dialog for each button. Selecting it collapses the button with `GONE` visibility, removing the visual button and its touch target while preserving the home screen's familiar row structure.
 
 The three states and their effects:
 
@@ -25,7 +25,7 @@ The three states and their effects:
 |---|---|---|
 | Default | Preference key absent | Button visible, default action |
 | Custom app | Preference key = app component name | Button visible, launches chosen app |
-| Hidden | Preference key = `"HIDDEN"` | Button collapsed, no touch target |
+| Hidden | Preference key = `"HIDDEN"` | Button collapsed, no visible tile or touch target |
 
 ## User Flow
 
@@ -40,7 +40,9 @@ The dialog pre-selects the current state each time it is opened, so the user alw
 
 ## Why GONE, Not INVISIBLE
 
-`INVISIBLE` hides the button visually but preserves its layout space and leaves an invisible touch target. For elderly users, an empty region that silently consumes taps is confusing and inaccessible. `GONE` removes the button from layout entirely, so no dead zone remains.
+`INVISIBLE` hides the button visually but preserves its view box and leaves an invisible touch target. For elderly users, an empty region that silently consumes taps is confusing and inaccessible. `GONE` removes the button view from layout participation, so no dead touch zone remains.
+
+The parent Page 1 layout intentionally keeps its three-row structure. When one button in a row is hidden, the remaining buttons stay in that row instead of being reordered into other rows. This keeps the screen predictable while still removing the unwanted shortcut itself.
 
 ## Stale Preference Guard
 
@@ -62,7 +64,7 @@ Button widths are instead distributed proportionally to each label's character c
 
 ## Edge Cases
 
-- **All nine buttons hidden**: the first page renders empty. Settings remain on Page 2 and are not affected.
+- **All nine buttons hidden**: the Page 1 button area contains no visible shortcuts. Settings remain on Page 2 and are not affected.
 - **App uninstalled while button is hidden**: the hidden state is preserved independently of the app database, so uninstalling any app does not accidentally un-hide an unrelated hidden button.
 - **Locale change**: the sentinel value is language-independent, so switching language does not affect hidden state.
 
@@ -71,4 +73,4 @@ Button widths are instead distributed proportionally to each label's character c
 Out of scope for this feature:
 
 - Hiding buttons on Page 2 (those already use a separate boolean visibility mechanism).
-- Reordering or resizing the remaining visible buttons after one is hidden.
+- Reordering buttons across rows or changing the overall Page 1 row structure after one is hidden.
