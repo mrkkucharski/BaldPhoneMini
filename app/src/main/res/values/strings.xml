@@ -18,6 +18,8 @@
     <string name="about">About</string>
     <string name="accessibility_level">Accessibility Level</string>
     <string name="accessibility_settings">Accessibility</string>
+    <string name="page_arrows_basic_mode">Page arrows in basic mode</string>
+    <string name="page_arrows_basic_mode_subtext">Show previous and next arrows even when swipe navigation is enabled.</string>
     <string name="accidental_touches">Accidental Touch Guard</string>
     <string name="accidental_touches_settings_subtext">This guard prevents touches when the phone is covered. If you experience issues, you can turn it off.</string>
     <string name="accidental_touches_subtext">Accidental touch detected.\nPress OK to continue using the phone.\nIf this message keeps appearing, you can disable the feature in Accessibility settings.</string>

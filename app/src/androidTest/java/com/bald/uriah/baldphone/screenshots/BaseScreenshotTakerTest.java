@@ -108,6 +108,7 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
                 .putBoolean(BPrefs.LONG_PRESSES_KEY, false)
                 .putBoolean(BPrefs.LONG_PRESSES_SHORTER_KEY, false)
                 .putBoolean(BPrefs.TOUCH_NOT_HARD_KEY, true)
+                .putBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, false)
                 .commit();
     }
 

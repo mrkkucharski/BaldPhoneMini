@@ -53,7 +53,8 @@ public class ViewPagerHolder extends LinearLayout {
     private TextView pageIndicatorTextView;
     private View circles;
 
-    private boolean noArrows = false;
+    private boolean touchNavigationEnabled = false;
+    private boolean showArrows = true;
     private boolean useCircle = false;
     private boolean showHints = false;
 
@@ -76,7 +77,9 @@ public class ViewPagerHolder extends LinearLayout {
         this.context = context;
         final SharedPreferences sharedPreferences =
                 context.getSharedPreferences(D.BALD_PREFS, Context.MODE_PRIVATE);
-        noArrows = sharedPreferences.getBoolean(BPrefs.TOUCH_NOT_HARD_KEY, false);
+        touchNavigationEnabled = sharedPreferences.getBoolean(BPrefs.TOUCH_NOT_HARD_KEY, false);
+        showArrows = !touchNavigationEnabled ||
+                sharedPreferences.getBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, false);
 
         try (final TypedArray typedArray =
                 context.obtainStyledAttributes(attributeSet, R.styleable.ViewPagerHolder)) {
@@ -91,7 +94,7 @@ public class ViewPagerHolder extends LinearLayout {
         of = String.valueOf(context.getText(R.string.of));
         this.setOrientation(VERTICAL);
 
-        viewPager = noArrows ? new ViewPager(context) : new NonSwipeableViewPager(context);
+        viewPager = touchNavigationEnabled ? new ViewPager(context) : new NonSwipeableViewPager(context);
         viewPager.addOnPageChangeListener(
                 new ViewPager.OnPageChangeListener() {
                     @Override
@@ -122,11 +125,11 @@ public class ViewPagerHolder extends LinearLayout {
             final TextView textView =
                     (TextView) layoutInflater.inflate(R.layout.view_pager_holder_hint, this, false);
             textView.setText(
-                    noArrows ? R.string.swipe_left_or_right : R.string.press_next_or_back_buton);
+                    touchNavigationEnabled ? R.string.swipe_left_or_right : R.string.press_next_or_back_buton);
             addView(textView);
         }
 
-        if (!noArrows) {
+        if (showArrows) {
             final View arrowHolder =
                     layoutInflater.inflate(R.layout.view_pager_holder_arrows, this, false);
             right = arrowHolder.findViewById(R.id.right_arrow);
@@ -170,7 +173,7 @@ public class ViewPagerHolder extends LinearLayout {
         final PagerAdapter pagerAdapter = viewPager.getAdapter();
         if (pagerAdapter == null) return;
 
-        if (!noArrows) {
+        if (showArrows) {
             right.setVisibility(position + 1 < pagerAdapter.getCount() ? VISIBLE : INVISIBLE);
             left.setVisibility((position > 0) ? VISIBLE : INVISIBLE);
         }

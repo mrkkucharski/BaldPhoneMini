@@ -207,6 +207,18 @@ public class SettingsActivity extends BaldActivity {
 
         accessibilityCategory.add(new RunnableSettingsItem(R.string.accessibility_level, v -> startActivity(new Intent(this, AccessibilityLevelChangerActivity.class)), R.drawable.accessibility_on_button));
         accessibilityCategory.add(
+                new BDBSettingsItem(R.string.page_arrows_basic_mode, BDB.from(this)
+                        .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
+                        .setTitle(R.string.page_arrows_basic_mode)
+                        .setSubText(R.string.page_arrows_basic_mode_subtext)
+                        .setOptions(R.string.on, R.string.off)
+                        .setPositiveButtonListener(params -> {
+                            editor.putBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, params[0].equals(0)).apply();
+                            this.recreate();
+                            return true;
+                        })
+                        .setOptionsStartingIndex(() -> sharedPreferences.getBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_DEFAULT_VALUE) ? 0 : 1), R.drawable.arrow_end_on_background));
+        accessibilityCategory.add(
                 new BDBSettingsItem(R.string.accidental_touches, BDB.from(this)
                         .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL).setTitle(R.string.accidental_touches)
                         .setSubText(R.string.accidental_touches_settings_subtext)
