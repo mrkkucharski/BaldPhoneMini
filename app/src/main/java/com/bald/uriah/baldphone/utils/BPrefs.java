@@ -95,6 +95,8 @@ public final class BPrefs {
     public static final String DUAL_SIM_KEY = "DUAL_SIM_KEY";
     public static final boolean DUAL_SIM_DEFAULT_VALUE = false; // True means show options
 
+    public static final String BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY = "BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY";
+    public static final boolean BASIC_ACCESSIBILITY_PAGE_ARROWS_DEFAULT_VALUE = false;
 
     public static final String NOTE_KEY = "NOTE_KEY";
 
