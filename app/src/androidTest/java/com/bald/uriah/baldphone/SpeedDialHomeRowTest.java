@@ -32,17 +32,21 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import androidx.test.filters.LargeTest;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
+import androidx.viewpager.widget.ViewPager;
 
 import app.baldphone.neo.contacts.speeddial.SpeedDialEntry;
 import app.baldphone.neo.contacts.speeddial.SpeedDialRepository;
 
 import com.bald.uriah.baldphone.activities.HomeScreenActivity;
 import com.bald.uriah.baldphone.screenshots.BaseScreenshotTakerTest;
+import com.bald.uriah.baldphone.utils.BPrefs;
+import com.bald.uriah.baldphone.views.ViewPagerHolder;
 import com.bald.uriah.baldphone.views.home.HomePage1;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
@@ -51,8 +55,18 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
     private static final String PREFS_NAME = "speed_dial_prefs";
 
     @Override
+    @Test
+    public void actualTest() {
+        test();
+    }
+
+    @Override
     public void test() {
         clearSpeedDialEntries();
+        BPrefs.get(getInstrumentation().getTargetContext())
+                .edit()
+                .putString(BPrefs.CUSTOM_MESSAGES_KEY, "test/custom.messages")
+                .commit();
         mActivityTestRule.launchActivity(new Intent());
         getInstrumentation().waitForIdleSync();
 
@@ -143,10 +157,14 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
 
     private void refreshSpeedDialOnUiThread() {
         HomeScreenActivity activity = mActivityTestRule.getActivity();
-        activity.runOnUiThread(() -> {
-            View page = activity.findViewById(R.id.page1);
-            if (page instanceof HomePage1) {
-                ((HomePage1) page).refreshSpeedDial();
+        getInstrumentation().runOnMainSync(() -> {
+            ViewPagerHolder holder = activity.findViewById(R.id.view_pager_holder);
+            ViewPager viewPager = holder.getViewPager();
+            for (int i = 0; i < viewPager.getChildCount(); i++) {
+                View page = viewPager.getChildAt(i);
+                if (page instanceof HomePage1) {
+                    ((HomePage1) page).refreshSpeedDial();
+                }
             }
         });
     }

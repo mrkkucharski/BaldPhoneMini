@@ -17,8 +17,6 @@
 package com.bald.uriah.baldphone.screenshots;
 
 import android.content.Intent;
-import android.os.Handler;
-
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -37,19 +35,17 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 public class ContactsActivityScreenshot extends BaseScreenshotTakerTest<ContactsActivity> {
 
     public void test() {
+        final String[] names = getInstrumentation()
+                .getTargetContext()
+                .getResources()
+                .getStringArray(R.array.names_for_screenshots);
+        for (final String name : names) {
+            new ContactsSaverBuilder(getInstrumentation().getTargetContext())
+                    .saveContact(ContactDataFactory.createEmpty().setCompositeName(name));
+        }
+
         mActivityTestRule.launchActivity(new Intent());
         getInstrumentation().waitForIdleSync();
-        new Handler(mActivityTestRule.getActivity().getMainLooper())
-                .post(() -> {
-                    final ContactsActivity dis = mActivityTestRule.getActivity();
-                    final String[] names = dis.getResources().getStringArray(R.array.names_for_screenshots);
-                    for (final String name : names) {
-                        new ContactsSaverBuilder(dis).saveContact(ContactDataFactory.createEmpty().setCompositeName(name));
-                    }
-
-                });
-        getInstrumentation().waitForIdleSync();
-
     }
 
     @Override
