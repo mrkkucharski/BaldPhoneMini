@@ -14,7 +14,11 @@ class SpeedDialHomeItem(val entry: SpeedDialEntry) : HomeScreenPinHelper.HomeScr
         if (S.isValidContextForGlide(view.iv_icon.context)) {
             Glide.with(view.iv_icon)
                 .load(entry.photoUriSnapshot)
-                .apply(RequestOptions().error(R.drawable.face_on_button))
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.face_on_button)
+                        .error(R.drawable.face_on_button)
+                )
                 .into(view.iv_icon)
         }
     }
