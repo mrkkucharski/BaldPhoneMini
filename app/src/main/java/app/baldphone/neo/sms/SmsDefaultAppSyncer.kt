@@ -27,8 +27,8 @@ object SmsDefaultAppSyncer {
     }
 
     fun sync(activity: Activity) {
-        val isNativePanel = BPrefs.get(activity)
-            .getString(BPrefs.CUSTOM_MESSAGES_KEY, null) == null
+        val storedValue = BPrefs.get(activity).getString(BPrefs.CUSTOM_MESSAGES_KEY, null)
+        val isNativePanel = storedValue == null || storedValue == BPrefs.HIDDEN_SENTINEL
         val isCurrentDefault = Telephony.Sms.getDefaultSmsPackage(activity) == activity.packageName
 
         when {

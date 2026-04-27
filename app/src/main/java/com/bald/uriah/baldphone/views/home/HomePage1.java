@@ -334,6 +334,11 @@ public class HomePage1 extends HomeView {
             String bPrefsKey,
             @NonNull FirstPageAppIcon button,
             View.OnClickListener defaultListener) {
+        if (isHidden(bPrefsKey)) {
+            button.setVisibility(View.GONE);
+            return;
+        }
+
         App app = findAppByPreference(bPrefsKey);
 
         if (app == null) {
@@ -380,13 +385,19 @@ public class HomePage1 extends HomeView {
                         .setTitle(R.string.custom_app)
                         .setSubText(R.string.custom_app_subtext)
                         .addFlag(BDialog.FLAG_OK | BDialog.FLAG_CANCEL)
-                        .setOptions(initialAppName, activity.getText(R.string.custom))
-                        .setOptionsStartingIndex(
-                                () -> sharedPreferences.contains(bPrefsKey) ? 1 : 0)
+                        .setOptions(initialAppName, activity.getText(R.string.custom), activity.getText(R.string.hide))
+                        .setOptionsStartingIndex(() -> {
+                            String val = sharedPreferences.getString(bPrefsKey, null);
+                            if (BPrefs.HIDDEN_SENTINEL.equals(val)) return 2;
+                            if (val != null) return 1;
+                            return 0;
+                        })
                         .setPositiveButtonListener(
                                 params -> {
                                     if (params[0].equals(0)) {
                                         sharedPreferences.edit().remove(bPrefsKey).apply();
+                                    } else if (params[0].equals(2)) {
+                                        sharedPreferences.edit().putString(bPrefsKey, BPrefs.HIDDEN_SENTINEL).apply();
                                     } else {
                                         activity.startActivityForResult(
                                                 new Intent(activity, AppsActivity.class)
@@ -433,10 +444,17 @@ public class HomePage1 extends HomeView {
         bt.setOnClickListener(onClickListener);
     }
 
+    private boolean isHidden(String bPrefsKey) {
+        return BPrefs.HIDDEN_SENTINEL.equals(sharedPreferences.getString(bPrefsKey, null));
+    }
+
     // Helper
     @Nullable
     private App findAppByPreference(String bPrefsKey) {
         if (sharedPreferences.contains(bPrefsKey)) {
+            if (isHidden(bPrefsKey)) {
+                return null;
+            }
             App app =
                     AppsDatabase.getInstance(homeScreen)
                             .appsDatabaseDao()

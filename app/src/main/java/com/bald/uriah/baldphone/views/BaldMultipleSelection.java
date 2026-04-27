@@ -185,7 +185,22 @@ public class BaldMultipleSelection extends LinearLayout {
             setClicked(button, true);
         }
 
+        if (getOrientation() == HORIZONTAL) {
+            refreshWeights();
+        }
+
         //TODO DELETE
+    }
+
+    private static final int MIN_BUTTON_WEIGHT = 7;
+
+    private void refreshWeights() {
+        if (buttons.isEmpty()) return;
+        for (BaldButton b : buttons) {
+            final LayoutParams lp = (LayoutParams) b.getLayoutParams();
+            lp.weight = Math.max(MIN_BUTTON_WEIGHT, b.getText().length());
+            b.setLayoutParams(lp);
+        }
     }
 
     public int getSelection() {
