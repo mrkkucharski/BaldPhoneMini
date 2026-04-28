@@ -66,8 +66,8 @@ public class HomeScreenAppView {
 
     public void setSpeedDialCall(final String phoneNumber) {
         child.setBackgroundResource(R.drawable.style_for_buttons_speed_dial);
-        iv_speed_dial_badge.setVisibility(View.VISIBLE);
-        tv_call_label.setVisibility(View.GONE);
+        if (iv_speed_dial_badge != null) iv_speed_dial_badge.setVisibility(View.VISIBLE);
+        if (tv_call_label != null) tv_call_label.setVisibility(View.GONE);
         child.setContentDescription(child.getContext().getString(R.string.call_label) + " " + tv_name.getText());
         child.setOnClickListener(v -> {
             CharSequence contactName = tv_name.getText();
@@ -86,8 +86,8 @@ public class HomeScreenAppView {
 
     private void resetSpeedDialState() {
         child.setBackgroundResource(R.drawable.style_for_buttons);
-        iv_speed_dial_badge.setVisibility(View.GONE);
-        tv_call_label.setVisibility(View.GONE);
+        if (iv_speed_dial_badge != null) iv_speed_dial_badge.setVisibility(View.GONE);
+        if (tv_call_label != null) tv_call_label.setVisibility(View.GONE);
         child.setContentDescription(tv_name.getText());
     }
 
