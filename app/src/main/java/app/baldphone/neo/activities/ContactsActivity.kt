@@ -84,6 +84,9 @@ class ContactsActivity : BaldActivity() {
             onGranted {
                 observeViewModel()
                 viewModel.refresh()
+                PermissionManager.checkOrRequest(this@ContactsActivity, RuntimePermission.ReadCallLog) {
+                    onGranted { viewModel.refresh() }
+                }
             }
             onDenied { finish() }
         }
