@@ -5,6 +5,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 
+import com.bald.uriah.baldphone.R
+import app.baldphone.neo.calls.CallsRepository
 import app.baldphone.neo.contacts.ContactItemType
 import app.baldphone.neo.contacts.ContactSearcher
 import app.baldphone.neo.contacts.SimpleContact
@@ -15,37 +17,50 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-/**
- * ViewModel for ContactsActivity.
- * Handles contact searching and ensures immediate loading of the contact list.
- */
 class ContactsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val contactProvider = ContactRepositoryImpl.getInstance(application)
+    private val callsRepository = CallsRepository(application)
     private val contactSearcher = ContactSearcher(application)
+
     private val _allContacts = MutableStateFlow<List<SimpleContact>>(emptyList())
+    private val _frequentContacts = MutableStateFlow<List<SimpleContact>>(emptyList())
 
     val searchQuery = MutableStateFlow("")
     val isFavoritesOnly = MutableStateFlow(false)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val contactsFlow: StateFlow<List<ContactItemType>?> = _allContacts.flatMapLatest { contacts ->
-        contactSearcher.searchContactsFlow(
-            allContacts = contacts,
-            searchQueryFlow = searchQuery,
-            starredOnlyFlow = isFavoritesOnly,
-            showAllWhenEmpty = true
-        )
+    val contactsFlow: StateFlow<List<ContactItemType>?> = combine(
+        _allContacts.flatMapLatest { contacts ->
+            contactSearcher.searchContactsFlow(
+                allContacts = contacts,
+                searchQueryFlow = searchQuery,
+                starredOnlyFlow = isFavoritesOnly,
+                showAllWhenEmpty = true
+            )
+        },
+        _frequentContacts,
+        searchQuery,
+        isFavoritesOnly
+    ) { alphabetical, frequent, query, isFavOnly ->
+        if (query.isBlank() && !isFavOnly && frequent.size >= 2) {
+            listOf(ContactItemType.SectionHeader(application.getString(R.string.frequently_used))) +
+                frequent.map { ContactItemType.ContactItem(it) } +
+                alphabetical
+        } else {
+            alphabetical
+        }
     }.flowOn(Dispatchers.Default).stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Lazily,
-            initialValue = null  // null = still loading; emptyList() = loaded but no results
-        )
+        scope = viewModelScope,
+        started = SharingStarted.Lazily,
+        initialValue = null
+    )
 
     init {
         refresh()
@@ -53,11 +68,15 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
 
     fun refresh() {
         viewModelScope.launch {
-            _allContacts.value = this@ContactsViewModel.contactProvider.getAllContacts()
+            val allContacts = contactProvider.getAllContacts()
+            _allContacts.value = allContacts
+            _frequentContacts.value = callsRepository.getFrequentContacts(allContacts)
         }
     }
 
     fun toggleFavorites() {
         isFavoritesOnly.value = !isFavoritesOnly.value
     }
+
+
 }

@@ -386,4 +386,5 @@
     <string name="dialog_message_permission_sms">Izin SMS diperlukan untuk membaca dan mengirim pesan.</string>
     <string name="send_message">Kirim pesan</string>
     <string name="conversation_with">Percakapan dengan %s</string>
+    <string name="frequently_used">Sering Digunakan</string>
 </resources>

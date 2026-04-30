@@ -388,4 +388,5 @@
     <string name="dialog_message_permission_sms">SMS-Berechtigung ist erforderlich, um Nachrichten zu lesen und zu senden.</string>
     <string name="send_message">Nachricht senden</string>
     <string name="conversation_with">Gespräch mit %s</string>
+    <string name="frequently_used">Häufig verwendet</string>
 </resources>

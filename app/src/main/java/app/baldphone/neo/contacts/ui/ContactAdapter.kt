@@ -21,6 +21,7 @@ import com.bald.uriah.baldphone.R
 import com.bald.uriah.baldphone.adapters.ModularListAdapter
 import com.bald.uriah.baldphone.databinding.ContactItemBinding
 import com.bald.uriah.baldphone.databinding.ContactItemHeaderBinding
+import com.bald.uriah.baldphone.databinding.ContactItemSectionHeaderBinding
 
 class ContactAdapter(
     private val showPhoneNumbers: Boolean = false,
@@ -30,6 +31,7 @@ class ContactAdapter(
     override fun getItemViewType(position: Int): Int = when (getItem(position)) {
         is ContactItemType.Header -> R.layout.contact_item_header
         is ContactItemType.ContactItem -> R.layout.contact_item
+        is ContactItemType.SectionHeader -> R.layout.contact_item_section_header
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -45,6 +47,11 @@ class ContactAdapter(
                 ContactViewHolder(binding, showPhoneNumbers, onContactClick)
             }
 
+            R.layout.contact_item_section_header -> {
+                val binding = ContactItemSectionHeaderBinding.inflate(inflater, parent, false)
+                SectionHeaderViewHolder(binding)
+            }
+
             else -> throw IllegalArgumentException("Unsupported layout ID: $viewType")
         }
     }
@@ -54,6 +61,7 @@ class ContactAdapter(
         when (holder) {
             is HeaderViewHolder -> holder.bind(item as ContactItemType.Header)
             is ContactViewHolder -> holder.bind(item as ContactItemType.ContactItem)
+            is SectionHeaderViewHolder -> holder.bind(item as ContactItemType.SectionHeader)
         }
     }
 
@@ -62,6 +70,14 @@ class ContactAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(header: ContactItemType.Header) {
             binding.letter.text = header.letter
+        }
+    }
+
+    class SectionHeaderViewHolder(
+        private val binding: ContactItemSectionHeaderBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(header: ContactItemType.SectionHeader) {
+            binding.sectionTitle.text = header.title
         }
     }
 
@@ -121,6 +137,9 @@ class ContactAdapter(
                 oldItem is ContactItemType.ContactItem && newItem is ContactItemType.ContactItem ->
                     oldItem.contact.id == newItem.contact.id
                             && oldItem.contact.phoneNumber == newItem.contact.phoneNumber
+
+                oldItem is ContactItemType.SectionHeader && newItem is ContactItemType.SectionHeader ->
+                    oldItem.title == newItem.title
 
                 else -> false
             }

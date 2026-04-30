@@ -374,4 +374,5 @@ https://baldphone.com</string>
     <string name="dialog_message_permission_sms">SMS-engedély szükséges az üzenetek olvasásához és küldéséhez.</string>
     <string name="send_message">Üzenet küldése</string>
     <string name="conversation_with">Beszélgetés: %s</string>
+    <string name="frequently_used">Gyakran használt</string>
 </resources>

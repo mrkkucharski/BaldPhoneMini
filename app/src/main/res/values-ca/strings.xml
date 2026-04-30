@@ -409,4 +409,5 @@ No es veuran canvis si la barra d\'estat està oculta.
     <string name="dialog_message_permission_sms">Cal el permís de SMS per llegir i enviar missatges.</string>
     <string name="send_message">Enviar missatge</string>
     <string name="conversation_with">Conversa amb %s</string>
+    <string name="frequently_used">Usats freqüentment</string>
 </resources>

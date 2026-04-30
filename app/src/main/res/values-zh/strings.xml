@@ -389,4 +389,5 @@
     <string name="dialog_message_permission_sms">需要短信权限才能读取和发送消息。</string>
     <string name="send_message">发送消息</string>
     <string name="conversation_with">与 %s 的对话</string>
+    <string name="frequently_used">常用</string>
 </resources>

@@ -352,4 +352,5 @@
     <string name="dialog_message_permission_sms">메시지를 읽고 보내려면 SMS 권한이 필요합니다.</string>
     <string name="send_message">메시지 보내기</string>
     <string name="conversation_with">%s와의 대화</string>
+    <string name="frequently_used">자주 사용됨</string>
 </resources>

@@ -366,4 +366,5 @@
     <string name="dialog_message_permission_sms">SMS-tilladelse er nødvendig for at læse og sende beskeder.</string>
     <string name="send_message">Send besked</string>
     <string name="conversation_with">Samtale med %s</string>
+    <string name="frequently_used">Hyppigt brugte</string>
 </resources>

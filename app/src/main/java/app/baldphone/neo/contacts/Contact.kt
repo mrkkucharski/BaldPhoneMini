@@ -60,6 +60,9 @@ sealed class ContactItemType {
     data class Header(val letter: String) : ContactItemType()
 
     data class ContactItem(val contact: SimpleContact) : ContactItemType()
+
+    /** Generic labeled section header — reusable for any future pinned group. */
+    data class SectionHeader(val title: String) : ContactItemType()
 }
 
 /** Helper types for contacts */

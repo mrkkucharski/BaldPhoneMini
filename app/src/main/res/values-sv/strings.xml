@@ -395,4 +395,5 @@
     <string name="dialog_message_permission_sms">SMS-behörighet krävs för att läsa och skicka meddelanden.</string>
     <string name="send_message">Skicka meddelande</string>
     <string name="conversation_with">Konversation med %s</string>
+    <string name="frequently_used">Ofta använda</string>
 </resources>

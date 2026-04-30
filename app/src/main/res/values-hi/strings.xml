@@ -400,4 +400,5 @@
     <string name="dialog_message_permission_sms">संदेश पढ़ने और भेजने के लिए SMS अनुमति आवश्यक है।</string>
     <string name="send_message">संदेश भेजें</string>
     <string name="conversation_with">%s के साथ बातचीत</string>
+    <string name="frequently_used">अक्सर उपयोग किए गए</string>
 </resources>

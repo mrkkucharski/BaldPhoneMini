@@ -395,4 +395,5 @@
     <string name="dialog_message_permission_sms">Za branje in pošiljanje sporočil je potrebno dovoljenje za SMS.</string>
     <string name="send_message">Pošlji sporočilo</string>
     <string name="conversation_with">Pogovor z %s</string>
+    <string name="frequently_used">Pogosto uporabljeni</string>
 </resources>
