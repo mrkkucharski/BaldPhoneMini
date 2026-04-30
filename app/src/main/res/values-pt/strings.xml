@@ -370,4 +370,5 @@
     <string name="dialog_message_permission_sms">A permissão de SMS é necessária para ler e enviar mensagens.</string>
     <string name="send_message">Enviar mensagem</string>
     <string name="conversation_with">Conversa com %s</string>
+    <string name="frequently_used">Usados frequentemente</string>
 </resources>

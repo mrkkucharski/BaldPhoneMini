@@ -261,4 +261,5 @@ letra-tipoaren tamaina eta distira aldatzeko.</string>
     <string name="dialog_message_permission_sms">SMS baimena beharrezkoa da mezuak irakurtzeko eta bidaltzeko.</string>
     <string name="send_message">Bidali mezua</string>
     <string name="conversation_with">Elkarrizketa %s-rekin</string>
+    <string name="frequently_used">Maiz erabilitakoak</string>
 </resources>

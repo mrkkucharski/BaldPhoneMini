@@ -403,4 +403,5 @@
     <string name="dialog_message_permission_sms">Απαιτείται άδεια SMS για ανάγνωση και αποστολή μηνυμάτων.</string>
     <string name="send_message">Αποστολή μηνύματος</string>
     <string name="conversation_with">Συνομιλία με %s</string>
+    <string name="frequently_used">Συχνά χρησιμοποιούμενα</string>
 </resources>

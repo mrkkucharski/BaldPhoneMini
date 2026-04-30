@@ -379,4 +379,5 @@
     <string name="dialog_message_permission_sms">需要簡訊權限才能讀取和傳送訊息。</string>
     <string name="send_message">傳送訊息</string>
     <string name="conversation_with">與 %s 的對話</string>
+    <string name="frequently_used">常用</string>
 </resources>

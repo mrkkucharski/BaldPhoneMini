@@ -401,4 +401,5 @@
     <string name="dialog_message_permission_sms">Необходимо е разрешение за SMS, за да четете и изпращате съобщения.</string>
     <string name="send_message">Изпрати съобщение</string>
     <string name="conversation_with">Разговор с %s</string>
+    <string name="frequently_used">Често използвани</string>
 </resources>

@@ -183,4 +183,5 @@
     <string name="dialog_message_permission_sms">مطلوب إذن الرسائل القصيرة لقراءة الرسائل وإرسالها.</string>
     <string name="send_message">إرسال رسالة</string>
     <string name="conversation_with">محادثة مع %s</string>
+    <string name="frequently_used">الأكثر استخداماً</string>
 </resources>

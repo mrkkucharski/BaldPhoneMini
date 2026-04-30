@@ -373,4 +373,5 @@
     <string name="dialog_message_permission_sms">Mesajları okumak ve göndermek için SMS izni gereklidir.</string>
     <string name="send_message">Mesaj gönder</string>
     <string name="conversation_with">%s ile konuşma</string>
+    <string name="frequently_used">Sık Kullanılanlar</string>
 </resources>

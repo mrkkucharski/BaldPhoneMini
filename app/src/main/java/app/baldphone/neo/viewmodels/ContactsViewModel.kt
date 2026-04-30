@@ -5,6 +5,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 
+import com.bald.uriah.baldphone.R
 import app.baldphone.neo.calls.CallsRepository
 import app.baldphone.neo.contacts.ContactItemType
 import app.baldphone.neo.contacts.ContactSearcher
@@ -49,7 +50,7 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
         isFavoritesOnly
     ) { alphabetical, frequent, query, isFavOnly ->
         if (query.isBlank() && !isFavOnly && frequent.size >= 2) {
-            listOf(ContactItemType.SectionHeader(FREQUENT_SECTION_TITLE)) +
+            listOf(ContactItemType.SectionHeader(application.getString(R.string.frequently_used))) +
                 frequent.map { ContactItemType.ContactItem(it) } +
                 alphabetical
         } else {
@@ -77,7 +78,5 @@ class ContactsViewModel(application: Application) : AndroidViewModel(application
         isFavoritesOnly.value = !isFavoritesOnly.value
     }
 
-    companion object {
-        const val FREQUENT_SECTION_TITLE = "Frequently Used"
-    }
+
 }

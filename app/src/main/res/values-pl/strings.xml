@@ -383,4 +383,5 @@
     <string name="dialog_message_permission_sms">Uprawnienie SMS jest wymagane do odczytu i wysyłania wiadomości.</string>
     <string name="send_message">Wyślij wiadomość</string>
     <string name="conversation_with">Rozmowa z %s</string>
+    <string name="frequently_used">Często używane</string>
 </resources>

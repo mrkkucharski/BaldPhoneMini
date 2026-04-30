@@ -381,4 +381,5 @@ geen schade veroorzaken. Druk op OK om de bevoegdheden te geven of druk op nee o
     <string name="dialog_message_permission_sms">SMS-toestemming is vereist om berichten te lezen en te verzenden.</string>
     <string name="send_message">Bericht verzenden</string>
     <string name="conversation_with">Gesprek met %s</string>
+    <string name="frequently_used">Vaak gebruikt</string>
 </resources>

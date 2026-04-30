@@ -389,4 +389,5 @@
     <string name="dialog_message_permission_sms">Pro čtení a odesílání zpráv je vyžadováno oprávnění SMS.</string>
     <string name="send_message">Odeslat zprávu</string>
     <string name="conversation_with">Konverzace s %s</string>
+    <string name="frequently_used">Často používané</string>
 </resources>

@@ -99,4 +99,5 @@
     <string name="dialog_message_permission_sms">Ana buƙatar izinin SMS don karanta da aika sakonni.</string>
     <string name="send_message">Aika sako</string>
     <string name="conversation_with">Tattaunawa da %s</string>
+    <string name="frequently_used">Ana amfani da su akai-akai</string>
 </resources>

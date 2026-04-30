@@ -399,4 +399,5 @@ ja muuttaa kirkkautta.</string>
     <string name="dialog_message_permission_sms">SMS-lupa vaaditaan viestien lukemiseen ja lähettämiseen.</string>
     <string name="send_message">Lähetä viesti</string>
     <string name="conversation_with">Keskustelu: %s</string>
+    <string name="frequently_used">Usein käytetyt</string>
 </resources>

@@ -379,4 +379,5 @@
     <string name="dialog_message_permission_sms">Permisiunea SMS este necesară pentru citirea și trimiterea mesajelor.</string>
     <string name="send_message">Trimite mesaj</string>
     <string name="conversation_with">Conversație cu %s</string>
+    <string name="frequently_used">Frecvent utilizate</string>
 </resources>
