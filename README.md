@@ -10,10 +10,12 @@ The goal of this fork is to push usability simplification even further. The app 
 - **Simplified messages:** Native SMS thread and conversation screens, incoming message handling, unread badge fixes, and default SMS app role syncing.
 
 
-- **Speed dial:** Add contacts to one-tap calling tiles from contact details.
+- **Speed dial:** Add contacts to one-tap calling tiles from contact details, with a speed dial row directly on the home screen.
+- **Frequently used contacts:** The Contacts screen shows a "Frequently Used" section at the top, surfacing the contacts you call most.
 - **Better pill reminders:** Six configurable daily pill time slots and improved pill alarm behavior.
 - **More flexible second home screen:** Now you can reduce visible widgets to just a few.
 - **Launcher setup fixes:** Easier default launcher setup and option to return to the default home launcher.
+- **Page-turn arrows:** Optional large navigation arrows in basic accessibility mode for users who find swiping difficult.
 - **Android 13+ language support:** Per-app language settings.
 
 <img width="256"  src="https://github.com/user-attachments/assets/fa33ecf0-4fb2-43e8-b72f-818ffad8b63c" />
@@ -26,9 +28,64 @@ The goal of this fork is to push usability simplification even further. The app 
 
 
 ## Installation
-In short - enable development options on the target phone and download through USB. More may come later.
 
-## Google Play Policy & Future Plans
+Installation requires a PC and a USB cable. The steps below take about 5 minutes.
+
+### 1. Enable Developer Options on the phone
+
+Go to **Settings → About Phone** and tap **Build number** 7 times rapidly until you see "You are now a developer!"
+
+> **Samsung devices:** the Build number is under **Settings → About Phone → Software information → Build number**
+
+### 2. Enable USB Debugging
+
+Go back to **Settings** — a new **Developer options** entry has appeared near the bottom. Open it and turn on **USB Debugging**.
+
+### 3. Connect via USB and set connection mode to File Transfer
+
+Plug the phone into the PC. When the phone asks *"How do you want to use this connection?"*, choose **File Transfer** (or **MTP**). If you missed the prompt, pull down the notification shade and tap the *"Charging via USB"* notification to change it.
+
+> This step is required — ADB does not reach the device reliably in charging-only mode.
+
+### 4. Install ADB on the PC
+
+- **Windows:** Download and extract [platform-tools for Windows](https://dl.google.com/android/repository/platform-tools-latest-windows.zip), then open a terminal in that folder.
+- **macOS:** `brew install android-platform-tools`
+- **Linux (Ubuntu/Debian):** `sudo apt-get install android-sdk-platform-tools`
+
+### 5. Verify the connection
+
+```bash
+adb devices
+```
+
+A dialog will appear on the phone — tap **Allow** (check *Always allow from this computer*). Run `adb devices` again; the device should show status `device`.
+
+### 6. Install the APK
+
+Download the latest APK from [Releases](../../releases) and run:
+
+```bash
+adb install BaldPhoneMini.apk
+```
+
+To update an existing installation:
+
+```bash
+adb install -r BaldPhoneMini.apk
+```
+
+On success the terminal prints `Success` and the app appears in the launcher.
+
+## Community
+
+BaldPhone Mini shares its roots with the broader BaldPhone community — see [BaldPhone Neo](https://github.com/DamianKuzmiak/BaldPhoneNeo) for community links.
+
+## Contact
+
+[mrkkucharski@gmail.com](mailto:mrkkucharski@gmail.com)
+
+## Google Play
 At this stage, **BaldPhone Neo is not available on Google Play**.
 
 ## License
