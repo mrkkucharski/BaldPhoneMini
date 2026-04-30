@@ -18,7 +18,8 @@ The goal of this fork is to push usability simplification even further. The app 
 - **Page-turn arrows:** Optional large navigation arrows in basic accessibility mode for users who find swiping difficult.
 - **Android 13+ language support:** Per-app language settings.
 
-<img width="256"  src="https://github.com/user-attachments/assets/fa33ecf0-4fb2-43e8-b72f-818ffad8b63c" />
+<img  width="256" src="https://github.com/user-attachments/assets/193f0ff2-b711-4188-ba91-62870cb039f6" />
+
 <img width="256" src="https://github.com/user-attachments/assets/b361221c-64e0-4105-8da1-cfe1765e9871" />
 <img width="256" src="https://github.com/user-attachments/assets/a9c02961-baec-4a0b-9f60-663e7e7c167e" />
 <img width="256" src="https://github.com/user-attachments/assets/6dde363f-3a2b-4715-b658-cff408c8edbe" />
