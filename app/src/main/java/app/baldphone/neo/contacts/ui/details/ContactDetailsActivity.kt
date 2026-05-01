@@ -88,7 +88,7 @@ class ContactDetailsActivity : BaldActivity() {
     }
 
     override fun finish() {
-        if (viewModel.uiState.value.contactChanged) setResult(RESULT_OK)
+        if (::viewModel.isInitialized && viewModel.uiState.value.contactChanged) setResult(RESULT_OK)
         super.finish()
     }
 
