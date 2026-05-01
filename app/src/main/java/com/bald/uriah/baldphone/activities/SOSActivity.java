@@ -41,6 +41,7 @@ import app.baldphone.neo.calls.CallManager;
 import app.baldphone.neo.utils.PhoneNumberUtils;
 
 import com.bald.uriah.baldphone.utils.BaldToast;
+import com.bald.uriah.baldphone.utils.CursorUtils;
 import com.bald.uriah.baldphone.views.BaldLinearLayoutButton;
 
 import java.util.ArrayList;
@@ -194,23 +195,27 @@ public class SOSActivity extends BaldActivity {
                         new String[]{
                                 lookupKey
                         }, null)) {
-                    if (cursor.moveToFirst()) {
+                    if (cursor != null && cursor.moveToFirst()) {
                         ret.add(new MiniContact(
                                 lookupKey,
-                                cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)),
-                                cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)),
-                                cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)),
-                                cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.STARRED)) == 1
+                                CursorUtils.getStringOrNull(cursor, ContactsContract.Contacts.DISPLAY_NAME),
+                                CursorUtils.getStringOrNull(cursor, ContactsContract.Contacts.PHOTO_URI),
+                                CursorUtils.getIntOr(cursor, ContactsContract.Contacts._ID, 0),
+                                CursorUtils.getIntOr(cursor, ContactsContract.Contacts.STARRED, 0) == 1
                         ));
                     } else {
                         removeContact(context, lookupKey);
                     }
 
                 } catch (Exception e) {
-                    throw new AssertionError(e);
+                    android.util.Log.e("SOSActivity", "Failed to load pinned contact " + lookupKey, e);
                 }
             }
-            Collections.sort(ret, (o1, o2) -> o1.name.compareTo(o2.name));
+            Collections.sort(ret, (o1, o2) -> {
+                final String n1 = o1.name != null ? o1.name : "";
+                final String n2 = o2.name != null ? o2.name : "";
+                return n1.compareTo(n2);
+            });
             return ret;
         }
     }

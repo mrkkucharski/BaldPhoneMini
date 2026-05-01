@@ -261,7 +261,9 @@ public class HomePage1 extends HomeView {
 
     public void refreshMessagesBadge() {
         if (bt_messages != null && !viewsToApps.containsValue(bt_messages)) {
-            bt_messages.setBadgeVisibility(hasUnreadSms(getContext() != null ? getContext() : activity));
+            final Context ctx = getContext() != null ? getContext() : activity;
+            if (ctx == null) return;
+            bt_messages.setBadgeVisibility(hasUnreadSms(ctx));
         }
     }
 

@@ -23,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import java.util.Objects;
+
 import com.bald.uriah.baldphone.activities.BaldActivity;
 
 /**
@@ -53,7 +55,8 @@ public class BDB {
     private BDB() {
     }
 
-    public static BDB from(@Nullable Context context) {
+    public static BDB from(@NonNull Context context) {
+        Objects.requireNonNull(context, "BDB requires non-null context");
         BDB bdb = new BDB();
         bdb.context = context;
         if (context instanceof BaldActivity) {

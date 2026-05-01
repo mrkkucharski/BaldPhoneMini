@@ -44,14 +44,19 @@ public class TutorialFragment2 extends TutorialFragment {
 
     @Override
     protected void actualSetup() {
-        sharedPreferences = BPrefs.get(getContext());
+        final Context ctx = getContext();
+        if (ctx == null) return;
+        final Activity activity = getActivity();
+        if (activity == null) return;
+
+        sharedPreferences = BPrefs.get(ctx);
         longPressesFlag = sharedPreferences.getBoolean(BPrefs.LONG_PRESSES_KEY, BPrefs.LONG_PRESSES_DEFAULT_VALUE) ? sharedPreferences.getBoolean(BPrefs.LONG_PRESSES_SHORTER_KEY, BPrefs.LONG_PRESSES_SHORTER_DEFAULT_VALUE) ? 1 : 2 : 0;
         applyDuoToFlag();
 
-        vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
 
         final TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = getActivity().getTheme();
+        final Resources.Theme theme = activity.getTheme();
         theme.resolveAttribute(R.attr.bald_text_on_selected, typedValue, true);
         textColorOnSelected = typedValue.data;
         theme.resolveAttribute(R.attr.bald_text_on_button, typedValue, true);

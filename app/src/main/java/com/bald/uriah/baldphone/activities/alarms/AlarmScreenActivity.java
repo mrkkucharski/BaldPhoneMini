@@ -89,12 +89,21 @@ public class AlarmScreenActivity extends TimedBaldActivity {
         attachXml();
 
         final Intent intent = getIntent();
-        if (intent == null) throw new AssertionError();
+        if (intent == null) {
+            S.logImportant("AlarmScreenActivity launched without intent");
+            finish();
+            return;
+        }
         int key = intent.getIntExtra(Alarm.ALARM_KEY_VIA_INTENTS, -1);
-        if (key == -1) throw new AssertionError();
+        if (key == -1) {
+            S.logImportant("AlarmScreenActivity launched without alarm key");
+            finish();
+            return;
+        }
         alarm = AlarmsDatabase.getInstance(this).alarmsDatabaseDao().getByKey(key);
         if (alarm == null) {
             S.logImportant("alarm == null!, returning");
+            finish();
             return;
         }
 

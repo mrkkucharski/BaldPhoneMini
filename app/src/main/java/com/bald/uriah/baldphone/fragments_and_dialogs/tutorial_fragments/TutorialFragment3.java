@@ -84,8 +84,11 @@ public class TutorialFragment3 extends TutorialFragment {
     }
 
     public void setupBtn() {
+        final Context ctx = getContext();
+        if (ctx == null) return;
 
-        final InputMethodManager im = (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);
+        final InputMethodManager im = (InputMethodManager) ctx.getSystemService(INPUT_METHOD_SERVICE);
+        if (im == null) return;
         final List<InputMethodInfo> inputMethodInfoList = im.getEnabledInputMethodList();
         boolean turnedOn = false;
         for (InputMethodInfo inputMethodInfo : inputMethodInfoList) {
@@ -102,11 +105,12 @@ public class TutorialFragment3 extends TutorialFragment {
             bt_set_keyboard.setText(R.string.already_setted);
             bt_set_keyboard.setOnClickListener(v -> {
                 try {
-                    ((InputMethodManager) getContext().getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE)).showInputMethodPicker();
+                    final InputMethodManager imm = (InputMethodManager) v.getContext().getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) imm.showInputMethodPicker();
                 } catch (Exception e) {
                     Log.e(TAG, e.getMessage());
                     e.printStackTrace();
-                    BaldToast.error(getContext());
+                    BaldToast.error(v.getContext());
                 }
             });
 

@@ -1,8 +1,10 @@
 package app.baldphone.neo.utils.messaging
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 
 import androidx.core.net.toUri
 
@@ -13,6 +15,10 @@ import androidx.core.net.toUri
 interface ExternalMessagingHandler {
     val packageName: String
     val appName: String
+
+    companion object {
+        private const val TAG = "ExternalMessaging"
+    }
 
     /**
      * Starts a text chat with the given identifier (e.g., phone number or JID).
@@ -58,7 +64,7 @@ interface ExternalMessagingHandler {
         if (webIntent.resolveActivity(pm) != null) {
             context.launchMessagingIntent(webIntent)
         } else {
-            throw IllegalStateException("Unable to open $appName in the Play Store or browser.")
+            Log.w(TAG, "Unable to open $appName in the Play Store or browser.")
         }
     }
 }
@@ -74,8 +80,15 @@ fun Context.launchMessagingIntent(intent: Intent) {
     }
 
     if (intent.resolveActivity(packageManager) == null) {
-        throw IllegalStateException("App not installed or intent cannot be resolved.")
+        Log.w("ExternalMessaging", "App not installed or intent cannot be resolved: $intent")
+        return
     }
 
-    startActivity(intent)
+    try {
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        Log.w("ExternalMessaging", "Unable to start messaging intent: $intent", e)
+    } catch (e: SecurityException) {
+        Log.w("ExternalMessaging", "Permission denied while starting messaging intent: $intent", e)
+    }
 }

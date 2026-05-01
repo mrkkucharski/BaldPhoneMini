@@ -76,12 +76,21 @@ public class PillScreenActivity extends TimedBaldActivity {
         attachXml();
 
         final Intent intent = getIntent();
-        if (intent == null) throw new AssertionError();
+        if (intent == null) {
+            S.logImportant("PillScreenActivity launched without intent");
+            finish();
+            return;
+        }
         int key = intent.getIntExtra(Reminder.REMINDER_KEY_VIA_INTENTS, -1);
-        if (key == -1) throw new AssertionError();
+        if (key == -1) {
+            S.logImportant("PillScreenActivity launched without reminder key");
+            finish();
+            return;
+        }
         reminder = RemindersDatabase.getInstance(this).remindersDatabaseDao().getById(key);
         if (reminder == null) {
             S.logImportant("reminder == null!, returning");
+            finish();
             return;
         }
 

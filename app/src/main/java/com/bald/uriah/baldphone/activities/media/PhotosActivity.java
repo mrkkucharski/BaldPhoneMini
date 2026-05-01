@@ -31,6 +31,7 @@ import androidx.annotation.Nullable;
 
 import com.bald.uriah.baldphone.R;
 import com.bald.uriah.baldphone.utils.Constants;
+import com.bald.uriah.baldphone.utils.CursorUtils;
 import com.bald.uriah.baldphone.utils.S;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -106,27 +107,32 @@ public class PhotosActivity extends MediaScrollingActivity implements Constants.
                             MediaStore.Images.Thumbnails.MINI_KIND,
                             null);
 
+            String thumbnailPath = null;
             if (thumbnailCursor != null && thumbnailCursor.getCount() > 0 && thumbnailCursor.moveToFirst()) {
+                thumbnailPath = CursorUtils.getStringOrNull(thumbnailCursor, MediaStore.Images.Thumbnails.DATA);
+            }
+            if (thumbnailPath == null) {
+                if (thumbnailCursor != null) thumbnailCursor.close();
+                thumbnailCursor = MediaStore.Images.Thumbnails.queryMiniThumbnail(getContentResolver(), imgId, MediaStore.Images.Thumbnails.MICRO_KIND, null);
+                if (thumbnailCursor != null && thumbnailCursor.getCount() > 0 && thumbnailCursor.moveToFirst()) {
+                    thumbnailPath = CursorUtils.getStringOrNull(thumbnailCursor, MediaStore.Images.Thumbnails.DATA);
+                }
+            }
+            if (thumbnailPath == null) {
+                thumbnailPath = CursorUtils.getStringOrNull(cursor, MediaStore.Images.Media.DATA);
+            }
+            if (thumbnailPath != null) {
                 Glide
                         .with(holder.pic)
-                        .load(thumbnailCursor.getString(thumbnailCursor.getColumnIndex(MediaStore.Images.Thumbnails.DATA)))
+                        .load(thumbnailPath)
                         .apply(requestOptions)
                         .into(holder.pic);
             } else {
-                thumbnailCursor = MediaStore.Images.Thumbnails.queryMiniThumbnail(getContentResolver(), imgId, MediaStore.Images.Thumbnails.MICRO_KIND, null);
-                if (thumbnailCursor != null && thumbnailCursor.getCount() > 0 && thumbnailCursor.moveToFirst()) {
-                    Glide
-                            .with(this)
-                            .load(thumbnailCursor.getString(thumbnailCursor.getColumnIndex(MediaStore.Images.Thumbnails.DATA)))
-                            .apply(requestOptions)
-                            .into(holder.pic);
-                } else {
-                    Glide
-                            .with(this)
-                            .load(cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)))
-                            .apply(requestOptions)
-                            .into(holder.pic);
-                }
+                Glide
+                        .with(holder.pic)
+                        .load(R.drawable.error_on_background)
+                        .apply(requestOptions)
+                        .into(holder.pic);
             }
             if (thumbnailCursor != null)
                 thumbnailCursor.close();
@@ -135,7 +141,9 @@ public class PhotosActivity extends MediaScrollingActivity implements Constants.
 
     @Override
     protected Uri getData(Cursor cursor) {
-        return Uri.parse("file://" + cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA)));
+        final String data = CursorUtils.getStringOrNull(cursor, MediaStore.Images.Media.DATA);
+        if (data == null) return Uri.EMPTY;
+        return Uri.parse("file://" + data);
     }
 
 }

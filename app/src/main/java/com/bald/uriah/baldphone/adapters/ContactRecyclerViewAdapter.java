@@ -94,13 +94,16 @@ public class ContactRecyclerViewAdapter extends ModularRecyclerView.ModularAdapt
 
     private void applyToCursor() {
         letterToPosition.clear();
-        cursor.moveToFirst();
+        if (cursor == null || !cursor.moveToFirst()) return;
+        final int displayNameIdx = cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME);
+        if (displayNameIdx < 0) return;
         String previousFirstLetter = null;
-        String tmpThis;
 
         for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
-            tmpThis = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME)).substring(0, 1).toUpperCase();
+            final String displayName = cursor.getString(displayNameIdx);
+            if (displayName == null || displayName.isEmpty()) continue;
+            final String tmpThis = displayName.substring(0, 1).toUpperCase();
             if (!tmpThis.equals(previousFirstLetter)) {
                 letterToPosition.append(tmpThis.charAt(0), i);
             }
@@ -138,20 +141,20 @@ public class ContactRecyclerViewAdapter extends ModularRecyclerView.ModularAdapt
     @Override
     public void onBindViewHolder(final @NonNull ViewHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
-        cursor.moveToPosition(position);
+        if (cursor == null || !cursor.moveToPosition(position)) return;
 
         holder.lookupKey = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
-        final String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-        final String letter = name.substring(0, 1).toUpperCase();
+        final String name = getDisplayName(cursor);
+        final String letter = getFirstLetter(name);
         holder.setFavorite(cursor.getInt(cursor.getColumnIndex(ContactsContract.Data.STARRED)) == 1);
         holder.tv_contact_name.setText(name);
 
         if (position == 0) {
-            holder.setLetter(name.substring(0, 1));
+            holder.setLetter(letter);
         } else {
             final boolean moved = cursor.moveToPosition(position - 1);
             if (moved) {
-                final String prevNameFirstLetter = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME)).substring(0, 1).toUpperCase();
+                final String prevNameFirstLetter = getFirstLetter(getDisplayName(cursor));
                 if (!prevNameFirstLetter.equals(letter)) {
                     holder.setLetter(letter);
                 } else
@@ -165,14 +168,31 @@ public class ContactRecyclerViewAdapter extends ModularRecyclerView.ModularAdapt
             holder.iv_contact_pic.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI))));
             holder.tv_image_letter.setVisibility(View.GONE);
         } else {
-            drawText(holder, letter, holder.lookupKey.hashCode());
+            drawText(holder, letter, holder.lookupKey == null ? name.hashCode() : holder.lookupKey.hashCode());
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return cursor.getCount();
+        return cursor == null ? 0 : cursor.getCount();
+    }
+
+    private String getDisplayName(Cursor cursor) {
+        final int displayNameIdx = cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME);
+        if (displayNameIdx < 0) return getFallbackContactName();
+        final String displayName = cursor.getString(displayNameIdx);
+        if (displayName == null || displayName.trim().isEmpty()) return getFallbackContactName();
+        return displayName;
+    }
+
+    private String getFirstLetter(String name) {
+        if (name == null || name.isEmpty()) return "?";
+        return name.substring(0, 1).toUpperCase();
+    }
+
+    private String getFallbackContactName() {
+        return activity.getString(R.string.contact_details);
     }
 
     private void drawText(ViewHolder viewHolder, String chr, int hash) {
@@ -265,7 +285,7 @@ public class ContactRecyclerViewAdapter extends ModularRecyclerView.ModularAdapt
         @Override
         public void onClick(View v) {
             if (lookupKey == null)
-                throw new IllegalStateException("lookupKey cannot be null!");
+                return;
             switch (mode) {
                 case MODE_DEFAULT:
                     final Intent intent = new Intent(activity, ContactDetailsActivity.class)

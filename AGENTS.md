@@ -71,3 +71,12 @@ BaldPhoneMini is an accessibility-focused Android launcher/phone app for elderly
 - **UI must be accessibility-first**: large touch targets, high contrast, minimal complexity — the target user is elderly or accessibility-challenged.
 - **Screenshot/instrumentation tests** live in `app/src/androidTest/`; no significant unit test suite exists.
 - The `app/src/androidTest/` tests use Espresso + `BaseScreenshotTakerTest` for UI regression testing.
+
+## Error-handling Philosophy
+
+**Priority: keep the app running.** Prefer silently skipping an operation over throwing an uncaught exception. The target user is elderly and may not understand or recover from a crash, so resilience beats fail-fast.
+
+- **Do not use `requireContext()` / `requireActivity()` / `!!`** to assert non-null in places where lifecycle, system services, or platform APIs may legitimately return null. Capture the value in a local, null-check it, and early-return / no-op instead.
+- **Wrap risky platform calls** (e.g. `startActivity` for optional intents, content-resolver queries, system-service lookups) in try/catch where exceptions would otherwise bubble to the UI thread. Log and continue.
+- **A skipped UI side effect is acceptable**; an uncaught `NullPointerException` / `IllegalStateException` is not.
+- This applies to both legacy Java and modern Kotlin code.

@@ -126,12 +126,14 @@ public abstract class MediaScrollingActivity extends BaldActivity {
         @Override
         public void onBindViewHolder(final @NonNull ViewHolder holder, int position) {
             super.onBindViewHolder(holder, position);
-            cursor.moveToPosition(position);
+            if (cursor == null) return;
+            if (!cursor.moveToPosition(position)) return;
             MediaScrollingActivity.this.bindViewHolder(cursor, holder);
         }
 
         @Override
         public int getItemCount() {
+            if (cursor == null) return 0;
             return cursor.getCount();
         }
 
@@ -148,15 +150,17 @@ public abstract class MediaScrollingActivity extends BaldActivity {
 
             @Override
             public void onClick(View v) {
+                final int position = getAdapterPosition();
+                if (position == RecyclerView.NO_POSITION) return;
                 if (mediaChoose) {
-                    cursor.moveToPosition(getAdapterPosition());
+                    if (cursor == null || !cursor.moveToPosition(position)) return;
                     final Uri regularUri = getData(cursor);
                     setResult(RESULT_OK, new Intent().setData(regularUri));
                     finish();
                 } else {
                     final Intent intent =
                             new Intent(MediaScrollingActivity.this, MediaScrollingActivity.this.singleActivity())
-                                    .putExtra(SingleMediaActivity.MEDIA_KEY, this.getAdapterPosition());
+                                    .putExtra(SingleMediaActivity.MEDIA_KEY, position);
                     MediaScrollingActivity.this.startActivityForResult(intent, SHOULD_REFRESH);
                 }
             }

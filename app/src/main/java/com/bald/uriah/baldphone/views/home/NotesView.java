@@ -67,9 +67,12 @@ public class NotesView extends HomeView {
                     editText.setEnabled(true);
                     if (editText.requestFocus()) {
                         editText.setSelection(editText.getText().length());
-                        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-
+                        final Context ctx = getContext();
+                        if (ctx == null) return;
+                        final InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null) {
+                            imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+                        }
                     }
                 }),
                 (v -> editText.setEnabled(false))

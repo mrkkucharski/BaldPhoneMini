@@ -25,6 +25,7 @@ import android.provider.ContactsContract;
 import androidx.annotation.Nullable;
 
 import com.bald.uriah.baldphone.databases.contacts.MiniContact;
+import com.bald.uriah.baldphone.utils.CursorUtils;
 
 public class Call {
     private static final String TAG = Call.class.getSimpleName();
@@ -56,13 +57,19 @@ public class Call {
 
     public Call(final Cursor cursor) {
         this(
-                cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER)),
-                cursor.getInt(cursor.getColumnIndex(CallLog.Calls.DURATION)),
-                cursor.getLong(cursor.getColumnIndex(CallLog.Calls.DATE)),
-                cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE)),
-                cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_LOOKUP_URI))
+                CursorUtils.getStringOrNull(cursor, CallLog.Calls.NUMBER),
+                CursorUtils.getIntOr(cursor, CallLog.Calls.DURATION, 0),
+                readLongOr(cursor, CallLog.Calls.DATE, 0L),
+                CursorUtils.getIntOr(cursor, CallLog.Calls.TYPE, 0),
+                CursorUtils.getStringOrNull(cursor, CallLog.Calls.CACHED_LOOKUP_URI)
 //                ,(cursor.getInt(cursor.getColumnIndex(CallLog.Calls.NEW)) == 1) && (cursor.getInt(cursor.getColumnIndex(CallLog.Calls.IS_READ)) == 0)
         );
+    }
+
+    private static long readLongOr(Cursor cursor, String columnName, long fallback) {
+        final int idx = cursor.getColumnIndex(columnName);
+        if (idx < 0) return fallback;
+        return cursor.getLong(idx);
     }
 
     @Nullable
@@ -90,13 +97,13 @@ public class Call {
             if (cursor == null || cursor.getCount() < 1) {
                 return null;
             }
-            cursor.moveToFirst();
+            if (!cursor.moveToFirst()) return null;
             return new MiniContact(
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.LOOKUP_KEY)),
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)),
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)),
-                    cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID)),
-                    cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.STARRED)) == 1
+                    CursorUtils.getStringOrNull(cursor, ContactsContract.Contacts.LOOKUP_KEY),
+                    CursorUtils.getStringOrNull(cursor, ContactsContract.Contacts.DISPLAY_NAME),
+                    CursorUtils.getStringOrNull(cursor, ContactsContract.Contacts.PHOTO_URI),
+                    CursorUtils.getIntOr(cursor, ContactsContract.Contacts._ID, 0),
+                    CursorUtils.getIntOr(cursor, ContactsContract.Contacts.STARRED, 0) == 1
             );
         } finally {
             if (cursor != null)

@@ -75,8 +75,11 @@ public abstract class SingleMediaActivity extends BaldActivity {
         genListeners();
 
         final int mediaKey = getIntent().getIntExtra(MEDIA_KEY, -1);
-        if (mediaKey == -1)
-            throw new AssertionError(TAG + " must have a media key!");
+        if (mediaKey == -1) {
+            Log.w(TAG, "Single media screen launched without media key");
+            finish();
+            return;
+        }
         viewPagerHolder.setCurrentItem(mediaKey);
 
     }
@@ -97,8 +100,11 @@ public abstract class SingleMediaActivity extends BaldActivity {
     protected void genListeners() {
         delete.setOnClickListener((v) ->
                 mediaPagerAdapter.delete(viewPagerHolder.getPageIndex()));
-        share.setOnClickListener((v) ->
-                S.share(this, mediaPagerAdapter.share(viewPagerHolder.getPageIndex())));
+        share.setOnClickListener((v) -> {
+            final Intent shareIntent = mediaPagerAdapter.share(viewPagerHolder.getPageIndex());
+            if (shareIntent == null) return;
+            S.share(this, shareIntent);
+        });
         more.setOnClickListener((more) -> {
             more.setVisibility(View.GONE);
             optionsBar.setVisibility(View.VISIBLE);
@@ -133,8 +139,9 @@ public abstract class SingleMediaActivity extends BaldActivity {
         protected abstract void deletePost29(Activity activity) throws SecurityException;
 
         private void delete(int position) {
+            if (cursor == null) return;
+            if (!cursor.moveToPosition(position)) return;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                cursor.moveToPosition(position);
                 try {
                     deletePost29(activity);
                     activity.setResult(SHOULD_REFRESH);
@@ -158,7 +165,8 @@ public abstract class SingleMediaActivity extends BaldActivity {
                 }
             } else {
                 S.showAreYouSureYouWantToDelete(String.valueOf(activity.title()), activity, () -> {
-                    cursor.moveToPosition(position);
+                    if (cursor == null) return;
+                    if (!cursor.moveToPosition(position)) return;
                     delete(activity);
                     activity.setResult(SHOULD_REFRESH);
                     activity.finish();
@@ -171,7 +179,8 @@ public abstract class SingleMediaActivity extends BaldActivity {
         protected abstract Intent share(Activity activity, Cursor cursor);
 
         private Intent share(int position) {
-            cursor.moveToPosition(position);
+            if (cursor == null) return null;
+            if (!cursor.moveToPosition(position)) return null;
             return share(activity, cursor);
         }
 
@@ -190,6 +199,7 @@ public abstract class SingleMediaActivity extends BaldActivity {
             View v = pool.acquire();
             if (v == null)
                 v = getView(activity);
+            if (cursor == null) return v;
             cursor.moveToPosition(position);
             bindView(v, cursor, activity);
             return v;
@@ -197,6 +207,7 @@ public abstract class SingleMediaActivity extends BaldActivity {
 
         @Override
         public int getCount() {
+            if (cursor == null) return 0;
             return cursor.getCount();
         }
 

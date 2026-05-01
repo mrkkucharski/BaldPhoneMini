@@ -245,7 +245,8 @@ class PermissionFragment : Fragment() {
         if (!isAdded) return
 
         closeDialog()
-        dialog = AppDialog.Builder(requireContext())
+        val context = context ?: return
+        dialog = AppDialog.Builder(context)
             .setTitle(permission.titleRes)
             .setMessage(messageRes)
             .setPositiveButton(R.string.allow) { onPositive() }

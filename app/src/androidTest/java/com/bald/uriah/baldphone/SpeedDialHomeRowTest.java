@@ -42,7 +42,6 @@ import app.baldphone.neo.contacts.speeddial.SpeedDialRepository;
 
 import com.bald.uriah.baldphone.activities.HomeScreenActivity;
 import com.bald.uriah.baldphone.screenshots.BaseScreenshotTakerTest;
-import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.views.ViewPagerHolder;
 import com.bald.uriah.baldphone.views.home.HomePage1;
 
@@ -63,10 +62,6 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
     @Override
     public void test() {
         clearSpeedDialEntries();
-        BPrefs.get(getInstrumentation().getTargetContext())
-                .edit()
-                .putString(BPrefs.CUSTOM_MESSAGES_KEY, "test/custom.messages")
-                .commit();
         mActivityTestRule.launchActivity(new Intent());
         getInstrumentation().waitForIdleSync();
 

@@ -205,12 +205,24 @@ public class AddContactActivity extends BaldActivity {
                     ContactsContract.RawContacts._ID + "=?",
                     new String[]{String.valueOf(ContentUris.parseId(results[0].uri))},
                     null)) {
-                if (contactsCursor == null || !contactsCursor.moveToFirst())
-                    throw new AssertionError("cursor is empty");
-                final String contactId = contactsCursor.getString(
-                        contactsCursor.getColumnIndex(ContactsContract.RawContacts.CONTACT_ID)
-                );
-                currentContact = ContactRepositoryImpl.Companion.getInstance(getApplicationContext()).getContactByIdJava(contactId); // TODO: handle exceptions
+                if (contactsCursor == null || !contactsCursor.moveToFirst()) {
+                    Log.e(TAG, "RawContacts cursor empty after insert");
+                    BaldToast.error(this, "Error inserting contact!");
+                    return false;
+                }
+                final int contactIdIdx = contactsCursor.getColumnIndex(ContactsContract.RawContacts.CONTACT_ID);
+                if (contactIdIdx < 0) {
+                    Log.e(TAG, "CONTACT_ID column missing in RawContacts cursor");
+                    BaldToast.error(this, "Error inserting contact!");
+                    return false;
+                }
+                final String contactId = contactsCursor.getString(contactIdIdx);
+                if (contactId == null) {
+                    Log.e(TAG, "CONTACT_ID is null for newly inserted raw contact");
+                    BaldToast.error(this, "Error inserting contact!");
+                    return false;
+                }
+                currentContact = ContactRepositoryImpl.Companion.getInstance(getApplicationContext()).getContactByIdJava(contactId);
             }
             return update();
         } catch (Exception e) {

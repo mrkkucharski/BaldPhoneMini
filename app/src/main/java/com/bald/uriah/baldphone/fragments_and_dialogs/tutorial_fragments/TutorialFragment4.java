@@ -16,6 +16,7 @@
 
 package com.bald.uriah.baldphone.fragments_and_dialogs.tutorial_fragments;
 
+import android.app.Activity;
 import android.content.Context;
 
 import app.baldphone.neo.utils.HomeAppUtils;
@@ -35,7 +36,9 @@ public class TutorialFragment4 extends TutorialFragment {
     @Override
     protected void actualSetup() {
         bt_home.setOnClickListener(v -> {
-            HomeAppUtils.requestDefaultLauncher(requireActivity());
+            final Activity activity = getActivity();
+            if (activity == null) return;
+            HomeAppUtils.requestDefaultLauncher(activity);
             v.getContext().getSharedPreferences(BPrefs.KEY, Context.MODE_PRIVATE).edit().putBoolean(BPrefs.AFTER_TUTORIAL_KEY, true).apply();
         });
     }

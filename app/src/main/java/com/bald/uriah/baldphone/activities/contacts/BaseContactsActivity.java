@@ -46,6 +46,8 @@ import com.bald.uriah.baldphone.utils.SoftInputAssist;
 import com.bald.uriah.baldphone.utils.Toggeler;
 import com.bald.uriah.baldphone.views.BaldTitleBar;
 
+import java.util.ArrayList;
+
 import static android.view.View.GONE;
 
 /**
@@ -239,10 +241,11 @@ abstract class BaseContactsActivity extends BaldActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
-            final String spokenText =
-                    data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-                            .get(0);
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            final ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (results == null || results.isEmpty()) return;
+            final String spokenText = results.get(0);
+            if (spokenText == null || spokenText.trim().isEmpty()) return;
             et_filter_input.setText(spokenText);
             et_filter_input.setSelection(et_filter_input.getText().length());
         } else if (requestCode == 97 && resultCode == RESULT_OK) {

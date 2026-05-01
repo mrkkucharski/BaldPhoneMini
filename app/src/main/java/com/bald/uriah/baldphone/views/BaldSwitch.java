@@ -123,7 +123,8 @@ public class BaldSwitch extends LinearLayout {
             setPadding(2, 2, 2, 2);
             setOrientation(HORIZONTAL);
 
-            tv_yes.setText(yes);
+            if (yes != null)
+                tv_yes.setText(yes);
             tv_yes.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -137,7 +138,8 @@ public class BaldSwitch extends LinearLayout {
                 }
             });
 
-            tv_no.setText(no);
+            if (no != null)
+                tv_no.setText(no);
             tv_no.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {

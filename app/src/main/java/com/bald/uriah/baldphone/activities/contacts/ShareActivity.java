@@ -16,6 +16,7 @@
 
 package com.bald.uriah.baldphone.activities.contacts;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
@@ -71,7 +72,7 @@ public class ShareActivity extends BaseContactsActivity {
         super.onCreate(savedInstanceState);
         if (!checkPermissions(this, requiredPermissions()))
             return;
-        if (recyclerView != null && super.recyclerView.getAdapter().getItemCount() == 0) {
+        if (recyclerView != null && super.recyclerView.getAdapter() != null && super.recyclerView.getAdapter().getItemCount() == 0) {
             differently_container.setVisibility(View.VISIBLE);
             whatsapp_container.setVisibility(View.GONE);
             bald_switch.setVisibility(View.GONE);
@@ -89,10 +90,29 @@ public class ShareActivity extends BaseContactsActivity {
 
         mode = ContactRecyclerViewAdapter.MODE_SHARE;
         final Intent callingIntent = getIntent();
+        if (callingIntent == null) {
+            Log.w(TAG, "ShareActivity launched without calling intent");
+            BaldToast.error(this);
+            finish();
+            return;
+        }
         shareIntent = callingIntent.getParcelableExtra(EXTRA_SHARABLE_URI);
+        if (shareIntent == null) {
+            Log.w(TAG, "ShareActivity launched without share intent");
+            BaldToast.error(this);
+            finish();
+            return;
+        }
         resolveInfoList = getPackageManager().queryIntentActivities(shareIntent, 0);
 
-        recyclerView.setAdapter(new IntentAdapter(this, resolveInfoList, (resolveInfo, context) -> context.startActivity(shareIntent.setPackage(resolveInfo.activityInfo.packageName))));
+        recyclerView.setAdapter(new IntentAdapter(this, resolveInfoList, (resolveInfo, context) -> {
+            try {
+                context.startActivity(shareIntent.setPackage(resolveInfo.activityInfo.packageName));
+            } catch (ActivityNotFoundException | SecurityException e) {
+                Log.w(TAG, "Failed to share with selected app", e);
+                BaldToast.error(context);
+            }
+        }));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(10);//In Order to cover up the shitiness of loading resolve infos icons and texts
 
@@ -153,11 +173,23 @@ public class ShareActivity extends BaseContactsActivity {
             finish();
             return;
         }
+        final List<String> whatsappNumbers = contact.getWhatsappNumbers();
+        if (whatsappNumbers == null || whatsappNumbers.isEmpty()) {
+            Log.w(TAG, "Contact has no WhatsApp number for lookup key " + lookupKey);
+            BaldToast.error(this);
+            finish();
+            return;
+        }
 
         shareIntent.setPackage(WhatsAppHandler.WHATSAPP_PACKAGE_NAME);
-        String smsNumber = PhoneNumberUtils.stripSeparators(contact.getWhatsappNumbers().get(0)).replace("+", "").replace(" ", "");
+        String smsNumber = PhoneNumberUtils.stripSeparators(whatsappNumbers.get(0)).replace("+", "").replace(" ", "");
         shareIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
-        startActivity(shareIntent);
+        try {
+            startActivity(shareIntent);
+        } catch (ActivityNotFoundException | SecurityException e) {
+            Log.w(TAG, "Failed to share through WhatsApp", e);
+            BaldToast.error(this);
+        }
         finish();
     }
 }

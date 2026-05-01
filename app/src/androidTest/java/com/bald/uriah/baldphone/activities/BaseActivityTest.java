@@ -17,6 +17,7 @@
 package com.bald.uriah.baldphone.activities;
 
 import com.bald.uriah.baldphone.utils.BPrefs;
+import com.bald.uriah.baldphone.TestDeviceSetup;
 
 import org.junit.After;
 import org.junit.Before;
@@ -26,15 +27,16 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 public class BaseActivityTest {
     @Before
     public void setUp() {
+        TestDeviceSetup.ensureReady();
         BPrefs
                 .get(getInstrumentation().getTargetContext())
                 .edit()
                 .putBoolean(BPrefs.TEST_KEY, true)
                 .putBoolean(BPrefs.VIBRATION_FEEDBACK_KEY, true)
-                .putBoolean(BPrefs.LONG_PRESSES_KEY, true)
+                .putBoolean(BPrefs.LONG_PRESSES_KEY, false)
                 .putBoolean(BPrefs.LONG_PRESSES_SHORTER_KEY, false)
-                .putBoolean(BPrefs.TOUCH_NOT_HARD_KEY, false)
-                .putBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, true)
+                .putBoolean(BPrefs.TOUCH_NOT_HARD_KEY, true)
+                .putBoolean(BPrefs.BASIC_ACCESSIBILITY_PAGE_ARROWS_KEY, false)
                 .commit();
     }
 

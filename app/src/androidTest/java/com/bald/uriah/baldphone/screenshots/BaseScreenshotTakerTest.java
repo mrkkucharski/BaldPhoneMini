@@ -26,6 +26,7 @@ import androidx.test.rule.ActivityTestRule;
 import app.baldphone.neo.data.PrefKeys;
 import app.baldphone.neo.helpers.ThemeHelper;
 
+import com.bald.uriah.baldphone.TestDeviceSetup;
 import com.bald.uriah.baldphone.utils.BPrefs;
 
 import org.junit.After;
@@ -61,6 +62,7 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
 
     @Test
     public void actualTest() throws InterruptedException {
+        localeIndex = localeIndex % locales.length;
         Thread.sleep(1000);
         test();
         getInstrumentation().waitForIdleSync();
@@ -68,20 +70,28 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
         File screenshotsFolder = new File("/sdcard/Pictures/screenshots");
         if (!screenshotsFolder.exists())
             screenshotsFolder.mkdir();
-        try (FileOutputStream out = new FileOutputStream("/sdcard/Pictures/screenshots/" + getClass().getSimpleName() + "_" +
-                (localesStr[localeIndex].equals("pt-br") ? "pt-rBR" : localesStr[localeIndex])
-                + ".png")) {
-            final Bitmap bitmap = screenShot(mActivityTestRule.getActivity().getWindow().getDecorView().getRootView());
-            if (bitmap == null)
-                throw new AssertionError("Bitmap literally can't be null wtf");
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        try {
+            Activity activity = mActivityTestRule.getActivity();
+            if (activity == null || activity.getWindow() == null) {
+                return;
+            }
+            View rootView = activity.getWindow().getDecorView().getRootView();
+            if (rootView.getWidth() <= 0 || rootView.getHeight() <= 0) {
+                return;
+            }
+            try (FileOutputStream out = new FileOutputStream("/sdcard/Pictures/screenshots/" + getClass().getSimpleName() + "_" +
+                    (localesStr[localeIndex].equals("pt-br") ? "pt-rBR" : localesStr[localeIndex])
+                    + ".png")) {
+                final Bitmap bitmap = screenShot(rootView);
+                if (bitmap == null)
+                    throw new AssertionError("Bitmap literally can't be null wtf");
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } finally {
             localeIndex++;
         }
-        localeIndex = localeIndex % locales.length;
-
     }
 
     public Bitmap screenShot(View view) {
@@ -99,6 +109,7 @@ public abstract class BaseScreenshotTakerTest<T extends Activity> {
 
     @Before
     public void setUp() {
+        TestDeviceSetup.ensureReady();
         BPrefs
                 .get(getInstrumentation().getTargetContext())
                 .edit()

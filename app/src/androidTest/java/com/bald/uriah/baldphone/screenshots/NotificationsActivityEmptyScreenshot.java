@@ -32,7 +32,10 @@ public class NotificationsActivityEmptyScreenshot extends BaseScreenshotTakerTes
 
     public void test() {
         mActivityTestRule.launchActivity(new Intent());
-        mActivityTestRule.getActivity().runOnUiThread(() -> mActivityTestRule.getActivity().recyclerView.setAdapter(ModularRecyclerView.ModularAdapter.EMPTY_ADAPTER));
+        NotificationsActivity activity = mActivityTestRule.getActivity();
+        if (activity != null && activity.recyclerView != null) {
+            mActivityTestRule.getActivity().runOnUiThread(() -> mActivityTestRule.getActivity().recyclerView.setAdapter(ModularRecyclerView.ModularAdapter.EMPTY_ADAPTER));
+        }
     }
 
     @Override

@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -86,18 +87,27 @@ public class SinglePhotoActivity extends SingleMediaActivity implements Constant
                     cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
             final Uri deleteUri =
                     ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id);
+            final String path = getPath(deleteUri);
+            if (path == null) {
+                Log.w(TAG, "skipping delete: path lookup failed for " + deleteUri);
+                return;
+            }
 
             activity.getContentResolver().delete(
                     EXTERNAL,
                     MediaStore.MediaColumns.DATA + "=?",
-                    new String[]{getPath(deleteUri)});
+                    new String[]{path});
         }
 
         private String getPath(Uri uri) {
             try (Cursor cursor = getContentResolver().query(uri, PROJECTION, null, null, null)) {
-                final int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                cursor.moveToFirst();
-                return cursor.getString(column_index);
+                if (cursor == null || !cursor.moveToFirst()) return null;
+                final int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+                if (columnIndex < 0) return null;
+                return cursor.getString(columnIndex);
+            } catch (Exception e) {
+                Log.w(TAG, "getPath failed for " + uri, e);
+                return null;
             }
         }
 

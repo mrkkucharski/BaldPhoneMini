@@ -87,9 +87,12 @@ public class BaldInputMethodService extends InputMethodService implements View.O
         keyboardFrame.removeAllViews();
         if (newLanguageKeyboard != NumberKeyboard.LANGUAGE_ID)
             lastLanguage = newLanguageKeyboard;
-        final Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        final WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         final Point point = new Point();
-        display.getSize(point);
+        if (wm != null) {
+            final Display display = wm.getDefaultDisplay();
+            if (display != null) display.getSize(point);
+        }
 
         final View view =
                 newLanguageKeyboard != KeyboardPicker.LANGUAGE_ID ?
