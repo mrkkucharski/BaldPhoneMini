@@ -18,12 +18,20 @@ class SpeedDialRepository {
 
     fun getAll(): List<SpeedDialEntry> {
         val json = prefs.getString(KEY_ENTRIES, null) ?: return emptyList()
-        return try {
+        val entries = try {
             val array = JSONArray(json)
             (0 until array.length()).map { i -> fromJson(array.getJSONObject(i)) }
         } catch (e: Exception) {
-            emptyList()
+            return emptyList()
         }
+        if (entries.any { it.createdAt == 0L }) {
+            val migrated = entries.mapIndexed { i, e ->
+                if (e.createdAt == 0L) e.copy(createdAt = (i + 1).toLong()) else e
+            }
+            save(migrated)
+            return migrated.sortedBy { it.createdAt }
+        }
+        return entries.sortedBy { it.createdAt }
     }
 
     fun add(entry: SpeedDialEntry): Boolean {
@@ -67,6 +75,7 @@ class SpeedDialRepository {
         e.phoneLabel?.let { put(F_PHONE_LABEL, it) }
         put(F_DISPLAY_NAME, e.displayNameSnapshot)
         e.photoUriSnapshot?.let { put(F_PHOTO_URI, it) }
+        put(F_CREATED_AT, e.createdAt)
     }
 
     private fun fromJson(o: JSONObject) = SpeedDialEntry(
@@ -75,7 +84,8 @@ class SpeedDialRepository {
         phoneType = o.getInt(F_PHONE_TYPE),
         phoneLabel = if (o.has(F_PHONE_LABEL)) o.getString(F_PHONE_LABEL) else null,
         displayNameSnapshot = o.getString(F_DISPLAY_NAME),
-        photoUriSnapshot = if (o.has(F_PHOTO_URI)) o.getString(F_PHOTO_URI) else null
+        photoUriSnapshot = if (o.has(F_PHOTO_URI)) o.getString(F_PHOTO_URI) else null,
+        createdAt = if (o.has(F_CREATED_AT)) o.getLong(F_CREATED_AT) else 0L
     )
 
     companion object {
@@ -87,5 +97,6 @@ class SpeedDialRepository {
         private const val F_PHONE_LABEL = "phoneLabel"
         private const val F_DISPLAY_NAME = "displayName"
         private const val F_PHOTO_URI = "photoUri"
+        private const val F_CREATED_AT = "createdAt"
     }
 }

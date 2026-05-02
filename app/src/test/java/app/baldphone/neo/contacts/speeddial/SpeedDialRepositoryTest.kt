@@ -24,7 +24,8 @@ class SpeedDialRepositoryTest {
             phoneType = Phone.TYPE_MOBILE,
             phoneLabel = "Personal",
             displayName = "Anna",
-            photoUri = "content://photo/anna"
+            photoUri = "content://photo/anna",
+            createdAt = 1L
         )
         val bob = entry(
             lookupKey = "lookup-bob",
@@ -32,7 +33,8 @@ class SpeedDialRepositoryTest {
             phoneType = Phone.TYPE_HOME,
             phoneLabel = null,
             displayName = "Bob",
-            photoUri = null
+            photoUri = null,
+            createdAt = 2L
         )
 
         assertTrue(repository.add(anna))
@@ -125,13 +127,15 @@ class SpeedDialRepositoryTest {
         phoneType: Int = Phone.TYPE_MOBILE,
         phoneLabel: String? = null,
         displayName: String = lookupKey,
-        photoUri: String? = null
+        photoUri: String? = null,
+        createdAt: Long = 1L
     ) = SpeedDialEntry(
         lookupKey = lookupKey,
         phoneNumber = phoneNumber,
         phoneType = phoneType,
         phoneLabel = phoneLabel,
         displayNameSnapshot = displayName,
-        photoUriSnapshot = photoUri
+        photoUriSnapshot = photoUri,
+        createdAt = createdAt
     )
 }
