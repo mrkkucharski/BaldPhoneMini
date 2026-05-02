@@ -56,7 +56,6 @@ import app.baldphone.neo.activities.ContactsActivity;
 import app.baldphone.neo.activities.DialerActivity;
 import app.baldphone.neo.contacts.speeddial.SpeedDialEntry;
 import app.baldphone.neo.contacts.speeddial.SpeedDialHomeItem;
-import app.baldphone.neo.contacts.speeddial.SpeedDialActionsUseCase;
 import app.baldphone.neo.contacts.speeddial.SpeedDialRepository;
 import app.baldphone.neo.services.DeviceLock;
 import app.baldphone.neo.sms.MessagesActivity;
@@ -272,7 +271,7 @@ public class HomePage1 extends HomeView {
         Context ctx = getContext() != null ? getContext() : activity;
         if (ctx == null || rowSpeedDial == null || speedDialSlots == null || speedDialViews == null) return;
 
-        List<SpeedDialEntry> entries = new SpeedDialActionsUseCase(ctx).getAll();
+        List<SpeedDialEntry> entries = new SpeedDialRepository(ctx).getAll();
         int visibleCount = Math.min(HOME_SPEED_DIAL_SLOT_COUNT, entries.size());
 
         if (visibleCount == 0) {
