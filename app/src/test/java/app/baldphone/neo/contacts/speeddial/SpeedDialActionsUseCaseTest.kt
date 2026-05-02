@@ -86,12 +86,13 @@ class SpeedDialActionsUseCaseTest {
         assertEquals(listOf(valid), repository.getAll())
     }
 
-    private fun entry(lookupKey: String, phoneNumber: String) = SpeedDialEntry(
+    private fun entry(lookupKey: String, phoneNumber: String, createdAt: Long = 1L) = SpeedDialEntry(
         lookupKey = lookupKey,
         phoneNumber = phoneNumber,
         phoneType = 0,
         phoneLabel = null,
         displayNameSnapshot = lookupKey,
-        photoUriSnapshot = null
+        photoUriSnapshot = null,
+        createdAt = createdAt
     )
 }

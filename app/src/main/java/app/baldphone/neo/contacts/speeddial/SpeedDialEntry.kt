@@ -8,5 +8,6 @@ data class SpeedDialEntry(
     val phoneType: Int,
     val phoneLabel: String?,
     val displayNameSnapshot: String,
-    val photoUriSnapshot: String?
+    val photoUriSnapshot: String?,
+    val createdAt: Long = 0L
 )

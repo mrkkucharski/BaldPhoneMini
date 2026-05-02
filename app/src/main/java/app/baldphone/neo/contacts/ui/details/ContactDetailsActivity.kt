@@ -354,7 +354,8 @@ class ContactDetailsActivity : BaldActivity() {
                     phoneType = phone.type,
                     phoneLabel = phone.label,
                     displayNameSnapshot = contact.name,
-                    photoUriSnapshot = contact.photoUri
+                    photoUriSnapshot = contact.photoUri,
+                    createdAt = System.currentTimeMillis()
                 )
             )
         } else {
@@ -381,7 +382,8 @@ class ContactDetailsActivity : BaldActivity() {
                         phoneType = phone.type,
                         phoneLabel = phone.label,
                         displayNameSnapshot = contact.name,
-                        photoUriSnapshot = contact.photoUri
+                        photoUriSnapshot = contact.photoUri,
+                        createdAt = System.currentTimeMillis()
                     )
                 )
             }

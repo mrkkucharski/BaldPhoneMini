@@ -136,7 +136,8 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
                     ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
                     null,
                     "Contact " + i,
-                    null
+                    null,
+                    (long) i
             ));
         }
     }
