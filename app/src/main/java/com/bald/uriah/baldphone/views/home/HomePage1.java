@@ -250,6 +250,7 @@ public class HomePage1 extends HomeView {
         activity.getContentResolver().registerContentObserver(
                 Telephony.Sms.CONTENT_URI, true, smsObserver);
         refreshMessagesBadge();
+        refreshSpeedDial();
     }
 
     @Override
