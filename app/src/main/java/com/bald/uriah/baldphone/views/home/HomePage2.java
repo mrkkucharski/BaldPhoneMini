@@ -23,12 +23,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build.VERSION;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -44,6 +43,7 @@ import com.bald.uriah.baldphone.utils.BPrefs;
 import com.bald.uriah.baldphone.utils.BaldToast;
 import com.bald.uriah.baldphone.utils.DropDownRecyclerViewAdapter;
 import com.bald.uriah.baldphone.utils.S;
+import com.bald.uriah.baldphone.views.FirstPageAppIcon;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -54,10 +54,9 @@ import java.util.Set;
 public class HomePage2 extends HomeView {
     public static final String TAG = HomePage2.class.getSimpleName();
     private View view;
-    private ImageView iv_internet, iv_maps;
-    private TextView tv_internet, tv_maps;
     private View bt_settings, bt_internet, bt_maps, bt_photo;
     private View bt_videos, bt_pills, bt_apps, bt_alarms; // Added fields
+    private FirstPageAppIcon internetTile, mapsTile;
     private PackageManager packageManager;
 
     public HomePage2(@NonNull HomeScreenActivity homeScreen) {
@@ -83,11 +82,8 @@ public class HomePage2 extends HomeView {
         bt_settings = view.findViewById(R.id.bt_settings);
         bt_videos = view.findViewById(R.id.bt_videos);
 
-        iv_internet = view.findViewById(R.id.iv_internet);
-        iv_maps = view.findViewById(R.id.iv_maps);
-
-        tv_internet = view.findViewById(R.id.tv_internet);
-        tv_maps = view.findViewById(R.id.tv_maps);
+        internetTile = view.findViewById(R.id.bt_internet);
+        mapsTile = view.findViewById(R.id.bt_maps);
     }
 
     private void genOnLongClickListeners() {
@@ -99,14 +95,14 @@ public class HomePage2 extends HomeView {
         bt_internet.setVisibility(internetVisible ? View.VISIBLE : View.GONE);
         if (internetVisible) {
             clickListenerForAbstractOpener(
-                    Uri.parse("http://www.google.com"), bt_internet, iv_internet, tv_internet);
+                    Uri.parse("http://www.google.com"), bt_internet, internetTile);
         }
 
         final boolean mapsVisible = BPrefs.get(homeScreen)
                 .getBoolean(BPrefs.MAPS_VISIBLE_KEY, BPrefs.MAPS_VISIBLE_DEFAULT_VALUE);
         bt_maps.setVisibility(mapsVisible ? View.VISIBLE : View.GONE);
         if (mapsVisible) {
-            clickListenerForAbstractOpener(Uri.parse("geo:0,0"), bt_maps, iv_maps, tv_maps);
+            clickListenerForAbstractOpener(Uri.parse("geo:0,0"), bt_maps, mapsTile);
         }
 
         if (bt_photo != null) {
@@ -159,8 +155,7 @@ public class HomePage2 extends HomeView {
     private void clickListenerForAbstractOpener(
             @NonNull final Uri uri,
             @NonNull final View bt,
-            @NonNull final ImageView iv,
-            @NonNull final TextView tv) {
+            @NonNull final FirstPageAppIcon appIcon) {
         final Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         final List<ResolveInfo> activitiesWithDuplicates =
                 packageManager.queryIntentActivities(
@@ -178,6 +173,7 @@ public class HomePage2 extends HomeView {
                 resolveInfos.add(resolveInfo);
             }
         }
+        applyResolvedAppIcon(intent, resolveInfos, appIcon);
 
         if (resolveInfos.size() > 1) {
             bt.setOnClickListener(v -> S.showDropDownPopup(
@@ -202,13 +198,47 @@ public class HomePage2 extends HomeView {
                     bt));
         } else if (resolveInfos.size() == 1) {
             final ResolveInfo resolveInfo = resolveInfos.get(0);
-            bt.setOnClickListener(v1 ->
-                    homeScreen.startActivity(
-                            packageManager.getLaunchIntentForPackage(
-                                    resolveInfo.activityInfo.applicationInfo.packageName)));
+            bt.setOnClickListener(v1 -> startResolvedApp(resolveInfo, v1));
         } else {
             bt.setOnClickListener(this::showErrorMessage);
         }
+    }
+
+    private void applyResolvedAppIcon(
+            @NonNull final Intent intent,
+            @NonNull final List<ResolveInfo> resolveInfos,
+            @NonNull final FirstPageAppIcon appIcon) {
+        try {
+            ResolveInfo resolveInfo =
+                    packageManager.resolveActivity(
+                            intent,
+                            VERSION.SDK_INT >= VERSION_CODES.M
+                                    ? PackageManager.MATCH_DEFAULT_ONLY
+                                    : 0);
+            if (resolveInfo != null && !matchesAnyPackage(resolveInfo, resolveInfos)) {
+                resolveInfo = null;
+            }
+            if (resolveInfo == null && resolveInfos.size() == 1) {
+                resolveInfo = resolveInfos.get(0);
+            }
+            if (resolveInfo != null) {
+                appIcon.setImageDrawable(resolveInfo.loadIcon(packageManager));
+            }
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Failed to load resolved app icon", e);
+        }
+    }
+
+    private boolean matchesAnyPackage(
+            @NonNull final ResolveInfo resolveInfo,
+            @NonNull final List<ResolveInfo> resolveInfos) {
+        final String resolvedPackageName = resolveInfo.activityInfo.applicationInfo.packageName;
+        for (final ResolveInfo candidate : resolveInfos) {
+            if (resolvedPackageName.equals(candidate.activityInfo.applicationInfo.packageName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setupAppDropdownItem(
@@ -223,15 +253,25 @@ public class HomePage2 extends HomeView {
         viewHolder.text.setText(resolveInfo.loadLabel(packageManager));
         viewHolder.itemView.setOnClickListener(
                 v1 -> {
-                    homeScreen.startActivity(
-                            packageManager
-                                    .getLaunchIntentForPackage(
-                                            resolveInfo
-                                                    .activityInfo
-                                                    .applicationInfo
-                                                    .packageName));
+                    startResolvedApp(resolveInfo, v1);
                     popupWindow.dismiss();
                 });
+    }
+
+    private void startResolvedApp(@NonNull final ResolveInfo resolveInfo, @NonNull final View v) {
+        try {
+            final Intent launchIntent =
+                    packageManager.getLaunchIntentForPackage(
+                            resolveInfo.activityInfo.applicationInfo.packageName);
+            if (launchIntent == null) {
+                showErrorMessage(v);
+                return;
+            }
+            homeScreen.startActivity(launchIntent);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Failed to start resolved app", e);
+            showErrorMessage(v);
+        }
     }
 
     private void showErrorMessage(View v) {
