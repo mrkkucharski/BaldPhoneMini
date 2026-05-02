@@ -28,9 +28,15 @@ import static org.junit.Assert.assertEquals;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.ParcelFileDescriptor;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.filters.LargeTest;
@@ -67,6 +73,8 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
 
         assertNoEntriesState();
 
+        revokeContactsPermission();
+
         setSpeedDialEntries(1);
         refreshSpeedDialOnUiThread();
         getInstrumentation().waitForIdleSync();
@@ -86,6 +94,7 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
     @Override
     protected void cleanupAfterTest() {
         clearSpeedDialEntries();
+        grantContactsPermission();
     }
 
     @Override
@@ -149,6 +158,34 @@ public class SpeedDialHomeRowTest extends BaseScreenshotTakerTest<HomeScreenActi
                 .edit()
                 .clear()
                 .commit();
+    }
+
+    private void revokeContactsPermission() {
+        shell("pm revoke " + getInstrumentation().getTargetContext().getPackageName()
+                + " android.permission.READ_CONTACTS");
+    }
+
+    private void grantContactsPermission() {
+        shell("pm grant " + getInstrumentation().getTargetContext().getPackageName()
+                + " android.permission.READ_CONTACTS");
+    }
+
+    private static String shell(String command) {
+        ParcelFileDescriptor descriptor =
+                getInstrumentation().getUiAutomation().executeShellCommand(command);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                new ParcelFileDescriptor.AutoCloseInputStream(descriptor),
+                StandardCharsets.UTF_8
+        ))) {
+            StringBuilder output = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line).append('\n');
+            }
+            return output.toString();
+        } catch (IOException ignored) {
+            return "";
+        }
     }
 
     private void refreshSpeedDialOnUiThread() {
