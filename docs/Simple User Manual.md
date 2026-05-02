@@ -13,7 +13,7 @@ Some home buttons can be replaced with custom installed apps through the home sc
 
 Buttons can also be hidden. In that case they do not show up on the home screen. This simplified view helps avoid confusing elderly users.
 
-The home screen can also show speed dial entries. A speed dial entry is a large contact tile for quickly calling a saved number. Tapping a speed dial tile opens a confirmation dialog; confirming places the call and canceling leaves the user on the home screen. Speed dial entries are added from a contact details screen. If the contact has more than one number, the user chooses which number is used. Regular pinned contact tiles open contact details; speed dial tiles confirm and then call the saved number.
+The home screen can also show speed dial entries. A speed dial entry is a large contact tile for quickly calling a saved number. Tapping a speed dial tile opens a confirmation dialog; confirming places the call and canceling leaves the user on the home screen. Speed dial entries are added from a contact details screen. If the contact has more than one number, the user chooses which number is used. Regular pinned contact tiles open contact details; speed dial tiles confirm and then call the saved number. Speed dial entries always appear in the order they were added; removing one entry does not shift the positions of the remaining ones.
 
 <img src="images/manual-pinned-items.png" alt="Additional home page showing a pinned app, a regular pinned contact, and a speed dial contact tile." width="320">
 
