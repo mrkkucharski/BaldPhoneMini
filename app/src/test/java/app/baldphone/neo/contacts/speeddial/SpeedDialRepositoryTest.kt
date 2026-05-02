@@ -121,6 +121,107 @@ class SpeedDialRepositoryTest {
         assertFalse(repository.isFull())
     }
 
+    @Test
+    fun getAllReturnsSortedByCreatedAt() {
+        val c = entry("lookup-c", "+48333", createdAt = 3L)
+        val a = entry("lookup-a", "+48111", createdAt = 1L)
+        val b = entry("lookup-b", "+48222", createdAt = 2L)
+        listOf(c, a, b).forEach { repository.add(it) }
+
+        assertEquals(listOf(a, b, c), repository.getAll())
+    }
+
+    @Test
+    fun removeDoesNotAffectSurvivingCreatedAt() {
+        val a = entry("lookup-a", "+48111", createdAt = 1L)
+        val b = entry("lookup-b", "+48222", createdAt = 2L)
+        val c = entry("lookup-c", "+48333", createdAt = 3L)
+        listOf(a, b, c).forEach { repository.add(it) }
+
+        repository.remove("lookup-b")
+
+        val result = repository.getAll()
+        assertEquals(listOf(a, c), result)
+        assertEquals(1L, result[0].createdAt)
+        assertEquals(3L, result[1].createdAt)
+    }
+
+    @Test
+    fun legacyEntriesWithoutCreatedAtAreMigratedToArrayOrder() {
+        prefs.edit().putString(
+            "speed_dial_entries",
+            """[
+                {"lookupKey":"k1","phoneNumber":"+1","phoneType":1,"displayName":"One"},
+                {"lookupKey":"k2","phoneNumber":"+2","phoneType":1,"displayName":"Two"},
+                {"lookupKey":"k3","phoneNumber":"+3","phoneType":1,"displayName":"Three"}
+            ]""".trimIndent()
+        ).apply()
+
+        val result = repository.getAll()
+
+        assertEquals(3, result.size)
+        assertEquals("k1", result[0].lookupKey)
+        assertEquals("k2", result[1].lookupKey)
+        assertEquals("k3", result[2].lookupKey)
+        assertEquals(1L, result[0].createdAt)
+        assertEquals(2L, result[1].createdAt)
+        assertEquals(3L, result[2].createdAt)
+    }
+
+    @Test
+    fun migrationIsPersisted() {
+        prefs.edit().putString(
+            "speed_dial_entries",
+            """[
+                {"lookupKey":"k1","phoneNumber":"+1","phoneType":1,"displayName":"One"},
+                {"lookupKey":"k2","phoneNumber":"+2","phoneType":1,"displayName":"Two"}
+            ]""".trimIndent()
+        ).apply()
+
+        repository.getAll()
+
+        val storedJson = prefs.getString("speed_dial_entries", null)!!
+        assertTrue("createdAt should be persisted after migration", storedJson.contains("createdAt"))
+
+        val second = repository.getAll()
+        assertEquals(1L, second[0].createdAt)
+        assertEquals(2L, second[1].createdAt)
+    }
+
+    @Test
+    fun newEntryAfterRemovalSortsLast() {
+        val a = entry("lookup-a", "+48111", createdAt = 1L)
+        val b = entry("lookup-b", "+48222", createdAt = 2L)
+        repository.add(a)
+        repository.add(b)
+        repository.remove("lookup-a")
+
+        val c = entry("lookup-c", "+48333", createdAt = 3L)
+        repository.add(c)
+
+        assertEquals(listOf(b, c), repository.getAll())
+    }
+
+    @Test
+    fun migrationViaAdd() {
+        prefs.edit().putString(
+            "speed_dial_entries",
+            """[
+                {"lookupKey":"k1","phoneNumber":"+1","phoneType":1,"displayName":"One"},
+                {"lookupKey":"k2","phoneNumber":"+2","phoneType":1,"displayName":"Two"}
+            ]""".trimIndent()
+        ).apply()
+
+        val newEntry = entry("lookup-new", "+48999", createdAt = 1_700_000_000_000L)
+        repository.add(newEntry)
+
+        val result = repository.getAll()
+        assertEquals(3, result.size)
+        assertEquals("k1", result[0].lookupKey)
+        assertEquals("k2", result[1].lookupKey)
+        assertEquals("lookup-new", result[2].lookupKey)
+    }
+
     private fun entry(
         lookupKey: String,
         phoneNumber: String,
